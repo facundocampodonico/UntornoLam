@@ -17,7 +17,7 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.css" rel="stylesheet">
-  
+
   <!-- Carga de Variables -->
   <!-- Custom styles for this template -->
   <link href="css/sb-admin-2.css" rel="stylesheet">
@@ -27,15 +27,16 @@
 
 <!-- Carga de Variables -->
   <script>
-  	var CantidadCnc='5' ;
+
+    var CantidadCnc='5' ;
   	var CantidadDiseños='10' ;
   	var ReportesPendientes='1' ;
   	var EstadoEquipo='LIBRE';
-  	var Reportes='10' ;
+  	var FechaUltimoService='10/06/2020' ;
   	var ImpresionesEnviadas ='5' ;
   	var AdeundaPago='1000' ;
   	var ServicionEnCurso='1' ;
-  	
+
   </script>
 
 </head>
@@ -73,13 +74,13 @@
       <div class="sidebar-heading">
         Herramientas
       </div>
-      
+
          <li class="nav-item">
         <a class="nav-link" href="cnc.html">
           <i class="fas fa-fw fa-cog"></i>
           <span>Mis CNC</span></a>
       </li>
-      
+
          <li class="nav-item">
         <a class="nav-link" href="misdiseños.html">
           <i class="fas fa-fw fa-folder"></i>
@@ -96,7 +97,7 @@
           <span>Mis Servicios</span></a>
       </li>
 
-  
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
@@ -138,7 +139,7 @@
           <ul class="navbar-nav ml-auto">
 
             <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none" style="display:none">
+            <li class="nav-item dropdown no-arrow d-sm-none">
               <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-search fa-fw"></i>
               </a>
@@ -302,20 +303,20 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Mis CNC</h1>
-            
+            <h1 class="h3 mb-0 text-gray-800">Mis CNC <i class="fas fa-fw fas fa-pencil-alt"></i></h1>
+
             <div class="dropdown mb-4">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                       Seleccione CNC
                     </button>
-                    <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton" onclick="location.reload()">
                       <a class="dropdown-item" href="#">CNC-1</a>
                       <a class="dropdown-item" href="#">CNC-2</a>
                       <a class="dropdown-item" href="#">CNC-N</a>
                     </div>
             </div>
           </div>
-          
+
 
 		<div class="row">
 
@@ -329,10 +330,10 @@
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
                           <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                          	
+
                           	<!-- LIBRE -->
                           	<script> document.write(EstadoEquipo);</script>
-                          	
+
                           	</div>
                         </div>
                         <div class="col">
@@ -341,9 +342,6 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -356,16 +354,14 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Diseños (Total)</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Diseños enviados (Total) <b><script> document.write(CantidadDiseños);</script></b></div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      	
-                      	<script> document.write(CantidadDiseños);</script>
-                      
-                      
+                      	<a href="#" class="btn btn-success btn-icon-split">
+                            <span class="text">Enviar Diseños</span>
+                        </a>
+
                       </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="far fa-file-image fa-2x text-gray-300"></i>
+
                     </div>
                   </div>
                 </div>
@@ -378,46 +374,122 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Reportes</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Fecha ultimo servicio tecnico <b><script> document.write(FechaUltimoService);</script></b></div>
                           <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                          	  	<script> document.write(Reportes);</script>
-                          	
-                          </div>
-                        </div>
+                          	<a href="#" class="btn btn-success btn-icon-split">
+                                <span class="text">Solicitar Servicio</span>
+                            </a>
                       </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">ReportesPendientes</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      	
-                      	<script> document.write(ReportesPendientes);</script>
-                      	
-                      	
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Accordion -->
+                    <a href="#collapseCardExample" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
+                      <h6 class="m-0 font-weight-bold text-primary">Controles CNC</h6>
+                    </a>
+                    <!-- Card Content - Collapse -->
+                    <div class="collapse" id="collapseCardExample">
+                      <div class="card-body" id="controles">
+
+                         <table >
+
+                              <tr>
+                                <td></td>
+                                <td><button type="button" class="btn btn-outline-success">Y-</button></td>
+                                <td></td>
+                                <td>&nbsp;</td>
+                                <td><button type="button" class="btn btn-outline-success">Z-</button></td>
+                                 <td>&nbsp;</td>
+                                 <td>&nbsp;</td>
+                                 <td>&nbsp;</td>
+                                 <td>&nbsp;</td>
+                                <td><button type="button" class="btn btn-success btn-sm btn-block">Return Zero</button></td>
+                              </tr>
+
+                            <tbody>
+                              <tr>
+                                <td><button type="button" class="btn btn-outline-success">X-</button></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-outline-success ">X+</button></td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td><button type="button" class="btn btn-success btn-sm btn-block">Return to Zero</button></td>
+                                <th></th>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td><button type="button" class="btn btn-outline-success">Y-</button></td>
+                                <td></td>
+                                <td>&nbsp;</td>
+                                <td><button type="button" class="btn btn-outline-success">Z-</button></td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td><button type="button" class="btn btn-success btn-sm btn-block">Soft Reset</button>
+
+                                </td>
+                               </tr>
+
+                             </tbody>
+
+
+                          </table>
                       </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-list fa-2x text-gray-300"></i>
+
                     </div>
                   </div>
-                </div>
-              </div>
             </div>
-          </div> 
+
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Accordion -->
+                    <a href="#collapseCardExample1" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
+                      <h6 class="m-0 font-weight-bold text-primary">Consola de comandos</h6>
+                    </a>
+                    <!-- Card Content - Collapse -->
+                    <div class="collapse" id="collapseCardExample1">
+                      <div class="card-body" id="consola">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                              <thead>
+                                <tr>
+                                  <th>Comando</th>
+                                  <th>Enviado</th>
+                                  <th>Realizado</th>
+                                  <th>Respuesta</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <!--<tr>
+                                  <td>este estaba</td>
+                                  <td>este estaba</td>
+                                  <td>este estaba</td>
+                                  <td>este estaba</td>
+                                </tr>-->
+                    			</tbody>
+                            </table>
+                          </div>
+                      </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -484,35 +556,35 @@
 <script type="module">
 
 	import * as THREE from './3d/build/three.module.js';
-			
+
 	import Stats from './3d/jsm/libs/stats.module.js';
-			
+
 	import { OrbitControls } from './3d/jsm/controls/OrbitControls.js';
-			
+
 	import { STLLoader } from './3d/jsm/loaders/STLLoader.js';
-						
+
 $( document ).ready(function() {
     console.log( "ready!" );
 
 
 
-			
+
 						var container, stats;
 						var scene, camera, renderer, exporter, mesh;
 						var camera, cameraTarget, scene, renderer;
-			
+
 						/*if (window.File && window.FileReader && window.FileList && window.Blob) {
 						  // Great success! All the File APIs are supported.
 						} else {
 						  alert('The File APIs are not fully supported in this browser.');
 						}*/
-			
+
 						init();
 						animate();
-			
+
 						/*function handleFileSelect(evt) {
 						    var files = evt.target.files; // FileList object
-			
+
 						    // files is a FileList of File objects. List some properties.
 						    var output = [];
 						    for (var i = 0, f; f = files[i]; i++) {
@@ -522,41 +594,25 @@ $( document ).ready(function() {
 						    }
 						    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
 						  }*/
-			
+
 						function init() {
-			
-							
-							//container = document.getElementById('prueba-3d');
-							
-							//mycanvas = document.getElementById('mycanvas');
-						
-							
-							/////////container = document.createElement('div');
-							
-							
-							//agrego
-							
-							/////////document.body.appendChild( container );
-							/////////document.body.appendChild( mycanvas );
-							
-							//var width1 = document.getElementById("div").style.width;
-							//console.log('Tengo en valor y mentiroso:	' + width1 );
-							
-			
+
+
+
 							camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
 							camera.position.set( 200, 100, 200 );
-			
+
 							//cameraTarget = new THREE.Vector3( 0, - 0.25, 0 );
-			
+
 							scene = new THREE.Scene();
 							scene.background = new THREE.Color( 0xa0a0a0 );
 							//scene.fog = new THREE.Fog( 0xa0a0a0, 200, 1000 );
-			
-			
+
+
 							// Ground
-			
+
 							//new THREE.MeshPhongMaterial( { color: 0x999999, specular: 0x101010 } )
-			
+
 							var plane = new THREE.Mesh(
 								new THREE.PlaneBufferGeometry( 600, 400 ),
 								new THREE.MeshPhongMaterial( { color: 0x000000, specular: 0x101010 } )
@@ -565,133 +621,87 @@ $( document ).ready(function() {
 							plane.rotation.x = - Math.PI / 2;
 							plane.position.y = 0;
 							scene.add( plane );
-			
+
 							plane.receiveShadow = true;
-			
-			
+
+
 							// ASCII file
-			
+
 							var loader = new STLLoader();
-			
+
 							// Binary files
-			
+
 							var material = new THREE.MeshPhongMaterial( { specular: 0x111111, shininess: 200 } );
-			
+
 							// Colored binary STL
 							//loader.load( './models/stl/binary/colored.stl', function ( geometry ) {
 							loader.load( './3d/models/stl/binary/prueba.stl', function ( geometry ) {
-			
+
 								var meshMaterial = material;
 								if ( geometry.hasColors ) {
-			
+
 									meshMaterial = new THREE.MeshPhongMaterial( { opacity: geometry.alpha, vertexColors: true } );
-			
+
 								}
-			
+
 								//geometry.computeBoundingBox();
 								//var box = geometry.boundingBox;
 								//alert(box.max["x"]);
-			
+
 								console.log(geometry.boundingBox);
-			
+
 								//aca verificar valores y en caso de ser menores o mayores a los necesarios cambiarlos y avisar
 								geometry.scale(100,100,100)
-			
+
 								var mesh = new THREE.Mesh( geometry, meshMaterial );
-			
+
 								//mesh
-			
-			
+
+
 								mesh.position.set( -35, 0, 0 );
 								mesh.rotation.set( - Math.PI / 2, 0, 0 );
 								//mesh.scale.set( 100, 100, 100 );
-			
+
 								mesh.castShadow = true;
 								mesh.receiveShadow = true;
-			
+
 								scene.add( mesh );
-			
+
 								//geometry.computeBoundingBox();
 								//var box = geometry.boundingBox;
 								//alert(box.max["x"]);
-			
+
 								console.log(geometry.boundingBox);
-			
+
 							} );
-			
-			
+
+
 							// Lights
-			
+
 							scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
-			
+
 							addShadowedLight( 1, 1, 1, 0xffffff, 0.60 );
 							addShadowedLight( 0.5, 1, - 1, 0xffaaaaa, 1 );
 							// renderer
-			
+
 							renderer = new THREE.WebGLRenderer( { antialias: true } );
 							renderer.setPixelRatio( window.devicePixelRatio );
 							console.log('Tengo en valor X:	' + window.innerWidth );
 							console.log('Tengo en valor y:	' + window.innerHeight );
-							
-							//console.log('Tengo en valor X:	' + container.body.scrollWidth );
-							//console.log('Tengo en valor y:	' + container.innerWidth );
-							
-							//var elemento = document.getElementById("mycanvas");  
-							
-							//console.log('Tengo en valor X:	' + container.style.maxWidth );
-							//console.log('Tengo en valor y:	' + elemento.height );
-							
-							//var currentDiv = document.getElementsByName("chota"); 
-							//var ancho = currentDiv.getAttribute("name");
-							
-							//console.log('Tengo en valor X:	' + currentDiv.width );
-							//console.log('Tengo en valor y:	' + ancho );
-							
-							//renderer.setSize( container., container.height );
-							//renderer.setSize( window.innerWidth, window.innerHeight );
-							//renderer.setSize( 600, 400 );
 							renderer.setSize( preview.clientWidth - 40, preview.clientWidth /2 );
-							
+
 							renderer.outputEncoding = THREE.sRGBEncoding;
-			
+
 							renderer.shadowMap.enabled = true;
-			
-							
-							////////////container.appendChild( renderer.domElement );
-							
-							//
 							var controls = new OrbitControls( camera, renderer.domElement );
 							controls.target.set( 0, 25, 0 );
 							controls.update();
-			
-							// stats
-			
-							//stats = new Stats();
-							//container.appendChild( stats.dom );
-			
-			
-/*
-2.To remove the following code
-  renderer.domElement = canvas;
-3.Add the following line in your code      
-  canvas.appendChild( renderer.domElement );
-*/			
-						//	window.addEventListener( 'resize', onWindowResize, false );
-				
-							//container.addEventListener( 'resize', onWindowResize, false );
-				
-						//	var buttonExportASCII = document.getElementById( 'abrirArchivo' );
-						//	buttonExportASCII.addEventListener( 'click', abrirArchivo );
-							//chota.appendChild(renderer);
-							//chota.appendChild(container);
-							//chota.height=600;
-							//////////mycanvas.appendChild(container);
-							preview.appendChild(renderer.domElement);
-			
-						}
-			
+										preview.appendChild(renderer.domElement);
 
-			
+						}
+
+
+
 						function resizeRendererToDisplaySize(renderer) {
 						  const canvas = renderer.domElement;
 						  const width = canvas.clientWidth;
@@ -702,53 +712,43 @@ $( document ).ready(function() {
 						  }
 						  return needResize;
 						}
-			
-			
+
+
 						function addShadowedLight( x, y, z, color, intensity ) {
-			
+
 							var directionalLight = new THREE.DirectionalLight( color, intensity );
 							directionalLight.position.set( x, y, z );
 							scene.add( directionalLight );
-			
+
 							directionalLight.castShadow = true;
-			
+
 							var d = 1;
 							directionalLight.shadow.camera.left = - d;
 							directionalLight.shadow.camera.right = d;
 							directionalLight.shadow.camera.top = d;
 							directionalLight.shadow.camera.bottom = - d;
-			
+
 							directionalLight.shadow.camera.near = 1;
 							directionalLight.shadow.camera.far = 4;
-			
+
 							directionalLight.shadow.bias = - 0.002;
-			
+
 						}
-			
+
 						function onWindowResize() {
-			
+
 							camera.aspect = window.innerWidth / window.innerHeight;
 							camera.updateProjectionMatrix();
-			
-							renderer.setSize( window.innerWidth, window.innerHeight );
-			
-						}
-			
-						function animate() {
-			
-							//console.log('Tengo en valor y:	' + mycanvas.clientWidth );
-			
-							/*if (resizeRendererToDisplaySize(renderer)) {
-							    const canvas = renderer.domElement;
-							    camera.aspect = canvas.clientWidth / canvas.clientHeight;
-							    camera.updateProjectionMatrix();
-							}*/
 
-							renderer.setSize( preview.clientWidth - 40, preview.clientWidth /2 );
-							
+							renderer.setSize( window.innerWidth, window.innerHeight );
+
+						}
+
+						function animate() {
+			   			    renderer.setSize( preview.clientWidth - 40, preview.clientWidth /2 );
 							requestAnimationFrame( animate );
 							renderer.render( scene, camera );
-			
+
 						}
 });
 
@@ -760,8 +760,8 @@ $( document ).ready(function() {
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
-  
-  
+
+
 </body>
 
 </html>
