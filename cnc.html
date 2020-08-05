@@ -27,7 +27,7 @@
 
 <!-- Carga de Variables -->
   <script>
-
+/*
     var CantidadCnc='5' ;
   	var CantidadDiseños='10' ;
   	var ReportesPendientes='1' ;
@@ -36,7 +36,7 @@
   	var ImpresionesEnviadas ='5' ;
   	var AdeundaPago='1000' ;
   	var ServicionEnCurso='1' ;
-
+*/
   </script>
 
 </head>
@@ -754,7 +754,32 @@ $( document ).ready(function() {
 
 </script>
 
+<script>
+$(document).ready( function () {
 
+    console.log('Comienza a cargar la pagina UNtornoLaM ...');
+
+    $('#dataTable').DataTable({
+        ajax: {
+           url: 'http://66.97.46.179:8080/api/getMyServices',
+           contentType: 'application/json',
+           method: "GET",
+           xhrFields: {
+               withCredentials: false
+           },
+           dataSrc: "services"
+        },
+        columns: [
+            { "data": "name" },
+            { "data": "position" },
+            { "data": "office" },
+            { "data": "age" },
+            { "data": "startDate" },
+            { "data": "salary" }
+        ]
+    });
+
+});</script>
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
