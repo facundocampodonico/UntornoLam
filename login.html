@@ -106,7 +106,8 @@
 </html>
 
 <script type="text/javascript">
-	// Configuracion 
+	// Configuracion
+	// @TODO: aca falta las rutas del servidor 	
 	const RUTA_ACCESO = 'http://localhost:8080/';
 	const RUTA_API = 'api/login';
 
@@ -125,10 +126,10 @@ $(document).ready(function() {
 		
 		Esto es para futuro request futuros
 		headers: {
-					"Authorization": `Bearer ${localStorage.getItem('id_token')}`
+					"Authorization": `Bearer ${window.sessionStorage.getItem('tokenUntornolam')}`
 				}, 
 	
-	*/
+		*/
 		
 		// Armo el ajax, para enviar los datos correspondientes
 		$.ajax({
@@ -146,19 +147,30 @@ $(document).ready(function() {
 			crossDomain: true,			
 			
 			success: function( data, textStatus, jQxhr ){
-				console.log(data.status);
-				// Esto es lo que hay que guardar!
-				console.log(data.token);
 				
-				localStorage.setItem('tokenG', data.token);
-				
+				// En caso de exito 
 				if( data.status === 'OK'){
-					console.log('redireccion');
-					// Para redireccionar 
-					// window.location.href = './index.html';
+					// Si fue exitoso el login
+					// Guardo el token 
+					sessionStorage.setItem('tokenUntornolam', data.token);
+				
+					// Redirecciono 
+					window.location.href = './index.html';
 				}else{
-					// Esto se va a cambiar 
-					alert("Respuesta: " + JSON.stringify( data ) );
+					// Aca tienen que estar los handler del error tipo 
+					switch (expresión) {
+						  case 'ERROR_USER':
+								//	El usuario o contraseña es incorrecto 
+								// 	Agregar label informativo....
+								break;
+						  case 'ERROR_EXAMPLE':
+								//	Otro error handleable 
+								//	Acciones...
+								break;
+						  default:
+								//Declaraciones ejecutadas cuando ninguno de los valores coincide con el valor de la expresión
+								break;
+						}
 				}
 				
 				
