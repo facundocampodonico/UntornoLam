@@ -338,8 +338,44 @@
               </div>
             </div>
           </div>
+
+
+          <!--<div class="card shadow mb-4">-->
+          <div class="row">
+          <div class="col-md-6 mb-4">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Historico de servicios</h6>
+            </div>
+            <div class="card-body">
+              <div class="chart-bar">
+                <canvas id="myBarChart"></canvas>
+              </div>
+              <!--<hr>
+              Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.-->
+            </div>
+          </div>
         </div>
-    </div>
+        <div class="col-md-6 mb-4">
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Historico de Mantenimientos</h6>
+          </div>
+          <div class="card-body">
+            <div class="chart-bar">
+              <canvas id="myBarChart2"></canvas>
+            </div>
+            <!--<hr>
+            Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.-->
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+
+
+
 
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
@@ -350,7 +386,8 @@
         </div>
       </footer>
       <!-- End of Footer -->
-
+    </div>
+    </div>
     </div>
     <!-- End of Content Wrapper -->
 
@@ -426,6 +463,15 @@ $(document).ready( function () {
     });
 
 });</script>
+
+<!-- Page level plugins -->
+<script src="vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/chart-area-demo.js"></script>
+<script src="js/demo/chart-pie-demo.js"></script>
+<script src="js/demo/chart-bar-demo.js"></script>
+
 
 </body>
 
