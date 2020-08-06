@@ -17,7 +17,9 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.css" rel="stylesheet">
-
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
 </head>
 
 <body class="bg-gradient-primary">
@@ -39,12 +41,12 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">BIENVENIDOS</h1>
                   </div>
-                  <form class="user">
+                  <div class="user" method="post" action="localhost:8080/api/login" id="formLogin">
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Nombre de Usuario">
+                      <input type="text" class="form-control form-control-user" id="user" aria-describedby="emailHelp" placeholder="Nombre de Usuario">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña">
+                      <input type="password" class="form-control form-control-user" id="password" placeholder="Contraseña">
                     </div>
                     <!--  
                     <div class="form-group">
@@ -54,9 +56,12 @@
                       </div>
                     </div>
                     -->
+					<input type="submit" value="ingresar" id="ingresar" class="btn btn-primary btn-user btn-block" style="color:black;" />
+					
+					<!--
                     <a href="index.html" class="btn btn-primary btn-user btn-block">
                       <style="color:black;">Ingresar</style>
-                    </a>
+                    </a> -->
                     <!--
                     <hr>
                     <a href="index.html" class="btn btn-google btn-user btn-block">
@@ -66,7 +71,7 @@
                       <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                     </a>
                     -->
-                  </form>
+                  </div>
                   <hr>
                   <div class="text-center">
                     <a class="small" href="forgot-password.html" style="color:black;">Olvidaste tu clave?</a>
@@ -99,3 +104,71 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+	// Configuracion 
+	const RUTA_ACCESO = 'http://localhost:8080/';
+	const RUTA_API = 'api/login';
+
+
+$(document).ready(function() {
+	// Handle del boton para la configuracion 
+	$("#ingresar").click(function(){
+
+		// stop submit the form, we will post it manually.
+        event.preventDefault();
+
+		var user = $('#user').val();
+		var password = $('#password').val();
+		
+		/*
+		
+		Esto es para futuro request futuros
+		headers: {
+					"Authorization": `Bearer ${localStorage.getItem('id_token')}`
+				}, 
+	
+	*/
+		
+		// Armo el ajax, para enviar los datos correspondientes
+		$.ajax({
+			type: 'POST',
+			enctype: 'multipart/form-data',
+			url: RUTA_ACCESO + RUTA_API,
+			data: JSON.stringify( { 
+				'user': user,
+				'password': password
+			} ),
+			processData: false,
+			contentType: "application/json; charset=utf-8",
+			cache: false,
+			//headers: {  'Access-Control-Allow-Origin': "*" },		
+			crossDomain: true,			
+			
+			success: function( data, textStatus, jQxhr ){
+				console.log(data.status);
+				// Esto es lo que hay que guardar!
+				console.log(data.token);
+				
+				localStorage.setItem('tokenG', data.token);
+				
+				if( data.status === 'OK'){
+					console.log('redireccion');
+					// Para redireccionar 
+					// window.location.href = './index.html';
+				}else{
+					// Esto se va a cambiar 
+					alert("Respuesta: " + JSON.stringify( data ) );
+				}
+				
+				
+			},
+			error: function( jqXhr, textStatus, errorThrown ){
+				console.log( errorThrown );
+			}
+		}); 
+	   
+	});
+});
+	
+</script>
