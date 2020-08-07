@@ -10030,12 +10030,14 @@ p {
   }
 }
 ::-moz-selection {
-  background: #228361;
+    background-color: rgba(117, 125, 108, 0.35);
+
   text-shadow: none;
 }
 
 ::selection {
-  background: #228361;
+    background-color: rgba(117, 125, 108, 0.35);
+
   text-shadow: none;
 }
 
