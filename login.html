@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
   <title>UNtornoLaM - Login</title>
 
   <!-- Custom fonts for this template-->
@@ -17,9 +17,9 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.css" rel="stylesheet">
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -48,7 +48,7 @@
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" id="password" placeholder="Contraseña">
                     </div>
-                    <!--  
+                    <!--
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
                         <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -57,7 +57,7 @@
                     </div>
                     -->
 					<input type="submit" value="ingresar" id="ingresar" class="btn btn-primary btn-user btn-block" style="color:black;" />
-					
+
 					<!--
                     <a href="index.html" class="btn btn-primary btn-user btn-block">
                       <style="color:black;">Ingresar</style>
@@ -107,13 +107,13 @@
 
 <script type="text/javascript">
 	// Configuracion
-	// @TODO: aca falta las rutas del servidor 	
+	// @TODO: aca falta las rutas del servidor
 	const RUTA_ACCESO = 'http://66.97.46.179:8080/';
 	const RUTA_API = 'api/login';
 
 
 $(document).ready(function() {
-	// Handle del boton para la configuracion 
+	// Handle del boton para la configuracion
 	$("#ingresar").click(function(){
 
 		// stop submit the form, we will post it manually.
@@ -121,50 +121,50 @@ $(document).ready(function() {
 
 		var user = $('#user').val();
 		var password = $('#password').val();
-		
+
 		/*
-		
+
 		Esto es para futuro request futuros
 		headers: {
 					"Authorization": `Bearer ${window.sessionStorage.getItem('tokenUntornolam')}`
-				}, 
-	
+				},
+
 		*/
-		
+
 		// Armo el ajax, para enviar los datos correspondientes
 		$.ajax({
 			type: 'POST',
 			enctype: 'multipart/form-data',
 			url: RUTA_ACCESO + RUTA_API,
-			data: JSON.stringify( { 
+			data: JSON.stringify( {
 				'user': user,
 				'password': password
 			} ),
 			processData: false,
 			contentType: "application/json; charset=utf-8",
 			cache: false,
-			//headers: {  'Access-Control-Allow-Origin': "*" },		
-			crossDomain: true,			
-			
+			//headers: {  'Access-Control-Allow-Origin': "*" },
+			crossDomain: true,
+
 			success: function( data, textStatus, jQxhr ){
-				
-				// En caso de exito 
+
+				// En caso de exito
 				if( data.status === 'OK'){
 					// Si fue exitoso el login
-					// Guardo el token 
+					// Guardo el token
 					sessionStorage.setItem('tokenUntornolam', data.token);
-				
-					// Redirecciono 
+
+					// Redirecciono
 					window.location.href = './index.html';
 				}else{
-					// Aca tienen que estar los handler del error tipo 
+					// Aca tienen que estar los handler del error tipo
 					switch (data.status) {
 						  case 'ERROR_USER':
-								//	El usuario o contraseña es incorrecto 
+								//	El usuario o contraseña es incorrecto
 								// 	Agregar label informativo....
 								break;
 						  case 'ERROR_EXAMPLE':
-								//	Otro error handleable 
+								//	Otro error handleable
 								//	Acciones...
 								break;
 						  default:
@@ -172,15 +172,15 @@ $(document).ready(function() {
 								break;
 						}
 				}
-				
-				
+
+
 			},
 			error: function( jqXhr, textStatus, errorThrown ){
 				console.log( errorThrown );
 			}
-		}); 
-	   
+		});
+
 	});
 });
-	
+
 </script>
