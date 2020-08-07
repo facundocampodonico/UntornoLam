@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
+  <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
   <title>UNtornoLaM</title>
 
   <!-- Custom fonts for this template-->
@@ -368,8 +368,8 @@
         <div class="container-fluid">
 			<!-- @TODO: esto se tiene que borrar -->
 			<input type="submit" value="test" id="test" class="btn btn-primary btn-user btn-block" style="color:black;" />
-			
-			
+
+
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Tablero de Control General</h1>
@@ -602,7 +602,7 @@
 
 <script type="text/javascript">
 // Configuracion
-	// @TODO: aca falta las rutas del servidor 	
+	// @TODO: aca falta las rutas del servidor
 	const RUTA_ACCESO = 'http://66.97.46.179:8080/';
 	const RUTA_API = 'api/hello';
 
@@ -611,13 +611,13 @@
 var token = window.sessionStorage.getItem('tokenUntornolam');
 
 $(document).ready(function() {
-	
-	// Handle del boton para la configuracion 
+
+	// Handle del boton para la configuracion
 	$("#test").click(function(){
-	
+
 		// stop submit the form, we will post it manually.
         event.preventDefault();
-		
+
 		// Armo el ajax, para enviar los datos correspondientes
 		$.ajax({
 			type: 'GET',
@@ -625,8 +625,8 @@ $(document).ready(function() {
 			url: RUTA_ACCESO + RUTA_API,
 			headers: {
 					"Authorization": `Bearer ${token}`
-			}, 	
-			data: JSON.stringify( { 
+			},
+			data: JSON.stringify( {
 				'campo1': 'test1',
 				'campo2': 'test2',
 				'campo3': 'test3',
@@ -634,22 +634,22 @@ $(document).ready(function() {
 			} ),
 			processData: false,
 			contentType: "application/json; charset=utf-8",
-			cache: false,	
-			crossDomain: true,			
-			
+			cache: false,
+			crossDomain: true,
+
 			success: function( data, textStatus, jQxhr ){
-	
+
 					console.log('volvi');
 					console.log( JSON.stringify(data) );
-				
+
 			},
 			error: function( jqXhr, textStatus, errorThrown ){
 				console.log( errorThrown );
 			}
-		}); 
-	   
+		});
+
 	});
-	
+
 });
 
 </script>
