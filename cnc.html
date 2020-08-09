@@ -37,6 +37,8 @@
   	var AdeundaPago='1000' ;
   	var ServicionEnCurso='1' ;
 
+
+    var cargagcode=false;
   </script>
 
 </head>
@@ -702,80 +704,86 @@
       import { GCodeLoader } from './3d/jsm/loaders/GCodeLoader.js';
     //import { STLLoader } from './3d/jsm/loaders/STLLoader.js';
 
-  $( document ).ready(function() {
-      console.log( "ready!" );
-
-      var container;
-      var camera, scene, renderer;
-
-			init();
-			render();
-
-			function init() {
-
-        camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
-        camera.position.set( 0, 0, 70 );
-
-        scene = new THREE.Scene();
-        var loader = new GCodeLoader();
-
-        loader.load( './3d/models/gcode/benchy.gcode', function ( object ) {
-          object.position.set( - 100, - 20, 100 );
-        	scene.add( object );
-
-          render();
-          } );
-
-                  renderer = new THREE.WebGLRenderer();
-                  renderer.setPixelRatio( window.devicePixelRatio );
-                  renderer.setSize( collapseCardExample3.clientWidth - 40, collapseCardExample3.clientWidth /2 );
-                  console.log("ventana " + window.clientWidth);
-                  console.log("tarjeta " + collapseCardExample3.clientWidth);
-                  console.log("gcode " + gcodepreview.clientWidth);
-                  var controls = new OrbitControls( camera, renderer.domElement );
-                  controls.addEventListener( 'change', render ); // use if there is no animation loop
-                  controls.minDistance = 10;
-                  controls.maxDistance = 100;
-
-                  gcodepreview.appendChild(renderer.domElement);
-
-                  window.addEventListener( 'resize', resize, false );
-  						}
 
 
-              function resize() {
 
-                //camera.aspect = window.innerWidth / window.innerHeight;
-                camera.aspect = gcodepreview.clientWidth / gcodepreview.clientWidth;
-                camera.updateProjectionMatrix();
+  $('#collapseCardExample3').on('show.bs.collapse', function () {
 
-                //renderer.setSize( window.innerWidth, window.innerHeight );
-                //renderer.setSize( gcodepreview.clientWidth - 40, gcodepreview.clientWidth /2 );
+    if (cargagcode==false){
 
-                render();
+    cargagcode=true;
+    var container;
+    var camera, scene, renderer;
 
-              }
+    init();
+    render();
 
-  					/*	function resizeRendererToDisplaySize(renderer) {
-  						  const canvas = renderer.domElement;
-  						  const width = canvas.clientWidth;
-  						  const height = canvas.clientHeight;
-  						  const needResize = canvas.width !== width || canvas.height !== height;
-  						  if (needResize) {
-  						    renderer.setSize(width, height, false);
-  						  }
-  						  return needResize;
-  						}*/
+    function init() {
+
+      camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
+      camera.position.set( 0, 0, 70 );
+
+      scene = new THREE.Scene();
+      var loader = new GCodeLoader();
+
+      loader.load( './3d/models/gcode/benchy.gcode', function ( object ) {
+        object.position.set( - 100, - 20, 100 );
+        scene.add( object );
+
+        render();
+        } );
+
+                renderer = new THREE.WebGLRenderer();
+                renderer.setPixelRatio( window.devicePixelRatio );
+                renderer.setSize( collapseCardExample3.clientWidth - 40, collapseCardExample3.clientWidth /2 );
+                console.log("ventana " + window.clientWidth);
+                console.log("tarjeta " + collapseCardExample3.clientWidth);
+                console.log("gcode " + gcodepreview.clientWidth);
+                var controls = new OrbitControls( camera, renderer.domElement );
+                controls.addEventListener( 'change', render ); // use if there is no animation loop
+                controls.minDistance = 10;
+                controls.maxDistance = 100;
+
+                gcodepreview.appendChild(renderer.domElement);
+
+                window.addEventListener( 'resize', resize, false );
+            }
 
 
-              function render() {
+            function resize() {
 
-                renderer.setSize( gcodepreview.clientWidth - 40, gcodepreview.clientWidth /2 );
-                //renderer.setSize( window.innerWidth, window.innerHeight );
-        				renderer.render( scene, camera );
+              //camera.aspect = window.innerWidth / window.innerHeight;
+              camera.aspect = gcodepreview.clientWidth / gcodepreview.clientWidth;
+              camera.updateProjectionMatrix();
 
-        			}
+              //renderer.setSize( window.innerWidth, window.innerHeight );
+              //renderer.setSize( gcodepreview.clientWidth - 40, gcodepreview.clientWidth /2 );
+
               render();
+
+            }
+
+          /*	function resizeRendererToDisplaySize(renderer) {
+              const canvas = renderer.domElement;
+              const width = canvas.clientWidth;
+              const height = canvas.clientHeight;
+              const needResize = canvas.width !== width || canvas.height !== height;
+              if (needResize) {
+                renderer.setSize(width, height, false);
+              }
+              return needResize;
+            }*/
+
+
+            function render() {
+
+              renderer.setSize( gcodepreview.clientWidth - 40, gcodepreview.clientWidth /2 );
+              //renderer.setSize( window.innerWidth, window.innerHeight );
+              renderer.render( scene, camera );
+
+            }
+
+  }
   });
 
 </script>
