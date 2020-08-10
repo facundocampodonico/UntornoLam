@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="bg-gradient-dark">
+<body class="bg-gradient-primary">
 
   <div class="container">
 
@@ -235,10 +235,10 @@ function listar()
 			success : function (data)
 			{
 
-          console.log(data);
+          //console.log(data);
           var arrayDeWifis = data.split("\n");
-          console.log(arrayDeWifis[2]);
-          console.log(arrayDeWifis.length);
+          //console.log(arrayDeWifis[2]);
+          //console.log(arrayDeWifis.length);
             //	$(".text").html("<pre>"+data+"</pre>");
 
             var len = arrayDeWifis.length
@@ -246,7 +246,11 @@ function listar()
             $("#exampleFormControlSelect1").empty();
                             for( var i = 0; i<len-1; i++){
                                 var id = arrayDeWifis[i];
-                                var name = arrayDeWifis[i];
+                                //var name = arrayDeWifis[i];
+                                var largo=(arrayDeWifis[i].length)-9;
+                                //console.log(largo);
+                                //console.log("texto que quiero " + arrayDeWifis[i].substr(7,largo));
+                                var name=arrayDeWifis[i].substr(7,largo)
                                 //var name = response[i]['name'];
 
                                 $("#exampleFormControlSelect1").append("<option value='"+id+"'>"+name+"</option>");
