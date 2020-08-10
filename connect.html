@@ -57,6 +57,15 @@
                       </select>
                     </div>
 
+
+                    <!--<div>Users </div>
+                    <select id="sel_user">
+                       <option value="0">- Select -</option>
+                    </select>-->
+
+
+
+
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" id="password" placeholder="Contraseña">
                     </div>
@@ -68,7 +77,7 @@
                       </div>
                     </div>
                     -->
-					 <input type="submit" value="Conectar" id="conectar" class="btn btn-success btn-user btn-block" style="color:white;" />
+					          <input type="submit" value="Conectar" id="conectar" class="btn btn-success btn-user btn-block" style="color:white;" />
 
 					<!--
                     <a href="index.html" class="btn btn-primary btn-user btn-block">
@@ -83,21 +92,13 @@
                       <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                     </a>
                     -->
-                  </div>
-                  <hr>
-
-                  <input type="button" id="button" value="Ver .txt"></input>
-                  <div class="text">
-                    <hr />
-                    <h2>Texto:</h2>
-                  </div>
 
 
 
 
                   <div class="text-center">
                     <!--<a class="small" href="forgot-password.html" style="color:black;">Volver a buscar redes cercanas</a>-->
-                    <a class="small" id="button2" href="" style="color:black;">Volver a buscar redes cercanas</a>
+                    <a class="small" id="button2" href="javascript:listar()" style="color:black;">Volver a buscar redes cercanas</a>
                   </div>
                 </div>
               </div>
@@ -209,9 +210,9 @@ $(document).ready(function() {
 <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 
 <script>
-$(function()
-{
-$("#button").click( function()
+
+
+function listar()
 {
    var TXT_URL = '/listawifis.txt';
    console.log("entro");
@@ -224,11 +225,58 @@ $("#button").click( function()
 			dataType: "text",
 			success : function (data)
 			{
-            	$(".text").html("<pre>"+data+"</pre>");
+
+          console.log(data);
+          var arrayDeWifis = data.split("\n");
+          console.log(arrayDeWifis[2]);
+          console.log(arrayDeWifis.length);
+            //	$(".text").html("<pre>"+data+"</pre>");
+
+            var len = arrayDeWifis.length
+
+            $("#exampleFormControlSelect1").empty();
+                            for( var i = 0; i<len; i++){
+                                var id = arrayDeWifis[i];
+                                var name = arrayDeWifis[i];
+                                //var name = response[i]['name'];
+
+                                $("#exampleFormControlSelect1").append("<option value='"+id+"'>"+name+"</option>");
+
+
+
+
+
+
+
 			}
 		}
+    }
 	);
-   });
-});
+
+}
+/*function readSingleFile() {
+    var evt = "/listawifis.txt"
+    var f = evt.target.files[0];
+    //var f = "/listawifis.txt"
+
+    if (f) {
+     var r = new FileReader();
+       r.onload = function(e) {
+       var contents = e.target.result;
+        alert( "Got the file.n"
+         +"name: " + f.name + "n"
+         +"type: " + f.type + "n"
+         +"size: " + f.size + " bytesn"
+         + "starts with: " + contents.substr(1, contents.indexOf("n"))
+        );
+        //console.log(contents.substr(1, contents.indexOf("o")))
+      }
+      r.readAsText(f);
+     } else {
+      alert("Failed to load file");
+     }
+    }
+    // this parts gets the file and keeps an eye for changes*/
+
 
 </script>
