@@ -619,7 +619,13 @@
 
 
 // Obtengo el token
-var token = window.sessionStorage.getItem('tokenUntornolam');
+var token     = window.sessionStorage.getItem('tokenUntornolam');
+var username  = window.sessionStorage.getItem('username', data.info.usuario);
+var nombre    = window.sessionStorage.getItem('nombre', data.info.nombre);
+var apellido  = window.sessionStorage.getItem('apellido', data.info.apellido);
+var acceso    = window.sessionStorage.getItem('nivelAcceso', data.info.nivelAcceso);
+var email     = window.sessionStorage.getItem('email', data.info.email);
+var cncs      = window.sessionStorage.getItem('miCncs', data.cncs);
 
 $(document).ready(function() {
 
