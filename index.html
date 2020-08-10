@@ -396,7 +396,10 @@
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Cantida de CNC</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
 
-                      	<script> document.write(CantidadCnc);</script>
+                      	<script>
+                        document.write(CantidadCnc);
+                        //document.write(  window.sessionStorage.getItem('CantidadCnc'));
+                        </script>
 
                       </div>
                     </div>
@@ -416,10 +419,9 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Diseños (Total)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-
-                      	<script> document.write(CantidadDiseños);</script>
-
-
+                      	<script> document.write(CantidadDiseños);
+                        //document.write(  window.sessionStorage.getItem('CantidadDiseños'));
+                        </script>
                       </div>
                     </div>
                     <div class="col-auto">
@@ -440,7 +442,9 @@
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
                           <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                          	  	<script> document.write(Reportes);</script>
+                          	  	<script> document.write(Reportes);
+                        //document.write(  window.sessionStorage.getItem('Reportes'));
+                                </script>
 
                           </div>
                         </div>
@@ -463,7 +467,9 @@
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">ReportesPendientes</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
 
-                      	<script> document.write(ReportesPendientes);</script>
+                      	<script> document.write(ReportesPendientes);
+                        //document.write(  window.sessionStorage.getItem('Reportes'));
+                        </script>
 
 
                       </div>
@@ -517,7 +523,9 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pagos Adeudados (Total)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                    	<script> document.write(AdeundaPago);</script>
+                    	<script> document.write(AdeundaPago);
+                        //document.write(  window.sessionStorage.getItem('AdeundaPago'));
+                        </script>
                       </div>
                     </div>
                     <div class="col-auto">
@@ -531,7 +539,9 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Servicios en Curso (Total)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                    	<script> document.write(ServicionEnCurso);</script>
+                    	<script> document.write(ServicionEnCurso);
+                        //document.write(  window.sessionStorage.getItem('ServicionEnCurso'));
+                        </script>
 
                       </div>
                     </div>
@@ -620,15 +630,17 @@
 
 // Obtengo el token
 var token     = window.sessionStorage.getItem('tokenUntornolam');
-
-// Esta es informacion del usuario 
-// @TODO: puede que esto en parte "desaparezca" ya que solo importa levantar la informacion en donde sea necesario
 var username  = window.sessionStorage.getItem('username');
 var nombre    = window.sessionStorage.getItem('nombre');
 var apellido  = window.sessionStorage.getItem('apellido');
 var acceso    = window.sessionStorage.getItem('nivelAcceso');
 var email     = window.sessionStorage.getItem('email');
 var cncs      = JSON.parse( localStorage.getItem('miCncs') || "[]" );
+
+console.log('Holis');
+console.log('username: ' + username);
+console.log('cncs: ');
+console.info(cncs);
 
 
 $(document).ready(function() {
