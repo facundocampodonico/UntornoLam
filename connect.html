@@ -87,7 +87,7 @@
                   <hr>
                   <div class="text-center">
                     <!--<a class="small" href="forgot-password.html" style="color:black;">Volver a buscar redes cercanas</a>-->
-                    <a class="small" href="" style="color:black;">Volver a buscar redes cercanas</a>
+                    <a class="small" id="button" href="" style="color:black;">Volver a buscar redes cercanas</a>
                   </div>
                 </div>
               </div>
@@ -191,6 +191,34 @@ $(document).ready(function() {
 		});
 
 	});
+});
+
+</script>
+
+
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+<script>
+$(function()
+{
+$("#button").click( function()
+{
+   //var TXT_URL = 'https://www.mozilla.org/media/MPL/2.0/index.815ca599c9df.txt';
+   console.log("entro");
+   var TXT_URL = $("#input-url").val();
+
+    $.ajax
+    (
+    	{
+        	url : TXT_URL,
+			dataType: "text",
+			success : function (data)
+			{
+            	$(".text").html("<pre>"+data+"</pre>");
+			}
+		}
+	);
+   });
 });
 
 </script>
