@@ -151,16 +151,30 @@ $(document).ready(function() {
 				// En caso de exito
 				if( data.status === 'OK'){
 					// Si fue exitoso el login
+
 					// Guardo el token
 					sessionStorage.setItem('tokenUntornolam', data.token);
+
+          // Guardo la informacion del usuario
 					sessionStorage.setItem('username', data.info.usuario);
 					sessionStorage.setItem('nombre', data.info.nombre);
 					sessionStorage.setItem('apellido', data.info.apellido);
 					sessionStorage.setItem('nivelAcceso', data.info.nivelAcceso);
 					sessionStorage.setItem('email', data.info.email);
+
+          // Informacion de los CNCs del usuario que ingresa
+
+          // Primero borro la informacion previa que haya
           localStorage.removeItem('miCncs');
 
+          // Obtengo la informacion 
 					localStorage.setItem('miCncs', JSON.stringify(data.cnc) );
+
+          // Guardo el dato de la cantidad de CNC que tiene el usuario 
+          // @TODO: esto puede que un futuro cambie 
+          var countCncs = count( data.cnc );
+
+          localStorage.setItem('countCnc', countCncs);
           
 					// Redirecciono
 					window.location.href = './index.html';
