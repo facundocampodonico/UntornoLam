@@ -625,7 +625,7 @@ var nombre    = window.sessionStorage.getItem('nombre');
 var apellido  = window.sessionStorage.getItem('apellido');
 var acceso    = window.sessionStorage.getItem('nivelAcceso');
 var email     = window.sessionStorage.getItem('email');
-var cncs      = JSON.parse( window.sessionStorage.getItem('miCncs') );
+var cncs      = JSON.parse( window.sessionStorage.getItem('miCncs') || "[]" );
 
 console.log('Holis');
 console.log('username: ' + username);
