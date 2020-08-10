@@ -158,7 +158,9 @@ $(document).ready(function() {
 					sessionStorage.setItem('apellido', data.info.apellido);
 					sessionStorage.setItem('nivelAcceso', data.info.nivelAcceso);
 					sessionStorage.setItem('email', data.info.email);
-					localStorage.setItem('miCncs', JSON.stringify(data.cncs) );
+          localStorage.removeItem('miCncs');
+
+					localStorage.setItem('miCncs', JSON.stringify(data.cnc) );
           
 					// Redirecciono
 					window.location.href = './index.html';
