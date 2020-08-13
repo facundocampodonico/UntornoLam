@@ -421,7 +421,7 @@
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Diseños (Total)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
                       	<script>
-                                document.write( localStorage.getItem('countDiseños') );
+                                document.write( localStorage.getItem('countDisenios') );
                         </script>
                       </div>
                     </div>
@@ -639,12 +639,6 @@ var apellido  = window.sessionStorage.getItem('apellido');
 var acceso    = window.sessionStorage.getItem('nivelAcceso');
 var email     = window.sessionStorage.getItem('email');
 var cncs      = JSON.parse( localStorage.getItem('miCncs') || "[]" );
-
-console.log('Holis');
-console.log('username: ' + username);
-console.log('cncs: ');
-console.info(cncs);
-
 
 $(document).ready(function() {
 

@@ -162,19 +162,35 @@ $(document).ready(function() {
 					sessionStorage.setItem('nivelAcceso', data.info.nivelAcceso);
 					sessionStorage.setItem('email', data.info.email);
 
-          // Informacion de los CNCs del usuario que ingresa
-
           // Primero borro la informacion previa que haya
           localStorage.removeItem('miCncs');
+          localStorage.removeItem('miDisenios');
 
-          // Obtengo la informacion 
-					localStorage.setItem('miCncs', JSON.stringify(data.cnc) );
+          // Informacion de los CNCs del usuario que ingresa
+          localStorage.setItem('miCncs', JSON.stringify(data.cnc) );
 
           // Guardo el dato de la cantidad de CNC que tiene el usuario 
           // @TODO: esto puede que un futuro cambie 
           var countCncs = 0 +  data.cnc.length ;
 
           localStorage.setItem('countCnc', countCncs);
+
+          // Informacion de los Disenios del usuario que ingresa
+          localStorage.setItem('miDisenios', JSON.stringify(data.disenios) );
+
+          // Guardo el dato de la cantidad de Disenios que tiene el usuario 
+          // @TODO: esto puede que un futuro cambie 
+          var countDisenios = 0 +  data.disenios.length ;
+       
+          localStorage.setItem('countDisenios', countDisenios);
+          
+          // @TODO: Falta funcionalidad del backend countReportes
+
+          //  @TODO: Falta funcionalidad del backend countPendientes
+
+          //  @TODO: Falta funcionalidad del backend AdeundaPago
+
+          //  @TODO: Falta funcionalidad del backend ServicionEnCurso
           
 					// Redirecciono
 					window.location.href = './index.html';
