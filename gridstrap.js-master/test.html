@@ -11,11 +11,13 @@
 
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"> </script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">  </script>
 <script src="//code.jquery.com/jquery-3.2.1.js"></script>
 <link rel="stylesheet" href="dist/jquery.gridstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="dist/jquery.gridstrap.min.js"></script>
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
@@ -66,8 +68,12 @@ Configuracion
                           <!-- Default Card Example -->
                           <div class="card shadow mb-4">
                             <!-- Card Header - Accordion -->
-                            <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                              <h6 class="m-0 font-weight-bold text-primary">Collapsable 1</h6>
+                            <a href="#collapseCardExample" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+
+                             <div class="d-flex">
+                              <div class="p-2"><h6 class="d-flex  font-weight-bold text-primary">1</h6></div>
+                              <div class="ml-auto p-2"><i class="fas fa-arrows-alt"></i></div>
+                            </div>
                             </a>
                             <!-- Card Content - Collapse -->
                             <div class="collapse show" id="collapseCardExample">
@@ -85,11 +91,15 @@ Configuracion
                       <!-- Default Card Example -->
                       <div class="card shadow mb-4">
                         <!-- Card Header - Accordion -->
-                        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                          <h6 class="m-0 font-weight-bold text-primary">Collapsable 2</h6>
+                        <a href="#collapseCardExample1" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample1">
+
+                         <div class="d-flex">
+                          <div class="p-2"><h6 class="d-flex  font-weight-bold text-primary">2</h6></div>
+                          <div class="ml-auto p-2"><i class="fas fa-arrows-alt "></i></div>
+                        </div>
                         </a>
                         <!-- Card Content - Collapse -->
-                        <div class="collapse show" id="collapseCardExample">
+                        <div class="collapse show" id="collapseCardExample1">
                           <div class="card-body">
                             This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
                           </div>
@@ -101,13 +111,17 @@ Configuracion
             <div  class="container">
                 <div class="col-lg-10 3">
                       <!-- Default Card Example -->
-                      <div class="card shadow mb-4">
+                      <div class="card  mb-4">
                         <!-- Card Header - Accordion -->
-                        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                          <h6 class="m-0 font-weight-bold text-primary">Collapsable 3</h6>
+                        <a href="#collapseCardExample2" class="d-block card-header py-3  " data-toggle="collapse" role="button" aria-expanded="false " aria-controls="collapseCardExample2">
+
+                             <div class="d-flex">
+                              <div class="p-2"><h6 class="d-flex  font-weight-bold text-primary">3</h6></div>
+                              <div class="ml-auto p-2"><i class="fas fa-arrows-alt "></i></div>
+                            </div>
                         </a>
                         <!-- Card Content - Collapse -->
-                        <div class="collapse show" id="collapseCardExample">
+                        <div class="collapse show" id="collapseCardExample2">
                           <div class="card-body">
                             This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
                           </div>
