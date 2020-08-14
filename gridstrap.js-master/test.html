@@ -17,21 +17,57 @@
 <script src="//code.jquery.com/jquery-3.2.1.js"></script>
 <link rel="stylesheet" href="dist/jquery.gridstrap.min.css">
 <script src="dist/jquery.gridstrap.min.js"></script>
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 </head>
 <body>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+Configuracion
+    </button>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Mostrar/Ocultar contenidos.</h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <input class="bt1" id="button1" type="button" value="Panel 1">
+              <input class="bt2" id="button2" type="button" value="Panel 2">
+              <input class="bt3" id="button3" type="button" value="Panel 3">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         </div>
+        </div>
+      </div>
+    </div>
+<br>
+
+<br>
+<br>
 
 <div class="container">
   <div class="row">
     <div class="col">
         <div id="grid2" class="row ">
-            <div class="container">
+            <div  class="container">
           <!-- Content here -->
-                <div class="col-lg-10">
+                <div  class="col-lg-10 1">
                           <!-- Default Card Example -->
                           <div class="card shadow mb-4">
                             <!-- Card Header - Accordion -->
                             <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                              <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
+                              <h6 class="m-0 font-weight-bold text-primary">Collapsable 1</h6>
                             </a>
                             <!-- Card Content - Collapse -->
                             <div class="collapse show" id="collapseCardExample">
@@ -44,13 +80,13 @@
                 </div>
             </div>
 
-            <div class="container">
-                <div class="col-lg-10">
+            <div  class="container">
+                <div class="col-lg-10 2">
                       <!-- Default Card Example -->
                       <div class="card shadow mb-4">
                         <!-- Card Header - Accordion -->
                         <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                          <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
+                          <h6 class="m-0 font-weight-bold text-primary">Collapsable 2</h6>
                         </a>
                         <!-- Card Content - Collapse -->
                         <div class="collapse show" id="collapseCardExample">
@@ -62,13 +98,13 @@
 
                   </div>
             </div>
-            <div class="container">
-                <div class="col-lg-10">
+            <div  class="container">
+                <div class="col-lg-10 3">
                       <!-- Default Card Example -->
                       <div class="card shadow mb-4">
                         <!-- Card Header - Accordion -->
                         <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                          <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
+                          <h6 class="m-0 font-weight-bold text-primary">Collapsable 3</h6>
                         </a>
                         <!-- Card Content - Collapse -->
                         <div class="collapse show" id="collapseCardExample">
@@ -86,10 +122,10 @@
       ACA VA DEL VISUALIZADOR!!!
     </div>
     <div class="col">
-        <div id="grid" class="row ">
-            <div class="container">
+        <div id="grid1" class="row ">
+            <div id="col11"class="container">
           <!-- Content here -->
-                <div class="col-lg-10">
+                <div  class="col-lg-10">
                           <!-- Default Card Example -->
                           <div class="card mb-4 ">
                             <div class="card-header bg-warning">
@@ -136,7 +172,7 @@
 </div>
 <script type="text/javascript">
 $(function(){
-	$('#grid').gridstrap({
+	$('#grid1').gridstrap({
 		/* default options */
 	});
     $('#grid2').gridstrap({
@@ -144,6 +180,20 @@ $(function(){
     });
 });
 </script>
+
+
+<script type="text/javascript">
+
+	   function hideToggle(button, elem)
+        {
+            $(button).click(function() { $(elem).toggle(); })
+        }
+
+        hideToggle(".bt1", ".1");
+        hideToggle(".bt2", ".2");
+        hideToggle(".bt3", ".3");
+</script>
+
 </body>
 
 </html>
