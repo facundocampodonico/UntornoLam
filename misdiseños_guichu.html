@@ -305,6 +305,7 @@
            </div>
            <br>
 
+
           <!-- DataTales Example -->
 <div class="row">
   <div class="col-lg-8">
@@ -314,43 +315,8 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Extensión</th>
-                      <th>Dimensión</th>
-                      <th>Preview</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Extensión</th>
-                      <th>Dimensión</th>
-                      <th>Preview</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                    <!--<tr>
-                      <td>Tiger Nixon</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>63</td>
-                      <td>2011/07/25</td>
-                      <td>$170,750</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>66</td>
-                      <td>2009/01/12</td>
-                      <td>$86,000</td>
-                    </tr>-->
-        			 </tbody>
+                <table class="table table-bordered" id="misDisenios" width="100%" cellspacing="0">
+                 
                 </table>
               </div>
             </div>
@@ -394,8 +360,7 @@
 				</div>
 				<div class="card-body">
 					<div class="form-group">
-						<label for="nombreDisenio">Nombre</label>
-						<input class="form-control" id="nombreDisenio" name="nombreDisenio" type="text" placeholder="TODO_EXAMPLE">
+						<input class="form-control" id="nombreDisenio" name="nombreDisenio" type="text" placeholder="Ingrese el nombre">
 					</div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" id="FILEDISENIO" name="FILEDISENIO" lang="es">
@@ -746,64 +711,86 @@ $(document).ready( function () {
 	// Configuracion
 	// @TODO: aca falta las rutas del servidor
 	const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+	//const RUTA_ACCESO = 'http://127.0.0.1:8080/';
 	const RUTA_API = 'api/setDisenio';
+  const RUTA_API_SERVICES = 'api/getMyServices';
 	
 	
-	$("#agregarDisenio").click(function(){
-		console.log('click bro');
-		
-		// stop submit the form, we will post it manually.
-        event.preventDefault();
-
-		// Obtengo los datos del formulario 
-		var form = $('#formularioDisenio')[0];
-		
-		// Creo un objeto para enviar los datos 
-		var data = new FormData(form);
 	
-		console.info(data);
-		// Armo el ajax, para enviar los datos correspondientes
-		$.ajax({
-			type: 'POST',
-			enctype: 'multipart/form-data',
-			url: RUTA_ACCESO + RUTA_API,
-			data: data,
-			processData: false,
-			contentType: false,
-			cache: false,
-			headers: {  'Access-Control-Allow-Origin': "*" },		
-			crossDomain: true,			
-			
-			success: function( data, textStatus, jQxhr ){
-				//$('#response pre').html( JSON.stringify( data ) );
-				alert("Respuesta: " + JSON.stringify( data ) );
-			},
-			error: function( jqXhr, textStatus, errorThrown ){
-				console.log( errorThrown );
-			}
-		}); 
-	});
-	
-	
-    console.log('Comienza a cargar la pagina UNtornoLaM ...');
-
-    $('#dataTable').DataTable({
-        ajax: {
-           url: 'http://66.97.46.179:8080/api/getMyServices',
+    //console.log('Comienza a cargar la pagina UNtornoLaM ...');
+    //console.log('Ruta:' + RUTA_ACCESO + RUTA_API_SERVICES);
+    //console.log(sessionStorage.getItem('tokenUntornolam'));
+    //console.log('- - - - - - - - - - - - - - - - - - - - - ');
+    
+    $.ajax({
+           //url: 'http://66.97.46.179:8080/api/getMyServices',
+           url: RUTA_ACCESO + RUTA_API_SERVICES,
            contentType: 'application/json',
            method: "GET",
-           xhrFields: {
-               withCredentials: false
-           },
-           dataSrc: "services"
-        },
-        columns: [
-            { "data": "name" },
-            { "data": "position" },
-            { "data": "office" },
-            { "data": "age" }
-        ]
-    });
+           headers: { 
+              "Authorization": `Bearer ${ sessionStorage.getItem('tokenUntornolam')}`
+          },
+          success: function( data, textStatus, jQxhr ){
+             
+              $('#misDisenios').DataTable({
+                data: data.data,
+                columns:  [
+                  { title: "id" },
+                  { title: "usuarios_id" },
+                  { title: "nombre" },
+                  { title: "archivo" },
+                  { title: "imgPreview" },
+                  { title: "tamanio" },
+                  { title: "extension" }
+                          ]
+              });
+            },
+          error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+          }
+		}); 
+  
+
+
+
+
+      $("#agregarDisenio").click(function(){
+
+            // stop submit the form, we will post it manually.
+            event.preventDefault();
+
+            // Obtengo los datos del formulario 
+            var form = $('#formularioDisenio')[0];
+
+            // Creo un objeto para enviar los datos 
+            var data = new FormData(form);
+
+            
+            // Armo el ajax, para enviar los datos correspondientes
+            $.ajax({
+              type: 'POST',
+              enctype: 'multipart/form-data',
+              url: RUTA_ACCESO + RUTA_API,
+              data: data,
+              processData: false,
+              contentType: false,
+              cache: false,
+              headers: { 
+                  'Access-Control-Allow-Origin': "*",
+                  "Authorization": `Bearer ${window.sessionStorage.getItem('tokenUntornolam')}`
+                },	
+              crossDomain: true,			
+              
+              success: function( data, textStatus, jQxhr ){
+                //$('#response pre').html( JSON.stringify( data ) );
+                alert("Respuesta: " + JSON.stringify( data ) );
+              },
+              error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+              }
+            });
+      });
+
 
 });</script>
 
