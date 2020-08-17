@@ -28,7 +28,16 @@
   <script src="//code.jquery.com/jquery-3.2.1.js"></script>
 <link rel="stylesheet" href="dist/jquery.gridstrap.min.css">
 <script src="dist/jquery.gridstrap.min.js"></script>
+-----
 
+<link href="css/MiCncStyle.css" rel="stylesheet">
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ <!-- Latest compiled and minified CSS -->
+ <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+
+ <!-- Latest Sortable -->
+ <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 <!-- Carga de Variables -->
   <script>
 
@@ -661,34 +670,27 @@
               </div>
         <!-- Pruebas de draggable -->
 
+        <div id="listWithHandle" class="list-group">
+          <div class="list-group-item 1">
+              <button type="button" class="collapsible"> <span class="glyphicon glyphicon-move" aria-hidden="true"></span> &nbsp; Texto Titulo 1</button>
+              <div class="content">
+                <p>Chupame la japi 1 </p>
+              </div>
+          </div>
 
-</div>
-        <!-- Pruebas de draggable
-<div class=row>
-<div id="app"></div>
-     <div id="app2"></div>
-     <script src="https://unpkg.com/react@15.6.0/dist/react.js"></script>
-     <script src="https://unpkg.com/react-beautiful-dnd@5.0.0/dist/react-beautiful-dnd.js"></script>
-     <script src="https://unpkg.com/react-dom@15.6.0/dist/react-dom.js"></script>
-     <script src="main.processed.js">
-     </script>
-</div>
--->
-
-<div id="grid" class="row">
- </div>
-
-
-<script type="text/javascript">
-$(function(){
-	$('#grid').gridstrap({
-		/* default options */
-	});
-});
-</script>
-
-
-
+          <div class="list-group-item 2">
+              <button type="button" class="collapsible"> <span class="glyphicon glyphicon-move" aria-hidden="true"></span>&nbsp; Texto Titulo 2</button>
+              <div class="content">
+                <p>Chupame la japi 2</p>
+              </div>
+          </div>
+          <div class="list-group-item 3">
+              <button type="button" class="collapsible"> <span class="glyphicon glyphicon-move" aria-hidden="true"></span>&nbsp; Texto Titulo 3</button>
+              <div class="content">
+                <p>Chupame la japi 3</p>
+              </div>
+          </div>
+        </div>
         <!-- Fin draggable -->
 
 
@@ -937,6 +939,30 @@ $(document).ready( function () {
 <!-- <script src="js/demo/datatables-demo.js"></script>-->
 
 
+
+
+<script type="text/javascript">
+// List with handle
+Sortable.create(listWithHandle, {
+  handle: '.glyphicon-move',
+  animation: 150
+});
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
 </body>
 
 </html>
