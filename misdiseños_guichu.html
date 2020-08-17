@@ -715,13 +715,29 @@ $(document).ready( function () {
 	const RUTA_API = 'api/setDisenio';
   const RUTA_API_SERVICES = 'api/getMyServices';
 	
-	
-	
-    //console.log('Comienza a cargar la pagina UNtornoLaM ...');
-    //console.log('Ruta:' + RUTA_ACCESO + RUTA_API_SERVICES);
-    //console.log(sessionStorage.getItem('tokenUntornolam'));
-    //console.log('- - - - - - - - - - - - - - - - - - - - - ');
-    
+
+  let dataInicial = localStorage.getItem('miDisenios');
+
+  if( dataInicial.length <= 1 ){
+    dataInicial = "[]";
+  }
+
+  $('#misDisenios').DataTable({
+      destroy: true,
+      data:  JSON.parse( dataInicial ),
+      columns:  [
+        { title: "id" },
+        { title: "usuarios_id" },
+        { title: "nombre" },
+        { title: "archivo" },
+        { title: "imgPreview" },
+        { title: "tamanio" },
+        { title: "extension" }
+                ]
+    });
+            
+
+    /*
     $.ajax({
            //url: 'http://66.97.46.179:8080/api/getMyServices',
            url: RUTA_ACCESO + RUTA_API_SERVICES,
@@ -750,7 +766,7 @@ $(document).ready( function () {
           }
 		}); 
   
-
+*/
 
 
 
@@ -765,7 +781,6 @@ $(document).ready( function () {
             // Creo un objeto para enviar los datos 
             var data = new FormData(form);
 
-            
             // Armo el ajax, para enviar los datos correspondientes
             $.ajax({
               type: 'POST',
@@ -781,9 +796,30 @@ $(document).ready( function () {
                 },	
               crossDomain: true,			
               
-              success: function( data, textStatus, jQxhr ){
-                //$('#response pre').html( JSON.stringify( data ) );
-                alert("Respuesta: " + JSON.stringify( data ) );
+              success: function( datos, textStatus, jQxhr ){
+                  //$('#response pre').html( JSON.stringify( datos ) );
+                  alert( JSON.stringify( datos.data ) );
+                  
+                  localStorage.removeItem('miDisenios');
+                  localStorage.setItem('miDisenios', JSON.stringify( datos.data ) );
+
+                  $('#misDisenios').DataTable({
+                    destroy: true,
+                    data:  JSON.parse( JSON.stringify( datos.data ) ),
+                    columns:  [
+                      { title: "id" },
+                      { title: "usuarios_id" },
+                      { title: "nombre" },
+                      { title: "archivo" },
+                      { title: "imgPreview" },
+                      { title: "tamanio" },
+                      { title: "extension" }
+                              ]
+                  });
+
+                  
+
+                  //alert("Respuesta: " + JSON.stringify( datos ) );
               },
               error: function( jqXhr, textStatus, errorThrown ){
                 console.log( errorThrown );
