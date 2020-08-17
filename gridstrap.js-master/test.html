@@ -17,7 +17,7 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">  </script>
 <script src="//code.jquery.com/jquery-3.2.1.js"></script>
 <link rel="stylesheet" href="dist/jquery.gridstrap.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="dist/jquery.gridstrap.min.js"></script>
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
@@ -181,67 +181,69 @@ Configuracion
 
                 <div  class="col-lg-10 1">
                           <!-- Default Card Example -->
-                          <div class="card shadow mb-4">
-                            <!-- Card Header - Accordion -->
-                            <a href="#collapseCardExample" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                          <!-- Default Card Example -->
+                          <div class="card mb-4" >
+                              <div class="card-header bg-warning d-flex justify-content-between">
 
-                             <div class="d-flex">
-                              <div class="p-2"><h6 class="d-flex  font-weight-bold text-primary justify-content-between"><i class="fas fa-arrows-alt"></i>	&nbsp; Titulo 1</h6> </div>
+                              <button class="btn text-white" data-toggle="collapse" data-target="#collapseOne4" aria-expanded="true" aria-controls="collapseOne4">
+                                <i class="fa" aria-hidden="true"></i> &nbsp;
+                                Collapsible Item #4
+                              </button>
+                                <i class="fas fa-arrows-alt mt-2"  style='font-size:20px;color:white'></i>
+                                </div>
+                                <div id="collapseOne4" class="collapse show" aria-labelledby="headingOne1" data-parent="#accordion">
+                                <div class="card-body">
+                                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aut
+                                </div>
 
-                            </div>
-                            </a>
-                            <!-- Card Content - Collapse -->
-                            <div class="collapse show" id="collapseCardExample">
-                              <div class="card-body">
-                                This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
                               </div>
-                            </div>
 
                           </div>
-
                 </div>
             </div>
 
             <div  class="container">
                 <div class="col-lg-10 2">
                       <!-- Default Card Example -->
-                      <div class="card shadow mb-4">
-                        <!-- Card Header - Accordion -->
-                        <a href="#collapseCardExample1" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample1">
+                      <!-- Default Card Example -->
+                      <div class="card mb-4" >
+                          <div class="card-header bg-primary d-flex justify-content-between">
 
-                         <div class="d-flex">
-                          <div class="p-2"><h6 class="d-flex  font-weight-bold text-primary">Titulo 2</h6></div>
-                          <div class="ml-auto p-2"><i class="fas fa-arrows-alt "></i></div>
-                        </div>
-                        </a>
-                        <!-- Card Content - Collapse -->
-                        <div class="collapse show" id="collapseCardExample1">
-                          <div class="card-body">
-                            This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
+                          <button class="btn text-white" data-toggle="collapse" data-target="#collapseOne5" aria-expanded="true" aria-controls="collapseOne5">
+                            <i class="fa" aria-hidden="true"></i>
+                            Collapsible Item #4
+                          </button>
+                            <i class="fas fa-arrows-alt mt-2"></i>
+                            </div>
+                            <div id="collapseOne5" class="collapse show" aria-labelledby="headingOne1" data-parent="#accordion">
+                            <div class="card-body">
+                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aut
+                            </div>
+
                           </div>
-                        </div>
+
                       </div>
 
                   </div>
             </div>
             <div  class="container">
                 <div class="col-lg-10 3">
-                      <!-- Default Card Example -->
-                      <div class="card  mb-4">
-                        <!-- Card Header - Accordion -->
-                        <a href="#collapseCardExample2" class="d-block card-header py-3  " data-toggle="collapse" role="button" aria-expanded="false " aria-controls="collapseCardExample2">
+                      <div class="card mb-4" >
+                          <div class="card-header bg-danger d-flex justify-content-between">
 
-                             <div class="d-flex">
-                              <div class="p-2"><h6 class="d-flex  font-weight-bold text-primary">Titulo 3</h6></div>
-                              <div class="ml-auto p-2"><i class="fas fa-arrows-alt "></i></div>
+                          <button class="btn text-white" data-toggle="collapse" data-target="#collapseOne6" aria-expanded="true" aria-controls="collapseOne6">
+                            <i class="fa" aria-hidden="true"></i>
+                            Collapsible Item #4
+                          </button>
+                            <i class="fas fa-arrows-alt mt-2"></i>
                             </div>
-                        </a>
-                        <!-- Card Content - Collapse -->
-                        <div class="collapse show" id="collapseCardExample2">
-                          <div class="card-body">
-                            This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
+                            <div id="collapseOne6" class="collapse show" aria-labelledby="headingOne1" data-parent="#accordion">
+                            <div class="card-body">
+                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aut
+                            </div>
+
                           </div>
-                        </div>
+
                       </div>
                   </div>
             </div>
@@ -249,7 +251,7 @@ Configuracion
 
     </div>
     <div class="col">
-      ACA VA DEL VISUALIZADOR!!!
+      ACA VA EL VISUALIZADOR!!!
     </div>
     <div class="col">
         <div id="grid1" class="row ">
@@ -285,7 +287,7 @@ Configuracion
                       <div class="card mb-4" >
                           <div class="card-header bg-success d-flex justify-content-between">
 
-                          <button class="btn" data-toggle="collapse" data-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+                          <button class="btn text-white" data-toggle="collapse" data-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
                             <i class="fa" aria-hidden="true"></i>
                             Collapsible Item #5
                           </button>
@@ -304,125 +306,35 @@ Configuracion
             </div>
 
 
-                        <div class="container">
-                          <div id="accordion">
-                            <div class="col-lg-10 6">
-                                  <!-- Default Card Example -->
-                                  <div class="card mb-4" >
-                                      <div class="card-header bg-success d-flex justify-content-between">
+            <div class="container">
+              <div id="accordion">
+                <div class="col-lg-10 6">
+                      <!-- Default Card Example -->
+                      <div class="card mb-4" >
+                          <div class="card-header bg-success d-flex justify-content-between">
 
-                                      <button class="btn" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
-                                        <i class="fa" aria-hidden="true"></i>
-                                        Collapsible Item #6
-                                      </button>
-                                        <i class="fas fa-arrows-alt mt-2"></i>
-                                        </div>
-                                        <div id="collapseOne3" class="collapse show" aria-labelledby="headingOne3" data-parent="#accordion">
-                                        <div class="card-body">
-                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aut
-                                        </div>
+                          <button class="btn text-white" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
+                            <i class="fa" aria-hidden="true"></i>
+                            Collapsible Item #6
+                          </button>
+                            <i class="fas fa-arrows-alt mt-2"></i>
+                            </div>
+                            <div id="collapseOne3" class="collapse show" aria-labelledby="headingOne3" data-parent="#accordion">
+                            <div class="card-body">
+                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aut
+                            </div>
 
-                                      </div>
+                          </div>
 
-                                  </div>
-                              </div>
-                           </div>
-                        </div>
+                      </div>
+                  </div>
+               </div>
+            </div>
 
         </div>
+    </div>
   </div>
 </div>
-</div>
-
-
-<div id="grid3" class="row ">
-    <div class="div">
-        <div class="col-sm-7">
-            <div class="panel-group drop-accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                    <div class="panel-heading tab-collapsed" role="tab" id="headingOne">
-
-                      <h4 class="panel-title">
-                        <a class="collapse-controle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            App benifits tittle one goes here
-                            <span class="expand-icon-wrap"><i class="fa expand-icon"></i></span>
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true">
-                        <div class="panel-body">
-                            <div class="panel-body-icon"><i class="fa fa-magic"></i></div>
-                            Epsum factorial non deposit quid pro quo hic escorol. Olypian rrels et gorilla congolium sic ad Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla.
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingTwo">
-                        <h4 class="panel-title">
-                            <a class="collapse-controle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                App benifits tittle two goes here
-                                <span class="expand-icon-wrap"><i class="fa expand-icon"></i></span>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false" style="height: 0px;">
-                        <div class="panel-body">
-                            <div class="panel-body-icon"><i class="fa fa-crop"></i></div>
-                            Epsum factorial non deposit quid pro quo hic escorol. Olypian rrels et gorilla congolium sic ad Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla.
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingThree">
-                      <h4 class="panel-title">
-                        <a class="collapsed collapse-controle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            App benifits tittle three goes here
-                            <span class="expand-icon-wrap"><i class="fa expand-icon"></i></span>
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
-                        <div class="panel-body">
-                            <div class="panel-body-icon"><i class="fa fa-cogs"></i></div>
-                            Epsum factorial non deposit quid pro quo hic escorol. Olypian rrels et gorilla congolium sic ad Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla.
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingFour">
-                      <h4 class="panel-title">
-                        <a class="collapsed collapse-controle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                            App benifits tittle four goes here
-                            <span class="expand-icon-wrap"><i class="fa expand-icon"></i></span>
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour" aria-expanded="false">
-                        <div class="panel-body">
-                            <div class="panel-body-icon"><i class="fa fa-coffee"></i></div>
-                            Epsum factorial non deposit quid pro quo hic escorol. Olypian rrels et gorilla congolium sic ad Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /#accordion -->
-        </div>
-	</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-
 
 <script type="text/javascript">
 $(function(){
@@ -430,12 +342,39 @@ $(function(){
 		/* default options */
 	});
     $('#grid2').gridstrap({
-        /* default options */
+
     });
-    $('#grid3').gridstrap({
-        /* default options */
-    });
+
 });
+
+
+$.Gridstrap.defaultOptions = {
+	gridCellSelector: '>*', // jQuery selector for grid's cells relative to parent element.
+	hiddenCellClass: 'gridstrap-cell-hidden', // class applied to 'hidden' cells.
+	visibleCellClass: 'gridstrap-cell-visible', // class applied to 'visible' cells.
+	nonContiguousPlaceholderCellClass: 'gridstack-noncontiguous',  // class applied to non-contiguous placeholder cells.
+	dragCellClass: 'gridstrap-cell-drag', // class applied to dragging cell.
+	resizeCellClass: 'gridstrap-cell-resize', // class applied to resizing cell.
+	mouseMoveSelector: 'body', // jQuery selector to bind mousemouse and mouseup events.
+	visibleCellContainerParentSelector: null, // jQuery selector to append 'visible' cell container to. Null will use the element the plugin is initialised on.
+	visibleCellContainerClass: 'gridstrap-container', // class applied to the cell container element.
+	getHtmlOfSourceCell: function ($cell) { // function to return the html of a 'source' cell.
+		return $cell[0].outerHTML;
+	},
+	dragCellHandleSelector: '*', // jQuery selector relative to and including cell for drag handling.
+	draggable: true, // toggle mouse dragging.
+	rearrangeOnDrag: true, // toggle the triggering of rearranging cells before mouseup.
+	resizeHandleSelector: null, // jQuery selector relative to cell for resize handling. Null disables.
+	resizeOnDrag: true, // toggle mouse resizing.
+	swapMode: false, // toggle swap or insert mode when rearranging cells.
+	nonContiguousCellHtml: null, // html to use for non-contiguous placeholder cells.
+	autoPadNonContiguousCells: true, // toggle adding non-contiguous cells automatically on drag or as otherwise needed.
+	updateCoordinatesOnWindowResize: true, // enable window resize event handler.
+	debug: false, // toggle console output.
+	dragMouseoverThrottle: 150, // throttle cell mouseover events for rearranging.
+	windowResizeDebounce: 50,  // debounce redraw on window resize.
+	mousemoveDebounce: 0 // debounce mousemove for dragging cells.
+};
 </script>
 
 
@@ -452,18 +391,6 @@ $(function(){
         hideToggle(".bt4", ".4");
         hideToggle(".bt5", ".5");
         hideToggle(".bt6", ".6");
-</script>
-
-<script>
-$(function(){
-    $('.panel-heading').click(function(e) {
-        $('.panel-heading').removeClass('tab-collapsed');
-        var collapsCrnt = $(this).find('.collapse-controle').attr('aria-expanded');
-        if (collapsCrnt != 'true') {
-            $(this).addClass('tab-collapsed');
-        }
-    });
-}
 </script>
 </body>
 
