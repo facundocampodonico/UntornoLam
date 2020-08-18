@@ -13,12 +13,10 @@
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link href="css/MiCncStyle.css" rel="stylesheet">
+  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link href="css/sb-admin-2.css" rel="stylesheet">
   <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
   <!-- Carga de Variables -->
@@ -652,27 +650,32 @@
     </div>
     <!-- Pruebas de draggable -->
             <div class=row>
+                <div class="col-lg-3" data-toggle="tooltip" title="Descripción de la funcionalidad">
+                  <div class="card shadow mb-4">
                     <div id="listWithHandle" class="list-group">
                       <div class="list-group-item 1">
-                          <button type="button" class="collapsible"> <span class="glyphicon glyphicon-move" aria-hidden="true"></span> &nbsp; Texto Titulo 1</button>
-                          <div class="content">
+                          <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span> &nbsp; Texto Titulo 1</button>
+                          <div class="contentcnc">
                             <p>Chupame la japi 1 </p>
                           </div>
                       </div>
 
                       <div class="list-group-item 2">
-                          <button type="button" class="collapsible"> <span class="glyphicon glyphicon-move" aria-hidden="true"></span>&nbsp; Texto Titulo 2</button>
-                          <div class="content">
+                          <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Texto Titulo 2</button>
+                          <div class="contentcnc">
                             <p>Chupame la japi 2</p>
                           </div>
                       </div>
                       <div class="list-group-item 3">
-                          <button type="button" class="collapsible"> <span class="glyphicon glyphicon-move" aria-hidden="true"></span>&nbsp; Texto Titulo 3</button>
-                          <div class="content">
+                          <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Texto Titulo 3</button>
+                          <div class="contentcnc">
                             <p>Chupame la japi 3</p>
                           </div>
                       </div>
                     </div>
+                </div>
+              </div>
+
             </div>    <!-- Fin draggable -->
 
 
@@ -918,31 +921,30 @@ $(document).ready( function () {
   <!-- Page level custom scripts -->
 <!-- <script src="js/demo/datatables-demo.js"></script>-->
 
-
-
-
 <script type="text/javascript">
 // List with handle
 Sortable.create(listWithHandle, {
-  handle: '.glyphicon-move',
+  handle: '.material-icons',
   animation: 150
 });
-
-var coll = document.getElementsByClassName("collapsible");
+</script>
+<script>
+var coll = document.getElementsByClassName("contraer");
 var i;
 
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
     } else {
-      content.style.display = "block";
+      content.style.maxHeight = content.scrollHeight + "px";
     }
   });
 }
 </script>
+
 </body>
 
 </html>

@@ -5,7 +5,7 @@
 <title>Prueba</title>
 <style>
 
-.glyphicon-move {
+.material-icons {
   cursor: move;
   cursor: -webkit-grabbing;
 }
@@ -16,48 +16,58 @@
 .card-header .collapsed .fa {
   transform: rotate(90deg);
 }
-.collapsible {
-  background-color: #777;
-  color: white;
+.contraer {
+  background-color:#f8f9fc;
+  color: #36b9cc;
+   font-weight: bold;
   cursor: pointer;
   padding: 18px;
   width: 100%;
   border: none;
   text-align: left;
   outline: none;
-  font-size: 15px;
+  font-size: 16px;
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: 1px solid #e3e6f0;
 }
 
-.active, .collapsible:hover {
-  background-color: #555;
+.contraer:active, .contraer:hover {
+  background-color: #f8f9fc;
 }
 
-.collapsible:after {
+.contraer:after {
   content: '\002B';
-  color: white;
-  font-weight: bold;
+    color: #36b9cc;
+
   float: right;
   margin-left: 5px;
 }
 
-.active:after {
+.contraer.active:after {
   content: "\2212";
 }
 
-.content {
+.contentcnc {
   padding: 0 18px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1;
+  background-color: #fff;
+  border-radius: 0px 0px 5px 5px;
+  border-bottom: 1px solid #e3e6f0;
+  border-left: 1px solid #e3e6f0;
+  border-right: 1px solid #e3e6f0;
+
 }
 </style>
 <!-- Custom fonts for this template-->
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <!-- Latest compiled and minified CSS -->
-
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+<!--
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+-->
  <!-- Latest Sortable -->
  <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 
@@ -67,35 +77,37 @@
   <!-- List with handle -->
   <div id="listWithHandle" class="list-group">
     <div class="list-group-item 1">
-        <button type="button" class="collapsible"> <span class="glyphicon glyphicon-move" aria-hidden="true"></span> &nbsp; Texto Titulo 1</button>
-        <div class="content">
+        <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true" >swap_vert</i></span> &nbsp; Texto Titulo 1</button>
+        <div class="contentcnc">
           <p>Chupame la japi 1 </p>
         </div>
     </div>
 
     <div class="list-group-item 2">
-        <button type="button" class="collapsible"> <span class="glyphicon glyphicon-move" aria-hidden="true"></span>&nbsp; Texto Titulo 2</button>
-        <div class="content">
+        <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Texto Titulo 2</button>
+        <div class="contentcnc">
           <p>Chupame la japi 2</p>
         </div>
     </div>
+
     <div class="list-group-item 3">
-        <button type="button" class="collapsible"> <span class="glyphicon glyphicon-move" aria-hidden="true"></span>&nbsp; Texto Titulo 3</button>
-        <div class="content">
+        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Texto Titulo 3</button>
+        <div class="contentcnc">
           <p>Chupame la japi 3</p>
         </div>
     </div>
   </div>
 
 
+
     <script type="text/javascript">
     Sortable.create(listWithHandle, {
-      handle: '.glyphicon-move',
+      handle: '.material-icons',
       animation: 150
     });
     </script>
     <script>
-    var coll = document.getElementsByClassName("collapsible");
+    var coll = document.getElementsByClassName("contraer");
     var i;
 
     for (i = 0; i < coll.length; i++) {
