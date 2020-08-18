@@ -40,7 +40,36 @@
 .contraer.active:after {
   content: "\2212";
 }
+.contraerpreview {
+  background-color:#f8f9fc;
+  color: #36b9cc;
+   font-weight: bold;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: 1px solid #e3e6f0;
+}
 
+.contraerpreview:active, .contraer:hover {
+  background-color: #f8f9fc;
+}
+
+.contraerpreview:after {
+  content: '\002B';
+  color: #36b9cc;
+
+  float: right;
+  margin-left: 5px;
+}
+
+.contraerpreview.active:after {
+  content: "\2212";
+}
 .contentcnc {
   padding: 0 18px;
   max-height: 0;
