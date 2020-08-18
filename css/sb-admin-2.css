@@ -5285,10 +5285,12 @@ a.badge-dark:focus, a.badge-dark.focus {
 .list-group-item {
   position: relative;
   display: block;
-  /*padding: 0.75rem 1.25rem;*/
-  padding: 0;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+   padding: 0;
+  /*padding: 0.75rem 1.25rem;
+   background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);*/
+  background-color: #f2f3f6;
+  border: 1px solid rgb(236 237 241);
 }
 
 .list-group-item:first-child {
