@@ -2,12 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>JS Bin</title>
-<style>/*
-
-  body {
-  margin: 10px;
-}
+<title>Prueba</title>
+<style>
 
 .glyphicon-move {
   cursor: move;
@@ -20,10 +16,9 @@
 .card-header .collapsed .fa {
   transform: rotate(90deg);
 }
-
 .collapsible {
-  background-color: #eee;
-  color: #444;
+  background-color: #777;
+  color: white;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -32,41 +27,36 @@
   outline: none;
   font-size: 15px;
 }
-*/
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-/*
+
 .active, .collapsible:hover {
-  background-color: #ccc;
+  background-color: #555;
 }
 
-/* Style the collapsible content. Note: hidden by default *//*
-.content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
-*/
-/*
 .collapsible:after {
-  content: '\02795'; /* Unicode character for "plus" sign (+) */
-/*  font-size: 13px;
+  content: '\002B';
   color: white;
+  font-weight: bold;
   float: right;
   margin-left: 5px;
 }
-*/
-/*.active:after {
-  content: "\2796"; /* Unicode character for "minus" sign (-) */
+
+.active:after {
+  content: "\2212";
 }
-*/
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
 </style>
-
-<link href="../css/MiCncStyle.css" rel="stylesheet">
-<link href="../css/sb-admin-2.css" rel="stylesheet">
+<!-- Custom fonts for this template-->
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- Latest compiled and minified CSS -->
+ <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
- <!-- Latest compiled and minified CSS -->
- <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>-->
-
  <!-- Latest Sortable -->
  <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 
