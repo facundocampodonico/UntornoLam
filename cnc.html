@@ -15,6 +15,13 @@
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- Modal -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Modal -->
+
   <link href="css/MiCncStyle.css" rel="stylesheet">
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link href="css/sb-admin-2.css" rel="stylesheet">
@@ -649,6 +656,35 @@
               </div>
     </div>
     <!-- Pruebas de draggable -->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Configuracion
+    </button>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Mostrar/Ocultar contenidos.</h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <input class="bt1" id="button1" type="button" value="Panel 1">
+              <input class="bt2" id="button2" type="button" value="Panel 2">
+              <input class="bt3" id="button3" type="button" value="Panel 3">
+                  </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         </div>
+        </div>
+      </div>
+    </div>
+
             <div class=row>
                 <div class="col-lg-3" data-toggle="tooltip" title="Descripción de la funcionalidad">
                   <div class="card shadow mb-4">
@@ -943,6 +979,21 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 }
+</script>
+
+<script type="text/javascript">
+
+       function hideToggle(button, elem)
+        {
+            $(button).click(function() { $(elem).toggle(); })
+        }
+
+        hideToggle(".bt1", ".1");
+        hideToggle(".bt2", ".2");
+        hideToggle(".bt3", ".3");
+        hideToggle(".bt4", ".4");
+        hideToggle(".bt5", ".5");
+        hideToggle(".bt6", ".6");
 </script>
 
 </body>
