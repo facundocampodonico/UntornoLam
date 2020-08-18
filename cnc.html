@@ -331,7 +331,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Estado</div>
+                      <div class="font-weight-bold text-info text-uppercase mb-1">Estado</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
                           <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
@@ -348,7 +348,7 @@
                         </div>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-info m-2" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-info m-2" data-toggle="modal" data-target="#exampleModal"data-toggle="tooltip" title="Configurar tu panel">
                     <i class="fas fa-tools" style="font-size:16px;color:white;"></i>
                 </button>
                   </div>
@@ -358,37 +358,36 @@
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-4 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
+              <div class="card border-left-info shadow h-100 py-3">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Diseños enviados (Total) <b><script> document.write(CantidadDiseños);</script></b></div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      	<a href="#" class="btn btn-info btn-icon-split">
-                            <span class="text">Enviar Diseños</span>
-                        </a>
-
-                      </div>
-
+                      <div class=" font-weight-bold text-info text-uppercase mb-1">Diseños enviados (Total)&nbsp; <b><script> document.write(CantidadDiseños);</script></b>
+                       </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                        </div>
                     </div>
+                    <button type="button" class="btn btn-info m-2" data-toggle="tooltip" title="Enviar un nuevo Diseño">
+                    <i class="far fa-share-square" style="font-size:16px;color:white;"></i>
                   </div>
+
                 </div>
               </div>
             </div>
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-4 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
+              <div class="card border-left-info shadow h-100 py-3">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Fecha ultimo servicio tecnico <b><script> document.write(FechaUltimoService);</script></b></div>
+                      <div class="font-weight-bold text-info text-uppercase mb-1">Fecha ultimo servicio tecnico&nbsp;<b><script> document.write(FechaUltimoService);</script></b>
+                         </div>
                           <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                          	<a href="#" class="btn btn-info btn-icon-split">
-                                <span class="text">Solicitar Servicio</span>
-                            </a>
                       </div>
-                    </div>
+                  </div>
+                  <button type="button" class="btn btn-info m-2" data-toggle="tooltip" title="Solcitar nuevo servicio tecnico">
+                  <i class="fas fa-hammer" style="font-size:16px;color:white;"></i>
                   </div>
                 </div>
               </div>
@@ -430,7 +429,9 @@
     </div>
 
             <div class=row>
+
                 <div class="col-lg-3" data-toggle="tooltip" title="Descripción de la funcionalidad">
+                 <div class="card shadow mb-4">
                   <div id="listWithHandle" class="list-group1">
                       <div class="list-group-item 1">
                           <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span> &nbsp;Control CNC</button>
@@ -492,36 +493,39 @@
                           <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Herramienta</button>
                           <div class="contentcnc">
       <br>
-                  <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                          <div class="input-group-text">X</div>
-                          </div>
-                          <input type="text" class="form-control" id="inlineFormInputGroup1" value="" readonly>
-                        </div>
-                  <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                          <div class="input-group-text">Y</div>
-                          </div>
-                          <input type="text" class="form-control" id="inlineFormInputGroup2" value="" readonly>
-                        </div>
-                  <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                          <div class="input-group-text">Z</div>
-                          </div>
-                          <input type="text" class="form-control" id="inlineFormInputGroup3" value="" readonly>
-                        </div>
+                          <div class="input-group mb-2">
+                              <div class="input-group-prepend">
+                                  <div class="input-group-text">X</div>
+                                  </div>
+                                  <input type="text" class="form-control" id="inlineFormInputGroup1" value="" readonly>
+                                </div>
+                          <div class="input-group mb-2">
+                              <div class="input-group-prepend">
+                                  <div class="input-group-text">Y</div>
+                                  </div>
+                                  <input type="text" class="form-control" id="inlineFormInputGroup2" value="" readonly>
+                                </div>
+                          <div class="input-group mb-2">
+                              <div class="input-group-prepend">
+                                  <div class="input-group-text">Z</div>
+                                  </div>
+                                  <input type="text" class="form-control" id="inlineFormInputGroup3" value="" readonly>
+                                </div>
 
-                        <script>
-                        var inputNombre = document.getElementById("inlineFormInputGroup1");
-                        inputNombre.value = "0.00000";
-                        inputNombre = document.getElementById("inlineFormInputGroup2");
-                        inputNombre.value = "0.00000";
-                        inputNombre = document.getElementById("inlineFormInputGroup3");
-                        inputNombre.value = "0.00000";
-                        </script>
-                    <br>
-                          </div>
+                                <script>
+                                var inputNombre = document.getElementById("inlineFormInputGroup1");
+                                inputNombre.value = "0.00000";
+                                inputNombre = document.getElementById("inlineFormInputGroup2");
+                                inputNombre.value = "0.00000";
+                                inputNombre = document.getElementById("inlineFormInputGroup3");
+                                inputNombre.value = "0.00000";
+                                </script>
+                            <br>
+                        </div>
                       </div>
+                </div>
+
+
                       <div class="list-group-item 3">
                           <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; GCODE Preview</button>
                           <div class="contentcnc">
