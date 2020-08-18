@@ -43,6 +43,7 @@ GCodeLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 			try {
 
 				onLoad( scope.parse( text ) );
+        //console.log(text);
 
 			} catch ( e ) {
 
@@ -65,11 +66,14 @@ GCodeLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 	},
 
 	parse: function ( data ) {
-
+    //console.log(data);
 		var state = { x: 0, y: 0, z: 0, e: 0, f: 0, extruding: false, relative: false };
 		var layers = [];
 
-		var currentLayer = undefined;
+    var pepino=localStorage.getItem('prueba');
+    console.log(pepino);
+
+    var currentLayer = undefined;
 
 		var pathMaterial = new LineBasicMaterial( { color: 0xFF0000 } );
 		pathMaterial.name = 'path';
@@ -120,20 +124,24 @@ GCodeLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 		}
 
 		var lines = data.replace( /;.+/g, '' ).split( '\n' );
+    console.log(lines);
+
 
 		for ( var i = 0; i < lines.length; i ++ ) {
-
+      //console.log(lines[i]);
 			var tokens = lines[ i ].split( ' ' );
 			var cmd = tokens[ 0 ].toUpperCase();
-
+      //console.log(cmd); //los comandos
 			//Argumments
 			var args = {};
 			tokens.splice( 1 ).forEach( function ( token ) {
 
 				if ( token[ 0 ] !== undefined ) {
 
-					var key = token[ 0 ].toLowerCase();
+          var key = token[ 0 ].toLowerCase();
+          //console.log(key);
 					var value = parseFloat( token.substring( 1 ) );
+          //console.log(value);
 					args[ key ] = value;
 
 				}
@@ -254,7 +262,8 @@ GCodeLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 
 		}
 
-		object.quaternion.setFromEuler( new Euler( - Math.PI / 2, 0, 0 ) );
+		//object.quaternion.setFromEuler( new Euler( - Math.PI / 2, 0, 0 ) );
+    //esta linea es la que gira todo, no se por que esta puesta aca.
 
 		return object;
 
