@@ -692,7 +692,7 @@
             <div class=row>
                 <div class="col-lg-3" data-toggle="tooltip" title="Descripción de la funcionalidad">
                   <div class="card shadow mb-4">
-                    <div id="listWithHandle" class="list-group">
+                    <div id="listWithHandle" class="list-group1">
                       <div class="list-group-item 1">
                           <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span> &nbsp; Texto Titulo 1</button>
                           <div class="contentcnc">
@@ -718,19 +718,19 @@
 
               <div class="col-lg-6" data-toggle="tooltip" title="Descripción de la funcionalidad">
                 <div class="card shadow mb-4">
-                    <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span> &nbsp; Preview</button>
+                    <button type="button" class="contraer"></span> &nbsp; Preview</button>
                     <div class="contentcnc">
                       <p>PREVIEW </p>
                     </div>
-                        </div>
+                </div>
 
-                    </div>
+             </div>
 
 
 
               <div class="col-lg-3" data-toggle="tooltip" title="Descripción de la funcionalidad">
                 <div class="card shadow mb-4">
-                  <div id="listWithHandle" class="list-group">
+                  <div id="listWithHandle2" class="list-group">
                     <div class="list-group-item 4">
                         <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span> &nbsp; Texto Titulo 4</button>
                         <div class="contentcnc">
@@ -753,6 +753,8 @@
                   </div>
               </div>
             </div>
+
+
 
             </div>    <!-- Fin draggable -->
 
@@ -1002,6 +1004,10 @@ $(document).ready( function () {
 <script type="text/javascript">
 // List with handle
 Sortable.create(listWithHandle, {
+  handle: '.material-icons',
+  animation: 150
+});
+Sortable.create(listWithHandle2, {
   handle: '.material-icons',
   animation: 150
 });
