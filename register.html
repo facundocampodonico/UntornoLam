@@ -32,31 +32,67 @@
           <div class="col-lg-7">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                <h1 class="h4 text-gray-900 mb-4">Registro</h1>
               </div>
               <form class="user">
                 <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <input type="text" class="form-control form-control-user" id="nombre" placeholder="Nombre">
+                    </div>
+
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control form-control-user" id="apellido" placeholder="Apellido">
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="email" placeholder="Email">
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
+                    <input type="text" class="form-control form-control-user" id="usuario" placeholder="Usuario">
+                  </div>
+                 
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-12 mb-3 mb-sm-0">
+                    <input type="password" class="form-control form-control-user" id="contrasenia" placeholder="Contraseña">
                   </div>
                 </div>
-                <div class="form-group">
-                  <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
-                </div>
+
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                    <select class="form-control form-control-solid" id="tipoDoc">
+                        <option value="DNI">  DNI   </option>
+                        <option value="OTR">  OTRO  </option>
+                    </select>
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                    <input type="text" class="form-control form-control-user" id="nroDoc" placeholder="Numero de documento">
                   </div>
                 </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="cuilCuit" placeholder="CUIL/CUIT">
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" id="telefono" placeholder="Telefono">
+                  </div>
+                </div>
+
+                <hr>
+
+                <input type="submit" value="Registrar" id="registrar" class="btn btn-success btn-user btn-block" style="color:white;" />
+
+                <hr>
+              <!--
                 <a href="login.html" class="btn btn-primary btn-user btn-block">
-                  Register Account
+                    Registrar 
                 </a>
+             
                 <hr>
                 <a href="index.html" class="btn btn-google btn-user btn-block">
                   <i class="fab fa-google fa-fw"></i> Register with Google
@@ -64,8 +100,9 @@
                 <a href="index.html" class="btn btn-facebook btn-user btn-block">
                   <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
                 </a>
+              -->
               </form>
-              <hr>
+              
               <div class="text-center">
                 <a class="small" href="forgot-password.html">Forgot Password?</a>
               </div>
@@ -80,6 +117,24 @@
 
   </div>
 
+  <!-- Modal de registro -->
+  <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalContactoLabel"> Registro </h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" id="textoModal"> </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal" id="cerrar">Cerrar</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- Modal de registro -->
+
+
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -93,3 +148,87 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+$(document).ready( function () {
+  // Configuracion
+	// @TODO: aca falta las rutas del servidor
+  const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+	//const RUTA_ACCESO = 'http://127.0.0.1:8080/';
+	const RUTA_API = 'api/registrarUsuario';
+
+  $("#registrar").click(function(){
+
+			// stop submit the form, we will post it manually.
+      event.preventDefault();
+
+      // Obtengo los datos del formulario 
+      //var form = $('#formularioDisenio')[0];
+      var nombre = $('#nombre').val();			
+      var apellido = $('#apellido').val();
+      var email = $('#email').val();			
+      var usuario = $('#usuario').val();			
+      var contrasenia = $('#contrasenia').val();			
+      var tipoDoc = $('#tipoDoc').val();
+      var nroDoc = $('#nroDoc').val();
+      var cuilCuit = $('#cuilCuit').val();			
+      var telefono = $('#telefono').val();			
+     										
+      // Creo un objeto para enviar los datos 
+      //var data = new FormData(form);
+
+      // Armo el ajax, para enviar los datos correspondientes
+      $.ajax({
+          type: 'POST',
+          enctype: 'multipart/form-data',
+          url: RUTA_ACCESO + RUTA_API,
+          data: JSON.stringify( {
+            'nombre': nombre,
+            'apellido': apellido,
+            'email': email,
+            'usuario': usuario,
+            'contrasenia': contrasenia,
+            'tipoDoc': tipoDoc,
+            'nroDoc': nroDoc,
+            'cuilCuit': cuilCuit,
+            'telefono': telefono,
+          } ),
+          processData: false,
+          contentType: "application/json; charset=utf-8",
+          cache: false,
+          headers: { 'Access-Control-Allow-Origin': "*" },	
+          crossDomain: true,			
+          
+          success: function( datos, textStatus, jQxhr ){
+              alert( JSON.stringify( datos) );
+
+              // En caso de exito
+				      if( datos.status === 'OK'){
+                  $('#textoModal').text( JSON.stringify(datos.info).slice(1,-1) );
+
+                  $('#modalRegistro').modal('show');
+              }else{
+                  // Dejo el formulario como esta
+                  alert('Error al registrar');
+                  alert(datos);
+              }
+              
+
+              //alert("Respuesta: " + JSON.stringify( datos ) );
+          },
+          error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+          }
+      });
+  });
+
+  $("#cerrar").click(function(){
+      	// stop submit the form, we will post it manually.
+        event.preventDefault();
+        window.location.href = './login.html';
+  });
+
+
+});
+
+</script>
