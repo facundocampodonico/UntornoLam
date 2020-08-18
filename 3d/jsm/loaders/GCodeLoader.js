@@ -70,8 +70,9 @@ GCodeLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 		var state = { x: 0, y: 0, z: 0, e: 0, f: 0, extruding: false, relative: false };
 		var layers = [];
 
-    var pepino=localStorage.getItem('prueba');
-    console.log(pepino);
+    localStorage.setItem('gcode_codigo', data);
+    //var pepino=localStorage.getItem('prueba');
+    //console.log(pepino);
 
     var currentLayer = undefined;
 
@@ -124,7 +125,7 @@ GCodeLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 		}
 
 		var lines = data.replace( /;.+/g, '' ).split( '\n' );
-    console.log(lines);
+    //console.log(lines);
 
 
 		for ( var i = 0; i < lines.length; i ++ ) {
