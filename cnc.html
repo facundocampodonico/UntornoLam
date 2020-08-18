@@ -944,7 +944,7 @@
         //const bbox = getBoundingBox(objeto_gcode);
 
         var children = objeto_gcode.children,
-        completeBoundingBox = new THREE.Box3(); // create a new box which will contain the entire values
+        completeBoundingBox = new THREE.Box3(); // tescte a new box which will contain the entire values
         console.log(objeto_gcode);
 
         //objeto_gcode.up={x: 0, y: 0, z: 0};
@@ -1545,24 +1545,26 @@
 
       }
 
-  $('#collapseCardExample3').on('show.bs.collapse', function () {
+  var coll = document.getElementsByClassName("contraerpreview");
+  var i;
 
-                                  if (cargagcode==false){
-                                    cargagcode=true;
-                                    //console.log(gcodepreview);
+  //for (i = 0; i < coll.length; i++) {
+    coll[0].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
 
-                                    //console.log("ancho contenido"+gcodepreview.clientWidth);
-                                    //console.log("ancho tarjeta"+collapseCardExample3.clientwidth);
-                                    //alert("no se que pasa");
-                                    createScene(gcodepreview);
-                                    //init();
-                                    animate();
-                                    //controls.update();
-                                    //updateScene();
-                                    //render();
-                                  }
-                        });
-
+    if (cargagcode==false){
+      cargagcode=true;
+      createScene(gcodepreview);
+      animate();
+      }
+  //}
 </script>
 
 
@@ -1636,11 +1638,12 @@ for (i = 0; i < coll.length; i++) {
 }
 </script>
 
-<script>
+
+<!--<script>
 var coll = document.getElementsByClassName("contraerpreview");
 var i;
 
-for (i = 0; i < coll.length; i++) {
+//for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var content = this.nextElementSibling;
@@ -1657,8 +1660,8 @@ for (i = 0; i < coll.length; i++) {
       }
 
   });
-}
-</script>
+//}
+</script>-->
 
 <script type="text/javascript">
 
