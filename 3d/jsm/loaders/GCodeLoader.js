@@ -131,6 +131,7 @@ GCodeLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 		for ( var i = 0; i < lines.length; i ++ ) {
       //console.log(lines[i]);
 			var tokens = lines[ i ].split( ' ' );
+      //console.log(tokens);
 			var cmd = tokens[ 0 ].toUpperCase();
       //console.log(cmd); //los comandos
 			//Argumments
@@ -160,6 +161,7 @@ GCodeLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 					e: args.e !== undefined ? absolute( state.e, args.e ) : state.e,
 					f: args.f !== undefined ? absolute( state.f, args.f ) : state.f,
 				};
+
 
 				//Layer change detection is or made by watching Z, it's made by watching when we extrude at a new Z position
 				if ( delta( state.e, line.e ) > 0 ) {

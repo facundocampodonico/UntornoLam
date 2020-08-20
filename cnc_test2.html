@@ -13,20 +13,20 @@
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.css" rel="stylesheet">
-
-  <!-- Carga de Variables -->
-  <!-- Custom styles for this template -->
-  <link href="css/sb-admin-2.css" rel="stylesheet">
-
-  <!-- Custom styles for this page -->
+  <!-- Modal -->
+  <link href="css/MiCncStyle.css" rel="stylesheet">
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
- <!-- draggable this page -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="css/sb-admin-2.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- Modal -->
 
-<!-- Carga de Variables -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+  <!-- Carga de Variables -->
   <script>
 
     var CantidadCnc='5' ;
@@ -37,8 +37,6 @@
   	var ImpresionesEnviadas ='5' ;
   	var AdeundaPago='1000' ;
   	var ServicionEnCurso='1' ;
-
-
     var cargagcode=false;
   </script>
 
@@ -328,7 +326,7 @@
 		<div class="row">
 
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="col-xl-4 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -356,7 +354,7 @@
             </div>
 
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="col-xl-4 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -376,7 +374,7 @@
             </div>
 
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="col-xl-4 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -395,235 +393,251 @@
 
           </div>
 
+    <!-- Pruebas de draggable -->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-info m-2" data-toggle="modal" data-target="#exampleModal">
+    <i class="fas fa-tools" style="font-size:16px;color:white;"></i>
+</button>
 
+    <!-- Modal -->
 
-          <div class="row">
-            <div class="col-lg-3 mb-4" data-toggle="tooltip" title="Descripción de la funcionalidad">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Accordion -->
-                    <a href="#collapseCardExample" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
-                      <h6 class="m-0 font-weight-bold text-info">Controles CNC</h6>
-                    </a>
-                    <!-- Card Content - Collapse -->
-                    <div class="collapse" id="collapseCardExample">
-                      <div class="card-body" id="controles">
-                          <div class="table-responsive">
-                         <table >
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Mostrar/Ocultar contenidos.</h5>
 
-                              <tr>
-                                <td></td>
-                                <td><button type="button" class="btn btn-outline-info">Y-</button></td>
-                                <td></td>
-                                <td>&nbsp;</td>
-                                <td><button type="button" class="btn btn-outline-info">Z-</button></td>
-                                 <td>&nbsp;</td>
-                                 <td>&nbsp;</td>
-                                 <td>&nbsp;</td>
-                                 <td>&nbsp;</td>
-                                <td><button type="button" class="btn btn-info btn-sm btn-block">Return Zero</button></td>
-                              </tr>
-
-                            <tbody>
-                              <tr>
-                                <td><button type="button" class="btn btn-outline-info">X-</button></td>
-                                <td></td>
-                                <td><button type="button" class="btn btn-outline-info ">X+</button></td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td><button type="button" class="btn btn-info btn-sm btn-block">Return to Zero</button></td>
-                                <th></th>
-                              </tr>
-                              <tr>
-                                <td></td>
-                                <td><button type="button" class="btn btn-outline-info">Y-</button></td>
-                                <td></td>
-                                <td>&nbsp;</td>
-                                <td><button type="button" class="btn btn-outline-info">Z-</button></td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td><button type="button" class="btn btn-info btn-sm btn-block">Soft Reset</button>
-
-                                </td>
-                               </tr>
-
-                             </tbody>
-
-
-                          </table>
-                      </div>
-                       </div>
-                    </div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <input class="bt1" id="button1" type="button" value="Control CNC">
+              <input class="bt2" id="button2" type="button" value="Herramienta">
+              <input class="bt3" id="button3" type="button" value="GCODE Preview">
+              <input class="bt5" id="button5" type="button" value="Consola de comandos">
+              <input class="bt4" id="button4" type="button" value="Conexión">
+              <input class="bt6" id="button6" type="button" value="Camara">
                   </div>
-                  <div class="card shadow mb-4">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         </div>
+        </div>
+      </div>
+    </div>
 
-                          <a href="#collapseCardExample4" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
-                              <h6 class="m-0 font-weight-bold text-info">GCODE Terminal</h6>
-                            </a>
+            <div class=row>
+                <div class="col-lg-3" data-toggle="tooltip" title="Descripción de la funcionalidad">
+                  <div id="listWithHandle" class="list-group1">
+                      <div class="list-group-item 1">
+                          <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span> &nbsp;Control CNC</button>
+                          <div class="contentcnc">
+                              <br>
+                             <table >
 
-                          <div class="collapse" id="collapseCardExample4">
+                                      <tr>
+                                        <td></td>
+                                        <td><button type="button" class="btn btn-outline-info">Y-</button></td>
+                                        <td></td>
+                                        <td>&nbsp;</td>
+                                        <td><button type="button" class="btn btn-outline-info">Z-</button></td>
+                                         <td>&nbsp;</td>
+                                         <td>&nbsp;</td>
+                                         <td>&nbsp;</td>
+                                         <td>&nbsp;</td>
+                                        <td><button type="button" class="btn btn-info btn-sm btn-block">Return Zero</button></td>
+                                      </tr>
+
+                                    <tbody>
+                                      <tr>
+                                        <td><button type="button" class="btn btn-outline-info">X-</button></td>
+                                        <td></td>
+                                        <td><button type="button" class="btn btn-outline-info ">X+</button></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td><button type="button" class="btn btn-info btn-sm btn-block">Return to Zero</button></td>
+                                        <th></th>
+                                      </tr>
+                                      <tr>
+                                        <td></td>
+                                        <td><button type="button" class="btn btn-outline-info">Y-</button></td>
+                                        <td></td>
+                                        <td>&nbsp;</td>
+                                        <td><button type="button" class="btn btn-outline-info">Z-</button></td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td><button type="button" class="btn btn-info btn-sm btn-block">Soft Reset</button>
+
+                                        </td>
+                                       </tr>
+
+                                     </tbody>
+
+
+                                  </table>
+                                  <br>
+                           </div>
+                      </div>
+
+                      <div class="list-group-item 2">
+                          <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Herramienta</button>
+                          <div class="contentcnc">
+      <br>
+                  <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                          <div class="input-group-text">X</div>
+                          </div>
+                          <input type="text" class="form-control" id="inlineFormInputGroup1" value="" readonly>
+                        </div>
+                  <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                          <div class="input-group-text">Y</div>
+                          </div>
+                          <input type="text" class="form-control" id="inlineFormInputGroup2" value="" readonly>
+                        </div>
+                  <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                          <div class="input-group-text">Z</div>
+                          </div>
+                          <input type="text" class="form-control" id="inlineFormInputGroup3" value="" readonly>
+                        </div>
+
+                        <script>
+                        var inputNombre = document.getElementById("inlineFormInputGroup1");
+                        inputNombre.value = "0.00000";
+                        inputNombre = document.getElementById("inlineFormInputGroup2");
+                        inputNombre.value = "0.00000";
+                        inputNombre = document.getElementById("inlineFormInputGroup3");
+                        inputNombre.value = "0.00000";
+                        </script>
+                    <br>
+                          </div>
+                      </div>
+                      <div class="list-group-item 3">
+                          <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; GCODE Preview</button>
+                          <div class="contentcnc">
                             <div class="card-body">
 
 
                               <div class="card example-1 square scrollbar-cyan bordered-cyan">
-                                <div class="card-body">
-                                  <h4 id="section1"><strong>Second title of the news</strong></h4>
-                                  <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
-                                    qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan
-                                    mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim
-                                    qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic.
-                                    Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-                                  <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
-                                    qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan
-                                    mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim
-                                    qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic.
-                                    Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+                                <div class="card-body" id="section1" style="font-size : 10px">
+
                                 </div>
                               </div>
 
 
                             </div>
-                            </div>
                           </div>
-            </div>
-
-            <div class="col-lg-6" data-toggle="tooltip" title="Descripción de la funcionalidad">
-              <div class="card shadow mb-4">
-                        <!-- Card Header - Dropdown -->
-                        <a href="#collapseCardExample3" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
-                          <h6 class="m-0 font-weight-bold text-info">GCODE Preview</h6>
-                        </a>
-                        <!-- Card Body -->
-                        <div class="collapse" id="collapseCardExample3">
-                        <div class="card-body" id="gcodepreview">
-                        </div>
-                        <div class="card-body">
-                          <div class="row">
-                              <div>
-                              <button type="button" id="buttontop" class="btn btn-info btn-sm btn-block">ARRIBA</button>
-                              </div>
-                              <div>
-                              <button type="button" id="buttonfront" class="btn btn-info btn-sm btn-block">FRENTE</button>
-                              </div>
-                              <div>
-                              <button type="button" id="buttonright" class="btn btn-info btn-sm btn-block">DERECHA</button>
-                              </div>
-                              <div>
-                              <button type="button" id="buttonleft" class="btn btn-info btn-sm btn-block">IZQUIERDA</button>
-                              </div>
-                              <div>
-                              <button type="button" id="button3d" class="btn btn-info btn-sm btn-block">VISTA 3D</button>
-                              </div>
-                              <div>
-                              <button type="button" id="buttoncargar" class="btn btn-info btn-sm btn-block">CARGAR</button>
-                              </div>
-                              <div>
-                              <button type="button" id="buttonsimular" class="btn btn-info btn-sm btn-block">SIMULAR</button>
-                              </div>
-                          </div>
-                          </div>
-                        </div>
-                      </div>
-
-                  </div>
-
-
-
-            <div class="col-lg-3 mb-4" data-toggle="tooltip" title="Descripción de la funcionalidad">
-
-                  <div class="card shadow mb-4">
-                      <!-- Card Header - Accordion -->
-                      <a href="#collapseCardExample2" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
-                        <h6 class="m-0 font-weight-bold text-info">Herramienta</h6>
-                      </a>
-                      <!-- Card Content - Collapse -->
-                      <div class="collapse" id="collapseCardExample2">
-                        <div class="card-body" id="herramienta">
-
-                          <div class="input-group mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text">X</div>
-                                  </div>
-                                  <input type="text" class="form-control" id="inlineFormInputGroup1" value="" readonly>
-                                </div>
-                          <div class="input-group mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text">Y</div>
-                                  </div>
-                                  <input type="text" class="form-control" id="inlineFormInputGroup2" value="" readonly>
-                                </div>
-                          <div class="input-group mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text">Z</div>
-                                  </div>
-                                  <input type="text" class="form-control" id="inlineFormInputGroup3" value="" readonly>
-                                </div>
-
-                                <script>
-                                var inputNombre = document.getElementById("inlineFormInputGroup1");
-                                inputNombre.value = "0.00000";
-                                inputNombre = document.getElementById("inlineFormInputGroup2");
-                                inputNombre.value = "0.00000";
-                                inputNombre = document.getElementById("inlineFormInputGroup3");
-                                inputNombre.value = "0.00000";
-                                </script>
-
-
-                        </div>
-
                       </div>
                     </div>
 
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Accordion -->
-                    <a href="#collapseCardExample1" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
-                      <h6 class="m-0 font-weight-bold text-info">Consola de comandos</h6>
-                    </a>
-                    <!-- Card Content - Collapse -->
-                    <div class="collapse" id="collapseCardExample1">
-                      <div class="card-body" id="consola">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                              <thead>
-                                <tr>
-                                  <th>Comando</th>
-                                  <th>Enviado</th>
-                                  <th>Realizado</th>
-                                  <th>Respuesta</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <!--<tr>
-                                  <td>este estaba</td>
-                                  <td>este estaba</td>
-                                  <td>este estaba</td>
-                                  <td>este estaba</td>
-                                </tr>-->
-                    			</tbody>
-                            </table>
-                          </div>
-                      </div>
+              </div>
 
+              <div class="col-lg-6" data-toggle="tooltip" title="Descripción de la funcionalidad">
+                <div class="card shadow mb-4">
+                    <button type="button" class="contraerpreview"></span> &nbsp; 3D Preview</button>
+                    <div class="contentcnc">
+                      <div class="card-body" id="gcodepreview">
+                      </div>
+                      <div class="card-body">
+                        <div class="row">
+                            <div>
+                            <button type="button" id="buttontop" class="btn btn-info btn-sm btn-block">ARRIBA</button>
+                            </div>
+                            <div>
+                            <button type="button" id="buttonfront" class="btn btn-info btn-sm btn-block">FRENTE</button>
+                            </div>
+                            <div>
+                            <button type="button" id="buttonright" class="btn btn-info btn-sm btn-block">DERECHA</button>
+                            </div>
+                            <div>
+                            <button type="button" id="buttonleft" class="btn btn-info btn-sm btn-block">IZQUIERDA</button>
+                            </div>
+                            <div>
+                            <button type="button" id="button3d" class="btn btn-info btn-sm btn-block">VISTA 3D</button>
+                            </div>
+                            <div>
+                            <button type="button" id="buttoncargar" class="btn btn-info btn-sm btn-block">CARGAR</button>
+                            </div>
+                            <div>
+                            <button type="button" id="buttonsimular" class="btn btn-info btn-sm btn-block">SIMULAR</button>
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </div>
+
+             </div>
+
+
+
+              <div class="col-lg-3" data-toggle="tooltip" title="Descripción de la funcionalidad">
+                <div class="card shadow mb-4">
+                  <div id="listWithHandle2" class="list-group">
+                    <div class="list-group-item 4">
+                        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span> &nbsp; Consola de comandos</button>
+                        <div class="contentcnc">
+                          <div class="card-body" id="consola">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                  <thead>
+                                    <tr>
+                                      <th>Comando</th>
+                                      <th>Enviado</th>
+                                      <th>Realizado</th>
+                                      <th>Respuesta</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <!--<tr>
+                                      <td>este estaba</td>
+                                      <td>este estaba</td>
+                                      <td>este estaba</td>
+                                      <td>este estaba</td>
+                                    </tr>-->
+                        			</tbody>
+                                </table>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item 5">
+                        <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Conexión</button>
+                        <div class="contentcnc">
+                          <p>En desarrollo</p>
+                        </div>
+                    </div>
+                    <div class="list-group-item 6">
+                        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Camara</button>
+                        <div class="contentcnc">
+                          <!-- Stream video via webcam -->
+                          <div class="video-wrap">
+                              <video id="video" playsinline autoplay></video>
+                          </div>
+                          <!-- Trigger canvas web API -->
+                        <!--  <div class="controller">
+                              <button id="snap">Capture</button>
+                          </div>-->
+                          <!-- Webcam video snapshot -->
+                        <!--    <canvas id="canvas" width="640" height="480"></canvas>-->
+                        </div>
+                    </div>
+                  </div>
+              </div>
             </div>
-        </div>
 
 
 
+            </div>    <!-- Fin draggable -->
 
 
-
-        <!-- Fin draggable -->
-
-
-
-    <div >
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -634,7 +648,7 @@
       </footer>
       <!-- End of Footer -->
 
-    </div>
+
     <!-- End of Content Wrapper -->
 
   </div>
@@ -675,6 +689,49 @@
   <script src="js/sb-admin-2.min.js"></script>
 
 
+<script>
+'use strict';
+
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const snap = document.getElementById("snap");
+const errorMsgElement = document.querySelector('span#errorMsg');
+
+const constraints = {
+  audio: true,
+  video: {
+    //width: 1280, height: 720
+    width: 350, height: 200
+  }
+};
+
+
+async function init() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    handleSuccess(stream);
+  } catch (e) {
+    errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+  }
+}
+
+// Success
+function handleSuccess(stream) {
+  window.stream = stream;
+  video.srcObject = stream;
+}
+
+// Load init
+//init();
+
+// Draw image
+var context = canvas.getContext('2d');
+snap.addEventListener("click", function() {
+        context.drawImage(video, 0, 0, 640, 480);
+});
+
+</script>
+
 
   <script type="module">
 
@@ -710,7 +767,43 @@
   var loader;
   var objeto_gcode;
 
-  localStorage.setItem('prueba', "pepe");
+
+  //localStorage.setItem('prueba', "pepe");
+
+  function addTable(array_cmd) {
+    let i,j;
+  var myTableDiv = document.getElementById("section1")
+  var table = document.createElement('TABLE')
+  var tableBody = document.createElement('TBODY')
+  table.border = '1'
+  table.appendChild(tableBody);
+
+  var heading = new Array();
+  heading[0] = " GCODE"
+
+
+  //COLUMNAS DE LA TABLA
+  var tr = document.createElement('TR');
+  tableBody.appendChild(tr);
+  for (i = 0; i < heading.length; i++) {
+  var th = document.createElement('TH')
+  th.width = '75';
+  th.appendChild(document.createTextNode(heading[0]));
+  tr.appendChild(th);
+  }
+
+
+  //FILAS DE LA TABLA
+  for (i = 0; i < array_cmd.length; i++) {
+  var tr = document.createElement('TR');
+  var td = document.createElement('TD')
+  td.appendChild(document.createTextNode(array_cmd[i]));
+  tr.appendChild(td)
+  tableBody.appendChild(tr);
+  }
+  myTableDiv.appendChild(table)
+  }
+
 
 
     $("#buttonleft").click(function(){
@@ -757,6 +850,64 @@
         //updateScene();
     });
 
+
+
+    $("#buttonsimular").click(function(){
+
+      var gcode_code=localStorage.getItem('gcode_codigo');
+
+
+      var array_comandos=gcode_code.split("\n");
+
+
+      for ( var i = 0; i < array_comandos.length; i ++ ) {
+        //console.log(lines[i]);
+        var tokens = array_comandos[ i ].split( ' ' );
+        //console.log(tokens);
+        var cmd = tokens[ 0 ].toUpperCase();
+        //console.log(cmd); //los comandos
+        //Argumments
+        var args = {};
+        tokens.splice( 1 ).forEach( function ( token ) {
+
+          if ( token[ 0 ] !== undefined ) {
+
+            var key = token[ 0 ].toLowerCase();
+            //console.log(key);
+            var value = parseFloat( token.substring( 1 ) );
+            //console.log(value);
+            args[ key ] = value;
+
+
+
+            /*if (key=="x")
+            {
+            scene.children[3].children[3].translateX(value);
+            }
+            if (key=="y")
+            {scene.children[3].children[3].translateY(value);}
+            if (key=="z")
+            {scene.children[3].children[3].translateZ(value);}*/
+          }
+
+        } );
+
+    }
+
+
+    //console.log(scene.children[3].children[2].position);
+    //console.log(scene.children);
+    //scene.children[3].children[3].translateZ(25);
+  });
+
+
+  function move(speed) {
+    var d = mesh.position.x - mesh2.position.x;
+    if (mesh.position.x > mesh2.position.x) {
+      mesh.position.x -= Math.min( speed, d );
+    }
+  }
+
     $("#buttoncargar").click(function(){
         loader = new GCodeLoader();
         objeto_gcode = new THREE.Object3D();
@@ -771,18 +922,38 @@
 
 
 
+        //console.log(array_comandos);
+
+        //addTable(array_comandos);
+
+
+
+
+
+
+
+
+        //document.getElementById("section1").innerHTML = gcode_code;
+        /*var texto_prueba="";
+        for (let i = 0; i <= array_comandos.length; ++i) {
+            texto_prueba+=array_comandos[i]+"\n";
+        }*/
+
+        //document.getElementById("section1").innerHTML = texto_prueba;
+        //localStorage.setItem('prueba', "pepe");
+
         //const bbox = getBoundingBox(objeto_gcode);
 
-        var children = objeto_gcode.children,
-        completeBoundingBox = new THREE.Box3(); // create a new box which will contain the entire values
-        console.log(objeto_gcode);
+        //var children = objeto_gcode.children,
+        //completeBoundingBox = new THREE.Box3(); // tescte a new box which will contain the entire values
+        //console.log(objeto_gcode);
 
         //objeto_gcode.up={x: 0, y: 0, z: 0};
         //objeto_gcode.scale={x: 100, y: 100, z: 100}
-        console.log(children.length);
+        //console.log(children.length);
         //objeto_gcode.rotateX(1.5708);
         //objeto_gcode.rotateX(Math.PI / 2);
-        for(var i = 0, j = children.length; i < j; i++){ // iterate through the children
+        /*for(var i = 0, j = children.length; i < j; i++){ // iterate through the children
 
           children[i].geometry.computeBoundingBox(); // compute the bounding box of the the meshes geometry
 
@@ -793,19 +964,19 @@
 
           completeBoundingBox.addPoint(box.max).addPoint(box.min); // add the max and min values to your completeBoundingBox
 
-          }
+        }*/
 
         //var objectCenter = completeBoundingBox.center()
-        var a = new THREE.Vector3(  );
-        var objectCenter = completeBoundingBox.getSize(a)
+        //var a = new THREE.Vector3(  );
+        //var objectCenter = completeBoundingBox.getSize(a)
 
-        console.log('This is the center of your Object3D:', objectCenter );
+        //console.log('This is the center of your Object3D:', objectCenter );
 
         // You want the center of you bounding box to be at 0|0|0
 
-        objeto_gcode.position.x -= objectCenter.x;
-        objeto_gcode.position.y -= objectCenter.y;
-        objeto_gcode.position.z -= objectCenter.z;
+        //objeto_gcode.position.x -= objectCenter.x;
+        //objeto_gcode.position.y -= objectCenter.y;
+        //objeto_gcode.position.z -= objectCenter.z;
 
         scene.add( objeto_gcode);
 
@@ -878,7 +1049,7 @@
                 console.log("entro a update");
                 //if (renderer && needUpdateScene) {
                 //if (renderer) {
-                renderer.setSize( gcodepreview.clientWidth - 40, gcodepreview.clientWidth * 0.75 );
+                renderer.setSize( gcodepreview.clientWidth - 40, gcodepreview.clientWidth * 0.5 );
                 renderer.render(scene, camera);
                 //}
             }
@@ -995,11 +1166,11 @@
                 //const { state } = this.props;
                 //const { units, objects } = state;
                 //averiguar si el ancho y alto es lo que se ve o la ventana
-                const width = collapseCardExample3.clientwidth;
-                const height = collapseCardExample3.clientheight;
+                //const width = collapseCardExample3.clientwidth;
+                //const height = collapseCardExample3.clientheight;
 
-                console.log("ancho contenido"+el.clientWidth);
-                console.log("ancho tarjeta"+collapseCardExample3.clientwidth);
+                //console.log("ancho contenido"+el.clientWidth);
+                //console.log("ancho tarjeta"+collapseCardExample3.clientwidth);
 
 
                 scene = new THREE.Scene();
@@ -1013,7 +1184,7 @@
                 renderer.shadowMap.enabled = true;
                 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
                 renderer.setClearColor(new THREE.Color("rgb(100%, 100%, 100%)"), 1);
-                renderer.setSize( gcodepreview.clientWidth - 40, gcodepreview.clientWidth * 0.75 );
+                renderer.setSize( gcodepreview.clientWidth - 40, gcodepreview.clientWidth * 0.5 );
                 //renderer.clear();
                 renderer.setPixelRatio( window.devicePixelRatio );
 
@@ -1032,7 +1203,7 @@
 
                                 camera.aspect = window.innerWidth / window.innerHeight;
                                 camera.updateProjectionMatrix();
-                                renderer.setSize( gcodepreview.clientWidth - 40, gcodepreview.clientWidth * 0.75 );
+                                renderer.setSize( gcodepreview.clientWidth - 40, gcodepreview.clientWidth * 0.5 );
 
                                 controls.handleResize();
                                 controls.update();
@@ -1157,7 +1328,7 @@
         camera.aspect = aspect;
         camera.updateProjectionMatrix();
 
-        renderer.setSize( gcodepreview.clientWidth - 40, gcodepreview.clientWidth * 0.75 );
+        renderer.setSize( gcodepreview.clientWidth - 40, gcodepreview.clientWidth * 0.5 );
 
         controls.handleResize();
 
@@ -1342,16 +1513,31 @@
 
       function render() {
 
-        renderer.setSize( gcodepreview.clientWidth - 40, gcodepreview.clientWidth * 0.75 );
+        renderer.setSize( gcodepreview.clientWidth - 40, gcodepreview.clientWidth * 0.5 );
         renderer.render( scene, camera );
         //controls.update();
 
       }
 
+
+      function moverherramienta()
+      {
+
+
+        var d = mesh.position.x - mesh2.position.x;
+        if (mesh.position.x > mesh2.position.x) {
+          mesh.position.x -= Math.min( speed, d );
+        }
+
+      }
+
+
       function animate() {
 
         requestAnimationFrame( animate );
 
+        //meter aca la animacion de la herramienta
+        moverherramienta();
 
         if (laprox==true)
           {
@@ -1375,24 +1561,26 @@
 
       }
 
-  $('#collapseCardExample3').on('show.bs.collapse', function () {
+  var coll = document.getElementsByClassName("contraerpreview");
+  var i;
 
-                                  if (cargagcode==false){
-                                    cargagcode=true;
-                                    //console.log(gcodepreview);
+  //for (i = 0; i < coll.length; i++) {
+    coll[0].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
 
-                                    //console.log("ancho contenido"+gcodepreview.clientWidth);
-                                    //console.log("ancho tarjeta"+collapseCardExample3.clientwidth);
-                                    //alert("no se que pasa");
-                                    createScene(gcodepreview);
-                                    //init();
-                                    animate();
-                                    //controls.update();
-                                    //updateScene();
-                                    //render();
-                                  }
-                        });
-
+    if (cargagcode==false){
+      cargagcode=true;
+      createScene(gcodepreview);
+      animate();
+      }
+  //}
 </script>
 
 
@@ -1404,8 +1592,107 @@ function listar()
 }
 
 </script>
+<!--
+<script>
+$(document).ready( function () {
+
+    console.log('Comienza a cargar la pagina UNtornoLaM ...');
+
+    $('#dataTable').DataTable({
+        ajax: {
+           url: 'http://66.97.46.179:8080/api/getMyServices',
+           contentType: 'application/json',
+           method: "GET",
+           xhrFields: {
+               withCredentials: false
+           },
+           dataSrc: "services"
+        },
+        columns: [
+            { "data": "name" },
+            { "data": "position" },
+            { "data": "office" },
+            { "data": "age" },
+            { "data": "startDate" },
+            { "data": "salary" }
+        ]
+    });
+
+});</script>-->
+
+<!-- <script src="vendor/datatables/jquery.dataTables.min.js"></script>-->
+<!-- <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>-->
+
+  <!-- Page level custom scripts -->
+<!-- <script src="js/demo/datatables-demo.js"></script>-->
+
+<script type="text/javascript">
+// List with handle
+Sortable.create(listWithHandle, {
+  handle: '.material-icons',
+  animation: 150
+});
+Sortable.create(listWithHandle2, {
+  handle: '.material-icons',
+  animation: 150
+});
+</script>
+<script>
+var coll = document.getElementsByClassName("contraer");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+</script>
 
 
+<!--<script>
+var coll = document.getElementsByClassName("contraerpreview");
+var i;
+
+//for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+
+    if (cargagcode==false){
+      cargagcode=true;
+      createScene(gcodepreview);
+      animate();
+      }
+
+  });
+//}
+</script>-->
+
+<script type="text/javascript">
+
+       function hideToggle(button, elem)
+        {
+            $(button).click(function() { $(elem).toggle(); })
+        }
+
+        hideToggle(".bt1", ".1");
+        hideToggle(".bt2", ".2");
+        hideToggle(".bt3", ".3");
+        hideToggle(".bt4", ".4");
+        hideToggle(".bt5", ".5");
+        hideToggle(".bt6", ".6");
+</script>
 
 </body>
 
