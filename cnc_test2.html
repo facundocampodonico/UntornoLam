@@ -766,7 +766,16 @@ snap.addEventListener("click", function() {
   var laprox=false;
   var loader;
   var objeto_gcode;
+  var destinox,destinoy,destinoz,haymovimiento;
 
+  //var movimientos_eje = new Array();
+  //var movimientos_cantidad = new Array();
+
+  var movimientos_eje = {};
+  var movimientos_cantidad = {};
+  var posicion_anterior = {};
+
+  var movimiento_actual =0;
 
   //localStorage.setItem('prueba', "pepe");
 
@@ -856,48 +865,84 @@ snap.addEventListener("click", function() {
 
       var gcode_code=localStorage.getItem('gcode_codigo');
 
+      //var array_comandos=gcode_code.split("\n");
+      var array_comandos = gcode_code.replace( /;.+/g, '' ).split( '\n' );
 
-      var array_comandos=gcode_code.split("\n");
-
+      haymovimiento=true;
+      var comando_cargado=0;
+      movimientos_eje[0]={};
+      posicion_anterior[0]={};
+      posicion_anterior[0]['x']=posicion_anterior[0]['y']=posicion_anterior[0]['z']=0;
+      movimientos_eje[0]['x']=movimientos_eje[0]['y']=movimientos_eje[0]['z']=0;
 
       for ( var i = 0; i < array_comandos.length; i ++ ) {
         //console.log(lines[i]);
+
         var tokens = array_comandos[ i ].split( ' ' );
-        //console.log(tokens);
+        //console.log("token:"+tokens);
         var cmd = tokens[ 0 ].toUpperCase();
         //console.log(cmd); //los comandos
         //Argumments
         var args = {};
+
+        //movimientos_cantidad[comando_cargado]={};
+
+
+        //console.log(posicion_anterior[0]);
+
+
         tokens.splice( 1 ).forEach( function ( token ) {
 
           if ( token[ 0 ] !== undefined ) {
-
             var key = token[ 0 ].toLowerCase();
-            //console.log(key);
             var value = parseFloat( token.substring( 1 ) );
-            //console.log(value);
+
             args[ key ] = value;
 
-
-
-            /*if (key=="x")
-            {
-            scene.children[3].children[3].translateX(value);
+            if (cmd=="G0" || cmd=="G1")
+              {
+                //console.log(token);
+                if (key!='f')
+                {
+                  movimientos_eje[comando_cargado][key]=value;
+                }
+              }
             }
-            if (key=="y")
-            {scene.children[3].children[3].translateY(value);}
-            if (key=="z")
-            {scene.children[3].children[3].translateZ(value);}*/
-          }
+          });
 
-        } );
+      if (cmd=="G0" || cmd=="G1")
+      {
 
+        //if (movimientos_eje[comando_cargado]['x'])
+        {posicion_anterior[comando_cargado]['x']=movimientos_eje[comando_cargado]['x'];}
+        //if (movimientos_eje[comando_cargado]['y'])
+        {posicion_anterior[comando_cargado]['y']=movimientos_eje[comando_cargado]['y'];}
+        //if (movimientos_eje[comando_cargado]['z'])
+        {
+          //console.log(movimientos_eje[comando_cargado]['z']);
+          posicion_anterior[comando_cargado]['z']=movimientos_eje[comando_cargado]['z'];
+          //console.log(posicion_anterior[comando_cargado]['z']);
+        }
+
+        comando_cargado++;
+        posicion_anterior[comando_cargado]={};
+        movimientos_eje[comando_cargado]={};
+
+
+        movimientos_eje[comando_cargado]['x']=posicion_anterior[comando_cargado-1]['x'];
+        movimientos_eje[comando_cargado]['y']=posicion_anterior[comando_cargado-1]['y'];
+        movimientos_eje[comando_cargado]['z']=posicion_anterior[comando_cargado-1]['z'];
+
+
+//        comando_cargado++;
+//        posicion_anterior[comando_cargado]={};
+//        movimientos_eje[comando_cargado]={};
+
+      }
     }
 
-
-    //console.log(scene.children[3].children[2].position);
-    //console.log(scene.children);
-    //scene.children[3].children[3].translateZ(25);
+console.log(movimientos_eje);
+console.log(posicion_anterior);
   });
 
 
@@ -1351,11 +1396,6 @@ snap.addEventListener("click", function() {
                         "rgb(44%, 44%, 44%)" // grid
                         //colornames('gray 44') // grid
                     );
-                    /*_each(gridLine.children, (o) => {
-                        o.material.opacity = 0.15;
-                        o.material.transparent = true;
-                        o.material.depthWrite = false;
-                    });*/
                     //son 242 lineas + el 0
                     for (let a = 0; a <= (gridCount*4)+1; ++a) {
 
@@ -1365,24 +1405,6 @@ snap.addEventListener("click", function() {
                       gridLine.children[a].material.depthWrite = false;
                     }
 
-                    /*gridLine.children[0].material.opacity = 0.15;
-                    gridLine.children[0].material.transparent = true;
-                    gridLine.children[0].material.depthWrite = false;
-                    gridLine.children[1].material.opacity = 0.15;
-                    gridLine.children[1].material.transparent = true;
-                    gridLine.children[1].material.depthWrite = false;
-                    gridLine.children[2].material.opacity = 0.15;
-                    gridLine.children[2].material.transparent = true;
-                    gridLine.children[2].material.depthWrite = false;
-                    gridLine.children[3].material.opacity = 0.15;
-                    gridLine.children[3].material.transparent = true;
-                    gridLine.children[3].material.depthWrite = false;
-                    gridLine.children[4].material.opacity = 0.15;
-                    gridLine.children[4].material.transparent = true;
-                    gridLine.children[4].material.depthWrite = false;
-                    gridLine.children[5].material.opacity = 0.15;
-                    gridLine.children[5].material.transparent = true;
-                    gridLine.children[5].material.depthWrite = false;*/
 
                     gridLine.name = 'GridLine';
                     group.add(gridLine);
@@ -1522,12 +1544,113 @@ snap.addEventListener("click", function() {
 
       function moverherramienta()
       {
+        //movimiento_actual
+        if (haymovimiento)
+          {
+            console.log(movimientos_eje[movimiento_actual]);
+            //console.log(movimientos_eje[movimiento_actual]['z']);
+            //console.log(movimientos_cantidad[movimiento_actual]);
+            //console.log(movimiento_actual);
+            console.log("posicionx: " + scene.children[3].children[3].position.x + " - destinox: "+ movimientos_eje[movimiento_actual]['x']);
+            //if (movimientos_eje[movimiento_actual]['x'])
+            //{
+            if (scene.children[3].children[3].position.x < movimientos_eje[movimiento_actual]['x'])
+              {
+                //console.log(posicion_anterior[movimiento_actual]['x']);
+                //console.log(movimientos_eje[movimiento_actual]['x']-posicion_anterior[movimiento_actual-1]['x']);
+                if (movimiento_actual>0)
+                {
+                  scene.children[3].children[3].position.x += (movimientos_eje[movimiento_actual]['x']-posicion_anterior[movimiento_actual-1]['x'])/76;
+                }
+                else
+                {
+                  scene.children[3].children[3].position.x += (movimientos_eje[movimiento_actual]['x'])/76;
+                }
+                if (scene.children[3].children[3].position.x >= movimientos_eje[movimiento_actual]['x'])
+                {
+                  scene.children[3].children[3].position.x = movimientos_eje[movimiento_actual]['x'];
+                  movimiento_actual++;
+                }
+                //scene.children[3].children[3].translateZ(value);
+              }
+            if (scene.children[3].children[3].position.x > movimientos_eje[movimiento_actual]['x'])
+                {
+                  scene.children[3].children[3].position.x += (movimientos_eje[movimiento_actual]['x']-posicion_anterior[movimiento_actual-1]['x'])/76;
+                  if (scene.children[3].children[3].position.x <= movimientos_eje[movimiento_actual]['x'])
+                  {
+                    scene.children[3].children[3].position.x = movimientos_eje[movimiento_actual]['x'];
+                    movimiento_actual++;
+                  }
+                  //scene.children[3].children[3].translateZ(value);
+                }
+            //}
+            console.log("posiciony: " + scene.children[3].children[3].position.y + " - destinoy: "+ movimientos_eje[movimiento_actual]['y']);
+            //if (movimientos_eje[movimiento_actual]['y'])
+            //{
+            if (scene.children[3].children[3].position.y < movimientos_eje[movimiento_actual]['y'])
+                {
+                  if (movimiento_actual>0)
+                  {
+                  scene.children[3].children[3].position.y += (movimientos_eje[movimiento_actual]['y']-posicion_anterior[movimiento_actual-1]['y'])/76;
+                  }
+                  else {
+                    scene.children[3].children[3].position.y += (movimientos_eje[movimiento_actual]['y'])/76;
+                  }
+                  if (scene.children[3].children[3].position.y >= movimientos_eje[movimiento_actual]['y'])
+                  {
+                    scene.children[3].children[3].position.y = movimientos_eje[movimiento_actual]['y'];
+                    movimiento_actual++;
+                  }
+                  //scene.children[3].children[3].translateZ(value);
+                }
+            if (scene.children[3].children[3].position.y > movimientos_eje[movimiento_actual]['y'])
+                {
+                  scene.children[3].children[3].position.y +=  (movimientos_eje[movimiento_actual]['y']-posicion_anterior[movimiento_actual-1]['y'])/76;
+                  if (scene.children[3].children[3].position.y <= movimientos_eje[movimiento_actual]['y'])
+                  {
+                    scene.children[3].children[3].position.y = movimientos_eje[movimiento_actual]['y'];
+                    movimiento_actual++;
+                  }
+                  //scene.children[3].children[3].translateZ(value);
+                }
+
+              //}
+
+            //if (movimientos_eje[movimiento_actual]['z'])
+            //{
+            if (posicion_anterior[movimiento_actual-1])
+              {console.log("anteriorz: " + posicion_anterior[movimiento_actual-1]['z'] + "posicionz: " + scene.children[3].children[3].position.z + " - destinoz: "+ movimientos_eje[movimiento_actual]['z']);}
+
+                if (scene.children[3].children[3].position.z < movimientos_eje[movimiento_actual]['z'])
+                  {
+                   if (movimiento_actual>0)
+                      {scene.children[3].children[3].position.z += (movimientos_eje[movimiento_actual]['z']-posicion_anterior[movimiento_actual-1]['z'])/25.4;}
+                    else {scene.children[3].children[3].position.z += (movimientos_eje[movimiento_actual]['z'])/25.4;}
+                   if (scene.children[3].children[3].position.z >= movimientos_eje[movimiento_actual]['z'])
+                    {
+                     scene.children[3].children[3].position.z = movimientos_eje[movimiento_actual]['z'];
+                     movimiento_actual++;
+                    }
+                    //scene.children[3].children[3].translateZ(value);
+                  }
+                if (scene.children[3].children[3].position.z > movimientos_eje[movimiento_actual]['z'])
+                    {
+                      scene.children[3].children[3].position.z += (movimientos_eje[movimiento_actual]['z']-posicion_anterior[movimiento_actual-1]['z'])/25.4;
+                      if (scene.children[3].children[3].position.z <= movimientos_eje[movimiento_actual]['z'])
+                      {
+                        scene.children[3].children[3].position.z = movimientos_eje[movimiento_actual]['z'];
+                        movimiento_actual++;
+                      }
+                      //scene.children[3].children[3].translateZ(value);
+                    }
+            //}
 
 
-        var d = mesh.position.x - mesh2.position.x;
-        if (mesh.position.x > mesh2.position.x) {
-          mesh.position.x -= Math.min( speed, d );
-        }
+          }
+        //var d = mesh.position.x - mesh2.position.x;
+        //if (mesh.position.x > mesh2.position.x) {
+        //  mesh.position.x -= Math.min( speed, d );
+        //}
 
       }
 
