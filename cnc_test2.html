@@ -876,20 +876,12 @@ snap.addEventListener("click", function() {
       movimientos_eje[0]['x']=movimientos_eje[0]['y']=movimientos_eje[0]['z']=0;
 
       for ( var i = 0; i < array_comandos.length; i ++ ) {
-        //console.log(lines[i]);
+
 
         var tokens = array_comandos[ i ].split( ' ' );
-        //console.log("token:"+tokens);
+
         var cmd = tokens[ 0 ].toUpperCase();
-        //console.log(cmd); //los comandos
-        //Argumments
         var args = {};
-
-        //movimientos_cantidad[comando_cargado]={};
-
-
-        //console.log(posicion_anterior[0]);
-
 
         tokens.splice( 1 ).forEach( function ( token ) {
 
@@ -901,8 +893,7 @@ snap.addEventListener("click", function() {
 
             if (cmd=="G0" || cmd=="G1")
               {
-                //console.log(token);
-                if (key!='f')
+                if (key=='x' || key=='y' || key=='z')
                 {
                   movimientos_eje[comando_cargado][key]=value;
                 }
@@ -913,51 +904,31 @@ snap.addEventListener("click", function() {
       if (cmd=="G0" || cmd=="G1")
       {
 
-        //if (movimientos_eje[comando_cargado]['x'])
-        {posicion_anterior[comando_cargado]['x']=movimientos_eje[comando_cargado]['x'];}
-        //if (movimientos_eje[comando_cargado]['y'])
-        {posicion_anterior[comando_cargado]['y']=movimientos_eje[comando_cargado]['y'];}
-        //if (movimientos_eje[comando_cargado]['z'])
-        {
-          //console.log(movimientos_eje[comando_cargado]['z']);
-          posicion_anterior[comando_cargado]['z']=movimientos_eje[comando_cargado]['z'];
-          //console.log(posicion_anterior[comando_cargado]['z']);
-        }
+        posicion_anterior[comando_cargado]['x']=movimientos_eje[comando_cargado]['x'];
+        posicion_anterior[comando_cargado]['y']=movimientos_eje[comando_cargado]['y'];
+        posicion_anterior[comando_cargado]['z']=movimientos_eje[comando_cargado]['z'];
 
         comando_cargado++;
         posicion_anterior[comando_cargado]={};
         movimientos_eje[comando_cargado]={};
 
-
         movimientos_eje[comando_cargado]['x']=posicion_anterior[comando_cargado-1]['x'];
         movimientos_eje[comando_cargado]['y']=posicion_anterior[comando_cargado-1]['y'];
         movimientos_eje[comando_cargado]['z']=posicion_anterior[comando_cargado-1]['z'];
 
-
-//        comando_cargado++;
-//        posicion_anterior[comando_cargado]={};
-//        movimientos_eje[comando_cargado]={};
-
       }
     }
 
-console.log(movimientos_eje);
-console.log(posicion_anterior);
   });
 
 
-  function move(speed) {
-    var d = mesh.position.x - mesh2.position.x;
-    if (mesh.position.x > mesh2.position.x) {
-      mesh.position.x -= Math.min( speed, d );
-    }
-  }
 
     $("#buttoncargar").click(function(){
         loader = new GCodeLoader();
         objeto_gcode = new THREE.Object3D();
         //objeto_gcode.matrixAutoUpdate=false;
         //loader.load( './3d/models/gcode/benchy.gcode', function ( object ) {
+        //loader.load( './3d/models/gcode/circulo.gcode', function ( object ) {
         //loader.load( './3d/models/gcode/boomerangv4pulgadas.gcode', function ( object ) {
         loader.load( './3d/models/gcode/boomerangv4mm.gcode', function ( object ) {
         //loader.load( './3d/models/gcode/boomerangv4milimetros.gcode', function ( object ) {
@@ -1544,10 +1515,20 @@ console.log(posicion_anterior);
 
       function moverherramienta()
       {
+        //var avancey=1;
         //movimiento_actual
         if (haymovimiento)
           {
-            console.log(movimientos_eje[movimiento_actual]);
+            /*if (movimiento_actual>0)
+            {
+              if (movimientos_eje[movimiento_actual]['x']!=0)
+              {
+              console.log(movimientos_eje[movimiento_actual]['y']-posicion_anterior[movimiento_actual-1]['y']/movimientos_eje[movimiento_actual]['x']-posicion_anterior[movimiento_actual-1]['x']);
+              //avancey = movimientos_eje[movimiento_actual]['y']-posicion_anterior[movimiento_actual-1]['y']/movimientos_eje[movimiento_actual]['x']-posicion_anterior[movimiento_actual-1]['x'];
+              avancey = movimientos_eje[movimiento_actual]['y']/movimientos_eje[movimiento_actual]['x'];
+              //var avancez = movimientos_eje[movimiento_actual]['z']/movimientos_eje[movimiento_actual]['x'];
+              }
+            }*/
             //console.log(movimientos_eje[movimiento_actual]['z']);
             //console.log(movimientos_cantidad[movimiento_actual]);
             //console.log(movimiento_actual);
@@ -1560,11 +1541,13 @@ console.log(posicion_anterior);
                 //console.log(movimientos_eje[movimiento_actual]['x']-posicion_anterior[movimiento_actual-1]['x']);
                 if (movimiento_actual>0)
                 {
-                  scene.children[3].children[3].position.x += (movimientos_eje[movimiento_actual]['x']-posicion_anterior[movimiento_actual-1]['x'])/76;
+                  //scene.children[3].children[3].position.x += 1;
+                  scene.children[3].children[3].position.x += (movimientos_eje[movimiento_actual]['x']-posicion_anterior[movimiento_actual-1]['x'])/75;
                 }
                 else
                 {
-                  scene.children[3].children[3].position.x += (movimientos_eje[movimiento_actual]['x'])/76;
+                  scene.children[3].children[3].position.x += (movimientos_eje[movimiento_actual]['x'])/75;
+                  //scene.children[3].children[3].position.x += 1;
                 }
                 if (scene.children[3].children[3].position.x >= movimientos_eje[movimiento_actual]['x'])
                 {
@@ -1575,7 +1558,8 @@ console.log(posicion_anterior);
               }
             if (scene.children[3].children[3].position.x > movimientos_eje[movimiento_actual]['x'])
                 {
-                  scene.children[3].children[3].position.x += (movimientos_eje[movimiento_actual]['x']-posicion_anterior[movimiento_actual-1]['x'])/76;
+                  //scene.children[3].children[3].position.x -= 1;
+                  scene.children[3].children[3].position.x += (movimientos_eje[movimiento_actual]['x']-posicion_anterior[movimiento_actual-1]['x'])/75;
                   if (scene.children[3].children[3].position.x <= movimientos_eje[movimiento_actual]['x'])
                   {
                     scene.children[3].children[3].position.x = movimientos_eje[movimiento_actual]['x'];
@@ -1591,10 +1575,12 @@ console.log(posicion_anterior);
                 {
                   if (movimiento_actual>0)
                   {
-                  scene.children[3].children[3].position.y += (movimientos_eje[movimiento_actual]['y']-posicion_anterior[movimiento_actual-1]['y'])/76;
+                  scene.children[3].children[3].position.y += (movimientos_eje[movimiento_actual]['y']-posicion_anterior[movimiento_actual-1]['y'])/75;
+                  //scene.children[3].children[3].position.y += avancey;
                   }
                   else {
-                    scene.children[3].children[3].position.y += (movimientos_eje[movimiento_actual]['y'])/76;
+                    scene.children[3].children[3].position.y += (movimientos_eje[movimiento_actual]['y'])/75;
+                    //scene.children[3].children[3].position.y += avancey;
                   }
                   if (scene.children[3].children[3].position.y >= movimientos_eje[movimiento_actual]['y'])
                   {
@@ -1605,7 +1591,8 @@ console.log(posicion_anterior);
                 }
             if (scene.children[3].children[3].position.y > movimientos_eje[movimiento_actual]['y'])
                 {
-                  scene.children[3].children[3].position.y +=  (movimientos_eje[movimiento_actual]['y']-posicion_anterior[movimiento_actual-1]['y'])/76;
+                  scene.children[3].children[3].position.y +=  (movimientos_eje[movimiento_actual]['y']-posicion_anterior[movimiento_actual-1]['y'])/75;
+                  //scene.children[3].children[3].position.y -=  avancey;
                   if (scene.children[3].children[3].position.y <= movimientos_eje[movimiento_actual]['y'])
                   {
                     scene.children[3].children[3].position.y = movimientos_eje[movimiento_actual]['y'];
@@ -1624,8 +1611,8 @@ console.log(posicion_anterior);
                 if (scene.children[3].children[3].position.z < movimientos_eje[movimiento_actual]['z'])
                   {
                    if (movimiento_actual>0)
-                      {scene.children[3].children[3].position.z += (movimientos_eje[movimiento_actual]['z']-posicion_anterior[movimiento_actual-1]['z'])/25.4;}
-                    else {scene.children[3].children[3].position.z += (movimientos_eje[movimiento_actual]['z'])/25.4;}
+                      {scene.children[3].children[3].position.z += (movimientos_eje[movimiento_actual]['z']-posicion_anterior[movimiento_actual-1]['z'])/75;}
+                    else {scene.children[3].children[3].position.z += (movimientos_eje[movimiento_actual]['z'])/75;}
                    if (scene.children[3].children[3].position.z >= movimientos_eje[movimiento_actual]['z'])
                     {
                      scene.children[3].children[3].position.z = movimientos_eje[movimiento_actual]['z'];
@@ -1635,7 +1622,7 @@ console.log(posicion_anterior);
                   }
                 if (scene.children[3].children[3].position.z > movimientos_eje[movimiento_actual]['z'])
                     {
-                      scene.children[3].children[3].position.z += (movimientos_eje[movimiento_actual]['z']-posicion_anterior[movimiento_actual-1]['z'])/25.4;
+                      scene.children[3].children[3].position.z += (movimientos_eje[movimiento_actual]['z']-posicion_anterior[movimiento_actual-1]['z'])/75;
                       if (scene.children[3].children[3].position.z <= movimientos_eje[movimiento_actual]['z'])
                       {
                         scene.children[3].children[3].position.z = movimientos_eje[movimiento_actual]['z'];
@@ -1645,6 +1632,11 @@ console.log(posicion_anterior);
                     }
             //}
 
+            if (movimiento_actual>0)
+              {
+              if (movimientos_eje[movimiento_actual]['x']==posicion_anterior[movimiento_actual-1]['x']&&movimientos_eje[movimiento_actual]['y']==posicion_anterior[movimiento_actual-1]['y']&&movimientos_eje[movimiento_actual]['z']==posicion_anterior[movimiento_actual-1]['z'])
+              {movimiento_actual++;}
+              }
 
           }
         //var d = mesh.position.x - mesh2.position.x;
