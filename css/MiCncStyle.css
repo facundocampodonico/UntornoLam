@@ -71,7 +71,7 @@
   content: "\2212";
 }
 .contentcnc {
-  padding: 0 18px;
+  padding: 0 6px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
@@ -80,4 +80,11 @@
   border-bottom: 1px solid #e3e6f0;
   border-left: 1px solid #e3e6f0;
   border-right: 1px solid #e3e6f0;
+}
+.tablecnc{
+  margin-bottom:0 px;
+  margin-top: 0 px;
+  border-spacing: 10 !important;
+  border-collapse: collapse !important;
+
 }
