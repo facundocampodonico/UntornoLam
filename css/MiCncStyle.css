@@ -15,7 +15,7 @@
   color: #36b9cc;
    font-weight: bold;
   cursor: pointer;
-  padding: 18px;
+  padding: 8px;/*18px original*/
   width: 100%;
   border: none;
   text-align: left;
@@ -45,7 +45,7 @@
   color: #36b9cc;
    font-weight: bold;
   cursor: pointer;
-  padding: 18px;
+  padding: 8px;/*18px*/
   width: 100%;
   border: none;
   text-align: left;
