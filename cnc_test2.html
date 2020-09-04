@@ -39,6 +39,11 @@
     var cargagcode=false;
   </script>
 
+<script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
+
+  <!--<script type='module' src="cnc_visor.js"></script>-->
+<script type='text/javascript' src="cnc_visor2.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -428,7 +433,7 @@
     </div>
 
             <div class=row>
-
+              <div id="com-chilipeppr-widget-3dviewer"></div>
                 <div class="col-lg-3" data-toggle="tooltip" title="Descripción de la funcionalidad">
                  <div class="card shadow mb-6">
                   <div id="listWithHandle" class="list-group1">
@@ -556,7 +561,8 @@
                 <div class="card shadow mb-4">
                     <button type="button" class="contraerpreview"></span> &nbsp; 3D Preview</button>
                     <div class="contentcnc">
-                      <div class="card-body" id="gcodepreview">
+                      <!--<div class="card-body" id="gcodepreview">-->
+                      <div class="card-body">
                       </div>
                       <div class="card-body">
                         <div class="row">
@@ -696,7 +702,7 @@
 
 
 
-  <script>
+  <!--<script>
   'use strict';
 
   const video = document.getElementById('video');
@@ -737,10 +743,10 @@
           context.drawImage(video, 0, 0, 640, 480);
   });
 
-  </script>
+</script>-->
 
 
-    <script type="module">
+  <!--  <script type="module">
 
   	import * as THREE from './3d/build/three.module.js';
 
@@ -1704,7 +1710,7 @@
         animate();
         }
     //}
-  </script>
+  </script>-->
 
 
   <script>
