@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <title><!--(auto-fill by runme.js--></title>
+
+    <!-- ChiliPeppr is based on bootstrap CSS. -->
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Customized version of require.js for ChiliPeppr. Please see require.js docs for how
+    ChiliPeppr's dependency system works as it's based on require.js. -->
+    <script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
+
+    <!-- widget.css DON'T REMOVE -->
+    <style type='text/css'>
+        /* widget.css will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+    </style>
+    <link rel="stylesheet" type="text/css" href="widget.css">
+    <!-- DON'T REMOVE end widget.css -->
+
+    <!-- widget.js DON'T REMOVE -->
+    <script type='text/javascript'>
+        //<![CDATA[
+        /* widget.js will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+        //]]>
+    </script>
+    <script type='text/javascript' src="widget.js"></script>
+    <!-- DON'T REMOVE end widget.js -->
+
+</head>
+
+<body>
+    <div id="com-chilipeppr-widget-cam" class="panel panel-default">
+        <div class="panel-heading ">
+
+            <div class="btn-toolbar pull-right" role="toolbar">
+                <div class="btn-group">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-camera"></span>
+                            <span class="caret" style="font-size:10px; margin-left:-2px; xmargin-right:-4px;"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li><a class="one-col" href="javascript:">1 Column Layout</a></li>
+                            <li><a class="two-col" href="javascript:">2 Column Layout</a></li>
+                            <li><a class="three-col" href="javascript:">3 Column Layout</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a class="" href="javascript:"><span class="glyphicon glyphicon-refresh"></span> Refresh Cam List</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li role="presentation" class="dropdown-header server-192-168-1-35">ws://192.168.1.35&nbsp;raspi3</li>
+                            <li><a class="" href="javascript:">
+                                <div src="" class="cam-img" style="background-image:url('cam-raspicam3.png');"></div>
+                                Raspicam
+                                <br><span style="font-size:10px;">2592×1944, 1920×1080, 1296×972, 
+                                1296×730, 640x480. 250ma</span>
+                            </a></li>
+                            <li><a class="" href="javascript:">
+                                <div src="" class="cam-img" style="background-image:url('cam-cubeternet.png');"></div>
+                                USB Cubeternet GL-UPC822 UVC WebCam<br>
+                                <span style="font-size:10px;">640x480, 320x240. 200ma</span>
+                            </a></li>
+                            <li><a class="" href="javascript:">
+                                <div src="" class="cam-img" style="background-image:url('cam-endoscope.png');"></div>
+                                USB Silicon Motion, Inc. - Taiwan (formerly Feiya Technology Corp.)
+                                <br><span style="font-size:10px;">640x480, 320x240. 500ma</span>
+                            </a></li>
+                            <li role="presentation" class="dropdown-header server-192-168-1-37">ws://192.168.1.37&nbsp;raspi3-cam</li>
+                            <li><a class="disabled" href="javascript:" disabled>
+                                <div src="" class="cam-img" style="background-image:url('cam-raspicam3.png');"></div>
+                                Raspicam (disabled)
+                                <br><span style="font-size:10px;">2592×1944, 1920×1080, 1296×972, 
+                                1296×730, 640x480. 250ma</span>
+                            </a></li>
+                            <li><a class="" href="javascript:">
+                                <div src="" class="cam-img" style="background-image:url('cam-lifecam.png');"></div>
+                                USB Microsoft Corp. LifeCam HD-3000</a></li>
+                            <li><a class="" href="javascript:">
+                                <div src="" class="cam-img" style="xbackground-image:url('cam-endoscope.png');"></div>
+                                USB GEMBIRD
+                                <br><span style="font-size:10px;">640x480, 320x240. 500ma</span>
+                            </a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-xs btn-default btn-stopstreaming" data-delay="1000" 
+                        data-animation="true" data-placement="auto" data-container="body" data-trigger="hover" 
+                        data-title="Stop Streaming" data-content="Stop streaming the video feed from your server.">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-default btn-startstreaming" data-delay="1000" 
+                        data-animation="true" data-placement="auto" data-container="body" data-trigger="hover" 
+                        data-title="Start Streaming" data-content="Start streaming the video feed from your server.">
+                        <span class="glyphicon glyphicon-ok-circle"></span>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-default btn-preferences" data-delay="1000" 
+                        data-animation="true" data-placement="auto" data-container="body" data-trigger="hover" 
+                        data-title="Prefrences" data-content="Set or select preferences for this widget.">
+                        <span class="glyphicon glyphicon glyphicon-cog"></span>
+                    </button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-xs btn-default hidebody"><span class="glyphicon glyphicon-chevron-up"></span>
+                    </button>
+                </div>
+                <div class="btn-group">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+                    </div>
+                </div>
+            </div> <span class="panel-title" data-toggle="popover">Cam</span> <span style="font-size:9px;" class="fb-build">v1</span>
+
+        </div>
+        <div class="panel-body">
+            
+            <div class="well install-msg notconnected hidden">
+                You are not connected to a Serial Port JSON Server. Please connect 
+                and then retry.
+                
+                You may also scan your local subnet for SPJS servers. We will find
+                cameras on all SPJS servers and list them above.
+                
+            </div>
+            
+            <div class="well install-msg choiceofspjs hidden">
+                Choose which SPJS server is on the machine that your camera is on.
+                
+                Default SPJS (the one you connect to in the SPJS widget)
+                
+            </div>
+            
+            <div class="well install-msg choosemethod hidden">
+                This widget supports two styles of streaming video using UV4L WebRTC or 
+                using Motion. WebRTC uses H264 compression so it is more intensive on the 
+                server's CPU and less intensive inside ChiliPeppr. Motion uses MJPEG so it 
+                is less intensive on CPU for the server, but a bit more intensive inside 
+                ChiliPeppr.
+                
+                <p>UV4L WebRTC</p>
+                <p>Motion MJPEG</p>
+            </div>
+            
+            <div class="well install-msg allowexec hidden">
+                <p>You need to restart SPJS with the -allowexec command line switch to turn on SPJS's 
+                ability to allow direct terminal commands to be sent to your Raspberry Pi.</p>
+                
+                <p>Or, enter your username/password here for your Raspberry Pi to enable this 
+                widget to authenticate on your behalf and send commands.</p>
+                
+                <input type="text" class="form-control username" placeholder="Username" value="pi">
+                <input type="password" class="form-control password" placeholder="Password" value="raspberry">
+                <button type="button" class="btn btn-default btn-login">
+                    Login
+                </button>
+                
+            </div>
+            
+            <div class="well install-msg bados hidden">
+                Your SPJS appears to be running a <span class="os"></span> host. 
+                If you are not running on Linux or a Raspberry Pi you can't 
+                use this widget. We use uv4l as the WebRTC server and it is only
+                available for Linux. Feel free to fork this widget to add 
+                <span class="os"></span> capability.
+            </div>
+            
+            <div class="well install-msg linux hidden">
+                Your SPJS is running on Linux so you can use this widget with 
+                the uv4l WebRTC server, but we don't have that install script 
+                setup yet. If you are interested in forking this widget and 
+                mimicking the Raspberry Pi setup please feel free and then push 
+                the changes to Github http://github.com/chilipeppr/widget-cam 
+                repository.
+            </div>
+
+            <div class="well install-msg eligible hidden">
+                <p>Your SPJS is running on a Raspberry Pi so you are eligible to use 
+                this widget. You must click the install button to have this widget 
+                configure your Raspberry Pi automatically.</p>
+                
+                <button class="btn btn-default btn-install">Install Cam Server</button>
+                
+                <pre class="terminal"></pre>
+            </div>
+            
+            <div class="well install-msg isinstalled hidden">
+                <p>You actually have uv4l installed, but it is not running. We can 
+                launch it for you if you click below.</p>
+                
+                <button class="btn btn-default btn-install">Launch Cam Server</button>
+            </div>
+            
+            <div class="xoverlayWrapper xwell install-msg isrunning xhidden">
+                <div class="videoWrapper video1" style="width:33.33%;float:left;xborder:1px solid green;">
+                    <video id="com-chilipeppr-widget-cam-remote-video" style="margin-bottom: -5px;width: 100%;"></video>
+                    <div class="cam-line-horiz"></div>
+                    <div class="cam-line-vert"></div>
+                </div>
+                <div class="videoWrapper video2" style="width:33.33%;float:left;xborder:1px solid yellow;background-color:#333;">
+                    <video id="com-chilipeppr-widget-cam-remote-video" style="margin-bottom: -5px;width: 100%;"></video>
+                    <div class="cam-line-horiz"></div>
+                    <div class="cam-line-vert"></div>
+                </div>
+                <div class="videoWrapper video3" style="width:33.33%;float:left;background-color:#444;">
+                    <video id="com-chilipeppr-widget-cam-remote-video" style="margin-bottom: -5px;width: 100%;"></video>
+                    <div class="cam-line-horiz"></div>
+                    <div class="cam-line-vert"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal fade settings-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">WebRTC Settings</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <p></p>
+    
+                            <input class="hidden" required type="text" id="signalling_server" 
+                                value="192.168.1.16:8889" 
+                                title="<host>:<port>, default address is autodetected"/>
+                            <input class="hidden" type="text" id="ice_servers" value="" 
+                                title="array of RTCIceServer objects as valid JSON string"/>
+                
+                            <label>
+                                <input type="checkbox" xonclick="remote_hw_vcodec_selection();" 
+                                class="remote_hw_vcodec" name="remote_hw_vcodec" 
+                                value="remote_hw_vcodec" 
+                                title="try to force the use of the hardware codec for both encoding and decoding if enabled and supported">
+                                Force use of hardware codec for
+                            </label>
+                            <select class="remote_vformat" name="remote_vformat" 
+                            xonclick="remote_hw_vcodec_format_selection();" 
+                            title="available resolutions and frame rates at the min., max. and start configured bitrates for adaptive streaming which will be scaled from the base 720p 30fps">
+                                <option value="10" selected="selected">320x240 30 fps</option>
+                                <option value="20">352x288 30 fps</option>
+                                <option value="30" xselected="selected">640x480 30 fps</option>
+                                <option value="40">960x720 30 fps</option>
+                                <option value="50">1024x768 30 fps</option>
+                                <option value="60">1280x720 30 fps, kbps min.1500 max.4000 start2000</option>
+                                <option value="70">1280x768 30 fps</option>
+                                <option value="80">1280x960 30 fps</option>
+                                <option value="90">1600x768 30 fps</option>
+                                <option value="100">1920x1072 15 fps</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>                
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+        <div class="modal fade preferences-window" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Camera  Options</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <p>The Camera widget will get a "motion" MJPEG Stream from your url. Please install motion and input the complete url to the MJPEG Stream.</p>
+    
+                            <div class="input-group" style="width:200px;">
+                                <input type="string" class="form-control mjpeg-url" placeholder="url for mjpeg stream" value="http://127.0.0.1:9081" />
+                                <div class="input-group-addon">url</div>
+                            </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>                
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    
+    </div>
+</body>
+
+</html>
