@@ -628,7 +628,9 @@
 // Configuracion
 	// @TODO: aca falta las rutas del servidor
 	const RUTA_ACCESO = 'http://66.97.46.179:8080/';
-	const RUTA_API = 'api/hello';
+  //const RUTA_ACCESO = 'http://localhost:8080/';
+  const RUTA_API = 'api/hello';
+	const RUTA_AUTHENTICATE = 'api/authentication';
 
 
 // Obtengo el token
@@ -641,6 +643,43 @@ var email     = window.sessionStorage.getItem('email');
 var cncs      = JSON.parse( localStorage.getItem('miCncs') || "[]" );
 
 $(document).ready(function() {
+  // Handle para saber si puede acceder a esta pantalla
+  token     = window.sessionStorage.getItem('tokenUntornolam');
+
+  if(!token){
+    alert('No habia token - este mensaje seguro desaparece en un futuro');
+    // Redirecciono
+    window.location.href = './login.html';
+  }
+
+
+  $.ajax({
+    type: 'GET',
+    enctype: 'multipart/form-data',
+    url: RUTA_ACCESO + RUTA_AUTHENTICATE,
+    headers: {
+        "Authorization": `Bearer ${token}`
+    },
+    data: JSON.stringify( {} ),
+    processData: false,
+    contentType: "application/json; charset=utf-8",
+    cache: false,
+    crossDomain: true,
+
+    success: function( data, textStatus, jQxhr ){
+
+        if(data.status != 'OK'){
+          alert('Debe ingresar - este mensaje seguro desaparece en un futuro');
+          // Redirecciono
+          window.location.href = './login.html';
+        }
+
+    },
+    error: function( jqXhr, textStatus, errorThrown ){
+      console.log( errorThrown );
+    }
+  });
+
 
 	// Handle del boton para la configuracion
 	$("#test").click(function(){

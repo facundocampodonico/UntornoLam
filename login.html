@@ -114,115 +114,136 @@
 
 
 $(document).ready(function() {
+  // Get the input field
+  var input = document.getElementById("formLogin");
+
+  // Execute a function when the user releases a key on the keyboard
+  input.addEventListener("keyup", function(event) {
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode === 13) {
+          // Cancel the default action, if needed
+          event.preventDefault();
+          login();
+      }
+  });
+
 	// Handle del boton para la configuracion
 	$("#ingresar").click(function(){
-		// Es una prueba 
+		// Es una prueba
     // La prueba la hizo Gui
 		// stop submit the form, we will post it manually.
         event.preventDefault();
 
-		var user = $('#user').val();
-		var password = $('#password').val();
-
-		/*
-
-		Esto es para futuro request futuros
-		headers: {
-					"Authorization": `Bearer ${window.sessionStorage.getItem('tokenUntornolam')}`
-				},
-
-		*/
-
-		// Armo el ajax, para enviar los datos correspondientes
-		$.ajax({
-			type: 'POST',
-			enctype: 'multipart/form-data',
-			url: RUTA_ACCESO + RUTA_API,
-			data: JSON.stringify( {
-				'user': user,
-				'password': password
-			} ),
-			processData: false,
-			contentType: "application/json; charset=utf-8",
-			cache: false,
-			//headers: {  'Access-Control-Allow-Origin': "*" },
-			crossDomain: true,
-
-			success: function( data, textStatus, jQxhr ){
-
-        //alert( JSON.stringify(data));
-
-				// En caso de exito
-				if( data.status === 'OK'){
-					// Si fue exitoso el login
-
-					// Guardo el token
-					sessionStorage.setItem('tokenUntornolam', data.token);
-
-          // Guardo la informacion del usuario
-					sessionStorage.setItem('username', data.info.usuario);
-					sessionStorage.setItem('nombre', data.info.nombre);
-					sessionStorage.setItem('apellido', data.info.apellido);
-					sessionStorage.setItem('nivelAcceso', data.info.nivelAcceso);
-					sessionStorage.setItem('email', data.info.email);
-
-          // Primero borro la informacion previa que haya
-          localStorage.removeItem('miCncs');
-          localStorage.removeItem('miDisenios');
-
-          // Informacion de los CNCs del usuario que ingresa
-          localStorage.setItem('miCncs', JSON.stringify(data.cnc) );
-
-          // Guardo el dato de la cantidad de CNC que tiene el usuario 
-          // @TODO: esto puede que un futuro cambie 
-          var countCncs = 0 +  data.cnc.length ;
-
-          localStorage.setItem('countCnc', countCncs);
-
-          // Informacion de los Disenios del usuario que ingresa
-          localStorage.setItem('miDisenios', JSON.stringify(data.disenios) );
-
-          // Guardo el dato de la cantidad de Disenios que tiene el usuario 
-          // @TODO: esto puede que un futuro cambie 
-          var countDisenios = 0 +  data.disenios.length ;
-       
-          localStorage.setItem('countDisenios', countDisenios);
-          
-          // @TODO: Falta funcionalidad del backend countReportes
-
-          //  @TODO: Falta funcionalidad del backend countPendientes
-
-          //  @TODO: Falta funcionalidad del backend AdeundaPago
-
-          //  @TODO: Falta funcionalidad del backend ServicionEnCurso
-          
-					// Redirecciono
-					window.location.href = './index.html';
-				}else{
-					// Aca tienen que estar los handler del error tipo
-					switch (data.status) {
-						  case 'ERROR_USER':
-								//	El usuario o contraseña es incorrecto
-								// 	Agregar label informativo....
-								break;
-						  case 'ERROR_EXAMPLE':
-								//	Otro error handleable
-								//	Acciones...
-								break;
-						  default:
-								//Declaraciones ejecutadas cuando ninguno de los valores coincide con el valor de la expresión
-								break;
-						}
-				}
-
-
-			},
-			error: function( jqXhr, textStatus, errorThrown ){
-				console.log( errorThrown );
-			}
-		});
+        login();
 
 	});
+
+
+
+  function login(){
+    		var user = $('#user').val();
+    		var password = $('#password').val();
+
+    		/*
+
+    		Esto es para futuro request futuros
+    		headers: {
+    					"Authorization": `Bearer ${window.sessionStorage.getItem('tokenUntornolam')}`
+    				},
+
+    		*/
+
+    		// Armo el ajax, para enviar los datos correspondientes
+    		$.ajax({
+    			type: 'POST',
+    			enctype: 'multipart/form-data',
+    			url: RUTA_ACCESO + RUTA_API,
+    			data: JSON.stringify( {
+    				'user': user,
+    				'password': password
+    			} ),
+    			processData: false,
+    			contentType: "application/json; charset=utf-8",
+    			cache: false,
+    			//headers: {  'Access-Control-Allow-Origin': "*" },
+    			crossDomain: true,
+
+    			success: function( data, textStatus, jQxhr ){
+
+    				// En caso de exito
+    				if( data.status === 'OK'){
+    					// Si fue exitoso el login
+
+    					// Guardo el token
+    					sessionStorage.setItem('tokenUntornolam', data.token);
+
+              // Guardo la informacion del usuario
+    					sessionStorage.setItem('username', data.info.usuario);
+    					sessionStorage.setItem('nombre', data.info.nombre);
+    					sessionStorage.setItem('apellido', data.info.apellido);
+    					sessionStorage.setItem('nivelAcceso', data.info.nivelAcceso);
+    					sessionStorage.setItem('email', data.info.email);
+
+              // Primero borro la informacion previa que haya
+              localStorage.removeItem('miCncs');
+              localStorage.removeItem('miDisenios');
+
+              // Informacion de los CNCs del usuario que ingresa
+              localStorage.setItem('miCncs', JSON.stringify(data.cnc) );
+
+              // Guardo el dato de la cantidad de CNC que tiene el usuario
+              // @TODO: esto puede que un futuro cambie
+              var countCncs = 0 +  data.cnc.length ;
+
+              localStorage.setItem('countCnc', countCncs);
+
+              // Informacion de los Disenios del usuario que ingresa
+              localStorage.setItem('miDisenios', JSON.stringify(data.disenios) );
+
+              // Guardo el dato de la cantidad de Disenios que tiene el usuario
+              // @TODO: esto puede que un futuro cambie
+              var countDisenios = 0 +  data.disenios.length ;
+
+              localStorage.setItem('countDisenios', countDisenios);
+
+              // @TODO: Falta funcionalidad del backend countReportes
+
+              //  @TODO: Falta funcionalidad del backend countPendientes
+
+              //  @TODO: Falta funcionalidad del backend AdeundaPago
+
+              //  @TODO: Falta funcionalidad del backend ServicionEnCurso
+
+    					// Redirecciono
+    					window.location.href = './index.html';
+    				}else{
+
+              $('#user').val('');
+              $('#password').val('');
+              alert('error, ingrese nuevamente sus credenciales');
+    					// Aca tienen que estar los handler del error tipo
+    					switch (data.status) {
+    						  case 'ERROR_USER':
+    								//	El usuario o contraseña es incorrecto
+    								// 	Agregar label informativo....
+    								break;
+    						  case 'ERROR_EXAMPLE':
+    								//	Otro error handleable
+    								//	Acciones...
+    								break;
+    						  default:
+    								//Declaraciones ejecutadas cuando ninguno de los valores coincide con el valor de la expresión
+    								break;
+    						}
+    				}
+
+
+    			},
+    			error: function( jqXhr, textStatus, errorThrown ){
+    				console.log( errorThrown );
+    			}
+    		});
+  }
 });
 
 </script>
