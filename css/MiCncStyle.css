@@ -71,7 +71,7 @@
   content: "\2212";
 }
 .contentcnc {
-  padding: 0 6px;
+  padding: 0 px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;

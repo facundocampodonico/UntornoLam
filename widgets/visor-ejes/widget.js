@@ -132,11 +132,11 @@ cprequire_test(["inline:com-chilipeppr-widget-xyz"], function (xyz) {
 
     /*
     setTimeout(function() {
-        
+
         console.log("setting up alternate keystrokes");
         $('#com-chilipeppr-widget-xyz-ftr').keydown(function(evt) {
             var e = $.Event('keydown');
-            
+
             if (evt.which == 50) {
                 // the #2 key
                 // mimic down arrow being pressed
@@ -146,7 +146,7 @@ cprequire_test(["inline:com-chilipeppr-widget-xyz"], function (xyz) {
                 // mimic up arrow being pressed
                 e.which= 38; // enter
             }
-            
+
             console.log("artificial event:", e);
             if (e.which > 0) {
                 evt.preventDefault();
@@ -155,10 +155,10 @@ cprequire_test(["inline:com-chilipeppr-widget-xyz"], function (xyz) {
                 return false;
             }
         });
-        
+
     }, 5000);
     */
-    $('body').css("padding", "20px");
+    $('body').css("padding", "0px");
 
 } /*end_test*/ );
 
@@ -191,7 +191,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             this.btnSetup();
             this.menuSetup();
             this.jogSetup();
-            
+
             this.pencilSetup();
 
             this.forkSetup();
@@ -210,7 +210,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             chilipeppr.publish('/com-chilipeppr-widget-3dviewer/requestUnits', "");
 
             // Subscribe to the generic interface signals of plannerresume/plannerpause so we know when to slow
-            // down on our sending of gcode commands when jogging. 
+            // down on our sending of gcode commands when jogging.
             // If a different controller is implemented, they can send on these signals
             // and abstract away the specific hardware details from us so this widget is reusable
             chilipeppr.subscribe("/com-chilipeppr-interface-cnccontroller/plannerpause", this, this.onPlannerPause);
@@ -265,7 +265,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             var btn = $('<button class="btn btn-xs btn-default xyz-pencil"><span class="glyphicon glyphicon-pencil"></span></button>');
             btn.click(this.pencilClick.bind(this));
             tgtEl.find('.com-chilipeppr-xyz-pos-well').prepend(btn);
-            
+
             // attach descriptive popoover
             btn.popover({
                 animation: true,
@@ -285,7 +285,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
         pencilClick: function(evt) {
             console.log("got pencilClick. evt:", evt);
             var tgtEl = $(evt.currentTarget);
-            
+
             var txt = $('<input type="number" class="form-control xyz-number" placeholder="Enter New Coord">');
             txt.keyup(this.pencilKeypress.bind(this));
             var posEl = tgtEl.parents('.com-chilipeppr-xyz-pos-well');
@@ -294,7 +294,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             txt.val(val);
             posEl.prepend(txt);
             txt.focus();
-            
+
             // hide popover
             posEl.find('button').popover('hide');
         },
@@ -305,26 +305,26 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             var posEl = tgtEl.parents('.com-chilipeppr-xyz-pos-well');
             var axis = posEl.data('axis').toUpperCase();
             console.log("axis:", axis);
-            
+
             // see if return key
             if (evt.keyCode == 13) {
                 console.log("enter key hit");
-                
+
                 // send gcode
                 var gcode = "G90 G0 " + axis + tgtEl.val();
                 console.log("about to send gcode:", gcode);
                 chilipeppr.publish('/com-chilipeppr-widget-serialport/jsonSend', {
-                    D: gcode, 
+                    D: gcode,
                     Id:"axes" + this.pencilCtr++
                 });
-                
+
                 this.pencilHide(tgtEl.parents('.com-chilipeppr-xyz-pos-well'));
             } else if (evt.keyCode == 27) {
                 console.log("ESC key hit");
                 this.pencilHide(tgtEl.parents('.com-chilipeppr-xyz-pos-well'));
             }
-            
-            
+
+
         },
         pencilHide: function(tgtEl) {
         		console.log("pencilHide");
@@ -352,7 +352,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             btnEl.click(this.toggleWcs.bind(this));
             btnEl.popover();
             chilipeppr.load(
-                "#com-chilipeppr-widgetholder-wcs", 
+                "#com-chilipeppr-widgetholder-wcs",
                 //"http://fiddle.jshell.net/Danal/4ete4691/show/light/",
                 "http://raw.githubusercontent.com/chilipeppr/widget-wcs/master/auto-generated-widget.html",
                 function () {
@@ -434,7 +434,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             /*
             tpad.bind('touchstart', function(e){
                 console.log("got touch/mouse evt:", e);
-                that.drawCircle(ctx, e); 
+                that.drawCircle(ctx, e);
             });
             tpad.bind('touchend', function(e){
                 console.log("got touch/mouse evt:", e);
@@ -738,7 +738,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                 gcode += "Y" + (deltay * this.accelBaseval * -1).toFixed(3) + " ";
             }
             gcode += "\nG90\n";
-            //chilipeppr.publish("/com-chilipeppr-widget-serialport/send", gcode);          
+            //chilipeppr.publish("/com-chilipeppr-widget-serialport/send", gcode);
             var jsonSend = {
                 D: gcode,
                 Id: "jog" + this.sendCtr
@@ -1038,7 +1038,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             if (this.pauseBtnIcon === null) this.pauseBtnIcon = $('#com-chilipeppr-widget-xyz div.plannerpause');
 
             if (this.isPausedByPlanner) {
-                // we are currently paused, so unpause 
+                // we are currently paused, so unpause
                 //this.onPauseByPlanner();
                 this.isPausedByPlanner = false;
                 this.pauseBtnIcon.removeClass('btnIconWarning');
@@ -1051,10 +1051,10 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             // get a per line command from the serial port server via pubsub
             //console.log("onRecvCmd. recvline:", recvline);
             // we want to process the status reports
-            // sample: 
+            // sample:
             // {"sr":{"vel":0.02,"mpoy":10.474,"dist":1,"stat":5}}
             // {"sr":{"vel":0.06,"mpox":0.001,"dist":0}}
-            
+
             if (!(recvline.dataline)) {
                 console.log("got recvline but it's not a dataline, so returning.");
                 return;
@@ -1109,7 +1109,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
         axisz: null,
         axisa: null,
         axes: {},
-        //Machine coord version of axes. 
+        //Machine coord version of axes.
         axismx: null,
         axismy: null,
         axismz: null,
@@ -1365,7 +1365,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             console.log(cmd);
             //chilipeppr.publish("/com-chilipeppr-widget-serialport/send", cmd);
             this.publishSend(cmd);
-            
+
         },
         zeroOutAxisG28: function (evt) {
             console.log("zeroOutAxis28. evt.data:", evt.data, "evt:", evt);
@@ -1769,7 +1769,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                 //if (!(evt.which > 30 && evt.which < 41)) {
                 // remove accel hilite
                 that.accelBaseValUnhilite();
-                //}                
+                //}
 
                 var key = evt.which;
                 if (key == 38) {
