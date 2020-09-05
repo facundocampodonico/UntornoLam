@@ -2,6 +2,7 @@
 #com-chilipeppr-widget-3dviewer .panel-heading {
     z-index:1;
     position:relative;
+    background-color:transparent;
 }
 .com-chilipeppr-widget-3dviewer-simulator-title {
     border-radius: 3px;
