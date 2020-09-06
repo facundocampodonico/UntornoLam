@@ -7,17 +7,17 @@ requirejs.config({
     /*
     Dependencies can be defined here. ChiliPeppr uses require.js so
     please refer to http://requirejs.org/docs/api.html for info.
-    
+
     Most widgets will not need to define Javascript dependencies.
-    
+
     Make sure all URLs are https and http accessible. Try to use URLs
     that start with // rather than http:// or https:// so they simply
     use whatever method the main page uses.
-    
+
     Also, please make sure you are not loading dependencies from different
     URLs that other widgets may already load like jquery, bootstrap,
     three.js, etc.
-    
+
     You may slingshot content through ChiliPeppr's proxy URL if you desire
     to enable SSL for non-SSL URL's. ChiliPeppr's SSL URL is
     https://i2dcui.appspot.com which is the SSL equivalent for
@@ -39,13 +39,13 @@ cprequire_test(["inline:com-chilipeppr-widget-grbl"], function (grbl) {
     //console.log("test running of " + grbl.id);
     grbl.init();
     //testRecvline();
-    
+
     var sendGrblVersion = function() {
         chilipeppr.publish("/com-chilipeppr-widget-serialport/recvline", {
             dataline: "Grbl 0.8c"
         });
     };
-    
+
     chilipeppr.publish("/com-chilipeppr-widget-serialport/recvline", {dataline: "$0=755.906 (x, step/mm)\n" });
     chilipeppr.publish("/com-chilipeppr-widget-serialport/recvline", {dataline: "$1=755.906 (y, step/mm)\n" });
     chilipeppr.publish("/com-chilipeppr-widget-serialport/recvline", {dataline: "$13=0 (report mode, 0=mm,1=inch)\n" });
@@ -54,29 +54,29 @@ cprequire_test(["inline:com-chilipeppr-widget-grbl"], function (grbl) {
     chilipeppr.publish("/com-chilipeppr-widget-serialport/recvline", {dataline: "[G0 G54 G17 G21 G90 G94 M0 M5 M9 T0 F500.0]\n" });
     chilipeppr.publish("/com-chilipeppr-widget-serialport/recvline", {dataline: "[ALARM: Hard/soft limit]\n" });
     chilipeppr.publish("/com-chilipeppr-widget-serialport/recvline", {dataline: "['$H'|'$X' to unlock]\n" });
-    
-    
+
+
     chilipeppr.publish("/com-chilipeppr-widget-3dviewer/unitsChanged","inch");
     chilipeppr.publish("/com-chilipeppr-widget-serialport/onQueue", {Buf: 100});
-    
+
     var sendTestPositionData = function() {
         setTimeout(function() {
             // MPos:[-0.05,0.00,0.00],WPos:[-0.05,0.00,0.00]
-            //chilipeppr.publish("/com-chilipeppr-widget-serialport/recvline", { 
-                //dataline: "MPos:[-0.05,0.00,0.00],WPos:[-0.05,0.200,-1.00]"  //0.8a            
+            //chilipeppr.publish("/com-chilipeppr-widget-serialport/recvline", {
+                //dataline: "MPos:[-0.05,0.00,0.00],WPos:[-0.05,0.200,-1.00]"  //0.8a
                 //dataline: "<idle,MPos:-0.05,0.00,0.00,WPos:-0.05,0.200,-1.00>"  //0.8c
             //});
         }, 2000);
-        
+
     };
     sendGrblVersion();
     sendTestPositionData();
-    
+
     chilipeppr.publish("/com-chilipeppr-widget-serialport/recvSingleSelectPort",{BufferAlgorithm: "grbl"}); //error not grbl buffer
 
-    $('body').css('padding', '20px');
-    
-    
+    $('body').css('padding', '0px');
+
+
 } /*end_test*/ );
 
 function Queue(){var e=[];var t=0;this.getLength=function(){return e.length-t};this.isEmpty=function(){return e.length==0};this.enqueue=function(t){e.push(t)};this.dequeue=function(){if(e.length==0)return undefined;var n=e[t];if(++t*2>=e.length){e=e.slice(t);t=0}return n};this.peek=function(){return e.length>0?e[t]:undefined};this.sum=function(){for(var t=0,n=0;t<e.length;n+=e[t++]);return n};this.last=function(){return e[e.length-1]}}
@@ -84,7 +84,7 @@ function Queue(){var e=[];var t=0;this.getLength=function(){return e.length-t};t
 cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie"], function () {
     return {
         id: "com-chilipeppr-widget-grbl",
-        implements: { 
+        implements: {
             "com-chilipeppr-interface-cnccontroller" : "The CNC Controller interface is a loosely defined set of publish/subscribe signals. The notion of an interface is taken from object-oriented programming like Java where an interface is defined and then specific implementations of the interface are created. For the sake of a Javascript mashup like what ChiliPeppr is, the interface is just a rule to follow to publish signals and subscribe to signals by different top-level names than the ID of the widget or element implementing the interface. Most widgets/elements will publish and subscribe on their own ID. In this widget we are publishing/subscribing on an interface name. If another controller like Grbl is defined by a member of the community beyond this widget for GRBL, this widget can be forked and used without other widgets needing to be changed and the user could pick a Grbl or GRBL implementation of the interface."
         },
         url: "(auto fill by runme.js)",       // The final URL of the working widget as a single HTML file with CSS and Javascript inlined. You can let runme.js auto fill this if you are using Cloud9.
@@ -142,11 +142,11 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                       "M0":"Stop","M1":"Stop","M2":"End","M30":"End","M3":"Active-CW","M4":"Active-CCW","M5":"Off",
                       "M7":"Mist","M8":"Flood","M9":"Off"
                      },
-                      
-                      
+
+
         init: function () {
             this.uiHover(); //set up the data elements for all UI
-            
+
             this.setupUiFromCookie();
             this.btnSetup();
 
@@ -160,7 +160,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
 
             chilipeppr.subscribe("/com-chilipeppr-widget-serialport/onportopen", this, this.openController);
             chilipeppr.subscribe("/com-chilipeppr-widget-serialport/onportclose", this, this.closeController);
-            
+
             // subscribe to jogdone so we can stop the planner buffer immediately
             chilipeppr.subscribe("/com-chilipeppr-interface-cnccontroller/jogdone", this, function (msg) {
                 //chilipeppr.publish("/com-chilipeppr-widget-serialport/send", '!\n');
@@ -169,7 +169,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
                 }, 2);
             });
-            
+
             chilipeppr.subscribe("/com-chilipeppr-widget-serialport/recvSingleSelectPort", this, function(port){
                 if(port !== null){
                    this.buffer_name = port.BufferAlgorithm;
@@ -181,15 +181,15 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                     }
                 }
             });
-            
+
             //no longer following the send.
             //chilipeppr.subscribe("/com-chilipeppr-widget-serialport/send", this, this.bufferPush, 1);
-            
+
             //listen for units changed
             chilipeppr.subscribe("/com-chilipeppr-widget-3dviewer/unitsChanged",this,this.updateWorkUnits);
             chilipeppr.subscribe("/com-chilipeppr-widget-3dviewer/recvUnits",this,this.updateWorkUnits);
             chilipeppr.subscribe("/com-chilipeppr-interface-cnccontroller/units", this, this.updateWorkUnits); //this sets axes to match 3d viewer.
-            
+
             //listen for whether a gcode file is playing - if so, cancel our $G interval and start sending each 25 lines of gcode file sent.
             chilipeppr.subscribe("/com-chilipeppr-widget-gcode/onplay", this, this.trackGcodeLines);
             chilipeppr.subscribe("/com-chilipeppr-widget-gcode/onstop", this, this.restartStatusInterval);
@@ -198,21 +198,21 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             //    else if(state === true){ this.trackGcodeLines(); }   //when gcode widget resumes, begin tracking line count to embed $G into buffer.
             //});
             chilipeppr.subscribe("/com-chilipeppr-widget-gcode/done", this, this.restartStatusInterval);
-            
+
             //call to determine the current serialport configuration
             chilipeppr.publish("/com-chilipeppr-widget-serialport/requestSingleSelectPort","");
-            
+
             //count spjs queue
             chilipeppr.subscribe("/com-chilipeppr-widget-serialport/onWrite", this, function(data){
                 if(data.QCnt >= 0){
                     this.q_count = data.QCnt;
-                    $('.stat-queue').html(this.q_count); 
+                    $('.stat-queue').html(this.q_count);
                 }
             });
 
             //call to find out what current work units are
             chilipeppr.publish("/com-chilipeppr-widget-3dviewer/requestUnits","");
-            
+
             //watch for a 3d viewer /sceneReloaded and pass back axes info
             chilipeppr.subscribe("/com-chilipeppr-widget-3dviewer/sceneReloaded",this,function(data){
                 if(this.last_work.x !== null)
@@ -227,7 +227,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
         setupUiFromCookie: function() {
             // read vals from cookies
             var options = $.cookie('com-chilipeppr-widget-grbl-options');
-            
+
             if (true && options) {
                 options = $.parseJSON(options);
                 //console.log("GRBL: just evaled options: ", options);
@@ -236,7 +236,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             }
             this.options = options;
             //console.log("GRBL: options:", options);
-            
+
         },
         saveOptionsCookie: function() {
             var options = {
@@ -292,14 +292,14 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                 //console.log("GRBL: cyclestart");
                 that.sendCode('~');
                 //may want to check if buffer queue is >128 before resuming planner.
-                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', ""); 
+                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
             });
-            
+
             $('#com-chilipeppr-widget-grbl .grbl-verbose').click(function() {
                 //console.log("GRBL: manual status update");
                 $('#com-chilipeppr-widget-grbl .grbl-verbose').toggleClass("enabled");
             });
-            
+
             $('#com-chilipeppr-widget-grbl .grbl-reset').click(function() {
                 //console.log("GRBL: reset");
                 that.sendCode(String.fromCharCode(24));
@@ -307,7 +307,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             });
 
             $('#com-chilipeppr-widget-grbl-btnoptions').click(this.showConfigModal.bind(this));
-            
+
             $('#com-chilipeppr-widget-grbl .btn-toolbar .btn').popover({
                 delay: 500,
                 animation: true,
@@ -318,21 +318,21 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
         },
         showConfigModal: function() {
             $('#grbl-config-div').empty();
-            
+
             this.config.forEach(function(config_element,index_num) {
                 $('#grbl-config-div').append(
-                    '<div class="input-group" ' + 
-                    'style="width:400px;margin-bottom:2px;"><div class="input-group-addon" style="width:40px;padding:0px 6px;">' + 
-                    "$" + 
-                    index_num + 
-                    '</div><input class="form-control" style="height:20px;padding:0px 6px;width:100px;" id="com-chilipeppr-widget-grbl-config-' + 
-                    index_num + 
-                    '" value="' + 
-                    config_element[0] + 
-                    '"/><span style="margin-left:10px;">' + 
-                    config_element[1] + 
+                    '<div class="input-group" ' +
+                    'style="width:400px;margin-bottom:2px;"><div class="input-group-addon" style="width:40px;padding:0px 6px;">' +
+                    "$" +
+                    index_num +
+                    '</div><input class="form-control" style="height:20px;padding:0px 6px;width:100px;" id="com-chilipeppr-widget-grbl-config-' +
+                    index_num +
+                    '" value="' +
+                    config_element[0] +
+                    '"/><span style="margin-left:10px;">' +
+                    config_element[1] +
                     '</span></div>');
-                
+
             }, this);
 
             $('#grbl-config-div').append('<br/><button class="btn btn-xs btn-default save-config">Save Settings To GRBL</button>');
@@ -374,7 +374,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
         //formerly queryControllerForStatus
         openController: function(isWithDelay) {
             var that = this;
-            
+
             //wait three second for arduino initialization before requesting the grbl config variables.
             setTimeout(function() {
                 chilipeppr.publish("/com-chilipeppr-widget-serialport/requestSingleSelectPort",""); //Request port info
@@ -388,7 +388,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                 }, 1000);
 
                 that.restartStatusInterval();  //Start the $G tracking loop
-                
+
                 //that.g_status_reports = setInterval(function(){
                 //    that.getControllerInfo(); //send a $G every 2 seconds
                 //}, 2000);
@@ -433,7 +433,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
         restartStatusInterval: function(){
             //stop tracking the jsonSend, file is finished.
             //chilipeppr.unsubscribe("/com-chilipeppr-widget-serialport/jsonSend", this.trackGcodeLines);
-            
+
             var that = this;
             if(this.g_status_reports === null){ //confirm no setInterval is currently running.
                 that.g_status_reports = setInterval(function(){
@@ -448,7 +448,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                 //console.log("GRBL: got recvline but it's not a dataline, so returning.");
                 return true;
             }
-            
+
             var msg = recvline.dataline;
             //console.log("GRBL: Line Received -- " + recvline.dataline);
             if (msg.indexOf("ok") >= 0 || msg.indexOf("error") >= 0) { //expected response
@@ -470,10 +470,10 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                 }
                 else if(msg.indexOf("<") >= 0 && msg.indexOf(">") >= 0){ //if the response is a status message, parse for all possible values
                     //remove brackets
-                    msg = msg.replace(/<|>|\[|\]|\n/g, ""); 
+                    msg = msg.replace(/<|>|\[|\]|\n/g, "");
                     //change colons to commas & split string
                     rpt_array = msg.replace(/:/g, ",").split(",");
-                    
+
                     if(this.version === '0.8a')
                         $('.stat-state').text("Too Old - Upgrade GRBL!");
                     else
@@ -500,10 +500,10 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                                 $('.stat-state').text(this.status.charAt(0).toUpperCase() + this.status.slice(1)); //Update UI
                                 $('#stat-state-background-box').css('background-color', '#f5f5f5');
                             }
-                            
-                            
+
+
                         }
-                    
+
                     var len = rpt_array.length;
                     var i = 1;
                     var MPos_flag = false;
@@ -519,10 +519,10 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                                 this.last_machine.unit = "inch";
                             else
                                 this.last_machine.unit = "mm";
-                            
+
                             $('.stat-mcoords').html("X:" + this.last_machine.x.toFixed(3) + " Y:" + this.last_machine.y.toFixed(3) + " Z:" + this.last_machine.z.toFixed(3));
-                            
-                            
+
+
                             MPos_flag = true;
                             i += 4; //increment i counter past the MPos values
                         }
@@ -546,7 +546,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                         else
                             i++;
                     }
-                    
+
                     //calculate offsets if both sets of coordinates are being received
                     if(MPos_flag && WPos_flag){
                         this.offsets.x = this.last_machine.x - this.last_work.x; //x offset
@@ -566,10 +566,10 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                     //if this is not the first init line, warn the user grbl has been reset
                     if(this.version !== "")
                         chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "GRBL Widget", "GRBL has been reset - temporary work coordinate and tool offsets have been lost.");
-                    
+
                     chilipeppr.publish("/com-chilipeppr-widget-gcode/stop", true); //stops gcode widget since grbl just reset.
                     this.version = msg.split(" ")[1];
-                    $('#com-chilipeppr-widget-grbl .panel-title').text("GRBL (" + this.version + ")"); //update ui  
+                    $('#com-chilipeppr-widget-grbl .panel-title').text("GRBL (" + this.version + ")"); //update ui
                 }
                 else if(msg.search(/^\$[0-9][0-9]*=/g) >= 0){ //is a config report ($0=,$1=...etc)
                     var tmp = msg.split(/ (.+)/); //break out config and description
@@ -588,11 +588,11 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                 else if(msg.indexOf("ALARM: Hard/soft limit") >= 0 || msg.indexOf("ALARM: Soft limit") >= 0 || msg.indexOf("ALARM: Hard limit") >= 0){
                     this.alarm = true;
                     this.restartStatusInterval();
-                    
+
                     chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "GRBL Widget", "Alarm! GRBL has exceeded a hard or soft limit.");
                     chilipeppr.publish("/com-chilipeppr-widget-gcode/stop", true); //stops gcode widget since grbl just reset.
                     this.clearBuffer();
-                    
+
                     $('.stat-state').text("Alarm - Click To Reset (CTRL+X)");
                     var that = this;
                     $('.stat-state').unbind("click");
@@ -605,18 +605,18 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                         $(this).css('cursor','auto');
                     });
                     $('#stat-state-background-box').css('background-color', 'pink');
-                    
+
                     this.addError("Alarm", msg);
                     //update error count;
-                }    
+                }
                 else if(msg.indexOf("'$X' to unlock") >= 0){
                     this.alarm = true;
                     this.restartStatusInterval();
                     chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "GRBL Widget", "GRBL is locked - $X to unlock");
-                    
+
                     chilipeppr.publish("/com-chilipeppr-widget-gcode/stop", true); //stops gcode widget since grbl just reset.
                     this.clearBuffer();
-                    
+
                     $('.stat-state').html("Alarm - Click To Unlock ($X)");
                     var that = this;
                     $('.stat-state').unbind("click");
@@ -629,7 +629,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                         $(this).css('cursor','auto');
                     });
                     $('#stat-state-background-box').css('background-color', 'pink');
-                    
+
                     this.addError("Alarm", msg);
                     //update error count;
                 }
@@ -642,11 +642,11 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                     chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "GRBL Widget", "GRBL is now in active run mode.");
                 }
                 else if(msg.search(/^\[/g) >= 0 && msg.indexOf(":") < 0){ //some config information is being returned - figure out what.
-                    
+
                     msg = msg.replace(/\[|\]|\n/g, ""); //remove brackets
                     var msg_array = msg.split(/\s|,|:/g); //split to array on space, comma, or colon
                     //check for units change, save new units state and publish units to other widgets
-                    if((this.controller_units !== "mm" && msg_array[3] === "G21")){ 
+                    if((this.controller_units !== "mm" && msg_array[3] === "G21")){
                         this.controller_units = "mm";
                         console.log("we have a unit change. publish it. units:", this.controller_units);
                         chilipeppr.publish("/com-chilipeppr-interface-cnccontroller/units", this.controller_units);
@@ -657,11 +657,11 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                             this.publishAxisStatus(this.last_machine);
                         else
                             this.publishAxisStatus({"x":"x","y":"y","z":"z"});
-                    } else if((this.controller_units !== "inch" && msg_array[3] === "G20")){ 
+                    } else if((this.controller_units !== "inch" && msg_array[3] === "G20")){
                         this.controller_units = "inch";
                         console.log("we have a unit change. publish it. units:", this.controller_units);
                         chilipeppr.publish("/com-chilipeppr-interface-cnccontroller/units", this.controller_units);
-                        
+
                         //resend coordinates
                         if(this.last_work.x !== null)
                             this.publishAxisStatus(this.last_work);
@@ -670,10 +670,10 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                         else
                             this.publishAxisStatus({"x":"x","y":"y","z":"z"});
                     }
-                    
+
                     //notify coords change for WCS widget
                     chilipeppr.publish("/com-chilipeppr-interface-cnccontroller/coords",{coord:msg_array[1], coordNum: parseInt(msg_array[1].replace("G",""))});
-                    
+
                     $('.stat-motion').html(this.gcode_lookup[msg_array[0]]);
                     $('.stat-wcs').html(this.gcode_lookup[msg_array[1]]);
                     $('.stat-plane').html(this.gcode_lookup[msg_array[2]]);
@@ -682,23 +682,23 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                     $('.stat-spindle').html(this.gcode_lookup[msg_array[7]]);
                     $('.stat-coolant').html(this.gcode_lookup[msg_array[8]]);
                     msg_array[10] = parseFloat(msg_array[10].substring(1));
-                    $('.stat-feedrate').html(this.controller_units === "inch" ? (parseFloat(msg_array[10])/25.4).toFixed(2) : msg_array[10].toFixed(2));  
+                    $('.stat-feedrate').html(this.controller_units === "inch" ? (parseFloat(msg_array[10])/25.4).toFixed(2) : msg_array[10].toFixed(2));
                 }
             }
         },
-        
+
         sendCode: function (sendline){
             //chilipeppr.unsubscribe("/com-chilipeppr-widget-serialport/send", this, this.bufferPush); //unsubscribe before publishing to serial port
-            chilipeppr.publish("/com-chilipeppr-widget-serialport/send", sendline); //send to serial port 
+            chilipeppr.publish("/com-chilipeppr-widget-serialport/send", sendline); //send to serial port
             console.log("GRBL: Code Sent - " + sendline);
             //chilipeppr.subscribe("/com-chilipeppr-widget-serialport/send", this, this.bufferPush, 1); //resubscribe with top priority
         },
-        
+
         clearBuffer: function(){
             console.log("GRBL: Clearing SPJS Buffer");
             this.sendCode("%\n");
         },
-        
+
         //queryStatus: function(that){
         //    that.sendCode('?\n'); //request status/coordinates
         //},
@@ -718,10 +718,10 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             chilipeppr.publish("/com-chilipeppr-interface-cnccontroller/plannerresume", "");
         },
         toInch: function(mm){
-            return (mm/25.4).toFixed(3);  
+            return (mm/25.4).toFixed(3);
         },
         toMM: function(inch){
-            return (inch*25.4).toFixed(3);   
+            return (inch*25.4).toFixed(3);
         },
         addError: function(line, msg){
             if(this.err_log.length === 0)
@@ -733,7 +733,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
         },
         forkSetup: function () {
             var topCssSelector = '#com-chilipeppr-widget-grbl';
-            
+
             //$(topCssSelector + ' .fork').prop('href', this.fiddleurl);
             //$(topCssSelector + ' .standalone').prop('href', this.url);
             //$(topCssSelector + ' .fork-name').html(this.id);
@@ -746,9 +746,9 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                 trigger: 'hover',
                 placement: 'auto'
             });
-            
+
             var that = this;
-            
+
             // used to be
             // "http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/"
             // but now using the github repo
@@ -758,7 +758,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                     pubsubviewer.attachTo($('#com-chilipeppr-widget-grbl .panel-heading .dropdown-menu'), that);
                 });
             });
-            
+
         },
         uiHover: function(){
             //units
@@ -771,7 +771,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             $("#ttl-units").attr("data-title","Units");
             $("#ttl-units").attr("data-content","The active distance mode which the CNC will move - Can be Inches (G20) or Millimetres (G21)");
             $("#ttl-units").popover();
-            
+
             //state
             $("#ttl-state").attr("data-delay", "500");
             $("#ttl-state").attr("data-animation","true");
@@ -782,7 +782,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             $("#ttl-state").attr("data-title","State");
             $("#ttl-state").attr("data-content","Current state of the GRBL controller");
             $("#ttl-state").popover();
-            
+
             //wcs
             $("#ttl-wcs").attr("data-delay", "500");
             $("#ttl-wcs").attr("data-animation","true");
@@ -793,7 +793,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             $("#ttl-wcs").attr("data-title","Work Coordinate System");
             $("#ttl-wcs").attr("data-content","The current work coordinate offsets being applied to the machine coordinates");
             $("#ttl-wcs").popover();
-            
+
             //coolant
             $("#ttl-coolant").attr("data-delay", "500");
             $("#ttl-coolant").attr("data-animation","true");
@@ -804,7 +804,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             $("#ttl-coolant").attr("data-title","Coolant");
             $("#ttl-coolant").attr("data-content","Indicates whether cooling is currently on or off");
             $("#ttl-coolant").popover();
-            
+
             //plane
             $("#ttl-plane").attr("data-delay", "500");
             $("#ttl-plane").attr("data-animation","true");
@@ -815,7 +815,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             $("#ttl-plane").attr("data-title","Plane");
             $("#ttl-plane").attr("data-content","The current coordinate plane on which arcs will be rendered (XY, XZ, or YZ)");
             $("#ttl-plane").popover();
-            
+
             //feedrate
             $("#ttl-feedrate").attr("data-delay", "500");
             $("#ttl-feedrate").attr("data-animation","true");
@@ -826,7 +826,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             $("#ttl-feedrate").attr("data-title","Feedrate");
             $("#ttl-feedrate").attr("data-content","The active feedrate for G1, G2, G3 commands");
             $("#ttl-feedrate").popover();
-            
+
             //motion
             $("#ttl-motion").attr("data-delay", "500");
             $("#ttl-motion").attr("data-animation","true");
@@ -837,7 +837,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             $("#ttl-motion").attr("data-title","Motion");
             $("#ttl-motion").attr("data-content","Indicates what type of motion GRBL performed on the last command (rapid seek motion, cutting feed motion, or probing operations)");
             $("#ttl-motion").popover();
-            
+
             //distance
             $("#ttl-distance").attr("data-delay", "500");
             $("#ttl-distance").attr("data-animation","true");
@@ -848,7 +848,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             $("#ttl-distance").attr("data-title","Distance");
             $("#ttl-distance").attr("data-content","Indicates whether commands should use absolute positioning or relative positioning for determining distance of a command (Determined by G90 or G91 commands)");
             $("#ttl-distance").popover();
-            
+
             //spindle
             $("#ttl-spindle").attr("data-delay", "500");
             $("#ttl-spindle").attr("data-animation","true");
@@ -859,7 +859,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             $("#ttl-spindle").attr("data-title","Spindle");
             $("#ttl-spindle").attr("data-content","Indicates whether the spindle is on or off");
             $("#ttl-spindle").popover();
-            
+
             //queue
             $("#ttl-queue").attr("data-delay", "500");
             $("#ttl-queue").attr("data-animation","true");
@@ -870,7 +870,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             $("#ttl-queue").attr("data-title","Queue");
             $("#ttl-queue").attr("data-content","Lists the number of lines remaining to be executed in the SPJS queue");
             $("#ttl-queue").popover();
-            
+
             //machine Coords
             $("#ttl-mcoords").attr("data-delay", "500");
             $("#ttl-mcoords").attr("data-animation","true");

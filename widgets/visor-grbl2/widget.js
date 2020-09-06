@@ -5,8 +5,8 @@ cprequire_test(["inline:com-chilipeppr-widget-tinyg"], function (tinyg) {
     console.log("test running of " + tinyg.id);
     tinyg.init();
 
-    $('body').css("padding", "20px");
-    
+    $('body').css("padding", "0px");
+
     // create a typical test of planner buffer
     // you never want planner buffer with more than 12 items queued, 4 are reserved for pulling
     // from serial buffer, so you want qr to be no less than 12
@@ -16,7 +16,7 @@ cprequire_test(["inline:com-chilipeppr-widget-tinyg"], function (tinyg) {
     chilipeppr.currentCtr = -1;
     /*
     for (var ctr = 0; ctr < buf.length; ctr++) {
-        
+
         setTimeout(function () {
             chilipeppr.currentCtr++;
             //console.log("chilipeppr.currentCtr:", chilipeppr.currentCtr);
@@ -25,7 +25,7 @@ cprequire_test(["inline:com-chilipeppr-widget-tinyg"], function (tinyg) {
             //chilipeppr.currentCtr = chilipeppr.currentCtr + 1;
         }, delay);
         delay = delay + delayPlus;
-    }    
+    }
     */
 
     // manual test of coordinates and how we publish them to the generic interface
@@ -137,7 +137,7 @@ cprequire_test(["inline:com-chilipeppr-widget-tinyg"], function (tinyg) {
             chilipeppr.publish("/com-chilipeppr-interface-cnccontroller/requestCoords");
         }, 1000);
     }
-    
+
     // {"Cmd":"Complete","Id":"g38","P":"COM7","LocalBufSize":0}
     var testLocalBufSize = function () {
         setTimeout(function () {
@@ -152,7 +152,7 @@ cprequire_test(["inline:com-chilipeppr-widget-tinyg"], function (tinyg) {
                 dataline: '{"LocalBufSize":25}'
             });
         }, 5000);
-        
+
         setTimeout(function () {
             chilipeppr.publish(
                 "/com-chilipeppr-widget-serialport/recvline", {
@@ -160,11 +160,11 @@ cprequire_test(["inline:com-chilipeppr-widget-tinyg"], function (tinyg) {
             });
         }, 6000);
     }
-    
+
     var testFroUpdate = function () {
         setTimeout(function () {
             chilipeppr.publish(
-                '/com-chilipeppr-widget-serialport/onFeedRateOverride', 
+                '/com-chilipeppr-widget-serialport/onFeedRateOverride',
                 {
                     Cmd: "FeedRateOverride", Desc: "Providing you status of feed rate override.", Port: "COM7", FeedRateOverride: 0, IsOn: false
                 }
@@ -172,20 +172,20 @@ cprequire_test(["inline:com-chilipeppr-widget-tinyg"], function (tinyg) {
         }, 2000);
         setTimeout(function () {
             chilipeppr.publish(
-                '/com-chilipeppr-widget-serialport/onFeedRateOverride', 
+                '/com-chilipeppr-widget-serialport/onFeedRateOverride',
                 {
                     Cmd: "FeedRateOverride", Desc: "Providing you status of feed rate override.", Port: "COM7", FeedRateOverride: 0.5, IsOn: false
                 }
             );
         }, 3000);
     };
-    
+
     //testCoords();
 
     //testRecvline();
-    
+
     testLocalBufSize();
-    
+
     testFroUpdate();
 
 } /*end_test*/ );
@@ -284,7 +284,7 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
 
             // Setup Kevin Hauser's config dialog
             this.setupConfig();
-            
+
             // setup feed rate override
             this.setupFro();
 
@@ -293,7 +293,7 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
         initsInFlight: false,
         initIdCtr: 0, // we just increment this so we have unique id's as we send init commands to SPJS
         initController: function (reinit) {
-            if (this.initsInFlight) return; //We are called by both init and onconnect. Only run once.  
+            if (this.initsInFlight) return; //We are called by both init and onconnect. Only run once.
 
             // Wait 1 and 3 seconds to send init commands, because the full load is such that
             // we may not have everything good to go yet, i.e. other widgets looking for responses
@@ -302,7 +302,7 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
             // if immediate flag is set, this is a do over, because items are missing
             // from the status report.  Most likely, the controller got reset.
 
-            // TODO: watch when we get an event from serial port to send this, instead of fixed timers. 
+            // TODO: watch when we get an event from serial port to send this, instead of fixed timers.
 
             // Add {"rxm":1} for line mode
             // Latest firmware defaults to rxm:1 which is line mode (footer of 3 and support for TID)
@@ -341,14 +341,14 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                 // we need to act a bit different with regard to linemode
                 // we need to send incremental sr's
                 // we also need to pause
-                
+
             }
 
             var that = this;
-            
+
             /*
             if (reinit) {
-                
+
                 this.initsInFlight = true;
                 chilipeppr.publish("/com-chilipeppr-widget-serialport/jsonSend", {
                     D: initCmds,
@@ -357,10 +357,10 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                 setTimeout(function () {
                     that.initsInFlight = false;
                 }, 1000);
-                
+
             } else {
             */
-                
+
             this.initsInFlight = true;
             setTimeout(function () {
                 //var cmdArr = initCmds.split(/\n/);
@@ -384,7 +384,7 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                     });
                 }
             }, 2000);
-            
+
             setTimeout(function() {
                 chilipeppr.publish("/com-chilipeppr-widget-serialport/requestFro", "");
             }, 3000);
@@ -401,7 +401,7 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
             setTimeout(function () {
                 that.initsInFlight = false;
             }, 3200);
-            
+
             //}
 
         },
@@ -411,9 +411,9 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
             $('#com-chilipeppr-widget-tinyg-fro').on("change", this.onFroChange.bind(this));
              $('#com-chilipeppr-widget-tinyg-fro').on("mousemove", this.onFroMousemove.bind(this));
             $('.com-chilipeppr-widget-tinyg-fro-1xbtn').click(this.onFro1x.bind(this));
-            
+
             chilipeppr.subscribe('/com-chilipeppr-widget-serialport/onFeedRateOverride', this, this.updateFro);
-            
+
             // now trigger to get the Feed Rate Override status a few seconds from now so we get ourselves an update
             setTimeout(function() {
                 chilipeppr.publish("/com-chilipeppr-widget-serialport/requestFro", "");
@@ -426,9 +426,9 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
             // just do span text update so user sees val being picked. fortunately we only get a change event
             // when mouse is let up on
             //console.log("got onFroMousemove. evt:", evt);
-            
+
             var valEl = $('.com-chilipeppr-widget-tinyg-fro-val');
-            
+
             // set its value
             var val = $('#com-chilipeppr-widget-tinyg-fro').val();
             $('.com-chilipeppr-widget-tinyg-fro-val').text(val + " x");
@@ -437,11 +437,11 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
             if (valEl.hasClass('com-chilipeppr-widget-tinyg-fro-val-preview') == false && this.lastFroVal != val) {
                 valEl.addClass('com-chilipeppr-widget-tinyg-fro-val-preview');
             }
-            
+
         },
         onFroChange: function(evt) {
             console.log("got onFroChange. evt:", evt);
-            
+
             // we can be passed an int or an object
             var val;
             if (typeof evt === 'number') {
@@ -450,19 +450,19 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                 val = $('#com-chilipeppr-widget-tinyg-fro').val();
             }
             $('.com-chilipeppr-widget-tinyg-fro-val').text(val + " x");
-            
+
             // send actual change command to SPJS
             if (this.comPort != null && this.lastFroVal != val) {
                 //var cmd = "fro " + this.comPort + " " + val  + "\n";
                 //chilipeppr.publish('/com-chilipeppr-widget-serialport/ws/send', cmd);
                 // use spjs widget pubsub
                 chilipeppr.publish('/com-chilipeppr-widget-serialport/requestFro', val);
-                
+
                 // make text black again
                 $('.com-chilipeppr-widget-tinyg-fro-val').removeClass('com-chilipeppr-widget-tinyg-fro-val-preview');
-            
+
             }
-            
+
             this.lastFroVal = val;
         },
         updateFro: function(val) {
@@ -471,9 +471,9 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
             if (fro == 0) fro = 1.0;
             $('#com-chilipeppr-widget-tinyg-fro').val(fro);
             $('.com-chilipeppr-widget-tinyg-fro-val').text(fro + " x");
-            
+
             this.lastFroVal = fro;
-            
+
             if (this.comPort == null) {
                 // we have not been initialized yet
                 this.comPort = val.Port;
@@ -502,7 +502,7 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                 // New Github URL
                 // "http://raw.githubusercontent.com/chilipeppr/widget-configtinyg/master/auto-generated-widget.html"
                 chilipeppr.load(
-                    "#com-chilipeppr-widget-tinyg-holderAreaForConfigWidget", 
+                    "#com-chilipeppr-widget-tinyg-holderAreaForConfigWidget",
                     "http://raw.githubusercontent.com/chilipeppr/widget-configtinyg/master/auto-generated-widget.html", function () {
                     require(["inline:com-chilipeppr-widget-configtinyg"], function (configtinyg) {
 
@@ -677,9 +677,9 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
         energizeTimeoutTimer: null,
         energizeMotors: function () {
             if (this.energizeTimer == null) {
-                // To keep the motors energized indefinitely we need to setup a timer. 
-                // We can only do that correctly if we know what the timeout is ($mt) for 
-                // the motors. If we don’t. Just fall back to the old way if issuing one 
+                // To keep the motors energized indefinitely we need to setup a timer.
+                // We can only do that correctly if we know what the timeout is ($mt) for
+                // the motors. If we don’t. Just fall back to the old way if issuing one
                 // "me" command. We will always issue an "me" command first as if we didn't
                 // we would have to wait for the timer to pop before the motors are energized.
                 chilipeppr.publish("/com-chilipeppr-widget-serialport/send", '{"me":""}\n');
@@ -687,9 +687,9 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                     // Setup a timer for keeping the motors energized. this.mt is in seconds
                     // and setInterval requires ms. We also need to shave off a half second
                     // to provide some overlap. If we don't, then the motors will unenergize
-                    // themselves for a fraction of a second before being reenergized. My 
-                    // testing has shown that issuing overlapping "me" commands is not 
-                    // accumulative. Issuing a new "me" just appears to reset tinyg’s internal 
+                    // themselves for a fraction of a second before being reenergized. My
+                    // testing has shown that issuing overlapping "me" commands is not
+                    // accumulative. Issuing a new "me" just appears to reset tinyg’s internal
                     // timer, not add to it.
                     // Added a max timeout value so the motors would not run longer than 30 min.
                     // 30min = 1,800,000ms
@@ -749,7 +749,7 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
             //console.log("onRecvCmd. recvline:", recvline);
 
             // we want to process the qr reports for buffer planner
-            // sample: 
+            // sample:
             // {"qr":27}
 
             if (!(recvline.dataline)) {
@@ -779,7 +779,7 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                 } else if (d.r && d.r.mt) {
                     this.processMotorTimeout(d.r.mt);
                 }
-                
+
                 // see if footer has packet (line) mode data or char mode data
                 // {"r":{"mt":2.00},"f":[3,0,6]}
                 if (d.f && d.f.length > 0) {
@@ -789,7 +789,7 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                         this.updatePktModePProgBar(d.f[2]);
                     }
                 }
-                
+
                 // see if we have a local buffer size
                 //{"Cmd":"Complete","Id":"g38","P":"COM7","LocalBufSize":0}
                 if ('LocalBufSize' in d) {
@@ -804,7 +804,7 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
         processMotorTimeout: function (mt) {
             // Read in the motor's timeout value. If the value is below
             // 1 second, then we will just consider it non-existant as
-            // the value will not work correctly when used above. My 
+            // the value will not work correctly when used above. My
             // testing has shown that issuing "me":"###" where ### is a
             // fixed timout value does not work in the current TinyG
             // firmware. If this is ever fixed, then we will not need to
@@ -869,7 +869,7 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                     // assume if we're down this low that it's v9
                     $('#com-chilipeppr-widget-tinyg .fb-build').text("G2 " + fb.toFixed(2));
                     $('#com-chilipeppr-widget-tinyg .fb-alert').addClass("hidden");
-                
+
                 } else {
                     // they are below threshold
                     $('#com-chilipeppr-widget-tinyg .fb-build').text(fb);
@@ -918,7 +918,7 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                 this.processStats(sr);
             }
 
-            // Publish the axes updates last, so subscribers will process them with the correct units, coordinate system, etc. 
+            // Publish the axes updates last, so subscribers will process them with the correct units, coordinate system, etc.
             // build normalized interface object
             var axes = {
                 x: sr.posx != undefined ? sr.posx : null,
@@ -927,10 +927,10 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                 a: sr.posa != undefined ? sr.posa : null,
                 type: 'work'
             }
-            // As of 29 Jun 2015, the init commands include machine coordinates. 
+            // As of 29 Jun 2015, the init commands include machine coordinates.
             /*if ((sr.posx != undefined) && (sr.mpox == undefined)) {
                 this.initController(true);
-                return; //Don't publish, it won't be correct. And, we will be redriven by the direct response. 
+                return; //Don't publish, it won't be correct. And, we will be redriven by the direct response.
             };*/
             axes.mpo = {
                 x: sr.mpox != undefined ? sr.mpox : null,
@@ -1142,14 +1142,14 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
             }
         },
         updateCharModePProgBar: function (qr) {
-            if (this.modeFormat != 2) { 
+            if (this.modeFormat != 2) {
                 this.modeFormat = 2;
-                
+
                 // we are hiding for now cuz don't like that it doesn't show
                 // absolute buffer val, rather shows delta which is pointless
                 //this.pktModeProgBar.parents(".row").addClass("hidden");
                 //return;
-                
+
                 // original where we were showing
                 $('#com-chilipeppr-widget-tinyg .pktmodelbl').html("Char&nbsp;Mode");
                 this.pktModeProgBar = $('#com-chilipeppr-widget-tinyg .pktmodeprogress .progress-bar');
