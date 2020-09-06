@@ -18,15 +18,15 @@ requirejs.config({
 // Test this element. This code is auto-removed by the chilipeppr.load()
 cprequire_test(["inline:com-chilipeppr-widget-spconsole"], function(sp) {
     console.log("test running of " + sp.id);
-    
-    $('body').css("padding", "20px");
+
+    $('body').css("padding", "0px");
 
     var singlePortMode = true;
 
     var test = function() {
-        
+
         var ctr = 0;
-        
+
         if (singlePortMode) {
 
             // sample sending of data, perhaps from another widget, or from
@@ -38,7 +38,7 @@ cprequire_test(["inline:com-chilipeppr-widget-spconsole"], function(sp) {
                     Id: "g1"
                 });
             }, 1000);
-            
+
             // setInterval(function() {
             //     chilipeppr.publish("/com-chilipeppr-widget-serialport/jsonSend", {
             //         D: '$G\n',
@@ -88,15 +88,15 @@ cprequire_test(["inline:com-chilipeppr-widget-spconsole"], function(sp) {
     }
     test();
     //sp.init(true, /^{/);
-    
+
     // test a recvSingleSelectPort
     // var testRecvPortChange = function() {
     //     chilipeppr.publish("/com-chilipeppr-widget-serialport/recvSingleSelectPort",  {Name: "COM4", Friendly: "NodeMCU / CP2102 (COM4)", SerialNumber: "USB\VID_10C4&PID_EA60\014ADB5C", DeviceClass: "", IsOpen: true, …});
     // }
-    
+
     // Inject new div to contain widget or use an existing div with an ID
     $("body").append('<p></p><' + 'div id="myDivWidgetSerialport"><' + '/div>');
-    
+
     chilipeppr.load(
       "#myDivWidgetSerialport",
       "http://raw.githubusercontent.com/chilipeppr/widget-spjs/master/auto-generated-widget.html",
@@ -114,7 +114,7 @@ cprequire_test(["inline:com-chilipeppr-widget-spconsole"], function(sp) {
         );
       }
     );
-    
+
     setTimeout(function() {
         sp.setFilter(/^ok|^\n|^\[G|^<|\$G/);
     }, 10000);
@@ -209,14 +209,14 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
             });
 
             this.setupOnPaste();
-            
+
             this.setupRegexpEditButtons();
-            
+
             console.log(this.name + " done loading.");
             console.groupEnd();
         },
         setupRegexpEditButtons: function() {
-            
+
             // setup the toggle show of the filter edit box
             $('.spconsole-filter-edit').click(() => {
                 if ($('.com-chilipeppr-widget-spconsole-regexp-region').hasClass("hidden")) {
@@ -232,7 +232,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                     this.resize();
                 }
             });
-            
+
             // handle the "Set as Filter" button
             $('.com-chilipeppr-widget-spconsole-regexp-setbtn').click(() => {
                 var newFilterTxt = $('.com-chilipeppr-widget-spconsole-regexp-input').val();
@@ -241,7 +241,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                 // act as if we clicked the hide edit filter button to toggle it off
                 $('.spconsole-filter-edit').click();
             });
-            
+
         },
         // global props for filtering console
         filterRegExp: null,
@@ -249,14 +249,14 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
         setFilter: function(filterRegExp) {
             var that = this;
             console.log("they want regexp filter:", filterRegExp, "typeOf:", typeof(filterRegExp));
-            
+
             var funnelEl = $('.com-chilipeppr-widget-spconsole .spconsole-filter');
             funnelEl.removeClass("hidden");
-            funnelEl.attr('data-content', 'Toggle the filter. A filter can be applied to remove lower priority information from getting logged. The filter is set by the workspace you are in.' + 
+            funnelEl.attr('data-content', 'Toggle the filter. A filter can be applied to remove lower priority information from getting logged. The filter is set by the workspace you are in.' +
                 " The filter is set to: " + filterRegExp.toString());
             // funnelEl.data('content', "blah");
             console.log("regexp hover content", funnelEl.attr('data-content'));
-            
+
             if (typeof(filterRegExp) == "object") {
                 // we were passed a native regexp, just use
             } else {
@@ -269,12 +269,12 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
             console.log("final filterRegExp:", filterRegExp);
             this.filterRegExp = filterRegExp;
             this.isFilterActive = true;
-            
+
             // set the manual edit box
             $('.com-chilipeppr-widget-spconsole-regexp-input').val(this.filterRegExp);
-            
+
             // attach click event
-            
+
         },
         getFilter: function() {
             return this.filterRegExp;
@@ -338,11 +338,11 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
         isAlreadySubscribeToRecvLine: false,
         setSinglePortMode: function() {
             // in this mode we just show signals from the channel
-            // /com-chilipeppr-widget-serialport/recvline 
+            // /com-chilipeppr-widget-serialport/recvline
             // we also just send on the channel
-            // /com-chilipeppr-widget-serialport/send 
+            // /com-chilipeppr-widget-serialport/send
             // that way we don't have to know what serial port the user
-            // is connected to. 
+            // is connected to.
             this.isSinglePortMode = true;
 
             // in single port mode, we only recv serial data in line by line
@@ -353,7 +353,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
             } else {
                 console.warn("already subscribed to recvline in console");
             }
-            
+
             // if another widget sends a serial cmd, echo it here
             //chilipeppr.subscribe("/com-chilipeppr-widget-serialport/send", this, this.onEchoOfSend);
 
@@ -375,7 +375,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                         console.group("jsonModeCallback retry");
                         console.log("retrying to see what the single select port is");
                         chilipeppr.subscribe("/com-chilipeppr-widget-serialport/recvSingleSelectPort", jsonModeCallback);
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/requestSingleSelectPort", ""); 
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/requestSingleSelectPort", "");
                         console.groupEnd();
                     }, 1000);
                     */
@@ -425,7 +425,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
             chilipeppr.subscribe("/com-chilipeppr-widget-serialport/onQueue", this, this.jsonOnQueue);
             chilipeppr.subscribe("/com-chilipeppr-widget-serialport/onWrite", this, this.jsonOnWrite);
             chilipeppr.subscribe("/com-chilipeppr-widget-serialport/onComplete", this, this.jsonOnComplete);
-            
+
             console.groupEnd();
         },
         unsetupJsonMode: function() {
@@ -447,7 +447,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                 arr = [];
                 arr.push(data);
             }
-                
+
             for (var index = 0; index < arr.length; index++) {
                 var item = arr[index];
                 var msgEl = $(
@@ -507,7 +507,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                 // console.log("we are isInJsonMode so returning");
                 return;
             }
-            
+
             if (data.dataline) {
                 // console.log("passing to appendLog. data.dataline:", data.dataline);
                 this.appendLog(data.dataline);
@@ -551,8 +551,8 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
             // Since we may load after the ChiliPeppr Serial Port Server object
             // we can also publish a request to resend the list
             chilipeppr.publish("/com-chilipeppr-widget-serialport/getlist", "");
-            
-            
+
+
         },
         onRecvSingleSelectPort: function(data) {
             // we need to override what port we're bound to here
@@ -564,7 +564,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                 hdr.html("Console <span class=\"subtitle\">" + this.portBoundTo.Name + "</span>");
             else
                 hdr.html("Console <span class=\"subtitle\">" + "No port" + "</span>");
-            
+
         },
         onPortList: function(ports) {
             // This gets called when a publish occurs on
@@ -656,7 +656,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
             var that = this;
             chilipeppr.load(
                 "http://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html",
-                // "http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/", 
+                // "http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/",
                 function() {
                 require(['inline:com-chilipeppr-elem-pubsubviewer'], function(pubsubviewer) {
                     pubsubviewer.attachTo($('.com-chilipeppr-widget-spconsole .panel-heading .dropdown-menu'), that);
@@ -829,7 +829,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
             } else {
                 this.isAlreadySubscribedToWsRecv = true;
                 chilipeppr.subscribe("/com-chilipeppr-widget-serialport/ws/recv", this, function(msg) {
-            
+
                     // make sure the data is for the port we're bound to
                     if (msg.match(/^\{/)) {
                         // it's json
@@ -841,17 +841,17 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                             // convert newlines
                             // console.log("data before replace:", d);
                             // console.log("this.dataBuffer:", this.dataBuffer);
-                            
-                            
+
+
                             // what we're doing here is buffering the incoming data to then
                             // split on newlines and then passing to appendLog
-                            
+
                             if (d == undefined) {
                                 // console.log("data was undefined so not appending");
                             } else {
                                 this.dataBuffer += d;
                             }
-                            
+
                             // see if we got newline
                             while (this.dataBuffer.match(/\n/)) {
                                 //console.log("we have a newline.");
@@ -862,14 +862,14 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                                 this.dataBuffer = tokens.join("\n");
                                 // console.log("publishing line:", line);
                                 // console.log("new buffer:", this.dataBuffer, "len:", this.dataBuffer.length);
-                                
+
                                 this.appendLog(line);
                             }
-                            
+
                             //d.replace(/\r\n|\r|\n/gm, "<br/>");
                             //var spd = $("<div/>").text(data.D);
                             //console.log("data after replace:", d);
-                            
+
                             // this.appendLog(d);
                         }
                     }
@@ -904,9 +904,9 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
             // if there is a regular expression set, we will enter the analysis here
             // remember, we get text and jquery HTML element payloads
             if (this.isFilterActive) {
-                
+
                 console.log("filter is active. regexp:", this.filterRegExp);
-                
+
                 // see if log matches filter and ignore
                 if (!(msg.appendTo) && msg.match(this.filterRegExp)) {
                     // this means it's a text object and it matched the regexp
@@ -922,7 +922,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                     } else {
                         console.log("found HTML element, but it did not match regexp so still printing. msgText:", msgText);
                     }
-                
+
                 } else {
                     console.log("regexp msg did not match. msg:", msg);
                 }
@@ -955,7 +955,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                 msg = msg.replace("<", "&lt;").replace(">", "&gt;");
                 log.html(log.html() + msg);
             }
-            
+
             //if (doScroll) {
             d.scrollTop = d.scrollHeight - d.clientHeight;
             //}
