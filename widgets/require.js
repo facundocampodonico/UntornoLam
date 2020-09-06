@@ -2137,6 +2137,10 @@ requirejs.config({
     chilipeppr_ready: '../main',
     chilipeppr_init2: '../app2',
     chilipeppr_init: '../app',
+//    chilipeppr_ready: '//localhost/widgets/main',
+//    chilipeppr_init2: '//localhost/widgets/app2',
+//    chilipeppr_init: '//localhost/widgets/app',
+
 
     google: '//www.google-analytics.com/analytics',
         jquery: '//code.jquery.com/jquery-2.1.0.min',
@@ -2144,6 +2148,7 @@ requirejs.config({
 //		bootstrap: '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min',
 		//amplify: '//i2dcui.appspot.com/js/amplify-1.1.2/amplify',
     amplify: '../amplify',
+//    amplify: '//localhost/widgets/amplify',
 		jquerycookie: '//i2dcui.appspot.com/js/jquery-cookie/jquery.cookie',
 		jqueryui: '//i2dcui.appspot.com/js/jquery-ui-1.10.4/ui/jquery.ui.core',
         jqueryuiWidget: '//i2dcui.appspot.com/js/jquery-ui-1.10.4/ui/jquery.ui.widget',

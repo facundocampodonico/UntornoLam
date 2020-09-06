@@ -17,10 +17,13 @@
   <link href="css/MiCncStyle.css" rel="stylesheet">
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+
   <link href="css/sb-admin-2.css" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <!-- Modal -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -38,21 +41,19 @@
   	var ServicionEnCurso='1' ;
     var cargagcode=false;
   </script>
-  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  
-<script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
 
-  <!--<script type='module' src="cnc_visor.js"></script>-->
+<!--<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
+  <!--<script type='text/javascript' src="require.js"></script>-->
+  <!--<link rel="stylesheet" type="text/css" href="css/code_ver.css">-->
+    <!--<script type='module' src="cnc_visor.js"></script>-->
+  <!--<script type='text/javascript' src="code_ver.js"></script>-->
 
-<link rel="stylesheet" type="text/css" href="widget.css">
-
-<script type='text/javascript' src="./widgets/visor-3d/widget.js"></script>
 
 </head>
 
-<body id="page-top">
-
-  <!-- Page Wrapper -->
+<!--<body id="page-top">-->
+  <body>
+<!-- Page Wrapper -->
   <div id="wrapper">
 
     <!-- Sidebar -->
@@ -437,63 +438,15 @@
     </div>
 
             <div class=row>
-              <div id="com-chilipeppr-widget-3dviewer"></div>
-                <div class="col-lg-3" data-toggle="tooltip" title="Descripción de la funcionalidad">
+
+                <div class="col-lg-3 pr-0" data-toggle="tooltip" title="Descripción de la funcionalidad">
                  <div class="card shadow mb-6">
                   <div id="listWithHandle" class="list-group1">
                       <div class="list-group-item 1">
                           <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span> &nbsp;Control CNC</button>
                           <div class="contentcnc">
-                                <br>
-                                <table class="tablecnc">
-                                        <tr>
-                                          <td><button type="button" class="btn btn-outline-info btn-block"><img src="img/ul.png"> </button></td>
-                                          <td><button type="button" class="btn btn-outline-info btn-block">Y+</button></td>
-                                          <td><button type="button" class="btn btn-outline-info btn-block"><img src="img/ru.png"</button></td>
-                                          <td><button type="button" class="btn btn-outline-info btn-block">Z+</button></td>
-                                          <td><button type="button" class="btn btn-outline-secondary btn-block">Pos. Predefinida</button></td>
-                                        </tr>
-
-                                      <tbody>
-
-                                        <tr>
-                                          <td><button type="button" class="btn btn-outline-info btn-block ">X-</button></td>
-                                          <td><button type="button" class="btn btn-outline-info btn-block">X/Y</button></td>
-                                          <td><button type="button" class="btn btn-outline-info btn-block">X+</button></td>
-                                          <td><button type="button" class="btn btn-outline-info btn-block ">z</button></td>
-                                          <td><button type="button" class="btn btn-outline-secondary  btn-block">Go To work 0</button></td>
-                                          <th></th>
-                                        </tr>
-                                        <tr>
-                                          <td><button type="button" class="btn btn-outline-info btn-block"><img src="img/dl.png"> </button></td></td>
-                                          <td><button type="button" class="btn btn-outline-info btn-block">Y-</button></td>
-                                          <td><button type="button" class="btn btn-outline-info btn-block"><img src="img/rd.png"> </button></td>
-                                          <td><button type="button" class="btn btn-outline-info btn-block">Z-</button></td>
-                                          <td><button type="button" class="btn btn-outline-secondary  btn-block">Go to machine 0</button></td>
-                                         </tr>
-
-                                       </tbody>
-
-                                   </table>
-                                   <br>
-                                     <table class="tablecnc">
-                                         <tbody>
-                                          <tr>
-
-                                          <td><button type="button" class="btn btn-secondary btn-block">1</button></td></td>
-                                          <td><input type="text" class="form-control" id="" value="" readonly></td>
-                                          <td><input type="text" class="form-control" id="" value="" readonly></td>
-                                          <td><input type="text" class="form-control" id="" value="" readonly></td>
-                                          <td><button type="button" class="btn btn-outline-secondary btn-block"><i class="fa fa-adjust"></i></button></td>
-                                          <td><input type="text" class="form-control" id="" value="" readonly></td>
-                                          <td><button type="button" class="btn btn-outline-secondary btn-block"><i class="fas fa-plus"></i></i></button></td>
-                                          <td><button type="button" class="btn btn-outline-secondary btn-block"><i class="fas fa-minus"></i></button></td>
-
-                                          </tr>
-
-                                       </tbody>
-
-                                   </table>
+                              <iframe src="widgets/visor-ejes/widget.html" width="100%" height="400px" style="border:0px solid black;">
+                              </iframe>
 
                            </div>
 
@@ -502,35 +455,8 @@
                       <div class="list-group-item 2">
                           <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Herramienta</button>
                           <div class="contentcnc">
-                          <br>
-                          <div class="input-group mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text">X</div>
-                                  </div>
-                                  <input type="text" class="form-control" id="inlineFormInputGroup1" value="" readonly>
-                                </div>
-                          <div class="input-group mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text">Y</div>
-                                  </div>
-                                  <input type="text" class="form-control" id="inlineFormInputGroup2" value="" readonly>
-                                </div>
-                          <div class="input-group mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text">Z</div>
-                                  </div>
-                                  <input type="text" class="form-control" id="inlineFormInputGroup3" value="" readonly>
-                                </div>
-
-                                <script>
-                                var inputNombre = document.getElementById("inlineFormInputGroup1");
-                                inputNombre.value = "0.00000";
-                                inputNombre = document.getElementById("inlineFormInputGroup2");
-                                inputNombre.value = "0.00000";
-                                inputNombre = document.getElementById("inlineFormInputGroup3");
-                                inputNombre.value = "0.00000";
-                                </script>
-                            <br>
+                            <iframe src="widgets/texto-a-gcode/widget.html" width="100%" height="450 px" style="border:0px solid black;">
+                            </iframe>
                         </div>
                       </div>
 
@@ -538,22 +464,8 @@
                       <div class="list-group-item 3">
                           <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; GCODE Preview</button>
                           <div class="contentcnc">
-                                  <br>
-                              <div class="card example-1 square scrollbar-cyan bordered-cyan">
-
-                                  <h4 id="section1"><strong>Second title of the news</strong></h4>
-                                  <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
-                                    qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan
-                                    mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim
-                                    qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic.
-                                    Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-                                  <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
-                                    qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan
-                                    mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim
-                                    qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic.
-                                    Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-
-                              </div>
+                                  <iframe src="widgets/visor-gcode/widget.html" width="100%" height="450 px" style="border:0px solid black;">
+                                  </iframe>
                           </div>
                       </div>
                 </div>
@@ -561,38 +473,12 @@
 
               </div>
 
-              <div class="col-lg-6" data-toggle="tooltip" title="Descripción de la funcionalidad">
+              <div class="col-lg-6 px-0" data-toggle="tooltip" title="Descripción de la funcionalidad">
                 <div class="card shadow mb-4">
-                    <button type="button" class="contraerpreview"></span> &nbsp; 3D Preview</button>
+                    <button type="button" class="contraer"></span> &nbsp; 3D Preview</button>
                     <div class="contentcnc">
-                      <!--<div class="card-body" id="gcodepreview">-->
-                      <div class="card-body">
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                            <div>
-                            <button type="button" id="buttontop" class="btn btn-info btn-sm btn-block">ARRIBA</button>
-                            </div>
-                            <div>
-                            <button type="button" id="buttonfront" class="btn btn-info btn-sm btn-block">FRENTE</button>
-                            </div>
-                            <div>
-                            <button type="button" id="buttonright" class="btn btn-info btn-sm btn-block">DERECHA</button>
-                            </div>
-                            <div>
-                            <button type="button" id="buttonleft" class="btn btn-info btn-sm btn-block">IZQUIERDA</button>
-                            </div>
-                            <div>
-                            <button type="button" id="button3d" class="btn btn-info btn-sm btn-block">VISTA 3D</button>
-                            </div>
-                            <div>
-                            <button type="button" id="buttoncargar" class="btn btn-info btn-sm btn-block">CARGAR</button>
-                            </div>
-                            <div>
-                            <button type="button" id="buttonsimular" class="btn btn-info btn-sm btn-block">SIMULAR</button>
-                            </div>
-                        </div>
-                        </div>
+                        <iframe src="widgets/workspace/workspace.html" width="100%" height="600px" style="border:0px solid black;">
+                        </iframe>
                     </div>
                 </div>
 
@@ -600,7 +486,7 @@
 
 
 
-              <div class="col-lg-3" data-toggle="tooltip" title="Descripción de la funcionalidad">
+              <div class="col-lg-3 pl-0" data-toggle="tooltip" title="Descripción de la funcionalidad">
                 <div class="card shadow mb-4">
                   <div id="listWithHandle2" class="list-group">
                     <div class="list-group-item 4">
@@ -608,41 +494,24 @@
 
                         <div class="contentcnc">
 
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <br>
-                                  <thead>
-                                    <tr>
-                                      <th>Comando</th>
-                                      <th>Enviado</th>
-                                      <th>Realizado</th>
-                                      <th>Respuesta</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <!--<tr>
-                                      <td>este estaba</td>
-                                      <td>este estaba</td>
-                                      <td>este estaba</td>
-                                      <td>este estaba</td>
-                                    </tr>-->
-                        			</tbody>
-                                </table>
-                              </div>
-
+                          <iframe src="widgets/visor-consola/widget.html" width="100%" height="600px" style="border:0px solid black;">
+                          </iframe>
                         </div>
                     </div>
 
                     <div class="list-group-item 5">
-                        <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Texto Conexión</button>
+                        <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp;Conexión</button>
                         <div class="contentcnc">
-                          <p>En desarrollo</p>
+                          <object type="text/html" data="widgets/visor-grbl2/widget.html" width="100%" height="300px"></object>
                         </div>
                     </div>
                     <div class="list-group-item 6">
-                        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Probe</button>
+                        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Camara</button>
                         <div class="contentcnc">
-                          <p>En desarrollo</p>
+
+                          <iframe src="widgets/visor-camara/widget.html" width="100%" height="600px" style="border:0px solid black;">
+                          </iframe>
+
                         </div>
                     </div>
                   </div>
@@ -705,139 +574,48 @@
   <script src="js/sb-admin-2.min.js"></script>
 
 
-
-<script>
-  $("body").append('<' + 'div id="myDivWidget3dviewer"><' + '/div>');
-
-  chilipeppr.load(
-    "#myDivWidget3dviewer",
-    "http://raw.githubusercontent.com/chilipeppr/widget-3dviewer/master/auto-generated-widget.html",
-    function() {
-      // Callback after widget loaded into #myDivWidget3dviewer
-      // Now use require.js to get reference to instantiated widget
-      cprequire(
-        ["inline:com-chilipeppr-widget-3dviewer"], // the id you gave your widget
-        function(myObjWidget3dviewer) {
-          // Callback that is passed reference to the newly loaded widget
-          console.log("Widget / 3D GCode Viewer just got loaded.", myObjWidget3dviewer);
-          myObjWidget3dviewer.init();
-        }
-      );
-    }
-  );
-</script>
-
-
-
-  <script>
-
-  function listar()
-  {
-    console.log("entro")
-  }
-
+  <script type="text/javascript">
+  // List with handle
+  Sortable.create(listWithHandle, {
+    handle: '.material-icons',
+    animation: 150
+  });
+  Sortable.create(listWithHandle2, {
+    handle: '.material-icons',
+    animation: 150
+  });
   </script>
-<!--
-<script>
-$(document).ready( function () {
+  <script>
+  var coll = document.getElementsByClassName("contraer");
+  var i;
 
-    console.log('Comienza a cargar la pagina UNtornoLaM ...');
-
-    $('#dataTable').DataTable({
-        ajax: {
-           url: 'http://66.97.46.179:8080/api/getMyServices',
-           contentType: 'application/json',
-           method: "GET",
-           xhrFields: {
-               withCredentials: false
-           },
-           dataSrc: "services"
-        },
-        columns: [
-            { "data": "name" },
-            { "data": "position" },
-            { "data": "office" },
-            { "data": "age" },
-            { "data": "startDate" },
-            { "data": "salary" }
-        ]
-    });
-
-});</script>-->
-
-<!-- <script src="vendor/datatables/jquery.dataTables.min.js"></script>-->
-<!-- <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>-->
-
-  <!-- Page level custom scripts -->
-<!-- <script src="js/demo/datatables-demo.js"></script>-->
-
-<script type="text/javascript">
-// List with handle
-Sortable.create(listWithHandle, {
-  handle: '.material-icons',
-  animation: 150
-});
-Sortable.create(listWithHandle2, {
-  handle: '.material-icons',
-  animation: 150
-});
-</script>
-<script>
-var coll = document.getElementsByClassName("contraer");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
-  });
-}
-</script>
-
-
-<!--<script>
-var coll = document.getElementsByClassName("contraerpreview");
-var i;
-
-//for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
-
-    if (cargagcode==false){
-      cargagcode=true;
-      createScene(gcodepreview);
-      animate();
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
       }
+    });
+  }
+  </script>
 
-  });
-//}
-</script>-->
+  <script type="text/javascript">
 
-<script type="text/javascript">
+         function hideToggle(button, elem)
+          {
+              $(button).click(function() { $(elem).toggle(); })
+          }
 
-       function hideToggle(button, elem)
-        {
-            $(button).click(function() { $(elem).toggle(); })
-        }
-
-        hideToggle(".bt1", ".1");
-        hideToggle(".bt2", ".2");
-        hideToggle(".bt3", ".3");
-        hideToggle(".bt4", ".4");
-        hideToggle(".bt5", ".5");
-        hideToggle(".bt6", ".6");
-</script>
+          hideToggle(".bt1", ".1");
+          hideToggle(".bt2", ".2");
+          hideToggle(".bt3", ".3");
+          hideToggle(".bt4", ".4");
+          hideToggle(".bt5", ".5");
+          hideToggle(".bt6", ".6");
+  </script>
 
 </body>
 
