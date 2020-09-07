@@ -13,7 +13,8 @@
 
     <!-- Customized version of require.js for ChiliPeppr. Please see require.js docs for how
     ChiliPeppr's dependency system works as it's based on require.js. -->
-    <script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
+    <!--<script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>-->
+    <script type='text/javascript' src="//127.0.0.1:3000/widgets/require.js"></script>
 
     <!-- widget.css DON'T REMOVE -->
     <style type='text/css'>
@@ -50,11 +51,11 @@
                         <div id="com-chilipeppr-3dviewer">Load 3D Viewport Here</div>
                         <!-- Workspace Hdr -->
                         <div id="com-chilipeppr-ws-gcode-hdr" class="com-chilipeppr-ws-hdr zhigh well">
-                            
+
                             <span class="workspace-title">Workspace TinyG</span>
-                            
+
                             <div id="com-chilipeppr-ws-menu" class="">
-                                
+
                                 <div class="pull-right">
                                     <div class="dropdown">
                                         <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
@@ -70,7 +71,7 @@
                                 </div>
 
                                 <div id="com-chilipeppr-ws-gcode-dragdrop" xstyle="margin-right:6px;" class="pull-left"></div>
-                                
+
                                 <div class="dropdown pull-left">
                                   <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     Widgets
@@ -82,7 +83,7 @@
                                     <!--<li><a href="#">Something else here</a></li>-->
                                     <!--<li role="separator" class="divider"></li>-->
                                     <!--<li><a href="#">Separated link</a></li>-->
-                                    
+
                                     <li><button type="button" class="btn-ws btn btn-xs btn-default xbox-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Use your Xbox Controller with ChiliPeppr." data-trigger="hover" data-delay="100"><span class=""></span>Xbox Controller</button></li>
                                     <li><button type="button" class="btn-ws btn btn-xs btn-default webcam-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Stream your MJPEG webcam" data-trigger="hover" data-delay="100"><span class=""></span>Webcam</button></li>
                                     <li><button type="button" class="btn-ws btn btn-xs btn-default zipwhip-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Get a text sent to you when your CNC job is completed." data-trigger="hover" data-delay="100"><span class="zipwhip"></span>Send Text on Job Done</button></li>
@@ -96,40 +97,40 @@
                                     <li><button type="button" class="btn-ws btn btn-xs btn-default gpio-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="GPIO Server by Ben Delarre. Allows you to control your GPIO ports on a Raspberry Pi or Beagle Bone Black to toggle on/off hardware components. For example, you could toggle a fan on/off via GPIO."
                                     data-trigger="hover" data-delay="100">GPIO</button></li>
                                     <li><button type="button" class="btn-ws btn btn-xs btn-default shuttlexpress-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="ShuttleXpress Jog Dial." data-trigger="hover" data-delay="100">ShuttleXpress</button></li>
-    
+
                                     <li><button type="button" class="btn-ws btn btn-xs btn-default touchplate-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Use a touch plate to easily figure out your Z zero of your workpiece and set it." data-trigger="hover"
                                     data-delay="100">Touch Plate</button></li>
                                     <li><button type="button" class="btn-ws btn btn-xs btn-default superTouchplate-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="XYZ touch plate. Use a touch plate to figure out your X zero, Y zero, and Z zero of your workpiece." data-trigger="hover"
                                     data-delay="100">Super Touch Plate</button></li>
-    
+
                                     <li><button type="button" class="btn-ws btn btn-xs btn-default programmer-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Program your Arduino or Atmel chip directly from ChiliPeppr." data-trigger="hover" data-delay="100">Arduino / Atmel Firmware Uploader</button></li>
                                     <li><button type="button" class="btn-ws btn btn-xs btn-default svg2gcode-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Import an SVG file to Gcode" data-trigger="hover" data-delay="100">SVG Import</button></li>
                                     <li><button type="button" class="btn-ws btn btn-xs btn-default font2gcode-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Create Gcode from text" data-trigger="hover" data-delay="100">Font2Gcode</button></li>
-                                
+
                                     <li><button type="button" class="btn-ws btn btn-xs btn-default cayenn-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="View your Cayenn devices" data-trigger="hover" data-delay="100">Cayenn Devices</button></li>
-                                
+
                                   </ul>
                                 </div>
-                                
+
                             </div>
 
                         </div>
-                        
+
                         <!-- Xbox -->
                         <div class="zhigh hidden" id="com-chilipeppr-ws-xbox"></div>
 
                         <!-- Cayenn -->
                         <div class="zhigh hidden" id="com-chilipeppr-ws-cayenn"></div>
-                        
+
                         <!-- SVG2Gcode -->
                         <div class="zhigh hidden" id="com-chilipeppr-ws-svg2gcode"></div>
 
                         <!-- Font2Gcode -->
                         <div class="zhigh hidden" id="com-chilipeppr-ws-font2gcode"></div>
-                        
+
                         <!-- Zipwhip Text Messaging -->
                         <div class="zhigh hidden" id="com-chilipeppr-ws-zipwhip"></div>
-                        
+
                         <!-- Zipwhip Text Messaging Receive Text widget -->
                         <div class="zhigh hidden" id="com-chilipeppr-ws-zipwhip-recvtext"></div>
 
@@ -156,7 +157,7 @@
 
                         <!-- Touch Plate -->
                         <div class="zhigh hidden" id="com-chilipeppr-ws-touchplate">Touch Plate Here</div>
-                        
+
                         <!-- Super Touch Plate -->
                         <div class="zhigh hidden" id="com-chilipeppr-ws-superTouchplate">Super Touch Plate Here</div>
 
@@ -179,7 +180,7 @@
                             </td></tr>
                             </table>
                         </div>
-                        
+
                     </div>
                     <div class="col-xs-3 nopadding">
                         <!-- XYZ -->

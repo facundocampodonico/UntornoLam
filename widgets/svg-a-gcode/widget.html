@@ -13,7 +13,8 @@
 
     <!-- Customized version of require.js for ChiliPeppr. Please see require.js docs for how
     ChiliPeppr's dependency system works as it's based on require.js. -->
-    <script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
+    <!--<script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>-->
+    <script type='text/javascript' src="//127.0.0.1:3000/widgets/require.js"></script>
 
     <!-- widget.css DON'T REMOVE -->
     <style type='text/css'>
@@ -34,7 +35,7 @@
 </head>
 
 <body>
-    
+
 
     <div id="com-zipwhip-widget-svg2gcode" class="panel panel-default">
         <div class="panel-heading ">
@@ -51,10 +52,10 @@
                         <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
                     </div>
                 </div>
-            </div> 
-            
-            <span class="panel-title" data-toggle="popover">SVG To Gcode</span> 
-            
+            </div>
+
+            <span class="panel-title" data-toggle="popover">SVG To Gcode</span>
+
         </div>
         <div class="panel-body">
 
@@ -75,7 +76,7 @@
 
                     <p style="margin-top:0px;margin-bottom:0;padding-bottom:0;">Paste/Drag SVG Code Here</p>
                     <a href="javascript:" class="load-logo" style="font-size:11px;margin-top:0;padding-top:0;">Load Example ChiliPeppr Logo</a>
-                    
+
                     <textarea class="form-control input-svg" rows="3" spellcheck="false">
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
@@ -206,18 +207,18 @@
                     </textarea>
 
                     <div class="alert alert-danger error-flattened hidden" style="margin:10px 0 0 0;">
-                        You have an SVG file that has groups. Please go back 
-                        to your SVG editor and remove all groups to flatten the 
-                        file since this import widget only supports SVG files 
+                        You have an SVG file that has groups. Please go back
+                        to your SVG editor and remove all groups to flatten the
+                        file since this import widget only supports SVG files
                         that contain no nested groups. Then re-import.
                     </div>
-                    
+
                     <div class="alert alert-danger error-parse hidden" style="margin:10px 0 0 0;">
                         There was an error parsing your SVG file. Please check your file.
                     </div>
 
                     <p style="padding-top:10px;">Settings</p>
-                    
+
                     <div class="form-group" xstyle="padding-left:18px;">
                         <span xstyle="font-size:11px;">Inflate/Deflate Path</span>
                         <div class="input-group">
@@ -229,7 +230,7 @@
                     <button class="hidden btn-test">Gen Test Objects</button>
                     <span class="hidden test-info"></span>
                     <button class="hidden btn-arrow">Gen Arrow for X 3D to Screen</button>
-              
+
                     <!--<div class="form-group" xstyle="padding-left:18px;">-->
                     <!--    <span xstyle="font-size:11px;">Points To Generate Per Path</span>-->
                     <!--    <div class="input-group">-->
@@ -287,8 +288,8 @@
                                     <div class="input-group-addon">mm</div>
                                 </div>
                                 <p style="margin-top:3px;margin-bottom:0;font-size:11px;">
-                                    On TinyG enter $p1 to see PWM settings. Set $p1cpl=0, $p1cph=1, $p1csl=0, 
-                                    $p1csh=1, $p1pof=0 then use 
+                                    On TinyG enter $p1 to see PWM settings. Set $p1cpl=0, $p1cph=1, $p1csl=0,
+                                    $p1csh=1, $p1pof=0 then use
                                     1 in the box above for 100% power, 0.1 for 10% power, etc.
                                 </p>
                             </div>
@@ -322,7 +323,7 @@
                             <div class="input-group-addon">mm/min</div>
                         </div>
                     </div>
-                    
+
                     <p style="margin-top:10px;margin-bottom:2px;">Gcode <span class="regenerate" style="font-size:11px;color:red;">Needs re-generated</span>
                     <span class="gcode-size-span hidden"><span class="gcode-size" style="font-size:11px;color:blue;">88Kb</span></span></p>
                     <button style="margin-bottom:4px;" type="button" class="btn btn-default btn-sendgcodetows">Send Gcode to Workspace</button>
@@ -332,16 +333,16 @@
                 <!-- End Tab 2 -->
             </div>
         </div>
-        
+
     </div>
-    
+
     <!-- Width Adjust Textbox -->
     <div id="com-zipwhip-widget-svg2gcode-widthbox" class="hidden form-group com-zipwhip-widget-svg2gcode-textbox div-width-box" style="position:absolute;top:400px;left:10px;">
         <div class="input-group">
             <input type="number" step="1" class="form-control input-widthbox" placeholder="Width">
             <div class="input-group-addon hidden" xstyle="padding:0 10px">
                 <button type="button" class="btn btn-xs btn-default btn-aspect">
-                <span class="glyphicon glyphicon-lock"></span> 
+                <span class="glyphicon glyphicon-lock"></span>
                 <svg class="svg-unlocked hidden"
                    viewBox="0 0 25 21"
                    height="16px"
@@ -364,14 +365,14 @@
 
         </div>
     </div>
-    
+
     <!-- Height Adjust Textbox -->
     <div id="com-zipwhip-widget-svg2gcode-heightbox" class="hidden form-group com-zipwhip-widget-svg2gcode-textbox div-height-box" style="position:absolute;top:450px;left:10px;">
         <div class="input-group">
             <input type="number" step="1" class="form-control input-heightbox" placeholder="Height">
             <div class="input-group-addon hidden" xstyle="padding:0 10px">
                 <button type="button" class="btn btn-xs btn-default btn-aspect">
-                <span class="glyphicon glyphicon-lock"></span> 
+                <span class="glyphicon glyphicon-lock"></span>
                 <svg class="svg-unlocked hidden"
                    viewBox="0 0 25 21"
                    height="16px"
@@ -396,7 +397,7 @@
     </div>
 
     <div id="com-zipwhip-widget-svg2gcode-alignbox" class="hidden" style="position:absolute;top:410px;left:10px;z-index:1;">
-        
+
         <div class="input-group input-group-small" style="">
             <input type="number" step="1" class="form-control input-x" placeholder="0">
             <div class="input-group-addon">
@@ -409,9 +410,9 @@
                 Y
             </div>
         </div>
-        
+
         <!--<p style="margin-bottom:2px;">Vertical Align</p>-->
-                    
+
         <div class="btn-group" style="margin-top:2px;" role="group" aria-label="Basic example">
             <button type="button" class="btn btn-default btn-xs btn-vert-left">
                 <svg
@@ -573,9 +574,9 @@
                 </svg>
             </button>
         </div>
-        
+
         <!--<p style="margin-bottom:2px;">Horizontal Align</p>-->
-        
+
         <div class="btn-group-vertical" role="group" aria-label="Basic example" style="position:absolute;top:0;left:84px;">
             <button type="button" class="btn btn-default btn-xs btn-horiz-top">
                 <svg
@@ -723,7 +724,7 @@
                        inkscape:connector-curvature="0" />
                   </g>
                 </svg>
-            </button>                    
+            </button>
         </div>
     </div>
 

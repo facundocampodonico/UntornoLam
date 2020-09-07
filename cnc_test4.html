@@ -3,33 +3,10 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
   <title>UNtornoLaM</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <!-- Modal -->
-  <link href="css/MiCncStyle.css" rel="stylesheet">
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-
-
-  <link href="css/sb-admin-2.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <!-- Modal -->
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
-  <!-- Carga de Variables -->
 
 
 <!--<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
@@ -39,7 +16,9 @@
   <!--<script type='text/javascript' src="code_ver.js"></script>-->
 
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-<script type='text/javascript' src="./widgets/require.js"></script>
+
+<!--<script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>-->
+<script type='text/javascript' src="//127.0.0.1:3000/widgets/visor-3d/widget.js"></script>
 
 
 </head>
@@ -48,23 +27,20 @@
 <body>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <iframe src="./widgets/visor-ejes/widget.html" width="100%" height="400px" style="border:0px solid black;">
+  </iframe>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+<!--<div id="com-chilipeppr-widget-3dviewer" class="panel panel-default" style="">texto prueba</div>-->
 
-<script>
+<!--<script>
 
 // Inject new div to contain widget or use an existing div with an ID
-$("body").append('<' + 'div id="myDivWidget3dviewer"><' + '/div>');
+//$("body").append('<' + 'div id="myDivWidget3dviewer"><' + '/div>');
 //console.log("hola")
 chilipeppr.load(
   "#myDivWidget3dviewer",
-  "http://localhost:3000/widgets/visor-3d/auto-generated-widget.html",
+  "./widgets/visor-3d/auto-generated-widget.html",
   function() {
     // Callback after widget loaded into #myDivWidget3dviewer
     // Now use require.js to get reference to instantiated widget
@@ -79,7 +55,7 @@ chilipeppr.load(
   }
 );
 //console.log("hola1")
-</script>
+</script>-->
 
 </body>
 
