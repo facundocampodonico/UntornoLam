@@ -7,6 +7,8 @@
  *
  * http://amplifyjs.com
  */
+
+ console.log("cargo el amplify");
 (function( global, undefined ) {
 
 var slice = [].slice,
@@ -111,7 +113,7 @@ var amplify = global.amplify = {
 			if ( subscriptions[ topic ][ i ].callback === callback ) {
 				if ( !context || subscriptions[ topic ][ i ].context === context ) {
 					subscriptions[ topic ].splice( i, 1 );
-					
+
 					// Adjust counter and length for removed item
 					i--;
 					length--;

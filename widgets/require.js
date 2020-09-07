@@ -2067,6 +2067,7 @@ var requirejs, require, define;
     req(cfg);
 }(this));
 
+
 // override the require.load method so it doesn't try to load
 // the javascript files for inline defines, i.e. no backing javascript file
 require.orig_load = require.load;
@@ -2134,12 +2135,12 @@ requirejs.config({
 //		chilipeppr_init2: '//i2dcui.appspot.com/js/app2',
 //		chilipeppr_init: '//i2dcui.appspot.com/js/app',
 
-    chilipeppr_ready: '../main',
-    chilipeppr_init2: '../app2',
-    chilipeppr_init: '../app',
-//    chilipeppr_ready: '//localhost/widgets/main',
-//    chilipeppr_init2: '//localhost/widgets/app2',
-//    chilipeppr_init: '//localhost/widgets/app',
+//    chilipeppr_ready: '../main',
+//    chilipeppr_init2: '../app2',
+//    chilipeppr_init: '../app',
+    chilipeppr_ready: './main',
+    chilipeppr_init2: './app2',
+    chilipeppr_init: './app',
 
 
     google: '//www.google-analytics.com/analytics',
@@ -2147,8 +2148,8 @@ requirejs.config({
 		bootstrap: '//i2dcui.appspot.com/js/bootstrap/bootstrap_3_1_1.min',
 //		bootstrap: '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min',
 		//amplify: '//i2dcui.appspot.com/js/amplify-1.1.2/amplify',
-    amplify: '../amplify',
-//    amplify: '//localhost/widgets/amplify',
+//    amplify: '../amplify',
+    amplify: './amplify',
 		jquerycookie: '//i2dcui.appspot.com/js/jquery-cookie/jquery.cookie',
 		jqueryui: '//i2dcui.appspot.com/js/jquery-ui-1.10.4/ui/jquery.ui.core',
         jqueryuiWidget: '//i2dcui.appspot.com/js/jquery-ui-1.10.4/ui/jquery.ui.widget',
