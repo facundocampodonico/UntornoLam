@@ -39,7 +39,66 @@
     <!--<div id="com-chilipeppr-widget-3dviewer" class="panel panel-default" style="float:left;">-->
     <div id="com-chilipeppr-widget-3dviewer" class="panel panel-default" style="">
 
-        
+        <div id="com-chilipeppr-widget-3dviewer-body" class="panel-body">
+            <!-- WebGL rendering area -->
+            <div id="com-chilipeppr-widget-3dviewer-renderArea" tabindex="1">
+                <div class="youhavenowebgl hidden" style="width:100%;height:100%;color:white;position:absolute;top:0;left:0;">You appear to not have WebGL support or WebGL has crashed. The 3D Viewer can't be used without WebGL.</div>
+                <div class="data-details hidden">Drag and Drop Gcode Here...</div>
+            </div>
+            <div class="com-chilipeppr-widget-3dviewer-inspect panel hidden" style="top:40px;left:20px">
+
+                <table class="table table-bordered table-striped table-condensed">
+                    <tbody>
+                        <tr>
+                            <th colspan="2" class="info-title">
+                                <button type="button" class="close" style="width:100%;text-align:right;">&times;</button>
+                            </th>
+                        </tr>
+                        <tr class="row-signal" xstyle="vertical-align:middle;">
+                            <td xstyle="vertical-align:middle;">Line</td>
+                            <td xstyle="vertical-align:middle;">
+                                <span class="inspect-line" xstyle="vertical-align:middle;float:left;"></span>
+                                <button class="btn btn-info btn-sm pull-right inspect-btn-goto">Go To</button>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="">Gcode</td>
+                            <td class="inspect-gcode"></td>
+                        </tr>
+                        <!-- <tr class="">
+                        <td class="">Start</td>
+                        <td class="inspect-start"></td>
+                    </tr> -->
+                        <tr class="">
+                            <td class="">End Pos</td>
+                            <td class="inspect-end"></td>
+                        </tr>
+                        <tr class="">
+                            <td class="">Feedrate</td>
+                            <td class="inspect-feedrate"></td>
+                        </tr>
+                        <tr>
+                            <td>Distance of Move</td>
+                            <td class="inspect-distance"></td>
+                        </tr>
+                        <tr>
+                            <td>Time for This Line</td>
+                            <td class="inspect-time"></td>
+                        </tr>
+                        <tr>
+                            <td>Est Time to Get Here</td>
+                            <td class="inspect-timeSum"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div id="warningArea">
+                <div class="alert alert-warning alert-dismissable hidden">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>G2/G3 arcs only rendered as straight lines. They are yellow to show where actual positioning in your CNC will differ from 3D rendering. If anyone wants to fork and fix arcs, feel free.</div>
+
+            </div>
+        </div>
     </div>
 
     <!-- Modal for Out of Local Storage -->
