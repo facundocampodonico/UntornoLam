@@ -25,7 +25,7 @@
 }
 #com-chilipeppr-widget-3dviewer-renderArea {
     /*position: fixed;*/
-    position: absolute;
+    position: relative;
     left: 0;
     right: 0;
     bottom: 0;
