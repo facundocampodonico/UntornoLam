@@ -1369,6 +1369,10 @@
       <!-- End of Footer -->
 
 
+      <!--<div id="gcode"></div>
+      <div id="3d" style="height:600px"></div>-->
+
+
     <!-- End of Content Wrapper -->
 
   </div>
@@ -1422,6 +1426,17 @@
   }
 
   </script>
+
+
+
+  <script>
+      $(document).ready(function() {
+        $('#gcode').load("widgets/visor-gcode/widget.html");
+        $('#3d').load("widgets/visor-3d/widget.html");
+      });
+
+  </script>
+
 <!--
 <script>
 $(document).ready( function () {

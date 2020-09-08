@@ -42,7 +42,7 @@
     var cargagcode=false;
   </script>
 
-<!--<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <!--<script type='text/javascript' src="require.js"></script>-->
   <!--<link rel="stylesheet" type="text/css" href="css/code_ver.css">-->
     <!--<script type='module' src="cnc_visor.js"></script>-->
@@ -523,6 +523,13 @@
             </div>    <!-- Fin draggable -->
 
 
+
+            <div id="gcode"></div>
+            <div id="3d" style="height:600px"></div>
+
+
+
+
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -564,7 +571,7 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
+<!--  <script src="vendor/jquery/jquery.min.js"></script>-->
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
@@ -616,6 +623,18 @@
           hideToggle(".bt5", ".5");
           hideToggle(".bt6", ".6");
   </script>
+
+
+  <script>
+      $.get("./widgets/visor-gcode/widget.html", function(htmlexterno){
+         $("#gcode").html(htmlexterno);
+       });
+      $.get("./widgets/visor-3d/widget.html", function(htmlexterno1){
+          $("#3d").html(htmlexterno1);
+       });
+
+  </script>
+
 
 </body>
 
