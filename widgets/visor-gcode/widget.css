@@ -92,6 +92,7 @@
     overflow: scroll;
     overflow-x: hidden;
     position:inherit;
+    /*position:absolute;*/
 }
 #com-chilipeppr-widget-gcode-feedrate {
     padding:0;
@@ -102,6 +103,7 @@
 }
 #com-chilipeppr-widget-gcode-tbl .gtools {
     position:relative;
+    /*position:absolute;*/
 }
 #com-chilipeppr-widget-gcode-tbl tr.gcode-rowhilite:hover {
     background-color: #d5d5d5;

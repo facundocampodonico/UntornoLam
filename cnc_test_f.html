@@ -19,13 +19,17 @@
   <!-- Estilos -->
   <link href="css/MiCncStyle.css" rel="stylesheet">
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
   <link href="css/sb-admin-2.css" rel="stylesheet">
 
   <!-- jquerys -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+  <!--<script type='text/javascript' src="widgets/require.js"></script>-->
   <!-- Carga de Variables -->
   <script>
     var CantidadCnc='5' ;
@@ -505,7 +509,13 @@
             </div>    <!-- Fin draggable     -->
 
             <div id="3d"></div>
+
+<br>
+<br>
+<br>
+
             <div id="gcode"></div>
+
 
 
 
@@ -613,13 +623,17 @@
        $('#3d').load("widgets/visor-3d/widget2.html");
         });
 */
+
 ///recomiendan usar el metodo get.
+
+        $.get("widgets/visor-3d/widget.html", function(htmlexterno1){
+            $("#3d").html(htmlexterno1);
+         });
+
+
        $.get("widgets/visor-gcode/widget.html", function(htmlexterno){
            $("#gcode").html(htmlexterno);
     	});
-        $.get("widgets/visor-3d/widget2.html", function(htmlexterno1){
-            $("#3d").html(htmlexterno1);
-         });
  </script>
 
 
