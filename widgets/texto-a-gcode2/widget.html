@@ -9,18 +9,18 @@
     </title>
 
     <!-- ChiliPeppr is based on bootstrap CSS. -->
-    <!--<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
     <!-- Customized version of require.js for ChiliPeppr. Please see require.js docs for how
     ChiliPeppr's dependency system works as it's based on require.js. -->
     <!--<script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>-->
-    <!--<script type='text/javascript' src="../require.js"></script>-->
+    <script type='text/javascript' src="../require.js"></script>
 
     <!-- widget.css DON'T REMOVE -->
     <style type='text/css'>
         /* widget.css will get inlined here by runme.js. don't remove this comment or inlining will fail. */
     </style>
-    <link rel="stylesheet" type="text/css" href="widgets/texto-a-gcode/widget.css">
+    <link rel="stylesheet" type="text/css" href="widget.css">
     <!-- DON'T REMOVE end widget.css -->
 
     <!-- widget.js DON'T REMOVE -->
@@ -29,7 +29,7 @@
         /* widget.js will get inlined here by runme.js. don't remove this comment or inlining will fail. */
         //]]>
     </script>
-    <script type='text/javascript' src="widgets/texto-a-gcode/widget.js"></script>
+    <script type='text/javascript' src="widget.js"></script>
     <!-- DON'T REMOVE end widget.js -->
 
 </head>
@@ -54,7 +54,7 @@
                         <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
                     </div>
                 </div>
-            </div> <span class="panel-title" data-toggle="popover">Texto A Gcode</span> <span style="font-size:9px;" class="fb-build hidden">v1</span>
+            </div> <span class="panel-title" data-toggle="popover">Font To Gcode</span> <span style="font-size:9px;" class="fb-build hidden">v1</span>
 
         </div>
         <div class="panel-body">
@@ -107,39 +107,39 @@
 
                         <div class="form-group">
                             <label class="radio-inline">
-                                <input type="radio" name="com-chilipeppr-widget-font2gcode-fontweight" value="regular" checked> Normal
+                                <input type="radio" name="com-chilipeppr-widget-font2gcode-fontweight" value="regular" checked> Regular
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="com-chilipeppr-widget-font2gcode-fontweight" value="bold"> Negrita
+                                <input type="radio" name="com-chilipeppr-widget-font2gcode-fontweight" value="bold"> Bold
                             </label>
                         </div>
 
                         <div class="form-group">
                             <label class="radio-inline">
-                                <input type="radio" name="com-chilipeppr-widget-font2gcode-align" value="left" checked> Izquierda
+                                <input type="radio" name="com-chilipeppr-widget-font2gcode-align" value="left" checked> Left
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="com-chilipeppr-widget-font2gcode-align" value="center"> Centro
+                                <input type="radio" name="com-chilipeppr-widget-font2gcode-align" value="center"> Center
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="com-chilipeppr-widget-font2gcode-align" value="right"> Derecha
+                                <input type="radio" name="com-chilipeppr-widget-font2gcode-align" value="right"> Right
                             </label>
                         </div>
 
                         <div class="checkbox">
                             <label>
-                                <input class="input-holes" type="checkbox" value="1" checked> Generar agujeros
-                                <p style="font-size:10px;">Por ejemplo, el del medio del 0</p>
+                                <input class="input-holes" type="checkbox" value="1" checked> Generate holes
+                                <p style="font-size:10px;">For example, the path at the center of a 0</p>
                             </label>
                         </div>
 
                         <div class="form-group">
                             <label class="radio-inline">
-                                <input type="radio" name="com-chilipeppr-widget-font2gcode-cut" value="solid"> Corte Solido
+                                <input type="radio" name="com-chilipeppr-widget-font2gcode-cut" value="solid"> Solid Cut
                             </label>
                             <br>
                             <label class="radio-inline">
-                                <input type="radio" name="com-chilipeppr-widget-font2gcode-cut" value="dashed" checked> Corte punteado
+                                <input type="radio" name="com-chilipeppr-widget-font2gcode-cut" value="dashed" checked> Dashed Cut
                             </label>
                             <div class="form-group" style="padding-left:18px;">
                                 <span style="font-size:11px;">Point Spacing</span>
