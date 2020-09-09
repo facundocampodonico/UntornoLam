@@ -437,16 +437,16 @@
                       <div class="list-group-item 1">
                           <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span> &nbsp;Control CNC</button>
                           <div class="contentcnc">
-
+<div id="ejes"></div>
 
                            </div>
 
                       </div>
 
                       <div class="list-group-item 2">
-                          <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Herramienta</button>
+                          <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Herramienta de texto</button>
                           <div class="contentcnc">
-
+<div id="texto"></div>
                         </div>
                       </div>
 
@@ -481,7 +481,7 @@
                         <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span> &nbsp; Consola de comandos</button>
 
                         <div class="contentcnc">
-
+<div id="consola"></div>
 
                         </div>
                     </div>
@@ -489,13 +489,13 @@
                     <div class="list-group-item 5">
                         <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp;Conexión</button>
                         <div class="contentcnc">
-
+<div id="grbl"></div>
                         </div>
                     </div>
                     <div class="list-group-item 6">
                         <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Camara</button>
                         <div class="contentcnc">
-
+<div id="camara"></div>
                         </div>
                     </div>
                   </div>
@@ -517,7 +517,27 @@
 
                     $.get("widgets/visor-gcode/widget.html", function(htmlexterno){
                         $("#gcode").html(htmlexterno);
-                 	});
+                        });
+
+                    $.get("widgets/visor-ejes/widget.html", function(htmlexterno2){
+                       $("#ejes").html(htmlexterno2);
+                        });
+
+                    //$.get("widgets/texto-a-gcode/widget.html", function(htmlexterno6){
+                    //    $("#texto").html(htmlexterno6);
+                    //    });
+
+                    $.get("widgets/visor-consola/widget.html", function(htmlexterno3){
+                        $("#consola").html(htmlexterno3);
+                        });
+
+                    $.get("widgets/visor-grbl2/widget.html", function(htmlexterno4){
+                        $("#grbl").html(htmlexterno4);
+                        });
+
+                    $.get("widgets/visor-camara/widget.html", function(htmlexterno5){
+                      $("#camara").html(htmlexterno5);
+                       	});
               </script>
 
 
