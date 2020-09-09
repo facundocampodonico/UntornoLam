@@ -41,8 +41,8 @@
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="card  com-chilipeppr-widget-gcode ">
         <div class="card-header">
-            <div class="" style="padding-bottom:10px;"><span class="card-header"></span></div>
-            <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
+
+            <div class="btn-toolbar" role="toolbar" style="position:absolute;left:0px;top:0px;padding:5px 0px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon fa fa-time btn btn-sm"></span>
                 </div>
@@ -60,26 +60,30 @@
 
                     </button>
                     <button type="button" id="com-chilipeppr-widget-gcode-stepfwd" class="btn btn-info btn-sm"><span class="fa fa-step-forward"></span></button>
-                    <button type="button" id="com-chilipeppr-widget-gcode-jumptoline" class="btn btn-info btn-sm"><span class="fa fa-plane"></span></button>
+                    <!-- <button type="button" id="com-chilipeppr-widget-gcode-jumptoline" class="btn btn-info btn-sm"><span class="fa fa-plane"></span></button>-->
 
-                    <button type="button" id="com-chilipeppr-widget-gcode-btnoptions" class="btn btn-info btn-sm"><span class="fa fa-cog"></span></button>
+                <!--    <button type="button" id="com-chilipeppr-widget-gcode-btnoptions" class="btn btn-info btn-sm"><span class="fa fa-cog"></span></button>-->
+
                 </div>
+                <!--
                 <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-info hidebody"><span class="fa fa-chevron-up"></span></button>
-                </div>
-
+                </div>-->
+                <!--
                 <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span>
 
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right pubsub-dropdown-menu" role="menu">
-                        <!-- <li role="presentation" class="dropdown-header fork-name"></li>
+                        <li role="presentation" class="dropdown-header fork-name"></li>
                     <li><a href="" class="standalone" target="_blank">View Widget Standalone</a></li>
-                    <li><a href="" class="fork" target="_blank">Fork Widget</a></li> -->
+                    <li><a href="" class="fork" target="_blank">Fork Widget</a></li>
                     </ul>
-                </div>
+                </div>-->
+
+
             </div>
-            <div>
+            <!--<div>
                 <button type="button" id="" class="btn btn-info btn-sm com-chilipeppr-widget-gcode-showfr">
                     Feed Rate Override
                 </button>
@@ -90,14 +94,13 @@
                     </button>
                     <ul class="dropdown-menu xdropdown-menu-right com-chilipeppr-widget-gcode-menuToolChange" role="menu">
                         <li role="presentation" class="dropdown-header com-chilipeppr-widget-gcode-toolchanges-hdr">(No Tool Changes in Gcode)</li>
-                        <!--<li><a href="" class="standalone" target="_blank">View Widget Standalone</a></li>-->
-                        <!--<li><a href="" class="fork" target="_blank">Fork Widget</a></li>-->
+
                     </ul>
                 </div>
 
-            </div>
+            </div>-->
             <div id="com-chilipeppr-widget-gcode-feedrate" class="hidden" style="padding-top:5px;overflow:hidden;">
-                <div class="input-group input-group-sm" style=" "> <span class="input-group-btn ">
+                <div class="input-group input-group-sm" style="padding-top: 30px;"> <span class="input-group-btn ">
                 <button class="btn btn-info btn-sm" id="com-chilipeppr-widget-gcode-feedrate-adjust" type="button">Feedrate X</button></span>
 
                     <input id="com-chilipeppr-widget-gcode-feedrate-val" class="form-control" type="number" value="1.00" /> <span class="input-group-btn ">
@@ -111,6 +114,7 @@
             </div>
 
         </div>
+        <!--
         <div class="alert alert-info alert-dismissible com-chilipeppr-widget-gcode-toolchange hidden" role="alert" style="margin:0;border-radius:0;">
             <button type="button" class="close" xdata-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <p style="font-size:smaller;padding-bottom:6px;">You are in tool change mode. Change to tool <b><span id="com-chilipeppr-widget-gcode-toolnumber1">T??</span></b>. You may jog to move the tool around and/or reset your Z zero position. Put your motors at full power if you don't want them to move while you change your tool. Make sure to issue the following Gcode to get back
@@ -126,6 +130,7 @@
                 <button class="btn btn-sm btn-info com-chilipeppr-widget-gcode-toolchange-sendgcode" xstyle="width:100%;">Send Reposition "<span class="com-chilipeppr-widget-gcode-toolchange-reposition2">G0 X- Y- Z-</span>"</button>
             </div>
         </div>
+    -->
         <div id="com-chilipeppr-widget-gcode-body-wrapper">
             <!-- Need 2 col layout to get jumpscroller on right full height -->
             <table id="com-chilipeppr-widget-gcode-body-2col" xstyle="position:relative;">
@@ -165,7 +170,7 @@
                             </button>
                         </div>
                         <div class="paginator paginator-first">
-                            <button type="button" class="btn btn-xs btn-secondary "><span class="fa fa-chevron-up"></span>
+                            <button type="button" class="btn btn-xs btn-info "><span class="fa fa-chevron-up"></span>
                             </button>
                         </div>
                         <div class="paginator paginator-last">
@@ -236,35 +241,37 @@
                     <!-- <span class="fa fa-ok gcode-error"></span> Error/Unsupported Command --></div>
             </div>
             <div class="row ">
-                <div class="col-xs-3 stats-hdr ">Lines</div>
-                <div class="col-xs-3 stats-hdr ">Showing</div>
-                <div class="col-xs-3 stats-hdr ">Sent</div>
-                <div class="col-xs-3 stats-hdr ">To Be Sent</div>
+                <div class="col-sm-3  stats-hdr ">Lines</div>
+                <div class="col-sm-3  stats-hdr ">Showing</div>
+                <div class="col-sm-3  stats-hdr ">Sent</div>
+                <div class="col-sm-3  stats-hdr ">To Be Sent</div>
             </div>
             <div class="row ">
-                <div id="gcode-lines" class="col-xs-3 stats-val">256,340</div>
-                <div id="gcode-lines-showing" class="col-xs-3 stats-val">0</div>
-                <div id="gcode-lines-sent" class="col-xs-3 stats-val">0</div>
-                <div id="gcode-lines-remaining" class="col-xs-3 stats-val">256,340</div>
+                <div id="gcode-lines" class="col-sm-3  stats-val">256,340</div>
+                <div id="gcode-lines-showing" class="col-sm-3  stats-val">0</div>
+                <div id="gcode-lines-sent" class="col-sm-3  stats-val">0</div>
+                <div id="gcode-lines-remaining" class="col-sm-3  stats-val">256,340</div>
             </div>
             <div class="row " style="padding-top:10px;">
-                <div class="col-xs-3 stats-hdr ">Time Start</div>
-                <div class="col-xs-3 stats-hdr ">Est Time</div>
-                <div class="col-xs-3 stats-hdr ">Est Remain</div>
-                <div class="col-xs-3 stats-hdr ">Duration</div>
+                <div class="col-sm-3  stats-hdr ">Time Start</div>
+                <div class="col-sm-3  stats-hdr ">Est Time</div>
+                <div class="col-sm-3  stats-hdr ">Est Remain</div>
+                <div class="col-sm-3  stats-hdr ">Duration</div>
             </div>
             <div class="row ">
-                <div id="gcode-time-start" class="col-xs-3 stats-val">-</div>
-                <div id="gcode-time-est" class="col-xs-3 stats-val">-</div>
-                <div id="gcode-time-estremain" class="col-xs-3 stats-val">-</div>
-                <div id="gcode-time-dur" class="col-xs-3 stats-val">-</div>
+                <div id="gcode-time-start" class="col-sm-3  stats-val">-</div>
+                <div id="gcode-time-est" class="col-sm-3  stats-val">-</div>
+                <div id="gcode-time-estremain" class="col-sm-3  stats-val">-</div>
+                <div id="gcode-time-dur" class="col-sm-3  stats-val">-</div>
 
             </div>
 
+
         </div>
-        <div class="alert alert-info com-chilipeppr-widget-gcode-startindicator hidden" style="position:absolute;left:0;right:0;bottom:0;margin-bottom:0;">
+    <!--    <div class="alert alert-info com-chilipeppr-widget-gcode-startindicator hidden" style="position:absolute;left:0;right:0;bottom:0;margin-bottom:0;">
             Starting play. Seeing if other widgets need to process anything...
         </div>
+    -->
     </div>
     <div class="modal fade " id="com-chilipeppr-widget-gcode-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg">
@@ -525,6 +532,7 @@
     <!-- /.modal -->
 
     <!-- Modal for Out of Local Storage -->
+    <!--
     <div id="com-chilipeppr-widget-gcode-outofspace" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -541,12 +549,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
-
+-->
     <!-- Units of Measurement Modal -->
     <div class="modal fade " id="com-chilipeppr-widget-gcode-uom-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg">

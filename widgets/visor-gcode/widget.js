@@ -59,7 +59,7 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
     // Element / Drag Drop
     // http://jsfiddle.net/jlauer/Q654J/
 
-    chilipeppr.load("dragdrop",
+    /*chilipeppr.load("dragdrop",
         // "http://fiddle.jshell.net/jlauer/Z9F6G/show/light/",
         "http://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/auto-generated-widget.html",
         function () {
@@ -71,7 +71,7 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
                 //dd.bind("#pnlWorkspace", null);
                 console.log(dd);
             });
-        });
+        });*/
 
     var testPlannerPause = function() {
         setTimeout(function() {chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");}, 5000);
@@ -328,7 +328,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             // do it a a stronger priority than default so we get this first
             // before the 3d viewser since we modify gcode and may have
             // to re-issue it
-            chilipeppr.subscribe("/com-chilipeppr-elem-dragdrop/ondropped", this, this.onFileLoaded, 9);
+        //    chilipeppr.subscribe("/com-chilipeppr-elem-dragdrop/ondropped", this, this.onFileLoaded, 9);
 
             // subscribe to pause/resume events
             chilipeppr.subscribe("/com-chilipeppr-interface-cnccontroller/plannerpause", this, this.onPlannerPause);
@@ -1204,7 +1204,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             });
 
         },
-        setupResizeable: function () {
+    /*    setupResizeable: function () {
             //$( "#com-chilipeppr-widget-gcode-body" ).resizable({
             var that = this;
             $("#com-chilipeppr-widget-gcodeviewer").resizable({
@@ -1232,7 +1232,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                     chilipeppr.publish("/" + that.id + "/resize", "");
                 }
             });
-        },
+        },*/
         setupFeedrateAdjust: function () {
             $('#com-chilipeppr-widget-gcode-feedrate-up').click(this.feedrateUp.bind(this));
             $('#com-chilipeppr-widget-gcode-feedrate-down').click(this.feedrateDown.bind(this));
