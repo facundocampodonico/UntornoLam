@@ -19,7 +19,7 @@
         /* widget.css will get inlined here by runme.js. don't remove this comment or inlining will fail. */
     </style>
     <link rel="stylesheet" type="text/css" href="widgets/visor-gcode/widget.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 
     <!-- DON'T REMOVE end widget.css -->
 
@@ -32,6 +32,7 @@
     <!--<script type='text/javascript' src="widget.js"></script>-->
 
     <script type='text/javascript' src="widgets/visor-gcode/widget.js"></script>
+      <link href="css/sb-admin-2.css" rel="stylesheet">
     <!-- DON'T REMOVE end widget.js -->
 
 </head>
@@ -131,14 +132,16 @@
             </div>
         </div>
     -->
+
         <div id="com-chilipeppr-widget-gcode-body-wrapper">
             <table id="com-chilipeppr-widget-gcode-body-2col" xstyle="position:relative;">
                 <tr>
-                <!--    <td class="com-chilipeppr-gcode-jumpscroll" style="border:0px solid red;position:relative;width:21px;"                        <div class="paginator" style="top:10%;">
+                    <!--
+                    <td class="com-chilipeppr-gcode-jumpscroll" style="border:0px solid red;position:relative;width:21px;"                        <div class="paginator" style="top:10%;">
                             <button type="button" class="btn btn-xs btn-secondary "> <span class="fa fa-minus"></span>
                             </button>
                         </div>
-                        <div class="paginator" style="top:20%;">
+                    !   <div class="paginator" style="top:20%;">
                             <button type="button" class="btn btn-xs btn-secondary "> <span class="fa fa-minus"></span>
                             </button>
                         </div>
@@ -179,13 +182,13 @@
 
                     <td>
 
-                        <div id="com-chilipeppr-widget-gcode-body" class="card-block "  style="padding-bottom:20px">
+                        <div id="com-chilipeppr-widget-gcode-body" class="card-block example-1 square scrollbar-cyan bordered-cyan "  style="padding-bottom:20px">
                             <div id="com-chilipeppr-elem-gcodedata"></div>
                             <div id="dragdrop" class="hidden"></div>
                             <div id="com-chilipeppr-widget-gcode-tmparea" class="hidden"></div>
-                       <!--  <div id="showstart">
+                        <div id="showstart">
                                 <button class="btn btn-info btn-sm" style="width:100%;margin-bottom:0;"><span class="fa fa-chevron-up"></span></button>
-                            </div> -->
+                            </div>
                             <table id="com-chilipeppr-widget-gcode-tbl" class="table table-sm" xstyle="width:100%;">
                                 <thead>
                                     <tr>
@@ -224,9 +227,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        <!--    <div id="showend">
+                           <div id="showend">
                                 <button class="btn btn-info btn-sm" style="width:100%;margin-bottom:0;"><span class="fa fa-chevron-down"></span></button>
-                            </div>-->
+                            </div>
                         </div>
                     </td>
 
