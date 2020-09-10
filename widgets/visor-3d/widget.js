@@ -62,7 +62,7 @@ cprequire_test(['inline:com-chilipeppr-widget-3dviewer'], function (threed) {
             chilipeppr.publish('/' + threed.id + '/resize', "" );
     }, 3000);
     //dragdrop
-    $('body').prepend('<div id="test-drag-drop"></div>');
+/*    $('body').prepend('<div id="test-drag-drop"></div>');
     chilipeppr.load("#test-drag-drop",
     // "http://fiddle.jshell.net/chilipeppr/Z9F6G/show/light/",
     "http://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/auto-generated-widget.html",
@@ -75,7 +75,7 @@ cprequire_test(['inline:com-chilipeppr-widget-3dviewer'], function (threed) {
             dd.bind("body", null);
         });
     });
-
+*/
     // flashmsg
     $('body').prepend('<div id="com-chilipeppr-flash"></div>');
     chilipeppr.load("#com-chilipeppr-flash",
