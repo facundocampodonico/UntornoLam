@@ -40,9 +40,9 @@
 
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="card  com-chilipeppr-widget-gcode ">
-        <div class="card-header">
+        <div class="card-header" style="padding-bottom: 30px;">
 
-            <div class="btn-toolbar" role="toolbar" style="position:absolute;left:0px;top:0px;padding:5px 0px;">
+            <div class="btn-toolbar" role="toolbar" style="position:absolute;left:0px;top:0px;padding:5px 20px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon fa fa-time btn btn-sm"></span>
                 </div>
@@ -99,7 +99,7 @@
                 </div>
 
             </div>-->
-            <div id="com-chilipeppr-widget-gcode-feedrate" class="hidden" style="padding-top:5px;overflow:hidden;">
+            <!--<div id="com-chilipeppr-widget-gcode-feedrate" class="hidden" style="padding-top:5px;overflow:hidden;">
                 <div class="input-group input-group-sm" style="padding-top: 30px;"> <span class="input-group-btn ">
                 <button class="btn btn-info btn-sm" id="com-chilipeppr-widget-gcode-feedrate-adjust" type="button">Feedrate X</button></span>
 
@@ -112,7 +112,7 @@
                     </span>
                 </div>
             </div>
-
+        -->
         </div>
         <!--
         <div class="alert alert-info alert-dismissible com-chilipeppr-widget-gcode-toolchange hidden" role="alert" style="margin:0;border-radius:0;">
@@ -132,12 +132,9 @@
         </div>
     -->
         <div id="com-chilipeppr-widget-gcode-body-wrapper">
-            <!-- Need 2 col layout to get jumpscroller on right full height -->
             <table id="com-chilipeppr-widget-gcode-body-2col" xstyle="position:relative;">
                 <tr>
-                    <td class="com-chilipeppr-gcode-jumpscroll" style="border:0px solid red;position:relative;width:21px;">
-                        <!--<div class="com-chilipeppr-gcode-jumpscroll" style="position:absolute;width:25px; top:0; height:100%; border:1px solid green;">-->
-                        <div class="paginator" style="top:10%;">
+                <!--    <td class="com-chilipeppr-gcode-jumpscroll" style="border:0px solid red;position:relative;width:21px;"                        <div class="paginator" style="top:10%;">
                             <button type="button" class="btn btn-xs btn-secondary "> <span class="fa fa-minus"></span>
                             </button>
                         </div>
@@ -177,16 +174,18 @@
                             <button type="button" class="btn btn-xs btn-info "><span class="fa fa-chevron-down"></span>
                             </button>
                         </div>
-                        <!--</div>-->
-                    </td>
+                        </div>
+                    </td>-->
+
                     <td>
-                        <div id="com-chilipeppr-widget-gcode-body" class="card-block ">
+
+                        <div id="com-chilipeppr-widget-gcode-body" class="card-block "  style="padding-bottom:20px">
                             <div id="com-chilipeppr-elem-gcodedata"></div>
                             <div id="dragdrop" class="hidden"></div>
                             <div id="com-chilipeppr-widget-gcode-tmparea" class="hidden"></div>
-                            <div id="showstart">
+                       <!--  <div id="showstart">
                                 <button class="btn btn-info btn-sm" style="width:100%;margin-bottom:0;"><span class="fa fa-chevron-up"></span></button>
-                            </div>
+                            </div> -->
                             <table id="com-chilipeppr-widget-gcode-tbl" class="table table-sm" xstyle="width:100%;">
                                 <thead>
                                     <tr>
@@ -225,9 +224,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div id="showend">
+                        <!--    <div id="showend">
                                 <button class="btn btn-info btn-sm" style="width:100%;margin-bottom:0;"><span class="fa fa-chevron-down"></span></button>
-                            </div>
+                            </div>-->
                         </div>
                     </td>
 
@@ -235,6 +234,7 @@
             </table>
         </div>
         <!-- body wrapper com-chilipeppr-widget-gcode-body-wrapper -->
+
         <div id="com-chilipeppr-widget-gcode-footer" class="card-footer " style="position:relative;">
             <div class="row ">
                 <div class="col-xs-12 stats-hdr" style="margin-bottom:5px;" data-toggle="popover" data-container="body" data-placement="auto top" data-trigger="hover click" data-delay="500" data-html="true" data-title="Explaining Status Steps"><span class="fa fa-ok gcode-sent"></span> Sent <span class="fa fa-ok gcode-queued"></span> Queued <span class="fa fa-ok gcode-written"></span> Written <span class="fa fa-ok gcode-completed"></span>                    Completed <span class="fa fa-ok gcode-executed"></span> Executed
