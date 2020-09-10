@@ -1395,7 +1395,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             });
             coordsEl.find('.btnMoveToThisPos').append(btnEl);
 
-            $('#com-chilipeppr-widget-gcode-body-wrapper').prepend(coordsEl);
+            /*$('#com-chilipeppr-widget-gcode-body-wrapper').prepend(coordsEl);
             coordsEl.on('mouseover', function(evt) {
                 console.log("isInsideCoords mouseenter");
                 that.isInsideCoords = true;
@@ -1405,7 +1405,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 that.isInsideCoords = false;
                 $('.com-chilipeppr-widget-gcodeviewer-coords-wrapper').remove();
                 that.isShowingCoords = false;
-            });
+            });*/
 
             // unsubscribe from receiving pubsub again
             chilipeppr.unsubscribe("/com-chilipeppr-widget-3dviewer/recv3dObject", this, this.onRecv3dObjectPerRow);

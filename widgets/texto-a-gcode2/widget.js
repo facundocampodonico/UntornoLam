@@ -61,7 +61,7 @@ cprequire_test(["inline:com-zipwhip-widget-font2gcode"], function(myWidget) {
     $('#' + myWidget.id).css('position', 'relative');
     //$('#' + myWidget.id).css('background', 'none');
     $('#' + myWidget.id).css('width', '320px');
-/*    $('body').prepend('<div id="3dviewer"></div>');
+    $('body').prepend('<div id="3dviewer"></div>');
     chilipeppr.load(
       "#3dviewer",
       "http://raw.githubusercontent.com/chilipeppr/widget-3dviewer/master/auto-generated-widget.html",
@@ -82,7 +82,7 @@ cprequire_test(["inline:com-zipwhip-widget-font2gcode"], function(myWidget) {
             testGetGcodePubSub();
         });
     });
-*/
+
     // load flash message
 /*    $('body').prepend('<div id="testDivForFlashMessageWidget"></div>');
     chilipeppr.load(
