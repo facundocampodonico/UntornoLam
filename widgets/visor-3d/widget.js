@@ -1218,7 +1218,7 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
             //this.decorateExtents();
             this.drawAxesToolAndExtents();
             this.onUnitsChanged();
-            this.setDetails(this.object.userData.lines.length + " GCode Lines");
+        //    this.setDetails(this.object.userData.lines.length + " GCode Lines");
             this.wakeAnimate();
 
             // we can get a QuotaExceededError here, so catch it
