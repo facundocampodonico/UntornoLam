@@ -5,10 +5,10 @@
     padding:0;
 }
 #com-chilipeppr-widget-xyz-ftr .hilite {
-    background-color: #dff0d8;
+    /*background-color: #dff0d8;*/
 }
 #com-chilipeppr-widget-xyz-ftr .hiliteblue {
-    background-color: #d9edf7;
+    /*background-color: #d9edf7;*/
 }
 .col {
     float:left;
@@ -36,6 +36,7 @@
 }
 .com-chilipeppr-xyz-label-well h2 {
     text-align: left;
+    padding-left: 15px;
 }
 #com-chilipeppr-widget-xyz-body .com-chilipeppr-xyz-label-well {
     background-color: white;
@@ -64,7 +65,7 @@
     border:0;
 }
 .com-chilipeppr-xyz-dim {
-    position: absolute;
+    position: static;
     top:0px;
     right:14px;
     font-size:13px;
