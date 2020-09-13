@@ -357,56 +357,59 @@
             -->
                   <hr class="sidebar-divider">
         <div class="row">
-            <div class="col-0 p-1 pl-3" style="width: 160px;"><button class="btn btn-xs btn-info btn-block joggotozerow" data-toggle="popover" data-placement="top" data-title="Rapid to Zero Position, all axes, current work coordinate"
+            <div class="col-0  pl-3" style="width: 140px;"><button class="btn-sm btn-info btn-block joggotozerow" data-toggle="popover" data-placement="top" data-title="Rapid to Zero Position, all axes, current work coordinate"
                     data-content="G0 X0 Y0 Z0 A0<br/>This moves all axes to zero in current work coordinate system; individual moves available via axis drop down menus above." data-html="true" data-delay="800" data-trigger="hover" data-container="body">Go To
                     <span class="com-chilipeppr-widget-xyz-coords">Gxx</span> Zero</button></div>
 
-            <div class="col-0 p-1 pl-5"><button class="btn btn-info jogy">Y <i class="fas fa-arrow-circle-up"></i>
+            <div class="col-0  pl-5"><button class="btn-sm btn-info jogy">Y <i class="fas fa-arrow-circle-up"></i>
                 </button></div>
 
-            <div class="col-0 pl-3 pt-1"> <button class="btn btn-info jogz ">Z <span class="fas fa-plus-circle"></span>
+            <div class="col-0 pl-4"> <button class="btn-sm btn-info jogz ">Z <span class="fas fa-plus-circle"></span>
                 </button></div>
         </div>
 
         <div class="row">
-            <div class="col-0 p-1 pl-3" style="width: 160px;"><button class="btn btn-xs btn-info btn-block jogzerooutw " id="jogzerooutw" data-toggle="popover" data-placement="top" data-title="Set Active Coordinate Zero Here"
+            <div class="col-0  pl-3" style="width: 140px;"><button class="btn-sm btn-info btn-block jogzerooutw " id="jogzerooutw" data-toggle="popover" data-placement="top" data-title="Set Active Coordinate Zero Here"
                     data-content="Sets active work coordinate system zero to current machine position." data-html="true" data-delay="800" data-trigger="hover" data-container="body">Set <span class="com-chilipeppr-widget-xyz-coords">Gxx</span> Zero</button>
             </div>
-            <div class="col-0 p-1"><button class="btn btn-info btn-block jogxneg dbltall">X
+            <div class="col-0 pl-4"><button class="btn-sm btn-info btn-block jogxneg dbltall">X
                     <i class="fas fa-arrow-circle-left"></i>
 
                 </button></div>
 
-            <div class="col-0 p-1 pl-3"><button class="btn btn-info btn-block jogx dbltall">X
+            <div class="col-0  pl-0"><button class="btn-sm btn-info btn-block jogx dbltall">X
                     <i class="fas fa-arrow-circle-right"></i>
                 </button></div>
         </div>
         <div class="row">
-            <div class="col-0 p-1 pl-3" style="width: 160px;"><button class="btn btn-xs btn-info btn-block joggotozerom" data-toggle="popover" data-placement="top" data-title="Rapid to Zero Position, all axes, absolute machine coordinate"
+            <div class="col-0  pl-3" style="width:140px;"><button class="btn-sm btn-info btn-block joggotozerom" data-toggle="popover" data-placement="top" data-title="Rapid to Zero Position, all axes, absolute machine coordinate"
                     data-content="G53 G0 X0 Y0 Z0 A0<br/>This moves all axes to zero in absolute machine coordinate system; individual moves available via axis drop down menus above." data-html="true" data-delay="800" data-trigger="hover"
                     data-container="body">Go To Mch Zero</button></div>
 
-            <div class="col-0 p-1 pl-5"><button class="btn btn-info btn-block jogyneg ">Y <i class="fas fa-arrow-circle-down"></i>
+            <div class="col-0  pl-5"><button class="btn-sm btn-info btn-block jogyneg ">Y <i class="fas fa-arrow-circle-down"></i>
                 </button></div>
-            <div class="col-0 p-1 pl-3"> <button class="btn btn-info btn-block jogz ">Z <span class="fas fa-minus-circle"></span>
+            <div class="col-0  pl-4"> <button class="btn-sm btn-info btn-block jogz ">Z <span class="fas fa-minus-circle"></span>
                 </button></div>
         </div>
         <div class="row">
-            <div class="col-0 px-1 pl-3" style="width: 160px;"><button class="btn btn-xs btn-info btn-block jogzerooutm " data-toggle="popover" data-placement="top" data-title="Set Machine Zero on All Axes"
+            <div class="col-0  pl-3" style="width: 140px;"><button class="btn-sm btn-info btn-block jogzerooutm " data-toggle="popover" data-placement="top" data-title="Set Machine Zero on All Axes"
                     data-content="G28.3 X0 Y0 Z0 A0<br/>Sets hardware zero (G53) to the current position.  Useful if machine does not have limit switches." data-html="true" data-delay="800" data-trigger="hover" data-container="body">Set Mch Zero</button>
             </div>
         </div>
         <div class="row">
-            <div class="col-0 p-1 pl-3" style="width: 160px;"><button class="btn btn-xs btn-info btn-block joghomem " data-toggle="popover" data-placement="top" data-title="Homing Sequence"
+            <div class="col-0  pl-3" style="width: 140px;"><button class="btn-sm btn-info btn-block joghomem " data-toggle="popover" data-placement="top" data-title="Homing Sequence"
                     data-content="G28.2 X0 Y0 Z0 A0<br/>Runs homing cycle on all axes. MUST have home/limit switches" data-html="true" data-delay="200" data-trigger="hover" data-container="body" btn btn-info jogxneg dbltall>Home <span
                         class="fa fa-home"></span> Mch</button></div>
-            <div class="col-0 py-1"> <button class="btn btn-outline-secondary btn-xs jogincr1 ">1</button></div>
+        </div>
+          <hr class="sidebar-divider">
+        <div class="row">
+            <div class="col-0 py-1 pl-3 "> <button class="btn btn-outline-secondary btn-xs jogincr1 ">1</button></div>
             <div class="col-0 py-1"> <button class="btn btn-outline-secondary btn-xs jogincrpt1 ">0.1</button></div>
             <div class="col-0 py-1"> <button class="btn btn-outline-secondary btn-xs jogincrpt01 ">0.01</button></div>
             <div class="col-0 py-1"> <button class="btn btn-outline-secondary btn-xs jogincrpt001 ">0.001</button></div>
         </div>
 
-
+  <hr class="sidebar-divider">
     </div>
 
             </div>
