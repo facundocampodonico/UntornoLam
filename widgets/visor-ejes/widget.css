@@ -75,10 +75,10 @@
     overflow-y: visible;
 }
 #com-chilipeppr-widget-xyz-ftr:focus {
-    background-color: #428bca;
+    /*background-color: #428bca;*/
 }
 #com-chilipeppr-widget-xyz-ftr.panel-primary {
-    background-color: #428bca;
+    /*background-color: #428bca;*/
 }
 .xyz-dimmed {
     color:#e9e9e9;
