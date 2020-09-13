@@ -73,6 +73,7 @@
 #com-chilipeppr-widget-xyz-ftr {
     overflow-x: visible;
     overflow-y: visible;
+    outline: none;
 }
 #com-chilipeppr-widget-xyz-ftr:focus {
     /*background-color: #428bca;*/
