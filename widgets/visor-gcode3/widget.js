@@ -59,7 +59,7 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
     // Element / Drag Drop
     // http://jsfiddle.net/jlauer/Q654J/
 
-    /*chilipeppr.load("dragdrop",
+    chilipeppr.load("dragdrop",
         // "http://fiddle.jshell.net/jlauer/Z9F6G/show/light/",
         "http://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/auto-generated-widget.html",
         function () {
@@ -67,11 +67,11 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
                 console.log("inside require of dragdrop");
                 dd.init();
                 dd.bind("body", null);
-                //$(".com-chilipeppr-elem-dragdrop").popover('show');
-                //dd.bind("#pnlWorkspace", null);
+                $(".com-chilipeppr-elem-dragdrop").popover('show');
+                dd.bind("#pnlWorkspace", null);
                 console.log(dd);
             });
-        });*/
+        });
 
     var testPlannerPause = function() {
         setTimeout(function() {chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");}, 5000);
@@ -328,7 +328,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             // do it a a stronger priority than default so we get this first
             // before the 3d viewser since we modify gcode and may have
             // to re-issue it
-        //    chilipeppr.subscribe("/com-chilipeppr-elem-dragdrop/ondropped", this, this.onFileLoaded, 9);
+            chilipeppr.subscribe("/com-chilipeppr-elem-dragdrop/ondropped", this, this.onFileLoaded, 9);
 
             // subscribe to pause/resume events
             chilipeppr.subscribe("/com-chilipeppr-interface-cnccontroller/plannerpause", this, this.onPlannerPause);
@@ -346,7 +346,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             //console.log(window.location);
 
             // Make widget resizeable
-            //this.setupResizeable();
+            this.setupResizeable();
 
             this.setupFeedrateAdjust();
             this.forkSetup();
@@ -1204,7 +1204,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             });
 
         },
-    /*    setupResizeable: function () {
+        setupResizeable: function () {
             //$( "#com-chilipeppr-widget-gcode-body" ).resizable({
             var that = this;
             $("#com-chilipeppr-widget-gcodeviewer").resizable({
@@ -1232,7 +1232,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                     chilipeppr.publish("/" + that.id + "/resize", "");
                 }
             });
-        },*/
+        },
         setupFeedrateAdjust: function () {
             $('#com-chilipeppr-widget-gcode-feedrate-up').click(this.feedrateUp.bind(this));
             $('#com-chilipeppr-widget-gcode-feedrate-down').click(this.feedrateDown.bind(this));
@@ -1384,7 +1384,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             btnEl.click(function() {
                 chilipeppr.publish("/com-chilipeppr-widget-serialport/send", "G0 X" + x2 + " Y" + y2 + " Z" + z2 + "\n");
             });
-            //coordsEl.find('.btnMoveToThisPos').append(btnEl);
+            coordsEl.find('.btnMoveToThisPos').append(btnEl);
 
             // new start pos
             btnEl = $('<div><button class="btn btn-xs btn-default" style="width:100%">Set as New Start Position</button></div>')
@@ -1393,19 +1393,19 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 // call our method that will correctly set new start position
                 that.setNewStartPosition(indx, tr);
             });
-            //coordsEl.find('.btnMoveToThisPos').append(btnEl);
+            coordsEl.find('.btnMoveToThisPos').append(btnEl);
 
-            /*$('#com-chilipeppr-widget-gcode-body-wrapper').prepend(coordsEl);
+            $('#com-chilipeppr-widget-gcode-body-wrapper').prepend(coordsEl);
             coordsEl.on('mouseover', function(evt) {
                 console.log("isInsideCoords mouseenter");
-                that.isInsideCoords = false;
+                that.isInsideCoords = true;
             });
             coordsEl.on('mouseleave', function(evt) {
                 console.log("isInsideCoords mouseleave");
                 that.isInsideCoords = false;
                 $('.com-chilipeppr-widget-gcodeviewer-coords-wrapper').remove();
                 that.isShowingCoords = false;
-            });*/
+            });
 
             // unsubscribe from receiving pubsub again
             chilipeppr.unsubscribe("/com-chilipeppr-widget-3dviewer/recv3dObject", this, this.onRecv3dObjectPerRow);
@@ -1444,23 +1444,21 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
         },
         setupRowTrigger: function () {
             var that = this;
-
-            /*$('#com-chilipeppr-widget-gcode-tbl')
+            $('#com-chilipeppr-widget-gcode-tbl')
                 .on("mouseover", 'tr', function (evt) {
                     //stuff to do on mouseover
                     var td = $(evt.currentTarget).children(".g");
                     //console.log("got mouseover on tr:", evt, evt.currentTarget, td);
                     if (td.hasClass("g")) {
                         //console.log("calling parse");
-                        //that.parseGcodeForDomElem(td, true);
-                        that.parseGcodeForDomElem(td, false);
+                        that.parseGcodeForDomElem(td, true);
 
                         // show xyz value
                         $('.com-chilipeppr-widget-gcodeviewer-coords-wrapper').remove();
                         that.isShowingCoords = false;
                         that.showXyzCoordsForRow(td);
                     }
-                });*/
+                });
 
 
             $('#com-chilipeppr-widget-gcode-tbl')
@@ -1997,10 +1995,9 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             //console.log("    orig gcode:", linegcode);
 
             // we need to apply the feedrate multiplier
-            console.log("mega feed:"+linegcode);
             linegcode = this.getFeedrateMarkup(linegcode, true);
             //console.log("after feedrate:", linegcode);
-            console.log("mega feed2:"+linegcode);
+
             //console.log("onPLay. line:", ctr, " gcode:", linegcode);
 
             // publish to serial port to send to cnc controller
@@ -3077,7 +3074,6 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             for (var indxCtr = endIndx; indxCtr >= startIndx; indxCtr--) {
 
                 var line = this.fileLines[indxCtr - 1];
-                console.log("aca pasa mega");
                 line = this.getFeedrateMarkup(line);
                 line = this.getCommentMarkup(line);
                 var cls = "g";
@@ -3127,8 +3123,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             for (var indxCtr = startIndx; indxCtr <= endIndx; indxCtr++) {
 
                 var line = this.fileLines[indxCtr - 1];
-                console.log("aca pasa mega2");
-                //line = this.getFeedrateMarkup(line);
+                line = this.getFeedrateMarkup(line);
                 line = this.getCommentMarkup(line);
                 var cls = "g";
                 var newTrDom = $(
@@ -3425,15 +3420,13 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             // to help you understand what each cmd does
             //console.log("Parsing Gcode...");
             var that = this;
-            //console.log("mega that:"+that);
+            console.log(that);
             $('#com-chilipeppr-widget-gcode-tbl .g').each(function (i, td) {
                 $this = $(this);
                 //console.log($this.text());
 
                 // do per dom element call
                 //that.parseGcodeForDomElem($this);
-
-              //  console.log("mega texto:"+$this.text());
 
                 // check if comment, fade it out
                 if ($this.text().match(/\(.*\)/)) {
@@ -3449,8 +3442,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             //console.log("creating regexp list for gcode");
             //gcodeReList = [];
             $.each(this.gcodeData, function (i, elem) {
-
-                //console.log("mega code:"+elem.code);
+                //console.log(elem.code);
                 //gcodeReList.push(new RegExp(elem.code, "ig"));
                 //elem.code = elem.code.replace("%", "\%");
                 elem.re = new RegExp("^(" + elem.code + ")$", "i");

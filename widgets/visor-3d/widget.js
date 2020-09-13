@@ -62,10 +62,10 @@ cprequire_test(['inline:com-chilipeppr-widget-3dviewer'], function (threed) {
             chilipeppr.publish('/' + threed.id + '/resize', "" );
     }, 3000);
     //dragdrop
-/*    $('body').prepend('<div id="test-drag-drop"></div>');
+    /*$('body').prepend('<div id="test-drag-drop"></div>');
     chilipeppr.load("#test-drag-drop",
     // "http://fiddle.jshell.net/chilipeppr/Z9F6G/show/light/",
-    "http://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/auto-generated-widget.html",
+    "widgets/drag-and-drop/widget.html",
     function () {
         cprequire(
         ["inline:com-chilipeppr-elem-dragdrop"],
@@ -74,8 +74,8 @@ cprequire_test(['inline:com-chilipeppr-widget-3dviewer'], function (threed) {
             dd.init();
             dd.bind("body", null);
         });
-    });
-*/
+    });*/
+
     // flashmsg
     $('body').prepend('<div id="com-chilipeppr-flash"></div>');
     chilipeppr.load("#com-chilipeppr-flash",
@@ -1136,7 +1136,8 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
             // menu with the ability to see the pubsubs from this widget and the forking links
             var that = this;
             chilipeppr.load(
-                "http://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html",
+                //"http://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html",
+                "widgets/pub-sub-viewer/widget.html",
                 // "http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/",
                 function () {
                 require(['inline:com-chilipeppr-elem-pubsubviewer'], function (pubsubviewer) {

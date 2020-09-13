@@ -418,7 +418,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                 });
                 */
             this.el = $('#com-chilipeppr-widget-xyz .touchpad-overlay canvas')[0];
-            this.canvasResize();
+            //this.canvasResize();
             //this.ctx = $('#com-chilipeppr-widget-xyz .touchpad-overlay canvas')[0].getContext("2d");
             var that = this;
 
