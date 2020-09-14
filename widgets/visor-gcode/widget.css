@@ -45,6 +45,7 @@
 .com-chilipeppr-widget-gcodeviewer-coords {
     position: absolute;
     /* left: 0; */
+    display: none;/*Agrega Facu*/
     background: white;
     box-shadow: 0 0 6px 0 rgba(0,0,0,0.2);
     border-radius:4px;
