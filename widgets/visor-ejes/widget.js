@@ -126,7 +126,7 @@ cprequire_test(["inline:com-chilipeppr-widget-xyz"], function (xyz) {
     };
 
     //testPauseResume();
-    testAxesValUpdates();
+//mega    testAxesValUpdates();
     //testUnitsChange();
     testCoordsChange();
 
@@ -244,9 +244,9 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
 
             // setup cookie based UI settings
             this.setupUiFromCookie();
-            this.setupTouchArea();
-            this.setupShowHideTouchBtn();
-            this.setupShowHideWcsBtn();
+//mega            this.setupTouchArea();
+//mega            this.setupShowHideTouchBtn();
+//mega            this.setupShowHideWcsBtn();
             var that = this;
             console.log(this.name + " done loading.");
         },
@@ -376,13 +376,15 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
 
             }
         },
-        setupShowHideTouchBtn: function () {
+/*mega          setupShowHideTouchBtn: function () {
             $("#com-chilipeppr-widget-xyz .btnToggleShowTouchJog").popover();
             //$( window ).resize(this.showHideTouchBtn.bind(this));
             this.showHideTouchBtn();
             $(window).resize(this.showHideTouchBtn.bind(this));//mega
         },
-        showHideTouchBtn: function () {
+mega*/
+/*mega
+            showHideTouchBtn: function () {
             //console.log("should we show or hide the touch btn");
             var btnEl = $("#com-chilipeppr-widget-xyz .btnShowTouchJog");
             var btnParentWidth = btnEl.parent().parent().width();
@@ -402,6 +404,8 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                 console.log("it appears the btn is NOT being clipped");
             }
         },
+mega*/
+/*mega
         canvas: null,
         el: null,
         ctx: null,
@@ -410,7 +414,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             var tpad = $('#com-chilipeppr-widget-xyz .touchpad-overlay');
 
             console.log("tpad:", tpad);
-
+mega*/
             /*
             this.canvas.width(tpad.width());
             this.canvas.height(tpad.height());
@@ -419,6 +423,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                     height: tpad.height()
                 });
                 */
+/*mega
             this.el = $('#com-chilipeppr-widget-xyz .touchpad-overlay canvas')[0];
             //this.canvasResize();
             //this.ctx = $('#com-chilipeppr-widget-xyz .touchpad-overlay canvas')[0].getContext("2d");
@@ -432,7 +437,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             tpad.bind("touchcancel", this.handleCancel.bind(this));
             tpad.bind("touchleave", this.handleEnd.bind(this));
             tpad.bind("touchmove", this.handleMove.bind(this));
-
+mega*/
             /*
             tpad.bind('touchstart', function(e){
                 console.log("got touch/mouse evt:", e);
@@ -445,21 +450,23 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             */
 
             // setup toggle buttons
-            $('#com-chilipeppr-widget-xyz .btnToggleShowTouchJog').click(this.toggleTouchJog.bind(this));
+//mega            $('#com-chilipeppr-widget-xyz .btnToggleShowTouchJog').click(this.toggleTouchJog.bind(this));
 
-            $(window).resize(this.canvasResize.bind(this));//mega
+//mega            $(window).resize(this.canvasResize.bind(this));//mega
             //this.toggleTouchJog();
 
             // scrolling
-            tpad.bind('mousewheel DOMMouseScroll', this.onScroll.bind(this));
+//mega            tpad.bind('mousewheel DOMMouseScroll', this.onScroll.bind(this));
 
             // mouse movements
-            tpad.bind("mousedown", this.onMouseDown.bind(this));
-            tpad.bind("mousemove", this.onMouseMove.bind(this));
-            tpad.bind("mouseup", this.onMouseUp.bind(this));
+//mega            tpad.bind("mousedown", this.onMouseDown.bind(this));
+//mega            tpad.bind("mousemove", this.onMouseMove.bind(this));
+//mega            tpad.bind("mouseup", this.onMouseUp.bind(this));
 
-            this.log("touch area setup");
-        },
+//mega            this.log("touch area setup");
+//mega        },
+
+/*mega
         toggleTouchJog: function () {
             $('#com-chilipeppr-widget-xyz .btnToggleShowTouchJog').popover('hide');
             var tpad = $('#com-chilipeppr-widget-xyz .touchpad-overlay');
@@ -473,6 +480,9 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
 
             }
         },
+mega*/
+
+/*mega
         canvasResize: function () {
             console.log("touchpad resizing");
             var tpad = $('#com-chilipeppr-widget-xyz .touchpad-overlay');
@@ -487,6 +497,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             this.ctx = $('#com-chilipeppr-widget-xyz .touchpad-overlay canvas')[0].getContext("2d");
             this.drawText();
         },
+mega*/
         drawText: function () {
             var x = this.el.width / 2;
             var y = this.el.height / 2;
@@ -1992,12 +2003,14 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
 
             // load the pubsub viewer / fork element which decorates our upper right pulldown
             // menu with the ability to see the pubsubs from this widget and the forking links
+            /*mega
             var that = this;
             chilipeppr.load("http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/", function () {
                 require(['inline:com-chilipeppr-elem-pubsubviewer'], function (pubsubviewer) {
                     pubsubviewer.attachTo($('#com-chilipeppr-widget-xyz .panel-heading .dropdown-menu'), that);
                 });
             });
+            mega*/
 
         },
         round: function (num, places) {
