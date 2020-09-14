@@ -72,7 +72,7 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
                 console.log(dd);
             });
         });
-Facu */ 
+Facu */
     var testPlannerPause = function() {
         setTimeout(function() {chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");}, 5000);
         setTimeout(function() {chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");}, 10000);
@@ -165,7 +165,7 @@ Facu */
     //testJumpToLine();
 
     // force widget to set width to test css
-    $('#com-chilipeppr-widget-gcodeviewer').css('width', '350px');
+    $('#com-chilipeppr-widget-gcodeviewer').css('width', '100%');
     $('body').css('padding', '0px');
 
     // test out the /onPlay and interrupting it
@@ -1204,7 +1204,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             });
 
         },
-        setupResizeable: function () {
+    /*    setupResizeable: function () {
             //$( "#com-chilipeppr-widget-gcode-body" ).resizable({
             var that = this;
             $("#com-chilipeppr-widget-gcodeviewer").resizable({
@@ -1232,7 +1232,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                     chilipeppr.publish("/" + that.id + "/resize", "");
                 }
             });
-        },
+        },*/
         setupFeedrateAdjust: function () {
             $('#com-chilipeppr-widget-gcode-feedrate-up').click(this.feedrateUp.bind(this));
             $('#com-chilipeppr-widget-gcode-feedrate-down').click(this.feedrateDown.bind(this));
