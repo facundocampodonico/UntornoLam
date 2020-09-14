@@ -351,6 +351,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             var btnEl = $("#com-chilipeppr-widget-xyz .btnToggleShowWcs");
             btnEl.click(this.toggleWcs.bind(this));
             btnEl.popover();
+            //mega
             chilipeppr.load(
                 "#com-chilipeppr-widgetholder-wcs",
                 //"http://fiddle.jshell.net/Danal/4ete4691/show/light/",
@@ -361,6 +362,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                     wcs.init();
                 });
             });
+            //mega
         },
         toggleWcs: function (evt) {
             $("#com-chilipeppr-widget-xyz .btnToggleShowWcs").popover('hide');
@@ -378,7 +380,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             $("#com-chilipeppr-widget-xyz .btnToggleShowTouchJog").popover();
             //$( window ).resize(this.showHideTouchBtn.bind(this));
             this.showHideTouchBtn();
-            $(window).resize(this.showHideTouchBtn.bind(this));
+            $(window).resize(this.showHideTouchBtn.bind(this));//mega
         },
         showHideTouchBtn: function () {
             //console.log("should we show or hide the touch btn");
@@ -445,7 +447,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             // setup toggle buttons
             $('#com-chilipeppr-widget-xyz .btnToggleShowTouchJog').click(this.toggleTouchJog.bind(this));
 
-            $(window).resize(this.canvasResize.bind(this));
+            $(window).resize(this.canvasResize.bind(this));//mega
             //this.toggleTouchJog();
 
             // scrolling
@@ -463,7 +465,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             var tpad = $('#com-chilipeppr-widget-xyz .touchpad-overlay');
             if (tpad.hasClass("hidden")) {
                 tpad.removeClass("hidden");
-                this.canvasResize();
+                this.canvasResize();//mega
                 $('#com-chilipeppr-widget-xyz .btnToggleShowTouchJog').addClass("active");
             } else {
                 tpad.addClass("hidden");
@@ -1448,7 +1450,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                 el.addClass('hidden');
                 $('#com-chilipeppr-widget-xyz .showhideaaxis').removeClass("active");
             }
-            $(window).trigger('resize');
+            $(window).trigger('resize');//mega
         },
         ismDROShowing: false,
         showHidemDRO: function () {
@@ -1466,7 +1468,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                 $('#com-chilipeppr-widget-xyz-mz').addClass('hidden');
                 $('#com-chilipeppr-widget-xyz .showhidemDRO').removeClass("active");
             }
-            $(window).trigger('resize');
+            $(window).trigger('resize');//mega
         },
         btnSetup: function () {
             // setup planner indicator icon
@@ -1965,7 +1967,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             $('#' + this.id + ' .hidebody span').addClass('glyphicon-chevron-up');
             $('#' + this.id + ' .hidebody span').removeClass('glyphicon-chevron-down');
             if (!(evt == null)) localStorage.setItem("/" + this.id + "/body", "visible");
-            $(window).trigger('resize');
+            $(window).trigger('resize');//mega
         },
         hideBody: function (evt) {
             $('#' + this.id + '-body').addClass('hidden');

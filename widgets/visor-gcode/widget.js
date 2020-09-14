@@ -58,10 +58,10 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
     // create a div to hold dragdrop
     // Element / Drag Drop
     // http://jsfiddle.net/jlauer/Q654J/
-/*
+/*facu*/
     chilipeppr.load("dragdrop",
         // "http://fiddle.jshell.net/jlauer/Z9F6G/show/light/",
-        "http://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/auto-generated-widget.html",
+        "widgets/drag-and-drop/widget.html",
         function () {
             require(["inline:com-chilipeppr-elem-dragdrop"], function (dd) {
                 console.log("inside require of dragdrop");
@@ -72,7 +72,7 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
                 console.log(dd);
             });
         });
-Facu */ 
+/*Facu */
     var testPlannerPause = function() {
         setTimeout(function() {chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");}, 5000);
         setTimeout(function() {chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");}, 10000);
