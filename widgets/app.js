@@ -16,6 +16,8 @@ require(["jquery","bootstrap","amplify","google"], function() {
 		// The load method that must be called when creating/loading a panel
 		this.load = function(id, url) {
 
+			console.log("tratando de cargar: "+url);
+
 			var callback;
 
 			// see if they want url content appended

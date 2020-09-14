@@ -77,9 +77,12 @@ cprequire_test(['inline:com-chilipeppr-widget-3dviewer'], function (threed) {
     });*/
 
     // flashmsg
+    /*
     $('body').prepend('<div id="com-chilipeppr-flash"></div>');
     chilipeppr.load("#com-chilipeppr-flash",
         "http://raw.githubusercontent.com/chilipeppr/element-flash/master/auto-generated-widget.html",
+        //"widgets/flash-modal/widget.html",
+        //"http://127.0.0.1:3000/widgets/flash-modal/widget.html",
         // "http://fiddle.jshell.net/chilipeppr/90698kax/show/light/",
 
     function () {
@@ -89,6 +92,7 @@ cprequire_test(['inline:com-chilipeppr-widget-3dviewer'], function (threed) {
             fm.init();
         });
     });
+    */
 
     var testGotoline = function() {
         // send sample gcodeline commands as if the gcode sender widget were sending them
@@ -2376,7 +2380,8 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
                 });
             } else {
                 console.error('No WebGL Support found! CRITICAL ERROR!');
-                chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "No WebGL Found!", "This device/browser does not support WebGL or WebGL has crashed. Chilipeppr needs WebGL to render the 3D View.", 10 * 1000);
+                alert('No WebGL Support found! CRITICAL ERROR!');
+                //chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "No WebGL Found!", "This device/browser does not support WebGL or WebGL has crashed. Chilipeppr needs WebGL to render the 3D View.", 10 * 1000);
                 $('#' + this.id + ' .youhavenowebgl').removeClass("hidden");
                 return;
             };
