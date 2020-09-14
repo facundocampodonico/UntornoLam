@@ -59,7 +59,8 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
     // Element / Drag Drop
     // http://jsfiddle.net/jlauer/Q654J/
 /*facu*/
-    chilipeppr.load("dragdrop",
+    //chilipeppr.load("dragdrop",
+    chilipeppr.load("#listadodegcode",
         // "http://fiddle.jshell.net/jlauer/Z9F6G/show/light/",
         "widgets/drag-and-drop/widget.html",
         function () {
