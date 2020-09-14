@@ -72,11 +72,6 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
                 console.log(dd);
             });
         });
-<<<<<<< HEAD
-Facu */
-=======
-/*Facu */
->>>>>>> bd10451e06f2db39d52b7b7ac8c6350aed9e525f
     var testPlannerPause = function() {
         setTimeout(function() {chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");}, 5000);
         setTimeout(function() {chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");}, 10000);
