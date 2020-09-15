@@ -306,10 +306,10 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
             this.initInspect();
 
             // hide the pan/zoom/orbit msg after 1 minute
-            setTimeout(function() {
+        /*    setTimeout(function() {
                 console.log("hiding pan/zoom/orbit msg");
                 $('.com-chilipeppr-widget-3dviewer-panzoom-indicator').fadeOut("slow"); //addClass("hidden");
-            }, 60 * 1000);
+            }, 60 * 1000); FACU*/
 
         },
         setupScenePubSub: function() {
