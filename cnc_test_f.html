@@ -3,662 +3,651 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
- <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-  <title>UNtornoLaM</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>UNtornoLaM</title>
 
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <!-- Estilos -->
-  <link href="css/MiCncStyle.css" rel="stylesheet">
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link href="css/sb-admin-2.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Estilos -->
+    <link href="css/MiCncStyle.css" rel="stylesheet">
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
 
-  <!-- jquerys -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+    <!-- jquerys -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 
-  <!-- Carga de Variables -->
-  <script>
-    var CantidadCnc='5' ;
-  	var CantidadDiseños='10' ;
-  	var ReportesPendientes='1' ;
-  	var EstadoEquipo='LIBRE';
-  	var FechaUltimoService='10/06/2020' ;
-  	var ImpresionesEnviadas ='5' ;
-  	var AdeundaPago='1000' ;
-  	var ServicionEnCurso='1' ;
-    var cargagcode=false;
-  </script>
+    <!-- Carga de Variables -->
+    <script>
+        var CantidadCnc = '5';
+        var CantidadDiseños = '10';
+        var ReportesPendientes = '1';
+        var EstadoEquipo = 'LIBRE';
+        var FechaUltimoService = '10/06/2020';
+        var ImpresionesEnviadas = '5';
+        var AdeundaPago = '1000';
+        var ServicionEnCurso = '1';
+        var cargagcode = false;
+    </script>
 
 
 </head>
 
 <!--<body id="page-top">-->
-  <body>
-<!-- Page Wrapper -->
-  <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
+<body>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <img src="img/logo.png" alt="Logo">
-        </div>
-        <div class="sidebar-brand-text mx-3">UNtornoLaM</div>
-      </a>
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <img src="img/logo.png" alt="Logo">
+                </div>
+                <div class="sidebar-brand-text mx-3">UNtornoLaM</div>
+            </a>
 
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Tablero General</span></a>
-      </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Tablero General</span></a>
+            </li>
 
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Herramientas
-      </div>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-         <li class="nav-item">
-        <a class="nav-link" href="cnc.html">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Mis CNC</span></a>
-      </li>
-
-         <li class="nav-item">
-        <a class="nav-link" href="misdiseños.html">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Mis Diseños</span></a>
-      </li>
-               <li class="nav-item">
-        <a class="nav-link" href="mispedidos.html">
-          <i class="fas fa-fw fa-sticky-note"></i>
-          <span>Mis Pedidos</span></a>
-      </li>
-         <li class="nav-item">
-        <a class="nav-link" href="misservicios.html">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Mis Servicios</span></a>
-      </li>
-
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-    </ul>
-    <!-- End of Sidebar -->
-
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-
-      <!-- Main Content -->
-      <div id="content">
-
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-
-          <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group" style="display:none;">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Herramientas
             </div>
-          </form>
 
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <!--<li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>-->
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
+            <li class="nav-item">
+                <a class="nav-link" href="cnc.html">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Mis CNC</span></a>
             </li>
 
-            <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
-              </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alertas
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-info">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
+            <li class="nav-item">
+                <a class="nav-link" href="misdiseños.html">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Mis Diseños</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="mispedidos.html">
+                    <i class="fas fa-fw fa-sticky-note"></i>
+                    <span>Mis Pedidos</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="misservicios.html">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Mis Servicios</span></a>
             </li>
 
-            <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Mensajes
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                    <div class="status-indicator bg-info"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-                    <div class="status-indicator"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-                    <div class="status-indicator bg-warning"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                    <div class="status-indicator bg-info"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-              </div>
-            </li>
 
-            <div class="topbar-divider d-none d-sm-block"></div>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-              </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
-              </div>
-            </li>
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
 
-          </ul>
+        </ul>
+        <!-- End of Sidebar -->
 
-        </nav>
-        <!-- End of Topbar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
+            <!-- Main Content -->
+            <div id="content">
 
-          <!-- Page Heading -->
-            <div class="card border-bottom-info shadow h-100 py-2">
-            		<div class="card-body d-flex justify-content-between align-items-center">
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                  <h1 class="h3 mb-0 text-gray-800">Mis Cnc</h1>
-                                </div>
-                        <div class="dropdown mb-0">
-                            <button class="btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                              Seleccione CNC
-                            </button>
-                            <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton" onclick="location.reload()">
-                              <a class="dropdown-item" href="#">CNC-1</a>
-                              <a class="dropdown-item" href="#">CNC-2</a>
-                              <a class="dropdown-item" href="#">CNC-N</a>
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group" style="display:none;">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
                             </div>
                         </div>
-                </div>
-          </div>
-         <br>
+                    </form>
 
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
 
-		<div class="row">
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-4 col-md-6 mb-4">
-              <div class="card border-left-info shadow  py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="font-weight-bold text-info text-uppercase mb-1">Estado</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-
-                          	<!-- LIBRE -->
-                          	<script> document.write(EstadoEquipo);</script>
-
-                          	</div>
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                            <form class="form-inline mr-auto w-100 navbar-search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Alertas
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 12, 2019</div>
+                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-info">
+                                            <i class="fas fa-donate text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 7, 2019</div>
+                                        $290.29 has been deposited into your account!
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i class="fas fa-exclamation-triangle text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 2, 2019</div>
+                                        Spending Alert: We've noticed unusually high spending for your account.
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>
+                                <!-- Counter - Messages -->
+                                <span class="badge badge-danger badge-counter">7</span>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    Mensajes
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                                        <div class="status-indicator bg-info"></div>
+                                    </div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+                                        <div class="status-indicator"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+                                        <div class="status-indicator bg-warning"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                                        <div class="status-indicator bg-info"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="card border-bottom-info shadow h-100 py-2">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <h1 class="h3 mb-0 text-gray-800">Mis Cnc</h1>
+                            </div>
+                            <div class="dropdown mb-0">
+                                <button class="btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Seleccione CNC
+                                </button>
+                                <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton" onclick="location.reload()">
+                                    <a class="dropdown-item" href="#">CNC-1</a>
+                                    <a class="dropdown-item" href="#">CNC-2</a>
+                                    <a class="dropdown-item" href="#">CNC-N</a>
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                    <button type="button" class="btn btn-info m-2" data-toggle="modal" data-target="#exampleModal"data-toggle="tooltip" title="Configurar tu panel">
-                    <i class="fas fa-tools" style="font-size:16px;color:white;"></i>
-                </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+                    <br>
+                    <div class="row">
 
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-4 col-md-6 mb-4">
-              <div class="card border-left-info shadow  py-3">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class=" font-weight-bold text-info text-uppercase mb-1">Diseños enviados (Total)&nbsp; <b><script> document.write(CantidadDiseños);</script></b>
-                       </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-info shadow  py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="font-weight-bold text-info text-uppercase mb-1">Estado</div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+
+                                                        <!-- LIBRE -->
+                                                        <script>
+                                                            document.write(EstadoEquipo);
+                                                        </script>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-info m-2" data-toggle="modal" data-target="#exampleModal" data-toggle="tooltip" title="Configurar tu panel">
+                                            <i class="fas fa-tools" style="font-size:16px;color:white;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-info shadow  py-3">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class=" font-weight-bold text-info text-uppercase mb-1">Diseños enviados (Total)&nbsp; <b>
+                                                    <script>
+                                                        document.write(CantidadDiseños);
+                                                    </script>
+                                                </b>
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            </div>
+                                        </div>
+                                        <div id="listadodegcode"> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-info shadow  py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="font-weight-bold text-info text-uppercase mb-1">Fecha ultimo servicio tecnico&nbsp;<b>
+                                                    <script>
+                                                        document.write(FechaUltimoService);
+                                                    </script>
+                                                </b>
+                                            </div>
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-info m-2" data-toggle="tooltip" title="Solcitar nuevo servicio tecnico">
+                                            <i class="fas fa-hammer" style="font-size:16px;color:white;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                  <div id="listadodegcode">  </div>
-
-
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-4 col-md-6 mb-4">
-              <div class="card border-left-info shadow  py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="font-weight-bold text-info text-uppercase mb-1">Fecha ultimo servicio tecnico&nbsp;<b><script> document.write(FechaUltimoService);</script></b>
-                         </div>
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                      </div>
-                  </div>
-                  <button type="button" class="btn btn-info m-2" data-toggle="tooltip" title="Solcitar nuevo servicio tecnico">
-                  <i class="fas fa-hammer" style="font-size:16px;color:white;"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-    <!-- Pruebas de draggable -->
-    <!-- Button trigger modal -->
-<!--    <button type="button" class="btn btn-info m-2" data-toggle="modal" data-target="#exampleModal">
+                    <!-- Pruebas de draggable -->
+                    <!-- Button trigger modal -->
+                    <!--    <button type="button" class="btn btn-info m-2" data-toggle="modal" data-target="#exampleModal">
     <i class="fas fa-tools" style="font-size:16px;color:white;"></i>
 </button>-->
 
-    <!-- Modal -->
+                    <!-- Modal -->
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Mostrar/Ocultar contenidos.</h5>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Mostrar/Ocultar contenidos.</h5>
 
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <table>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <table>
 
-              <tr>
-                  <td><input class="bt1 btn btn-outline-info btn-block" id="button1" type="button" value="Control CNC"></td>
-                  <td> &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <tr>
+                                            <td><input class="bt1 btn btn-outline-info btn-block" id="button1" type="button" value="Control CNC"></td>
+                                            <td> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 
-                  <td> <input class="bt4 btn btn-outline-info btn-block " id="button4" type="button" value="Consola de Comandos"></td>
-              </tr>
-              <tr>
-                  <td> <input class="bt2 btn btn-outline-info btn-block" id="button2" type="button" value="Herramienta de Texto"></td>
-                   <td> &nbsp; </td>
-                  <td> <input class="bt5 btn btn-outline-info btn-block" id="button5" type="button" value="Conexion"> </td>
-              </tr>
-              <tr>
-                  <td> <input class="bt3 btn btn-outline-info btn-block" id="button3" type="button" value="Gcode Preview"></td>
-                   <td> &nbsp; </td>
-                  <td > <input class="bt6 btn btn-outline-info btn-block" id="button6" type="button" value="Camara"></td>
-             <tr>
-          </table>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-         </div>
-        </div>
-      </div>
-    </div>
-
-            <div class=row>
-
-                <div class="col-lg-3" data-toggle="tooltip" title="Descripción de la funcionalidad">
-                 <div class="card shadow mb-6">
-                  <div id="listWithHandle" class="list-group1">
-                      <div class="list-group-item 1">
-                          <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span> &nbsp;Control CNC</button>
-                          <div class="contentcnc">
-                          <div id="ejes"></div>
-
-                           </div>
-
-                      </div>
-
-                      <div class="list-group-item 2">
-                          <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Herramienta de texto</button>
-                          <div class="contentcnc">
-<div id="texto"></div>
+                                            <td> <input class="bt4 btn btn-outline-info btn-block " id="button4" type="button" value="Consola de Comandos"></td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input class="bt2 btn btn-outline-info btn-block" id="button2" type="button" value="Herramienta de Texto"></td>
+                                            <td> &nbsp; </td>
+                                            <td> <input class="bt5 btn btn-outline-info btn-block" id="button5" type="button" value="Conexion"> </td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input class="bt3 btn btn-outline-info btn-block" id="button3" type="button" value="Gcode Preview"></td>
+                                            <td> &nbsp; </td>
+                                            <td> <input class="bt6 btn btn-outline-info btn-block" id="button6" type="button" value="Camara"></td>
+                                        <tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
                         </div>
-                      </div>
+                    </div>
+
+                    <div class=row>
+
+                        <div class="col-lg-3" data-toggle="tooltip" title="Descripción de la funcionalidad">
+                            <div class="card shadow mb-6">
+                                <div id="listWithHandle" class="list-group1">
+                                    <div class="list-group-item 1">
+                                        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true">swap_vert</i></span> &nbsp;Control CNC</button>
+                                        <div class="contentcnc">
+                                            <div id="ejes"></div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="list-group-item 2">
+                                        <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true">swap_vert</i></span>&nbsp; Herramienta de texto</button>
+                                        <div class="contentcnc">
+                                            <div id="texto"></div>
+                                        </div>
+                                    </div>
 
 
-                      <div class="list-group-item 3">
-                          <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; GCODE Preview</button>
-                          <div class="contentcnc">
-    <div id="gcode"></div>
-                          </div>
-                      </div>
+                                    <div class="list-group-item 3">
+                                        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true">swap_vert</i></span>&nbsp; GCODE Preview</button>
+                                        <div class="contentcnc">
+                                            <div id="gcode"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6 " data-toggle="tooltip" title="Descripción de la funcionalidad">
+                            <div class="card shadow mb-4">
+                                <button type="button" class="contraer"></span> &nbsp; 3D Preview</button>
+                                <div class="contentcnc">
+                                    <div id="3d"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-3 " data-toggle="tooltip" title="Descripción de la funcionalidad">
+                            <div class="card shadow mb-4">
+                                <div id="listWithHandle2" class="list-group">
+                                    <div class="list-group-item 4">
+                                        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true">swap_vert</i></span> &nbsp; Consola de comandos</button>
+
+                                        <div class="contentcnc">
+                                            <div id="consola"></div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="list-group-item 5">
+                                        <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true">swap_vert</i></span>&nbsp;Conexión</button>
+                                        <div class="contentcnc">
+                                            <div id="grbl"></div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item 6">
+                                        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true">swap_vert</i></span>&nbsp; Camara</button>
+                                        <div class="contentcnc">
+                                            <div id="camara"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> <!-- Fin draggable     -->
+
                 </div>
             </div>
-
-              </div>
-
-              <div class="col-lg-6 " data-toggle="tooltip" title="Descripción de la funcionalidad">
-                <div class="card shadow mb-4">
-                    <button type="button" class="contraer"></span> &nbsp; 3D Preview</button>
-                    <div class="contentcnc">
-<div id="3d"></div>
-                    </div>
-                </div>
-
-             </div>
-
-
-
-              <div class="col-lg-3 " data-toggle="tooltip" title="Descripción de la funcionalidad">
-                <div class="card shadow mb-4">
-                  <div id="listWithHandle2" class="list-group">
-                    <div class="list-group-item 4">
-                        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span> &nbsp; Consola de comandos</button>
-
-                        <div class="contentcnc">
-<div id="consola"></div>
-
-                        </div>
-                    </div>
-
-                    <div class="list-group-item 5">
-                        <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp;Conexión</button>
-                        <div class="contentcnc">
-<div id="grbl"></div>
-                        </div>
-                    </div>
-                    <div class="list-group-item 6">
-                        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true" >swap_vert</i></span>&nbsp; Camara</button>
-                        <div class="contentcnc">
-<div id="camara"></div>
-                        </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-
-
-
-            </div>    <!-- Fin draggable     -->
-
-
-
-              <script>
-
-                     $.get("widgets/visor-3d/widget.html", function(htmlexterno1){
-                         $("#3d").html(htmlexterno1);
-                      });
-
-
-                     $.get("widgets/visor-gcode/widget.html", function(htmlexterno){
-                        $("#gcode").html(htmlexterno);
-                      });
-
-                     $.get("widgets/visor-ejes/widget.html", function(htmlexterno2){
-                       $("#ejes").html(htmlexterno2);
-                     });
-
-                    /*$.get("widgets/texto-a-gcode3/widget.html", function(htmlexterno6){
-                        $("#texto").html(htmlexterno6);
-                      });*/
-
-                    /*$.get("widgets/visor-consola/widget.html", function(htmlexterno3){
-                        $("#consola").html(htmlexterno3);
-                      });*/
-
-                    /*$.get("widgets/visor-grbl2/widget.html", function(htmlexterno4){
-                        $("#grbl").html(htmlexterno4);
-                      });*/
-
-                    /*$.get("widgets/visor-camara/widget.html", function(htmlexterno5){
-                      $("#camara").html(htmlexterno5);
-                    });*/
-
-
-                    //$('body').prepend('<div id="test-drag-drop"></div>');
-                    $.get("widgets/drag-and-drop/widget.html", function(htmlexterno5){
-                      $("#listadodegcode").html(htmlexterno5);
+                    <script>
+                        $.get("widgets/visor-3d/widget.html", function(htmlexterno1) {
+                            $("#3d").html(htmlexterno1);
                         });
 
-              </script>
+
+                        $.get("widgets/visor-gcode/widget.html", function(htmlexterno) {
+                            $("#gcode").html(htmlexterno);
+                        });
+
+                        $.get("widgets/visor-ejes/widget.html", function(htmlexterno2) {
+                            $("#ejes").html(htmlexterno2);
+                        });
+
+                        /*$.get("widgets/texto-a-gcode3/widget.html", function(htmlexterno6){
+                            $("#texto").html(htmlexterno6);
+                          });*/
+
+                        /*$.get("widgets/visor-consola/widget.html", function(htmlexterno3){
+                            $("#consola").html(htmlexterno3);
+                          });*/
+
+                        /*$.get("widgets/visor-grbl2/widget.html", function(htmlexterno4){
+                            $("#grbl").html(htmlexterno4);
+                          });*/
+
+                        /*$.get("widgets/visor-camara/widget.html", function(htmlexterno5){
+                          $("#camara").html(htmlexterno5);
+                        });*/
 
 
+                        //$('body').prepend('<div id="test-drag-drop"></div>');
+                        $.get("widgets/drag-and-drop/widget.html", function(htmlexterno5) {
+                            $("#listadodegcode").html(htmlexterno5);
+                        });
+                    </script>
+
+                    <footer class="sticky-footer bg-white">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>Copyright &copy; UNtornoLaM 2020</span>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- End of Footer -->
+
+                </div>
+                <!-- End of Content Wrapper -->
+
+            </div>
+            <!-- End of Page Wrapper -->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="login.html">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bootstrap core JavaScript-->
+
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+            <!-- Core plugin JavaScript-->
+            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+            <!-- Custom scripts for all pages-->
+            <script src="js/sb-admin-2.min.js"></script>
 
 
+            <script type="text/javascript">
+                // List with handle
+                Sortable.create(listWithHandle, {
+                    handle: '.material-icons',
+                    animation: 150
+                });
+                Sortable.create(listWithHandle2, {
+                    handle: '.material-icons',
+                    animation: 150
+                });
+            </script>
+            <script>
+                var coll = document.getElementsByClassName("contraer");
+                var i;
 
-       <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; UNtornoLaM 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
+                for (i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.maxHeight) {
+                            content.style.maxHeight = null;
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + "px";
+                        }
+                    });
+                }
+            </script>
 
+            <script type="text/javascript">
+                function hideToggle(button, elem) {
+                    $(button).click(function() {
+                        $(elem).toggle();
+                    })
+                }
 
-    <!-- End of Content Wrapper -->
-
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bootstrap core JavaScript-->
-
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-
-  <script type="text/javascript">
-  // List with handle
-  Sortable.create(listWithHandle, {
-    handle: '.material-icons',
-    animation: 150
-  });
-  Sortable.create(listWithHandle2, {
-    handle: '.material-icons',
-    animation: 150
-  });
-  </script>
-  <script>
-  var coll = document.getElementsByClassName("contraer");
-  var i;
-
-  for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var content = this.nextElementSibling;
-      if (content.style.maxHeight){
-        content.style.maxHeight = null;
-      } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-      }
-    });
-  }
-  </script>
-
-  <script type="text/javascript">
-
-         function hideToggle(button, elem)
-          {
-              $(button).click(function() { $(elem).toggle(); })
-          }
-
-          hideToggle(".bt1", ".1");
-          hideToggle(".bt2", ".2");
-          hideToggle(".bt3", ".3");
-          hideToggle(".bt4", ".4");
-          hideToggle(".bt5", ".5");
-          hideToggle(".bt6", ".6");
-  </script>
+                hideToggle(".bt1", ".1");
+                hideToggle(".bt2", ".2");
+                hideToggle(".bt3", ".3");
+                hideToggle(".bt4", ".4");
+                hideToggle(".bt5", ".5");
+                hideToggle(".bt6", ".6");
+            </script>
 
 
 
