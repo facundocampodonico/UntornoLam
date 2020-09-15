@@ -9,7 +9,7 @@ cprequire_test(["inline:com-chilipeppr-elem-dragdrop"], function (dd) {
     dd.init();
     dd.bind("body", null);
     console.log(dd);
-    
+
     var testLoadGcodePubSub = function() {
         setTimeout(function() {
             chilipeppr.publish("/com-chilipeppr-elem-dragdrop/loadGcodeDoNotCreateRecentFileEntry", {
@@ -29,18 +29,18 @@ cprequire_test(["inline:com-chilipeppr-elem-dragdrop"], function (dd) {
 
     $("body").css('padding', '20px');
     $('title').html(dd.name);
-    
+
 } /*end_test*/ );
 
 cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function () {
     console.log("Inside of define for com-chilipeppr-elem-dragdrop");
     return {
-        id: "com-chilipeppr-elem-dragdrop",
+        /*id: "com-chilipeppr-elem-dragdrop",
         url: "(auto fill by runme.js)",       // The final URL of the working widget as a single HTML file with CSS and Javascript inlined. You can let runme.js auto fill this if you are using Cloud9.
         fiddleurl: "(auto fill by runme.js)", // The edit URL. This can be auto-filled by runme.js in Cloud9 if you'd like, or just define it on your own to help people know where they can edit/fork your widget
         githuburl: "(auto fill by runme.js)", // The backing github repo
         testurl: "(auto fill by runme.js)",   // The standalone working widget so can view it working by itself
-
+*/
         name: "Element / Drag Drop",
         desc: "An element that presents a drag and drop icon that allows files to be dragged onto it. A pubsub event called /com-chilipeppr-elem-dragdrop/ondropped is published when the drop is complete. The contents of the file are passed in the pubsub call so different widgets/elements can consume the contents of the file.",
         publish: {
@@ -65,13 +65,13 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
             $(".com-chilipeppr-elem-dragdrop .dropdown-toggle").popover({animation:true,delay:100});
             //$(".com-chilipeppr-elem-dragdrop").popover('show');
             this.forkSetup();
-            
+
             // subscribe to our own signal so we can create recent file list entries
             // do this at a lower priority in case we run out of file quota
             // that way the 2nd copy we make of the file will just get
             // dropped if over quota
             chilipeppr.subscribe("/com-chilipeppr-elem-dragdrop/ondropped", this, this.createRecentFileEntry, 20);
-            
+
             // setup chilipeppr logo btn click
             //$('.com-chilipeppr-elem-dragdrop-loadlogo').click(this.loadChiliPepprGcode.bind(this));
             $('.com-chilipeppr-elem-dragdrop-loadlogo').click("//i2dcui.appspot.com/3d/chilipepprlogo.nc", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
@@ -83,12 +83,12 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
             $('.com-chilipeppr-elem-dragdrop-loadeaglemicro').click("//i2dcui.appspot.com/slingshot?url=https://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/Arduino_Micro_Rev03j.brd", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
             $('.com-chilipeppr-elem-dragdrop-loadeagleadafruitruler').click("//i2dcui.appspot.com/slingshot?url=https://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/AdafruitPCBReferenceRuler.brd", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
             $('.com-chilipeppr-elem-dragdrop-loadeagleesp').click("//i2dcui.appspot.com/slingshot?url=https://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/ESP8266Ring.brd", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
-            
+
             // setup del files
             $('.com-chilipeppr-elem-dragdrop .recent-file-delete').click(this.deleteRecentFiles.bind(this));
 
             this.buildRecentFileMenu();
-            
+
             var that = this;
 
             // url loader
@@ -108,7 +108,7 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
             $('.com-chilipeppr-elem-dragdrop .dropdown-menu .url-load-go').click(function(e) {
                 that.loadUrl();
             });
-            
+
             // paste loader
             $('.com-chilipeppr-elem-dragdrop .dropdown-menu .paste-load').click(function(e) {
                 e.stopPropagation();
@@ -116,13 +116,13 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
             $('.com-chilipeppr-elem-dragdrop .dropdown-menu .paste-load-go').click(function(e) {
                 that.loadText();
             });
-            
+
             this.setupGlobalAjaxError();
             this.setupSubscribe();
-            
+
             this.setupOpenFile();
             this.setupDownload();
-            
+
             //console.log(this);
         },
         setupOpenFile: function() {
@@ -133,39 +133,39 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
                     alert('Your browser is not supported');
                     return false;
                 }
-                
+
                 var input = filePicker.get(0);
                 if (input.files.length > 0) {
                     var fileReader = new FileReader();
                     fileReader.fileName = input.files[0].name; // HAX, but simplest way to pass up the stack
-                    
+
                     fileReader.onload = function (fileLoadedEvent) {
                         var gcodetxt = fileLoadedEvent.target.result;
-                        
+
                         var info = {
-                        	name: fileLoadedEvent.target.fileName, 
+                        	name: fileLoadedEvent.target.fileName,
                         	lastModified: new Date()
                         };
-                        
+
                         chilipeppr.publish("/com-chilipeppr-elem-dragdrop/ondropped", gcodetxt, info);
                     };
-                    
+
                     fileReader.readAsText(input.files[0], "UTF-8");
                 }
             });
-            
+
             $('.com-chilipeppr-elem-dragdrop-openfile').click(function() { $("#com-chilipeppr-elem-dragdrop-openfile-picker").click(); });
         },
         setupDownload: function() {
             $('.com-chilipeppr-elem-dragdrop-download').click(this.onDownload.bind(this));
         },
         onDownload: function(evt) {
-            // Opens new window and downloads Gcode to 
-            // local file. Shows use of cprequire() 
-            // which is the way to get access to any 
-            // of ChiliPeppr's modules. You can 
-            // override methods in a module, call 
-            // methods directly, or access properties 
+            // Opens new window and downloads Gcode to
+            // local file. Shows use of cprequire()
+            // which is the way to get access to any
+            // of ChiliPeppr's modules. You can
+            // override methods in a module, call
+            // methods directly, or access properties
             // of that module.
             cprequire(['inline:com-chilipeppr-widget-gcode'], function(gcode) {
                 var txt = gcode.fileLines.join('\n');
@@ -176,13 +176,13 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
             chilipeppr.subscribe(
                 "/com-chilipeppr-elem-dragdrop/loadGcode", this, this.loadGcode);
             chilipeppr.subscribe(
-                "/com-chilipeppr-elem-dragdrop/loadGcodeDoNotCreateRecentFileEntry", 
+                "/com-chilipeppr-elem-dragdrop/loadGcodeDoNotCreateRecentFileEntry",
                 this, this.loadGcodeDoNotCreateRecentFileEntry);
             //loadGcodeFromUrlDoNotCreateRecentFileEntry
             chilipeppr.subscribe(
                 "/com-chilipeppr-elem-dragdrop/loadGcodeFromUrl", this, this.loadGcodeFromUrl);
             chilipeppr.subscribe(
-                "/com-chilipeppr-elem-dragdrop/loadGcodeFromUrlDoNotCreateRecentFileEntry", 
+                "/com-chilipeppr-elem-dragdrop/loadGcodeFromUrlDoNotCreateRecentFileEntry",
                 this, this.loadGcodeFromUrlDoNotCreateRecentFileEntry);
         },
         loadGcodeFromUrlDoNotCreateRecentFileEntry: function(url) {
@@ -205,14 +205,14 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
                 else name += obj.gcode;
             }
             name = name.replace(/[\r\n]/g, " ");
-            
+
             var info = {
                 name: name,
                 lastModified: new Date()
             };
             if (obj.lastModified) info.lastModified = obj.lastModified;
             var data = obj.gcode;
-            
+
             console.log("info:", info);
             var that = this;
             // send event off as if the file was drag/dropped
@@ -246,7 +246,7 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
             if (data.length > 20) name += data.substring(0,20);
             else name += data;
             name = name.replace(/[\r\n]/g, " ");
-            
+
             var info = {
                 name: name,
                 lastModified: new Date()
@@ -265,12 +265,12 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
             // to solve for CORS header problems
             url = "http://chilipeppr.com/geturl?url=" + encodeURIComponent(url);
             console.log("url about to retrieve:", url);
-            
+
             var that = this;
             $.get(url, null, function(data) {
                 console.log("got gcode from url. url:", url);
                 var info = {
-                    name:url, 
+                    name:url,
                     lastModified: new Date()
                 };
                 console.log("info:", info);
@@ -278,7 +278,7 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
                 chilipeppr.publish("/com-chilipeppr-elem-dragdrop/ondropped", data, info);
             }, 'text')
             .error(function (err, r, s) {
-                console.log("got error loading url. are we online? err:", err, s, r, err.getAllResponseHeaders());   
+                console.log("got error loading url. are we online? err:", err, s, r, err.getAllResponseHeaders());
                 //chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "Error on Load URL", JSON.stringify(err));
             });
         },
@@ -297,12 +297,12 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
                 }
                 url = "//i2dcui.appspot.com/slingshot?url=" + url;
             }
-            
+
             var that = this;
             $.get(url, null, function(data) {
                 console.log("got file from url. url:", url);
                 var info = {
-                    name:url, 
+                    name:url,
                     lastModified: new Date()
                 };
                 console.log("info:", info);
@@ -314,7 +314,7 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
                 chilipeppr.subscribe("/com-chilipeppr-elem-dragdrop/ondropped", that, that.createRecentFileEntry);
             }, 'text')
             .error(function () {
-                console.log("got error loading url. are we online?");    
+                console.log("got error loading url. are we online?");
             });
         },
         loadChiliPepprGcodeInch: function(evt) {
@@ -334,12 +334,12 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
                 chilipeppr.subscribe("/com-chilipeppr-elem-dragdrop/ondropped", that, that.createRecentFileEntry);
             }, 'text')
             .error(function () {
-                console.log("got error loading chilipeppr logo. are we online?");    
+                console.log("got error loading chilipeppr logo. are we online?");
             });
-            
+
         },
         deleteRecentFiles: function() {
-            
+
             console.group("Drag/drop. deleteRecentFiles()");
             console.log("deleting files");
             // loop thru file storage and delete entries that match this widget
@@ -359,7 +359,7 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
             //localStorage.clear();
             this.buildRecentFileMenu();
             console.groupEnd();
-            
+
             //console.log("deleting files");
             //localStorage.clear();
             //this.buildRecentFileMenu();
@@ -375,7 +375,7 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
                 }
             }
             console.log("lastSlot we found:", lastSlot);
-            
+
             var nextSlot = lastSlot + 1;
             var recent = localStorage.getItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot);
             if (recent == null) {
@@ -397,13 +397,13 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
                 localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot + "-lastMod", info.lastModified);
                 this.buildRecentFileMenu();
             }
-            
+
         },
         buildRecentFileMenu: function() {
-            
+
             // cleanup prev recent files
             $('.com-chilipeppr-elem-dragdrop .dropdown-menu > li.recent-file-item').remove();
-            
+
             var li = $('.com-chilipeppr-elem-dragdrop .dropdown-menu > li.recent-files');
             console.log("listItems:", li);
             var ctr = 0;
@@ -428,10 +428,10 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
                     var key = data.data;
                     // publish event to pubsub
                     var info = {
-                        name: localStorage.getItem(key + '-name'), 
+                        name: localStorage.getItem(key + '-name'),
                         lastModified: localStorage.getItem(key + '-lastMod')
                     };
-                    
+
                     // unsubscribe so we don't get loopback
                     chilipeppr.unsubscribe("/com-chilipeppr-elem-dragdrop/ondropped", that.createRecentFileEntry);
                     // send event off as if the file was drag/dropped
@@ -442,7 +442,7 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
 
                 ctr++;
                 recentName = localStorage.getItem("com-chilipeppr-elem-dragdrop-recent" + ctr + "-name");
-                
+
             }
             /*$.each(lis, function(i, li) {
                 if (li.
@@ -491,7 +491,7 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
                     e = e.originalEvent || e;
                     //console.log(e);
 
-                    // Using e.files with fallback because e.dataTransfer is immutable and can't be overridden in Polyfills (http://sandbox.knarly.com/js/dropfiles/).            
+                    // Using e.files with fallback because e.dataTransfer is immutable and can't be overridden in Polyfills (http://sandbox.knarly.com/js/dropfiles/).
                     var files = (e.files || e.dataTransfer.files);
                     //console.log(files);
                     for (var i = 0; i < files.length; i++) {
@@ -510,29 +510,29 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
 
                                 // publish event to pubsub
                                 var info = {
-                                    name: thefile.name, 
+                                    name: thefile.name,
                                     lastModified: thefile.lastModifiedDate
                                 };
                                 console.log("the drag/drop widget is about to publish an onDropped event. file.length:", event.target.result.length, "info:", info);
                                 chilipeppr.publish("/com-chilipeppr-elem-dragdrop/ondropped", event.target.result, info);
                                 chilipeppr.publish(
-                                    "/com-chilipeppr-elem-flashmsg/flashmsg", "File Loaded", 
+                                    "/com-chilipeppr-elem-flashmsg/flashmsg", "File Loaded",
                                     '<div class="row">' +
-                                    '<div class="col-xs-3">' + 
-                                    "Name: " + 
-                                    '</div><div class="col-xs-9">' + 
-                                    thefile.name +  
-                                    '</div>' + 
+                                    '<div class="col-xs-3">' +
+                                    "Name: " +
+                                    '</div><div class="col-xs-9">' +
+                                    thefile.name +
+                                    '</div>' +
                                     '</div><div class="row">' +
-                                    '<div class="col-xs-3">' + 
-                                    "Size: " + 
-                                    '</div><div class="col-xs-9">' + 
-                                    thefile.size + 
-                                    '</div>' + 
+                                    '<div class="col-xs-3">' +
+                                    "Size: " +
+                                    '</div><div class="col-xs-9">' +
+                                    thefile.size +
+                                    '</div>' +
                                     '</div><div class="row">' +
-                                    '<div class="col-xs-3">' + 
-                                    "Last Modified: " + 
-                                    '</div><div class="col-xs-9">' + 
+                                    '<div class="col-xs-3">' +
+                                    "Last Modified: " +
+                                    '</div><div class="col-xs-9">' +
                                     thefile.lastModifiedDate +
                                     '</div>' +
                                     '</div>' +
@@ -554,7 +554,7 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
 
             var that = this;
             chilipeppr.load(
-                // "http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/", 
+                // "http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/",
                 "http://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html",
                 function () {
                 require(['inline:com-chilipeppr-elem-pubsubviewer'], function (pubsubviewer) {
@@ -566,4 +566,3 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
 
     };
 });
-
