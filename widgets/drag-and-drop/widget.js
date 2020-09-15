@@ -27,8 +27,8 @@ cprequire_test(["inline:com-chilipeppr-elem-dragdrop"], function (dd) {
     //testLoadGcodePubSub();
     //testLoadGcodeFromUrlPubSub();
 
-    $("body").css('padding', '20px');
-    $('title').html(dd.name);
+//mega    $("body").css('padding', '20px');
+//mega    $('title').html(dd.name);
 
 } /*end_test*/ );
 
