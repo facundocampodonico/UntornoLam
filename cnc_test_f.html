@@ -370,9 +370,11 @@
                     </div>
 
 
-                    <button type="button" class="btn btn-info m-2" id="listadodegcode" data-toggle="tooltip" title="Enviar un nuevo Diseño">
+                    <button type="button" class="btn btn-info m-2" data-toggle="tooltip" title="Enviar un nuevo Diseño">
                     <i class="far fa-share-square" style="font-size:16px;color:white;"></i>
-                  </button>
+                    <div id="listadodegcode">
+                    </div>
+                    </button>
 
                   </div>
 
@@ -544,9 +546,9 @@
                     });*/
 
 
-                    $('body').prepend('<div id="test-drag-drop"></div>');
+                    //$('body').prepend('<div id="test-drag-drop"></div>');
                     $.get("widgets/drag-and-drop/widget.html", function(htmlexterno5){
-                      $("#test-drag-drop").html(htmlexterno5);
+                      $("#listadodegcode").html(htmlexterno5);
                         });
 
               </script>

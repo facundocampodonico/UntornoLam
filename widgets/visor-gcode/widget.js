@@ -60,7 +60,11 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
     // http://jsfiddle.net/jlauer/Q654J/
 /*facu*/
     //chilipeppr.load("dragdrop",
-    chilipeppr.load("#listadodegcode",
+
+//$('body').prepend('<div id="test-drag-drop"></div>');
+  //$('body').append('<div id="listadodegcode"></div>');
+
+/*    chilipeppr.load("#listadodegcode",
         // "http://fiddle.jshell.net/jlauer/Z9F6G/show/light/",
         "widgets/drag-and-drop/widget.html",
         function () {
@@ -72,7 +76,7 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
                 //dd.bind("#pnlWorkspace", null);
                 console.log(dd);
             });
-        });
+        });*/
     var testPlannerPause = function() {
         setTimeout(function() {chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");}, 5000);
         setTimeout(function() {chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");}, 10000);
@@ -346,7 +350,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             //console.log(window.location);
 
             // Make widget resizeable
-            this.setupResizeable();
+//            this.setupResizeable();
 
             this.setupFeedrateAdjust();
             this.forkSetup();
