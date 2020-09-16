@@ -57,11 +57,11 @@ cprequire_test(["inline:com-zipwhip-widget-font2gcode"], function(myWidget) {
 
 
 
-    // load 3dviewer
+    // load 3dviewer5
     // have to tweak our own widget to get it above the 3dviewer
     $('#' + myWidget.id).css('position', 'relative');
     //$('#' + myWidget.id).css('background', 'none');
-    $('#' + myWidget.id).css('width', '320px');
+    $('#' + myWidget.id).css('width', '100 %');
 
     /*$('body').prepend('<div id="3dviewer"></div>');
     chilipeppr.load(
