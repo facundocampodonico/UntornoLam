@@ -305,6 +305,7 @@
            </div>
            <br>
 
+
           <!-- DataTales Example -->
 <div class="row">
   <div class="col-lg-8">
@@ -314,43 +315,8 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>name</th>
-                      <th>position</th>
-                      <th>office</th>
-                      <th>age</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>name</th>
-                      <th>position</th>
-                      <th>office</th>
-                      <th>age</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                    <!--<tr>
-                      <td>Tiger Nixon</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>63</td>
-                      <td>2011/07/25</td>
-                      <td>$170,750</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>66</td>
-                      <td>2009/01/12</td>
-                      <td>$86,000</td>
-                    </tr>-->
-        			 </tbody>
+                <table class="table table-bordered dataTable" id="misDisenios" width="100%" cellspacing="0">
+
                 </table>
               </div>
             </div>
@@ -382,24 +348,38 @@
                 </div>
               </div>
 
-          </div>
+  </div>
 </div>
 
 <div class="row">
-  <div class="col-lg-8">
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-danger">Agregar Diseños</h6>
-            </div>
-            <div class="card-body">
-                  <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                  <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
+	<div class="col-lg-8">
+		<form id="formularioDisenio"  enctype="multipart/form-data">
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+				  <h6 class="m-0 font-weight-bold text-danger">Agregar Diseños</h6>
+				</div>
+				<div class="card-body">
+					<div class="form-group">
+						<input class="form-control" id="nombreDisenio" name="nombreDisenio" type="text" placeholder="Ingrese el nombre">
+					</div>
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="FILEDISENIO" name="FILEDISENIO" lang="es">
+						<label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+					</div>
+					<div class="form-group">
+						<label> &nbsp;</label>
+
+					</div>
+					<div class="form-group" align="right">
+						<button class="btn btn-danger dropdown-" type="button" id="agregarDisenio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+							AGREGAR
+						</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
 
 </div>
       <!-- Footer -->
@@ -453,7 +433,6 @@
   <script src="js/sb-admin-2.min.js"></script>
 
 
-
 <script type="module">
 
 	import * as THREE from './3d/build/three.module.js';
@@ -465,6 +444,100 @@
 	import { STLLoader } from './3d/jsm/loaders/STLLoader.js';
 
 $( document ).ready(function() {
+
+  // Configuracion
+  // @TODO: aca falta las rutas del servidor
+  //const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+  const RUTA_ACCESO = 'http://127.0.0.1:8080/';
+  const RUTA_API = 'api/setDisenio';
+  const RUTA_API_SERVICES = 'api/getMyServices';
+  const RUTA_AUTHENTICATE = 'api/authentication';
+
+  // Handle para saber si puede acceder a esta pantalla
+  var token     = window.sessionStorage.getItem('tokenUntornolam');
+
+  if(!token){
+    alert('No habia token - este mensaje seguro desaparece en un futuro');
+    // Redirecciono
+    window.location.href = './login.html';
+  }
+
+  $.ajax({
+    type: 'GET',
+    enctype: 'multipart/form-data',
+    url: RUTA_ACCESO + RUTA_AUTHENTICATE,
+    headers: {
+        "Authorization": `Bearer ${token}`
+    },
+    data: JSON.stringify( {} ),
+    processData: false,
+    contentType: "application/json; charset=utf-8",
+    cache: false,
+    crossDomain: true,
+
+    success: function( data, textStatus, jQxhr ){
+
+        if(data.status != 'OK'){
+          alert('Debe ingresar - este mensaje seguro desaparece en un futuro');
+          // Redirecciono
+          window.location.href = './login.html';
+        }
+
+    },
+    error: function( jqXhr, textStatus, errorThrown ){
+      console.log( errorThrown );
+    }
+  });
+
+  //  Obtengo el name de la carpeta
+  var idFolder = window.sessionStorage.getItem('nameFolderId');
+
+  // Obtengo la informacion inicial de los diseños
+  var dataInicial = localStorage.getItem('misDisenios');
+
+  console.log('aa');
+  console.info(dataInicial);
+  console.info(localStorage.getItem('misDisenios'));
+  // Parseo la informacion
+  var datosDisenios = JSON.parse(dataInicial);
+
+  // Obtengo la cantidad
+  var cantDisenios = datosDisenios.length;
+
+  if( cantDisenios <= 1 ){
+    dataInicial = "[]";
+  }else{
+    // Elimino el primerSeleccionado
+    localStorage.removeItem('seleccionadoDisenio');
+
+    // Seteo el primero
+    localStorage.setItem('seleccionadoDisenio', RUTA_ACCESO + 'static/' + idFolder + '/' + datosDisenios[0][3] );
+
+    // Armo las rutas
+    for(let i=0; i < cantDisenios; i++){
+      let urlPath = RUTA_ACCESO + 'static/' + idFolder + '/' + datosDisenios[i][3];
+      datosDisenios[i][3] = urlPath;
+    }
+  }
+
+  var events = $('#events');
+
+  var table = $('#misDisenios').DataTable({
+      destroy: true,
+      select: true,
+  //      data:  JSON.parse( dataInicial ),
+      data: datosDisenios,
+      columns:  [
+        { title: "id" },
+        { title: "usuarios_id" },
+        { title: "nombre" },
+        { title: "archivo" },
+        { title: "imgPreview" },
+        { title: "tamanio" },
+        { title: "extension" }
+                ]
+    });
+
     console.log( "ready!" );
 
 
@@ -551,8 +624,10 @@ $( document ).ready(function() {
 							var material = new THREE.MeshPhongMaterial( { specular: 0x111111, shininess: 200 } );
 
 							// Colored binary STL
+              console.log(localStorage.getItem('seleccionadoDisenio'));
+
 							//loader.load( './models/stl/binary/colored.stl', function ( geometry ) {
-							loader.load( './3d/models/stl/binary/prueba.stl', function ( geometry ) {
+							loader.load( localStorage.getItem('seleccionadoDisenio'), function ( geometry ) {
 
 								var meshMaterial = material;
 								if ( geometry.hasColors ) {
@@ -663,8 +738,6 @@ $( document ).ready(function() {
 
 						}
 
-
-
 						function resizeRendererToDisplaySize(renderer) {
 						  const canvas = renderer.domElement;
 						  const width = canvas.clientWidth;
@@ -723,35 +796,128 @@ $( document ).ready(function() {
 							renderer.render( scene, camera );
 
 						}
+
+
+
+  $('#misDisenios tbody').on( 'click', 'tr', function () {
+
+    let table2 = $('#misDisenios').DataTable();
+    var disenio = table2.row($(this)).data();
+    console.info($(this));
+    if(disenio === 'undefined'){
+
+      disenio = this;
+    }
+    console.log('disenio.....');
+    console.info(disenio);
+//    console.info(this);
+//    console.info(table.row().data().column(3));
+  //  if(disenio)
+
+    // Elimino el seleccionado
+    localStorage.removeItem('seleccionadoDisenio');
+
+    // Setep el nuevo nuevo seleccionado
+    localStorage.setItem('seleccionadoDisenio', disenio[3]);
+
+    $('#preview').html('');
+    if ($(this).hasClass('selected')) {
+        $(this).removeClass('selected');
+
+    } else {
+
+        table2.$('tr.selected').removeClass('selected');
+        $(this).addClass('selected');
+    }
+    init();
+
+    //console.info(table.$('tr.selected').column(0).data() );
+
+} );
+
+    $("#agregarDisenio").click(function(){
+
+          // stop submit the form, we will post it manually.
+          event.preventDefault();
+
+          // Obtengo los datos del formulario
+          var form = $('#formularioDisenio')[0];
+
+          // Creo un objeto para enviar los datos
+          var data = new FormData(form);
+
+          // Armo el ajax, para enviar los datos correspondientes
+          $.ajax({
+            type: 'POST',
+            enctype: 'multipart/form-data',
+            url: RUTA_ACCESO + RUTA_API,
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            headers: {
+                'Access-Control-Allow-Origin': "*",
+                "Authorization": `Bearer ${window.sessionStorage.getItem('tokenUntornolam')}`
+              },
+            crossDomain: true,
+
+            success: function( datos2, textStatus, jQxhr ){
+
+                $('#nombreDisenio').val('');
+                //$('#response pre').html( JSON.stringify( datos ) );
+              //  alert( JSON.stringify( datos.data ) );
+              //  console.info(datos2.data);
+              //  console.log('holis');
+                //console.info(localStorage.getItem('misDisenios'));
+              //  console.info(datos.data );
+                //  alert( 'asdasd' );
+                //localStorage.removeItem('misDisenios');
+                //localStorage.setItem('misDisenios', JSON.stringify(datos.data) );
+
+                //JSON.parse(dataInicial)
+                // Parseo la informacion
+                var datosDataTable = datos2.data;
+
+                // Obtengo la cantidad
+                var cantDisenios = datosDataTable.length;
+
+                // Armo las rutas
+                for(let i=0; i < cantDisenios; i++){
+                  let urlPath = RUTA_ACCESO + 'static/' + idFolder + '/' + datosDataTable[i][3];
+                  datosDataTable[i][3] = urlPath;
+                }
+
+
+                $('#misDisenios').DataTable({
+                  destroy: true,
+                  select: true,
+                  data:  datosDataTable,
+                  columns:  [
+                    { title: "id" },
+                    { title: "usuarios_id" },
+                    { title: "nombre" },
+                    { title: "archivo" },
+                    { title: "imgPreview" },
+                    { title: "tamanio" },
+                    { title: "extension" }
+                            ]
+                });
+
+
+
+                //alert("Respuesta: " + JSON.stringify( datos ) );
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+              console.log( errorThrown );
+            }
+          });
+    });
+
 });
+
 
 </script>
 
-
-<script>
-$(document).ready( function () {
-
-    console.log('Comienza a cargar la pagina UNtornoLaM ...');
-
-    $('#dataTable').DataTable({
-        ajax: {
-           url: 'http://66.97.46.179:8080/api/getMyServices',
-           contentType: 'application/json',
-           method: "GET",
-           xhrFields: {
-               withCredentials: false
-           },
-           dataSrc: "services"
-        },
-        columns: [
-            { "data": "name" },
-            { "data": "position" },
-            { "data": "office" },
-            { "data": "age" }
-        ]
-    });
-
-});</script>
 
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>

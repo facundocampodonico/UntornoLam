@@ -109,7 +109,7 @@
 	// Configuracion
 	// @TODO: aca falta las rutas del servidor
 	const RUTA_ACCESO = 'http://66.97.46.179:8080/';
-	//const RUTA_ACCESO = 'http://127.0.0.1:8080/';
+//	const RUTA_ACCESO = 'http://127.0.0.1:8080/';
 	const RUTA_API = 'api/login';
 
 
@@ -179,6 +179,7 @@ $(document).ready(function() {
 
               // Guardo la informacion del usuario
     					sessionStorage.setItem('username', data.info.usuario);
+              sessionStorage.setItem('nameFolderId', data.info.id);
     					sessionStorage.setItem('nombre', data.info.nombre);
     					sessionStorage.setItem('apellido', data.info.apellido);
     					sessionStorage.setItem('nivelAcceso', data.info.nivelAcceso);
@@ -198,7 +199,7 @@ $(document).ready(function() {
               localStorage.setItem('countCnc', countCncs);
 
               // Informacion de los Disenios del usuario que ingresa
-              localStorage.setItem('miDisenios', JSON.stringify(data.disenios) );
+              localStorage.setItem('misDisenios', JSON.stringify(data.disenios) );
 
               // Guardo el dato de la cantidad de Disenios que tiene el usuario
               // @TODO: esto puede que un futuro cambie
@@ -206,13 +207,17 @@ $(document).ready(function() {
 
               localStorage.setItem('countDisenios', countDisenios);
 
-              // @TODO: Falta funcionalidad del backend countReportes
+              // Informacion de los reportes del usuario
+              localStorage.setItem('reportes', JSON.stringify(data.reportes) );
 
-              //  @TODO: Falta funcionalidad del backend countPendientes
+              // Informacion de los reportes pendientes del usuario
+              localStorage.setItem('reportesPendientes', JSON.stringify(data.reportesPendientes) );
 
-              //  @TODO: Falta funcionalidad del backend AdeundaPago
+              // Informacion de los reportes pendientes del usuario
+              localStorage.setItem('pagoAdeudado', JSON.stringify(data.reportesPendientes) );
 
-              //  @TODO: Falta funcionalidad del backend ServicionEnCurso
+              // Informacion de los reportes pendientes del usuario
+              localStorage.setItem('serviciosEnCurso', JSON.stringify(data.serviciosEnCurso) );
 
     					// Redirecciono
     					window.location.href = './index.html';

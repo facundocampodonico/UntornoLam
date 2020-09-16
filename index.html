@@ -444,7 +444,7 @@
                         <div class="col-auto">
                           <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                           	  	<script>
-                                document.write( localStorage.getItem('countReportes') );
+                                  document.write( localStorage.getItem('reportes') );
                                 </script>
 
                           </div>
@@ -469,7 +469,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
 
                       	<script>
-                            document.write( localStorage.getItem('countPendientes') );
+                            document.write( localStorage.getItem('reportesPendientes') );
                         </script>
 
 
@@ -524,9 +524,8 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pagos Adeudados (Total)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                    	<script> document.write(AdeundaPago);
-                        //document.write(  window.sessionStorage.getItem('AdeundaPago'));
-                        //    document.write( localStorage.getItem('AdeundaPago') );
+                        <script>
+                            document.write( localStorage.getItem('pagoAdeudado') );
                         </script>
                       </div>
                     </div>
@@ -541,11 +540,9 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Servicios en Curso (Total)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                    	<script> document.write(ServicionEnCurso);
-                        //document.write(  window.sessionStorage.getItem('ServicionEnCurso'));
-                        //    document.write( localStorage.getItem('ServicionEnCurso') );
+                        <script>
+                            document.write( localStorage.getItem('serviciosEnCurso') );
                         </script>
-
                       </div>
                     </div>
                     <div class="col-auto">
@@ -628,7 +625,7 @@
 // Configuracion
 	// @TODO: aca falta las rutas del servidor
 	const RUTA_ACCESO = 'http://66.97.46.179:8080/';
-  //const RUTA_ACCESO = 'http://localhost:8080/';
+//  const RUTA_ACCESO = 'http://localhost:8080/';
   const RUTA_API = 'api/hello';
 	const RUTA_AUTHENTICATE = 'api/authentication';
 
@@ -706,10 +703,10 @@ $(document).ready(function() {
 			cache: false,
 			crossDomain: true,
 
-			success: function( data, textStatus, jQxhr ){
+			success: function( dataAcceso, textStatus, jQxhr ){
 
 					console.log('volvi');
-					console.log( JSON.stringify(data) );
+					console.log( JSON.stringify(dataAcceso) );
 
 			},
 			error: function( jqXhr, textStatus, errorThrown ){
