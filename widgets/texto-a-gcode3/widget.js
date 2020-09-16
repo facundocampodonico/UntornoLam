@@ -180,7 +180,7 @@ Pass in {<br>
     holes: true, // boolean. defaults to true.<br>
     cut: "solid", // solid, dashed. default to solid.<br>
     dashPercent: 20, // integer from 0 to 100. defaults to 20<br>
-    mode: "laser", // laser, mill. defaults to laser.<br>
+    mode: "mill", // laser, mill. defaults to laser.<br>
     laseron: "m3", // m3, m7. defaults to m3.<br>
     feedrate: 200, // integer. defaults to 200<br>
 }
@@ -518,7 +518,7 @@ Pass in {<br>
             };
             // grab gcode from textarea
             var gcodetxt = $('#' + this.id + " .gcode").val();
-console.print("mega1: "+gcodetxt);
+console.log("mega1: "+gcodetxt);
             if (gcodetxt.length < 10) {
                 chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "Error Sending Gcode", "It looks like you don't have any Gcode to send to the workspace. Huh?", 5 * 1000);
                 return;
