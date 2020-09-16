@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    <div id="com-zipwhip-widget-font2gcode" class="panel panel-default">
+    <div id="com-zipwhip-widget-font2gcode" class="panel panel-default" style="max-height: 100%">
         <div class="panel-heading ">
 
             <!-- <div class="btn-toolbar pull-right" role="toolbar"> -->
@@ -60,14 +60,24 @@
         <div class="panel-body">
 
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
+            <!-- <ul class="nav nav-tab" role="tablist">
                 <li class="active"><a href="#com-zipwhip-widget-font2gcode-tab1" role="tab" data-toggle="tab">Render</a>
                 </li>
-                <li><a href="#com-zipwhip-widget-font2gcode-tab2" role="tab" data-toggle="tab">Gcode</a></li>
+                    <li><a href="#com-zipwhip-widget-font2gcode-tab2" role="tab" data-toggle="tab">Gcode</a></li>
                 <!--<li><a href="#com-zipwhip-widget-font2gcode-tab3" role="tab" data-toggle="tab">Dispenser</a></li>-->
                 <!--<li><a href="#com-zipwhip-widget-font2gcode-tab4" role="tab" data-toggle="tab">Laser</a></li>-->
-            </ul>
+            <!-- </ul>  -->
+            <nav class="navbar navbar-expand-sm bg-info navbar-dark">
+              <ul class="navbar-nav">
+                <li class="nav-item ">
+                  <a class="nav-link" href="#com-zipwhip-widget-font2gcode-tab1" role="tab" data-toggle="tab">Render</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#com-zipwhip-widget-font2gcode-tab2" role="tab" data-toggle="tab">Gcode</a>
+                </li>
 
+              </ul>
+            </nav>
             <!-- Tab panes -->
             <div class="tab-content">
 
@@ -76,22 +86,22 @@
 
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control input-text" xstyle="margin-bottom:5px;" placeholder="Enter text to render" value="313-554-5702" />
+                            <input type="text" class="form-control input-text" xstyle="margin-bottom:5px;" placeholder="Enter text to render" value="UNtornoLaM" />
                             <div class="input-group-addon" style="padding:0;">
-                                <button type="button" xstyle="border-radius:0; border:0;" class="btn btn-default btn-render">Render</button>
+                                <button type="button" xstyle="border-radius:0; border:0;" class="btn btn-outline-info btn-render">Render</button>
                             </div>
                         </div>
                     </div>
 
                     <!--<div class="well">-->
 
-                        <p>Settings</p>
+                        <!-- <p>Settings</p> -->
 
                         <div class="form-group">
                             <div class="input-group">
-                                <div class="input-group-addon" style="align-self: center;">Height</div>
+                                <div class="input-group-addon" style="align-self: center;padding-right:5px;">Height</div>
                                 <input type="number" min="0" max="9999" step="1" class="form-control input-height" value="10" placeholder="Height">
-                                <div class="input-group-addon" style="align-self: center;">mm</div>
+                                <div class="input-group-addon" style="align-self: center;padding-left:5px;">mm</div>
                             </div>
                         </div>
 
@@ -114,7 +124,7 @@
                             </label>
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label class="radio-inline">
                                 <input type="radio" name="com-chilipeppr-widget-font2gcode-align" value="left" checked> Left
                             </label>
@@ -124,7 +134,7 @@
                             <label class="radio-inline">
                                 <input type="radio" name="com-chilipeppr-widget-font2gcode-align" value="right"> Right
                             </label>
-                        </div>
+                        </div> -->
 
                         <div class="checkbox">
                             <label>
@@ -154,13 +164,13 @@
 
                             <div class="input-group input-group-small" style="width:140px;">
                                 <input type="number" step="1" class="form-control input-x" placeholder="0" value="0">
-                                <div class="input-group-addon"style="align-self: center;">
+                                <div class="input-group-addon"style="align-self: center;padding-left:5px;">
                                     X
                                 </div>
                             </div>
                             <div class="input-group input-group-small" style="width:140px;margin-top:2px;">
                                 <input type="number" step="1" class="form-control input-y" placeholder="0" value="0">
-                                <div class="input-group-addon" style="align-self: center;">
+                                <div class="input-group-addon" style="align-self: center;padding-left:5px;">
                                     Y
                                 </div>
                             </div>
@@ -511,28 +521,28 @@
                         <span xstyle="font-size:11px;" class="element-clearanceheight hidden" >Clearance Height</span>
                         <div class="input-group element-clearanceheight hidden">
                             <input type="number" min="0" max="100000" step="1" class="form-control input-clearanceheight" value="5" placeholder="Enter clearance height">
-                            <div class="input-group-addon">mm</div>
+                            <div class="input-group-addon"style="padding-left:5px;">mm</div>
                         </div>
                         <span xstyle="font-size:11px;" class="element-milldepthcut hidden" >Depth of Cut</span>
                         <div class="input-group element-milldepthcut hidden">
                             <input type="number" min="-10000" max="100000" step="1" class="form-control input-milldepthcut" value="-1" placeholder="Enter depth of cut">
-                            <div class="input-group-addon">mm</div>
+                            <div class="input-group-addon"style="padding-left:5px;">mm</div>
                         </div>
                         <span xstyle="font-size:11px;" class="element-millfeedrateplunge hidden" >Depth of Cut</span>
                         <div class="input-group element-millfeedrateplunge hidden">
                             <input type="number" min="-10000" max="100000" step="10" class="form-control input-millfeedrateplunge" value="80" placeholder="Enter plunge feedrate">
-                            <div class="input-group-addon">mm/min</div>
+                            <div class="input-group-addon"style="padding-left:5px;">mm/min</div>
                         </div>
 
                         <span xstyle="font-size:11px;">Feedrate During Mill/Laser</span>
                         <div class="input-group">
                             <input type="number" min="0" max="50000" step="10" class="form-control input-feedrate" value="200" placeholder="Enter feedrate">
-                            <div class="input-group-addon">mm/min</div>
+                            <div class="input-group-addon"style="padding-left:5px;">mm/min</div>
                         </div>
                     </div>
 
 
-                    <button type="button" class="btn btn-default btn-sendgcodetows">Send Gcode to Workspace</button>
+                    <button type="button" class="btn btn-info btn-block btn-sendgcodetows">Send Gcode to Workspace</button>
 
                     <p style="margin-top:10px;">Gcode</p>
                     <textarea class="form-control gcode" rows="3" spellcheck="false"></textarea>
