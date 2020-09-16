@@ -73,6 +73,7 @@
 .contentcnc {
   padding: 0 px;
   max-height: 0;
+  height: 100%;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   background-color: #fff;

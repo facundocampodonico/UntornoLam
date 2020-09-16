@@ -102,7 +102,7 @@ cprequire_test(["inline:com-zipwhip-widget-font2gcode"], function(myWidget) {
         }
     );
 */
-    $('#' + myWidget.id).css('margin', '20px');
+    $('#' + myWidget.id).css('margin', '10px');
     $('title').html(myWidget.name);
     // $('#' + myWidget.id).css('background', 'none');
 
