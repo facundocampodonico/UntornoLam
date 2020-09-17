@@ -74,15 +74,15 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
 
             // setup chilipeppr logo btn click
             //$('.com-chilipeppr-elem-dragdrop-loadlogo').click(this.loadChiliPepprGcode.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadlogo').click("//i2dcui.appspot.com/3d/chilipepprlogo.nc", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+//mega            $('.com-chilipeppr-elem-dragdrop-loadlogo').click("//i2dcui.appspot.com/3d/chilipepprlogo.nc", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
             //$('.com-chilipeppr-elem-dragdrop-loadlogoinch').click(this.loadChiliPepprGcodeInch.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadlogoinch').click("//i2dcui.appspot.com/3d/chilipepprlogo.inches.nc", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadcirclediamondsquare').click("//i2dcui.appspot.com/img/gcode/Circle-diamond-square-50-45-40mm.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadlogosvg').click("//i2dcui.appspot.com/img/svg/chilipepprlogo.svg", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadeagleuno').click("//i2dcui.appspot.com/slingshot?url=https://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/arduinoUnoRev3.brd", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadeaglemicro').click("//i2dcui.appspot.com/slingshot?url=https://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/Arduino_Micro_Rev03j.brd", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadeagleadafruitruler').click("//i2dcui.appspot.com/slingshot?url=https://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/AdafruitPCBReferenceRuler.brd", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadeagleesp').click("//i2dcui.appspot.com/slingshot?url=https://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/ESP8266Ring.brd", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+//mega            $('.com-chilipeppr-elem-dragdrop-loadlogoinch').click("//i2dcui.appspot.com/3d/chilipepprlogo.inches.nc", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+//mega            $('.com-chilipeppr-elem-dragdrop-loadcirclediamondsquare').click("//i2dcui.appspot.com/img/gcode/Circle-diamond-square-50-45-40mm.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+//mega            $('.com-chilipeppr-elem-dragdrop-loadlogosvg').click("//i2dcui.appspot.com/img/svg/chilipepprlogo.svg", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+//mega            $('.com-chilipeppr-elem-dragdrop-loadeagleuno').click("//i2dcui.appspot.com/slingshot?url=https://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/arduinoUnoRev3.brd", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+//mega            $('.com-chilipeppr-elem-dragdrop-loadeaglemicro').click("//i2dcui.appspot.com/slingshot?url=https://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/Arduino_Micro_Rev03j.brd", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+//mega            $('.com-chilipeppr-elem-dragdrop-loadeagleadafruitruler').click("//i2dcui.appspot.com/slingshot?url=https://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/AdafruitPCBReferenceRuler.brd", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+//mega            $('.com-chilipeppr-elem-dragdrop-loadeagleesp').click("//i2dcui.appspot.com/slingshot?url=https://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/ESP8266Ring.brd", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
 
             // setup del files
             $('.com-chilipeppr-elem-dragdrop .recent-file-delete').click(this.deleteRecentFiles.bind(this));
@@ -318,10 +318,12 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
             });
         },
         loadChiliPepprGcodeInch: function(evt) {
-            this.loadChiliPepprGcode(evt, "http://www.chilipeppr.com/3d/chilipepprlogo.inches.nc");
+            // this.loadChiliPepprGcode(evt, "http://www.chilipeppr.com/3d/chilipepprlogo.inches.nc");
+            this.loadChiliPepprGcode(evt, "cuadrado.gcode");
         },
         loadChiliPepprGcode: function(evt, alturl) {
-            var url = 'http://www.chilipeppr.com/3d/chilipepprlogo.nc';
+            var url = 'cuadrado.gcode';
+            // var url = 'http://www.chilipeppr.com/3d/chilipepprlogo.nc';
             if (alturl !== undefined && alturl != null) url = alturl;
             var that = this;
             $.get(url, null, function(data) {
