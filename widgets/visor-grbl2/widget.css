@@ -1,5 +1,7 @@
 #com-chilipeppr-widget-tinyg-body {
-    /* padding:0; */
+    padding:10px;
+    width: 100%;
+    height:100;
 }
 .com-chilipeppr-interface-cnccontroller-stat .col {
     padding:0 10px 0 0;
@@ -35,7 +37,7 @@
     box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
     width:50px;
     padding-left:6px;
-    
+
 }
 .com-chilipeppr-widget-tinyg-fro-val-preview {
     color:silver;
