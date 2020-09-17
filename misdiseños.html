@@ -20,9 +20,7 @@
 
   <!-- Carga de Variables -->
   <!-- Custom styles for this template -->
-  <link href="css/sb-admin-2.css" rel="stylesheet">
-
-  <!-- Custom styles for this page -->
+  <  <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
   <!--	Cargo AJAX, esto podria hacerse sobre un archivo local si es muy lento	-->
@@ -315,7 +313,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered table-hover dataTable" id="misDisenios" width="100%" cellspacing="0">
+                <table class="table table-bordered table-striped dataTable" id="misDisenios" width="100%" cellspacing="0">
 
                 </table>
               </div>
@@ -821,17 +819,17 @@ $( document ).ready(function() {
     localStorage.setItem('seleccionadoDisenio', disenio[3]);
 
     $('#preview').html('');
-    if ($(this).hasClass('selected')) {
-        $(this).removeClass('selected');
+    if ($(this).hasClass('selecteddis')) {
+        $(this).removeClass('selecteddis');
 
     } else {
 
-        table2.$('tr.selected').removeClass('selected');
-        $(this).addClass('selected');
+        table2.$('tr.selecteddis').removeClass('selecteddis');
+        $(this).addClass('selecteddis');
     }
     init();
 
-    //console.info(table.$('tr.selected').column(0).data() );
+    //console.info(table.$('tr.selecteddis').column(0).data() );
 
 } );
 
