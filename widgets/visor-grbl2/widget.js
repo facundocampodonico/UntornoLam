@@ -503,6 +503,7 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
                 // "http://raw.githubusercontent.com/chilipeppr/widget-configtinyg/master/auto-generated-widget.html"
                 chilipeppr.load(
                     "#com-chilipeppr-widget-tinyg-holderAreaForConfigWidget",
+                    //"http://raw.githubusercontent.com/chilipeppr/widget-configtinyg/master/auto-generated-widget.html", function () {
                     "http://raw.githubusercontent.com/chilipeppr/widget-configtinyg/master/auto-generated-widget.html", function () {
                     require(["inline:com-chilipeppr-widget-configtinyg"], function (configtinyg) {
 
@@ -1223,7 +1224,8 @@ cpdefine("inline:com-chilipeppr-widget-tinyg", ["chilipeppr_ready", "jquerycooki
             var that = this;
             //"http://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html",
             // chilipeppr.load("http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/", function () {
-            chilipeppr.load("http://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html", function () {
+            //chilipeppr.load("http://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html", function () {
+            chilipeppr.load("widgets/pub-sub-viewer/widget.html", function () {
                 require(['inline:com-chilipeppr-elem-pubsubviewer'], function (pubsubviewer) {
                     pubsubviewer.attachTo($('#com-chilipeppr-widget-tinyg .panel-heading .dropdown-menu'), that);
                 });

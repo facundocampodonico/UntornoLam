@@ -44,6 +44,7 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
     chilipeppr.load(
         // "http://fiddle.jshell.net/chilipeppr/90698kax/show/light",
         "http://raw.githubusercontent.com/chilipeppr/element-flash/master/auto-generated-widget.html",
+        //"widgets/flash-modal/widget.html",
         function() {
             cprequire(
                 ['inline:com-chilipeppr-elem-flashmsg'],
@@ -316,7 +317,8 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             } else {
                 console.log("gcode viewer loading from path lastLoaded or 15mm_cube.gcode");
                 var that = this;
-                if (!lastLoaded) lastLoaded = 'http://www.chilipeppr.com/3d/chilipepprlogo.nc';
+                //if (!lastLoaded) lastLoaded = 'http://www.chilipeppr.com/3d/chilipepprlogo.nc';
+                if (!lastLoaded) lastLoaded = 'cuadrado.gcode';
                 $.get(lastLoaded, null, function (data) {
                     localStorage.setItem('last-loaded', lastLoaded);
                     localStorage.removeItem('last-imported');
@@ -1200,7 +1202,8 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             var that = this;
             chilipeppr.load(
                 // "http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/",
-                "http://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html",
+                //"http://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html",
+                "widgets/pub-sub-viewer/widget.html",
                 function () {
                 require(['inline:com-chilipeppr-elem-pubsubviewer'], function (pubsubviewer) {
                     pubsubviewer.attachTo($(topCssSelector + ' .panel-heading .pubsub-dropdown-menu'), that);

@@ -312,7 +312,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             } else {
                 console.log("gcode viewer loading from path lastLoaded or 15mm_cube.gcode");
                 var that = this;
-                if (!lastLoaded) lastLoaded = 'http://www.chilipeppr.com/3d/chilipepprlogo.nc';
+                if (!lastLoaded) lastLoaded = 'cuadrado.gcode';
                 $.get(lastLoaded, null, function (data) {
                     localStorage.setItem('last-loaded', lastLoaded);
                     localStorage.removeItem('last-imported');

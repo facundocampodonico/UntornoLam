@@ -8,6 +8,8 @@
 /*jslint regexp: true, nomen: true, sloppy: true */
 /*global window, navigator, document, importScripts, setTimeout, opera */
 
+console.log("ENTRO A REQUIRE!");
+
 var requirejs, require, define;
 (function (global) {
     var req, s, head, baseElement, dataMain, src,
