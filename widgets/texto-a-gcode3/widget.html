@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    <div id="com-zipwhip-widget-font2gcode" class="panel panel-default" style="height:540px;">
+    <div id="com-zipwhip-widget-font2gcode" class="panel panel-default">
         <div class="panel-heading ">
 
             <!-- <div class="btn-toolbar pull-right" role="toolbar"> -->
@@ -88,7 +88,7 @@
             <div class="tab-content">
 
                 <!-- Tab 1 -->
-                <div class="tab-pane active" id="com-zipwhip-widget-font2gcode-tab1">
+                <div class="tab-pane active" id="com-zipwhip-widget-font2gcode-tab1" style="height:500px;">
 
                     <div class="form-group">
                         <div class="input-group">
@@ -112,7 +112,8 @@
                         </div>
 
                         <div class="form-group">
-                            <select class="form-control input-font">
+                                <select class="form-control input-font">
+                                <option value="" disabled selected>Seleccione una fuente</option>
                                 <option>helvetiker</option>
                                 <option>optimer</option>
                                 <option>gentilis</option>
@@ -168,17 +169,21 @@
 
                         <div class="alignbox xhidden" style="position:relative;">
 
-                            <div class="input-group input-group-small" style="width:140px;">
-                                <input type="number" step="1" class="form-control input-x" placeholder="0" value="0">
-                                <div class="input-group-addon"style="align-self: center;padding-left:5px;">
+                            <div class="input-group input-group-small" style="width:100%;">
+
+                                <div class="input-group-addon"style="align-self: center;padding-right:5px;">
                                     X
                                 </div>
+                                <input type="number" step="1" class="form-control input-x" placeholder="0" value="0">
+                                    <div class="input-group-addon"style="padding-left:5px;">mm</div>
                             </div>
-                            <div class="input-group input-group-small" style="width:140px;margin-top:2px;">
-                                <input type="number" step="1" class="form-control input-y" placeholder="0" value="0">
-                                <div class="input-group-addon" style="align-self: center;padding-left:5px;">
+                            <div class="input-group input-group-small" style="width:100%;margin-top:2px;">
+
+                                <div class="input-group-addon" style="align-self: center;padding-right:5px;">
                                     Y
                                 </div>
+                                    <input type="number" step="1" class="form-control input-y" placeholder="0" value="0">
+                                        <div class="input-group-addon"style="padding-left:5px;">mm</div>
                             </div>
 
 
@@ -504,7 +509,7 @@
                 </div>
 
                 <!-- Tab 2 -->
-                <div class="tab-pane" id="com-zipwhip-widget-font2gcode-tab2">
+                <div class="tab-pane" id="com-zipwhip-widget-font2gcode-tab2" style="height:500px;">
 
                     <!-- <div class="form-group">
                         <p style="margin-bottom:0">Mode</p>
