@@ -518,33 +518,33 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
         onEchoOfSend: function(data) {
             this.appendLogEchoCmd(data);
         },
-        setupResizeable: function() {
-            //$( "#com-chilipeppr-widget-gcode-body" ).resizable({
-            $(".com-chilipeppr-widget-spconsole").resizable({
-                //alsoResize: "#com-chilipeppr-widget-gcode-body-2col > td:first"
-                alsoResize: ".com-chilipeppr-widget-spconsole-console-log",
-                //ndex:1
-                //handles: "s",
-
-                //maxHeight:1000,
-                resize: function(evt) {
-                    console.log("resize resize", evt);
-                    //$( ".com-chilipeppr-widget-spconsole" ).removeAttr("style");
-                    $(".com-chilipeppr-widget-spconsole").css('height', 'initial');
-                    $(".com-chilipeppr-widget-spconsole-console-log").css('width', 'initial');
-                },
-                start: function(evt) {
-                    console.log("resize start", evt);
-                },
-                stop: function(evt) {
-                    console.log("resize stop", evt);
-                    //$( ".com-chilipeppr-widget-spconsole" ).removeAttr("style");
-                    $(".com-chilipeppr-widget-spconsole").css('height', 'initial');
-                    $(".com-chilipeppr-widget-spconsole-console-log").css('width', 'initial');
-                }
-            });
-            this.resizerSetup();
-        },
+        // setupResizeable: function() {
+        //     //$( "#com-chilipeppr-widget-gcode-body" ).resizable({
+        //     $(".com-chilipeppr-widget-spconsole").resizable({
+        //         //alsoResize: "#com-chilipeppr-widget-gcode-body-2col > td:first"
+        //         alsoResize: ".com-chilipeppr-widget-spconsole-console-log",
+        //         //ndex:1
+        //         //handles: "s",
+        //
+        //         //maxHeight:1000,
+        //         resize: function(evt) {
+        //             console.log("resize resize", evt);
+        //             //$( ".com-chilipeppr-widget-spconsole" ).removeAttr("style");
+        //             $(".com-chilipeppr-widget-spconsole").css('height', 'initial');
+        //             $(".com-chilipeppr-widget-spconsole-console-log").css('width', 'initial');
+        //         },
+        //         start: function(evt) {
+        //             console.log("resize start", evt);
+        //         },
+        //         stop: function(evt) {
+        //             console.log("resize stop", evt);
+        //             //$( ".com-chilipeppr-widget-spconsole" ).removeAttr("style");
+        //             $(".com-chilipeppr-widget-spconsole").css('height', 'initial');
+        //             $(".com-chilipeppr-widget-spconsole-console-log").css('width', 'initial');
+        //         }
+        //     });
+        //     this.resizerSetup();
+        // },
         subscribeSetup: function() {
             // We will subscribe to the port list.
             // If anything is open, we'll pick the first one

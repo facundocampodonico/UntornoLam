@@ -99,7 +99,7 @@
                     </button>
                     <button type="button" class="btn btn-sm btn-info btn-preferences" data-delay="1000"
                         data-animation="true" data-placement="auto" data-container="body" data-trigger="hover"
-                        data-title="Prefrences" data-content="Set or select preferences for this widget.">
+                        data-title="Prefrences" data-toggle="modal" data-target="#prefcam" data-content="Set or select preferences for this widget.">
                         <span class="fa fa-cog"></span>
                     </button>
                 </div>
@@ -265,20 +265,22 @@
         </div>
         <!-- /.modal -->
 
-        <div class="modal fade preferences-window" tabindex="-1" role="dialog">
+        <div class="modal fade preferences-window" id="prefcam" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
+                            <h4 class="modal-title">Camera  Options</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Camera  Options</h4>
+
                     </div>
                     <div class="modal-body">
                         <form class="" role="form">
                             <p>The Camera widget will get a "motion" MJPEG Stream from your url. Please install motion and input the complete url to the MJPEG Stream.</p>
 
                             <div class="input-group" style="width:200px;">
+                                <div class="input-group-addon"style="    margin-top: 5px;margin-right: 5px;">url</div>
                                 <input type="string" class="form-control mjpeg-url" placeholder="url for mjpeg stream" value="http://127.0.0.1:9081" />
-                                <div class="input-group-addon">url</div>
+
                             </div>
                             </form>
                     </div>
