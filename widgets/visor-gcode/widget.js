@@ -41,7 +41,7 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
      */
 
     // add flash msg
-    chilipeppr.load(
+/*mega    chilipeppr.load(
         // "http://fiddle.jshell.net/chilipeppr/90698kax/show/light",
         "http://raw.githubusercontent.com/chilipeppr/element-flash/master/auto-generated-widget.html",
         //"widgets/flash-modal/widget.html",
@@ -55,7 +55,7 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
             );
         }
     );
-
+mega*/
     // create a div to hold dragdrop
     // Element / Drag Drop
     // http://jsfiddle.net/jlauer/Q654J/
@@ -629,7 +629,8 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 // only addlinenumbs by default if workspace asked us to
                 if (this.lineNumbersOnByDefault) {
                     if (!('addlinenums' in options))
-                        options.addlinenums = true;
+                        //options.addlinenums = true;
+                        options.addlinenums = false;
                 }
                 // Default new options for backwards compatibility
                 if (!('sendOnM6' in options)) {
@@ -643,7 +644,8 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 }
 
             } else {
-                options = {whenPlay: "serial", perRow: "3d", perRow3dType: "goto", delayPerLine: this.delayPerLine, pauseOnM6: true, preUpload: 'none', multiLineMode: 'yes', multiLines: 50, ppsOnPlayFlush: false, ppsOnStopFeedhold: false, ppsOnPauseFeedhold: false, ppsOnUnpauseResume: false, removeemptylines: true, addlinenums: true, sendOnM6: "", sendOffM6: "", probeCmd: "G28.2 Z0"};
+                options = {whenPlay: "serial", perRow: "3d", perRow3dType: "goto", delayPerLine: this.delayPerLine, pauseOnM6: true, preUpload: 'none', multiLineMode: 'yes', multiLines: 50, ppsOnPlayFlush: false, ppsOnStopFeedhold: false, ppsOnPauseFeedhold: false, ppsOnUnpauseResume: false, removeemptylines: true, addlinenums: false, sendOnM6: "", sendOffM6: "", probeCmd: "G28.2 Z0"};
+                //options = {whenPlay: "serial", perRow: "3d", perRow3dType: "goto", delayPerLine: this.delayPerLine, pauseOnM6: true, preUpload: 'none', multiLineMode: 'yes', multiLines: 50, ppsOnPlayFlush: false, ppsOnStopFeedhold: false, ppsOnPauseFeedhold: false, ppsOnUnpauseResume: false, removeemptylines: true, addlinenums: true, sendOnM6: "", sendOffM6: "", probeCmd: "G28.2 Z0"};
             }
             this.options = options;
             console.log("options:", options);
