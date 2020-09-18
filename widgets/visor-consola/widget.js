@@ -174,7 +174,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
             this.logSetup();
             this.btnBarSetup();
             this.consoleSetup();
-            this.setupResizeable();
+//            this.setupResizeable();
             //this.resizerSetup();
             //this.resize();
             if (isSinglePortMode) {

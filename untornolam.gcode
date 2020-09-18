@@ -1,18 +1,7 @@
 G21         ; Set units to mm
 G90         ; Absolute positioning
+G0 Z5 	    ; Move to clearance level
 G1 Z2.54 F400      ; Move to clearance level
-
-;
-; Operation:    0
-; Name:         
-; Type:         Outside
-; Paths:        27
-; Direction:    Conventional
-; Cut Depth:    1.9999999999999998
-; Pass Depth:   0.9999999999999999
-; Plunge rate:  80
-; Cut rate:     100
-;
 
 ; Path 0
 ; Rapid to initial position

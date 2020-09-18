@@ -1266,6 +1266,7 @@ console.log("mega1: "+gcodetxt);
         forkSetup: function() {
             var topCssSelector = '#' + this.id;
 
+/*mega
             $(topCssSelector + ' .panel-title').popover({
                 title: this.name,
                 content: this.desc,
@@ -1275,6 +1276,7 @@ console.log("mega1: "+gcodetxt);
                 trigger: 'hover',
                 placement: 'auto'
             });
+*/
 
             var that = this;
             chilipeppr.load("http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/", function() {

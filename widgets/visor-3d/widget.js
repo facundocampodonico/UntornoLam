@@ -1089,7 +1089,7 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
 
             // attach button bar features
             var that = this;
-            this.isLookAtToolHeadMode = true;
+            this.isLookAtToolHeadMode = false;
             $('.com-chilipeppr-widget-3d-menu-lookattoolhead').click(function () {
                 if (that.isLookAtToolHeadMode) {
                     // turn off looking at toolhead
@@ -1129,6 +1129,7 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
             //$('#com-chilipeppr-widget-3dviewer .standalone').prop('href', this.url);
             //var t = $('#com-chilipeppr-widget-3dviewer .fork-name');
             //t.html(this.id);
+            /*mega      
             $('#com-chilipeppr-widget-3dviewer .panel-title').popover({
                 title: this.name,
                 content: this.desc,
@@ -1136,6 +1137,7 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
                 delay: 200,
                 animation: true
             });
+          mega*/
 
             // load the pubsub viewer / fork element which decorates our upper right pulldown
             // menu with the ability to see the pubsubs from this widget and the forking links
@@ -2198,7 +2200,7 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
             var widthHeightOfGrid; //= this.getUnitVal(200);
             var subSectionsOfGrid; //= this.getUnitVal(10);
             if (this.isUnitsMm) {
-                widthHeightOfGrid = 200; // 200 mm grid should be reasonable
+                widthHeightOfGrid = 600; // 200 mm grid should be reasonable
                 subSectionsOfGrid = 10; // 10mm (1 cm) is good for mm work
             } else {
                 widthHeightOfGrid = 20; // 20 inches is good
