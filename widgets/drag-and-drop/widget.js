@@ -75,7 +75,7 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
             // setup chilipeppr logo btn click
             //$('.com-chilipeppr-elem-dragdrop-loadlogo').click(this.loadChiliPepprGcode.bind(this));
 //mega            $('.com-chilipeppr-elem-dragdrop-loadlogo').click("//i2dcui.appspot.com/3d/chilipepprlogo.nc", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadlogo').click("cuadrado.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+            $('.com-chilipeppr-elem-dragdrop-loadlogo').click("untornolam.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
             //$('.com-chilipeppr-elem-dragdrop-loadlogoinch').click(this.loadChiliPepprGcodeInch.bind(this));
 //mega            $('.com-chilipeppr-elem-dragdrop-loadlogoinch').click("//i2dcui.appspot.com/3d/chilipepprlogo.inches.nc", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
 //mega            $('.com-chilipeppr-elem-dragdrop-loadcirclediamondsquare').click("//i2dcui.appspot.com/img/gcode/Circle-diamond-square-50-45-40mm.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
@@ -85,13 +85,13 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
 //mega            $('.com-chilipeppr-elem-dragdrop-loadeagleadafruitruler').click("//i2dcui.appspot.com/slingshot?url=https://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/AdafruitPCBReferenceRuler.brd", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
 //mega            $('.com-chilipeppr-elem-dragdrop-loadeagleesp').click("//i2dcui.appspot.com/slingshot?url=https://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/ESP8266Ring.brd", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
 
-            $('.com-chilipeppr-elem-dragdrop-loadlogoinch').click("cuadrado.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadcirclediamondsquare').click("cuadrado.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadlogosvg').click("cuadrado.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadeagleuno').click("cuadrado.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadeaglemicro').click("cuadrado.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadeagleadafruitruler').click("cuadrado.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
-            $('.com-chilipeppr-elem-dragdrop-loadeagleesp').click("cuadrado.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+            $('.com-chilipeppr-elem-dragdrop-loadlogoinch').click("untornolam.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+            $('.com-chilipeppr-elem-dragdrop-loadcirclediamondsquare').click("untornolam.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+            $('.com-chilipeppr-elem-dragdrop-loadlogosvg').click("untornolam.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+            $('.com-chilipeppr-elem-dragdrop-loadeagleuno').click("untornolam.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+            $('.com-chilipeppr-elem-dragdrop-loadeaglemicro').click("untornolam.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+            $('.com-chilipeppr-elem-dragdrop-loadeagleadafruitruler').click("untornolam.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
+            $('.com-chilipeppr-elem-dragdrop-loadeagleesp').click("untornolam.gcode", this.loadUrlDoNotCreateRecentFileEntry.bind(this));
 
             // setup del files
             $('.com-chilipeppr-elem-dragdrop .recent-file-delete').click(this.deleteRecentFiles.bind(this));
@@ -328,10 +328,10 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
         },
         loadChiliPepprGcodeInch: function(evt) {
             // this.loadChiliPepprGcode(evt, "http://www.chilipeppr.com/3d/chilipepprlogo.inches.nc");
-            this.loadChiliPepprGcode(evt, "cuadrado.gcode");
+            this.loadChiliPepprGcode(evt, "untornolam.gcode");
         },
         loadChiliPepprGcode: function(evt, alturl) {
-            var url = 'cuadrado.gcode';
+            var url = 'untornolam.gcode';
             // var url = 'http://www.chilipeppr.com/3d/chilipepprlogo.nc';
             if (alturl !== undefined && alturl != null) url = alturl;
             var that = this;

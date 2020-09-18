@@ -262,7 +262,7 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
                 //that.openGCodeFromPath(lastLoaded || 'examples/octocat.gcode');
                 console.log("loading chilipeppr logo");
                 // that.openGCodeFromPath(lastLoaded || 'http://www.chilipeppr.com/3d/chilipepprlogo.nc');
-                that.openGCodeFromPath(lastLoaded || 'cuadrado.gcode');
+                that.openGCodeFromPath(lastLoaded || 'untornolam.gcode');
             }
 
             var lastFpsRate = localStorage.getItem ('fpsRate');
