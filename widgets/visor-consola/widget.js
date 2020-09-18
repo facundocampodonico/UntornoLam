@@ -95,6 +95,7 @@ cprequire_test(["inline:com-chilipeppr-widget-spconsole"], function(sp) {
     // }
 
     // Inject new div to contain widget or use an existing div with an ID
+/*mega
     $("body").append('<p></p><' + 'div id="myDivWidgetSerialport"><' + '/div>');
 
     chilipeppr.load(
@@ -114,6 +115,7 @@ cprequire_test(["inline:com-chilipeppr-widget-spconsole"], function(sp) {
         );
       }
     );
+mega*/
 
     setTimeout(function() {
         sp.setFilter(/^ok|^\n|^\[G|^<|\$G/);
