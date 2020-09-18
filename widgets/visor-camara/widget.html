@@ -33,23 +33,23 @@
 </head>
 
 <body>
-    <div id="com-chilipeppr-widget-cam" class="panel panel-default">
-        <div class="panel-heading ">
+    <div id="com-chilipeppr-widget-cam" class="card ">
+        <div class="card-header ">
 
-            <div class="btn-toolbar pull-right" role="toolbar">
-                <div class="btn-group">
+            <div class="btn-toolbar float-xs-right" role="toolbar">
+                <!-- <div class="btn-group">
                     <div class="dropdown">
-                        <button type="button" class="btn btn-xs btn-info dropdown-toggle" data-toggle="dropdown">
-                            <span class="glyphicon glyphicon-camera"></span>
+                        <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown">
+                            <span class="fa fa-camera"></span>
                             <span class="caret" style="font-size:10px; margin-left:-2px; xmargin-right:-4px;"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right" role="menu">
                             <li><a class="one-col" href="javascript:">1 Column Layout</a></li>
                             <li><a class="two-col" href="javascript:">2 Column Layout</a></li>
                             <li><a class="three-col" href="javascript:">3 Column Layout</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a class="" href="javascript:"><span class="glyphicon glyphicon-refresh"></span> Refresh Cam List</a></li>
-                            <li role="separator" class="divider"></li>
+                            <li role="separator" class="dropdown-divider"></li>
+                            <li><a class="" href="javascript:"><span class="fa fa-refresh"></span> Refresh Cam List</a></li>
+                            <li role="separator" class="dropdown-divider"></li>
                             <li role="presentation" class="dropdown-header server-192-168-1-35">ws://192.168.1.35&nbsp;raspi3</li>
                             <li><a class="" href="javascript:">
                                 <div src="" class="cam-img" style="background-image:url('cam-raspicam3.png');"></div>
@@ -85,40 +85,40 @@
 
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <div class="btn-group">
-                    <button type="button" class="btn btn-xs btn-info btn-stopstreaming" data-delay="1000"
+                    <button type="button" class="btn btn-sm btn-info btn-stopstreaming" data-delay="1000"
                         data-animation="true" data-placement="auto" data-container="body" data-trigger="hover"
                         data-title="Stop Streaming" data-content="Stop streaming the video feed from your server.">
-                        <span class="glyphicon glyphicon-remove-circle"></span>
+                        <span class="fa fa-remove-circle"></span>
                     </button>
-                    <button type="button" class="btn btn-xs btn-info btn-startstreaming" data-delay="1000"
+                    <button type="button" class="btn btn-sm btn-info btn-startstreaming" data-delay="1000"
                         data-animation="true" data-placement="auto" data-container="body" data-trigger="hover"
                         data-title="Start Streaming" data-content="Start streaming the video feed from your server.">
-                        <span class="glyphicon glyphicon-ok-circle"></span>
+                        <span class="fa fa-ok-circle"></span>
                     </button>
-                    <button type="button" class="btn btn-xs btn-info btn-preferences" data-delay="1000"
+                    <button type="button" class="btn btn-sm btn-info btn-preferences" data-delay="1000"
                         data-animation="true" data-placement="auto" data-container="body" data-trigger="hover"
                         data-title="Prefrences" data-content="Set or select preferences for this widget.">
-                        <span class="glyphicon glyphicon glyphicon-cog"></span>
+                        <span class="glyphicon fa fa-cog"></span>
                     </button>
                 </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-xs btn-info hidebody"><span class="glyphicon glyphicon-chevron-up"></span>
+                <!-- <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-info hidebody"><span class="fa fa-chevron-up"></span>
                     </button>
                 </div>
                 <div class="btn-group">
                     <div class="dropdown">
-                        <button type="button" class="btn btn-xs btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>
+                        <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
                     </div>
-                </div>
-            </div> <span class="panel-title" data-toggle="popover">Cam</span> <span style="font-size:9px;" class="fb-build">v1</span>
+                </div> -->
+            </div> <span class="card-header" data-toggle="popover">Cam</span> <span style="font-size:9px;" class="fb-build">v1</span>
 
         </div>
-        <div class="panel-body">
-
+        <div class="card-block">
+<!--
             <div class="well install-msg notconnected hidden">
                 You are not connected to a Serial Port JSON Server. Please connect
                 and then retry.
@@ -193,7 +193,7 @@
                 launch it for you if you click below.</p>
 
                 <button class="btn btn-info btn-install">Launch Cam Server</button>
-            </div>
+            </div> -->
 
             <div class="xoverlayWrapper xwell install-msg isrunning xhidden">
                 <div class="videoWrapper video1" style="width:33.33%;float:left;xborder:1px solid green;">
@@ -223,7 +223,7 @@
                         <h4 class="modal-title">WebRTC Settings</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" role="form">
+                        <form class="" role="form">
                             <p></p>
 
                             <input class="hidden" required type="text" id="signalling_server"
@@ -273,7 +273,7 @@
                         <h4 class="modal-title">Camera  Options</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" role="form">
+                        <form class="" role="form">
                             <p>The Camera widget will get a "motion" MJPEG Stream from your url. Please install motion and input the complete url to the MJPEG Stream.</p>
 
                             <div class="input-group" style="width:200px;">
