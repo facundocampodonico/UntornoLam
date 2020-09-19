@@ -103,7 +103,7 @@ cprequire_test(["inline:com-zipwhip-widget-font2gcode"], function(myWidget) {
     );
 */
     $('#' + myWidget.id).css('margin', '10px');
-    $('title').html(myWidget.name);
+    //mega $('title').html(myWidget.name);
     // $('#' + myWidget.id).css('background', 'none');
 
     //myWidget.init();
@@ -581,8 +581,8 @@ console.log("mega1: "+gcodetxt);
             //g += "(Alineacion: " + align + ")\n";
             //g += "(Tamaño: " + size + ")\n";
             g += "G21 (mm)\n";
-            g += "(Modo:" + mode + ")\n";
-            g += "(Laseron:" + laseron + ")\n";
+            //g += "(Modo:" + mode + ")\n";
+            //g += "(Laseron:" + laseron + ")\n";
 
 
             grp.updateMatrixWorld();

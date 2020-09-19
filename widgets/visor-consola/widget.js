@@ -643,7 +643,8 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
             //$('.com-chilipeppr-widget-spconsole .fork').prop('href', this.fiddleurl);
             //$('.com-chilipeppr-widget-spconsole .standalone').prop('href', this.url);
             //$('.com-chilipeppr-widget-spconsole .fork-name').html(this.id);
-            $('.com-chilipeppr-widget-spconsole .panel-title').popover({
+/*mega
+              $('.com-chilipeppr-widget-spconsole .panel-title').popover({
                 title: this.name,
                 content: this.desc,
                 html: true,
@@ -652,7 +653,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                 trigger: 'hover',
                 placement: 'auto'
             });
-
+mega*/
             // load the pubsub viewer / fork element which decorates our upper right pulldown
             // menu with the ability to see the pubsubs from this widget and the forking links
             var that = this;

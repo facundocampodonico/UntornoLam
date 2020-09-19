@@ -1189,7 +1189,8 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             //$(topCssSelector + ' .fork').prop('href', this.fiddleurl);
             //$(topCssSelector + ' .standalone').prop('href', this.url);
             //$(topCssSelector + ' .fork-name').html(this.id);
-            $(topCssSelector + ' .panel-title').popover({
+/*mega
+              $(topCssSelector + ' .panel-title').popover({
                 title: this.name,
                 content: this.desc,
                 html: true,
@@ -1198,6 +1199,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 trigger: 'hover',
                 placement: 'auto'
             });
+mega*/
 
             // load the pubsub viewer / fork element which decorates our upper right pulldown
             // menu with the ability to see the pubsubs from this widget and the forking links

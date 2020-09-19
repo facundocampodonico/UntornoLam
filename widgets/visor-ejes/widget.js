@@ -1991,6 +1991,7 @@ mega*/
             //$('#com-chilipeppr-widget-xyz-tbar-fork').prop('href', this.fiddleurl);
             //$('#com-chilipeppr-widget-xyz-tbar-standalone').prop('href', this.url);
             //$('#com-chilipeppr-widget-xyz .fork-name').html(this.id);
+/*mega
             $('#com-chilipeppr-widget-xyz .panel-title').popover({
                 title: this.name,
                 content: this.desc,
@@ -2000,7 +2001,7 @@ mega*/
                 delay: 200,
                 animation: true
             });
-
+mega*/
             // load the pubsub viewer / fork element which decorates our upper right pulldown
             // menu with the ability to see the pubsubs from this widget and the forking links
             /*mega

@@ -52,15 +52,17 @@ cprequire_test(['inline:com-chilipeppr-widget-3dviewer'], function (threed) {
     console.log("Running 3dviewer");
 
     // set my title while in test mode so it's pretty
-    $('title').html(threed.name);
+    //mega $('title').html(threed.name);
 
     // actually finally init me
     threed.init({doMyOwnDragDrop: true});
 
     // test resize signal
+/*mega
     setTimeout(function() {
             chilipeppr.publish('/' + threed.id + '/resize', "" );
     }, 3000);
+    mega*/
     //dragdrop
     /*$('body').prepend('<div id="test-drag-drop"></div>');
     chilipeppr.load("#test-drag-drop",
@@ -1129,7 +1131,7 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
             //$('#com-chilipeppr-widget-3dviewer .standalone').prop('href', this.url);
             //var t = $('#com-chilipeppr-widget-3dviewer .fork-name');
             //t.html(this.id);
-            /*mega      
+            /*mega
             $('#com-chilipeppr-widget-3dviewer .panel-title').popover({
                 title: this.name,
                 content: this.desc,
@@ -2244,7 +2246,7 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
             // axes
             var axesgrp = new THREE.Object3D();
 
-            axes = new THREE.AxisHelper(this.getUnitVal(100));
+            axes = new THREE.AxisHelper(this.getUnitVal(200));
             axes.material.transparent = true;
             axes.material.opacity = 0.8;
             axes.material.depthWrite = false;
@@ -2254,7 +2256,7 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
 
             // add axes labels
             var xlbl = this.makeSprite(this.scene, "webgl", {
-                x: this.getUnitVal(110),
+                x: this.getUnitVal(210),
                 y: 0,
                 z: 0,
                 text: "X",
@@ -2262,7 +2264,7 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
             });
             var ylbl = this.makeSprite(this.scene, "webgl", {
                 x: 0,
-                y: this.getUnitVal(110),
+                y: this.getUnitVal(210),
                 z: 0,
                 text: "Y",
                 color: "#00ff00"
@@ -2270,7 +2272,7 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
             var zlbl = this.makeSprite(this.scene, "webgl", {
                 x: 0,
                 y: 0,
-                z: this.getUnitVal(110),
+                z: this.getUnitVal(210),
                 text: "Z",
                 color: "#0000ff"
             });
@@ -2634,7 +2636,9 @@ cpdefine('inline:com-chilipeppr-widget-3dviewer', ['chilipeppr_ready', 'Three', 
 
             // Fix coordinates up if window is resized.
             var that = this;
-            $(window).on('resize', function () {
+
+
+              $(window).on('resize', function () {
                 //console.log("got resize event. resetting aspect ratio.");
                 renderer.setSize(element.width(), element.height());
                 camera.aspect = element.width() / element.height();

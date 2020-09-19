@@ -84,7 +84,7 @@ cprequire_test(["inline:com-chilipeppr-widget-cam"], function(myWidget) {
     // );
 
 
-    $('title').html(myWidget.name);
+//mega    $('title').html(myWidget.name);
     // myWidget.init();
 } /*end_test*/ );
 

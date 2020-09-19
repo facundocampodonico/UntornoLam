@@ -6,7 +6,7 @@ cprequire_test(["inline:net-delarre-widget-gpio"], function (gpio) {
 
 } /*end_test*/ );
 
-cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"], function () {   
+cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"], function () {
     var classPrefix = "net-delarre-widget-gpio";
     return {
         id: "net-delarre-widget-gpio",
@@ -28,7 +28,7 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
             this.forkSetup();
 
             this.wsConnect(null, host);
-    
+
             // setup onconnect pubsub event, get the pin map when we connect successfully
             chilipeppr.subscribe("/" + this.id + "/ws/onconnect", this, function (msg) {
                 this.getPinmap();
@@ -45,9 +45,9 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
             chilipeppr.subscribe("/" + this.id + "/ws/send", this, function (msg) {
                 this.wsSend(msg);
             });
-           
+
             var that = this;
-            
+
             // show last remote host, if there is one
             var lasthost = $.cookie('lasthost-gpio');
             if (lasthost) {
@@ -61,7 +61,7 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
                 //console.log("got keypress. event:", event);
                 var keycode = (event.keyCode ? event.keyCode : event.which);
                 if (keycode == '13'){
-                    that.onRemoteHostConnect(); 
+                    that.onRemoteHostConnect();
                 }
             });
             this.btnBarSetup();
@@ -82,18 +82,18 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
                 // invalid version!
                 $('.' + classPrefix + '-version').removeClass("hidden");
                 $('.' + classPrefix + '-version-fullmsg').html(
-                    "You are running version " + version + " of the GPIO JSON Server. You MUST upgrade to the new 1.1 version.<br/><br/>To upgrade, " + 
+                    "You are running version " + version + " of the GPIO JSON Server. You MUST upgrade to the new 1.1 version.<br/><br/>To upgrade, " +
                     '<button type="button" class="btn btn-xs btn-default disconnect-inline" data-toggle="popover" data-placement="auto" data-container="body" data-content="Disconnect from gpio json server" data-trigger="hover" data-original-title="" title=""><span class="glyphicon glyphicon-remove-sign"></span></button>' +
                     " disconnect from the websocket server and click the correct platform to download the binary for.");
                 $('.' + classPrefix + '-version-fullmsg .disconnect-inline').click(this.disconnect.bind(this));
             }
         },
-        getPinmap: function() {   
+        getPinmap: function() {
             this.wsSend("getpinmap");
-        },  
-        getPinStates: function() {   
+        },
+        getPinStates: function() {
             this.wsSend("getpinstates");
-        },    
+        },
         onPinRemoved: function(data) {
             var pinId = data.PinRemoved;
             $('#pin_' + pinId).remove();
@@ -105,10 +105,10 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
                 return;
             }
             var pinmap = {};
-            
+
             // build selection options for use in settings drop down
             var options = "";
-            $.each(data.PinMap, function (i, pin) {                
+            $.each(data.PinMap, function (i, pin) {
                 // create internal map of all aliases to the pin
                 // we'll use this for lookup later
                 pinmap[pin.ID] = pin;
@@ -122,7 +122,7 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
             });
             $('#pinId').html(options);
             this.pinmap = pinmap;
-        }, 
+        },
         onPinStates: function(data) {
             if (!data.PinStates) {
                 console.log("Failed to get Pinmap in onPinStates event!");
@@ -135,7 +135,7 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
             this.pinStates = data.PinStates;
             for (var pinId in data.PinStates) {
                 var pin = data.PinStates[pinId];
-                this.addPinState(pin);                
+                this.addPinState(pin);
             }
         },
         onPinAdded: function(data) {
@@ -149,7 +149,7 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
             var pullup = pin.Pullup === 1 ? "up" : pin.Pullup === 2 ? "down" : "none";
             var row = "<tr id='pin_" + pin.PinId + "'><td>" + pin.Name + "</td><td>" + pin.PinId + "</td><td>" + dir + "</td><td>" + state + "</td><td>" + pullup + "</td><td><button type='button' class='btn-delete btn btn-xs'><span class='glyphicon glyphicon-trash' title='Remove this pin. This stops the GPIO server from managing this pin but does not necessarily change its state.'></span></button></td><td><button type='button' class='btn btn-edit btn-xs'><span class='glyphicon glyphicon-edit' title='Edit this pins settings'></span></button></td></tr>";
             table.append(row);
-            
+
             // now add a control for each button depending on its type...
             var controlRow = "<div class='row'>";
             // add a label
@@ -161,14 +161,14 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
             } else if (dir == "in") {
                 // just add a label field so we can see the reading
             } else if (dir == "pwm") {
-                // add a slider from 0 to 255   
+                // add a slider from 0 to 255
                 controlRow += '<div class="col-xs-3 nopadding"><input type="number" class="form-control" value="' + pin.State + '" disabled/></div><div class="col-xs-6"><input type="range" min="0" max="255" step="1" value="' + pin.State + '"/></div></div>';
             }
             controlRow += "</div></div>";
             pinControls.append($(controlRow));
         },
         wsWasEverConnected: false,
-        wsConnect: function (hostname, onsuccess, onfail) {                       
+        wsConnect: function (hostname, onsuccess, onfail) {
             if (!window["WebSocket"]) {
                 this.publishSysMsg("Your browser does not support WebSockets.");
             }
@@ -181,7 +181,7 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
                 fullurl = "ws://" + hostname + "/ws";
             else
                 fullurl = "ws://" + hostname + ":8888/ws";
-            
+
             console.log("Connecting to " + fullurl);
             var conn = new WebSocket(fullurl);
             this.conn = conn;
@@ -255,7 +255,7 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
             // because we're hiding a large mess of text, we should trigger
             // a resize to make sure other widgets reflow since the scroll bar
             // or other stuff may need repositioned
-            $(window).trigger('resize'); 
+            $(window).trigger('resize');
         },
         onWsDisconnect: function (event) {
             this.isWsConnected = false;
@@ -303,14 +303,14 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
                 $('.net-delarre-widget-gpio-status .well.well-sm').text(msg);
             });
         },
-        
+
         btnBarSetup: function () {
             $('.net-delarre-widget-gpio .btn').popover({
                 animation: true,
                 delay: 100,
                 //container: 'body'
             });
-            
+
             $('#net-delarre-widget-gpio .btn-toolbar .btn.reconnect').click(this.wsConnect.bind(this));
             $('#net-delarre-widget-gpio .btn-toolbar .btn.disconnect').click(this.disconnect.bind(this));
         },
@@ -325,9 +325,9 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
                     pinName = $('#pinName').val(),
                     pinPullup = $('#pinPullup').val();
                 this.wsSend("initpin " + pinId + " " + pinDir + " " + pinPullup + " " + pinName);
-                
+
             }.bind(this));
-            
+
             $('.net-delarre-widget-gpio-pins').on('click', '.btn-delete', function(ev) {
                 ev.preventDefault();
                 var row = $(ev.currentTarget).closest("tr"),
@@ -404,10 +404,11 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
         },
         forkSetup: function () {
             var topCssSelector = '#net-delarre-widget-gpio';
-            
+
             //$(topCssSelector + ' .fork').prop('href', this.fiddleurl);
             //$(topCssSelector + ' .standalone').prop('href', this.url);
             //$(topCssSelector + ' .fork-name').html(this.id);
+/*mega
             $(topCssSelector + ' .panel-title').popover({
                 title: this.name,
                 content: this.desc,
@@ -417,14 +418,15 @@ cpdefine("inline:net-delarre-widget-gpio", ["chilipeppr_ready", "jquerycookie"],
                 trigger: 'hover',
                 placement: 'auto'
             });
-            
+mega*/
+
             var that = this;
             chilipeppr.load("http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/", function () {
                 require(['inline:com-chilipeppr-elem-pubsubviewer'], function (pubsubviewer) {
                     pubsubviewer.attachTo($('#net-delarre-widget-gpio .panel-heading .dropdown-menu'), that);
                 });
             });
-            
+
         },
     }
 });
