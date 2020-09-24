@@ -299,12 +299,13 @@
 
                 <!-- Begin Page Content -->
                 <div class="centrado-preload" id="preloadpage">
-                    <div class="lds-ellipsis">
+                    <div><img src="img/gift.gif" style="height:200px"></div>
+                    <!-- <div class="lds-ellipsis">
                         <div></div>
                         <div></div>
                         <div></div>
                         <div></div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="ocultar" id="ocultar1">
 
@@ -699,6 +700,8 @@
             </script>
             <script>
             window.onload=function () {
+            // sleep(100);
+            wait(1000);
             var eliminar = document.getElementById("ocultar1");
             eliminar.classList.remove("ocultar");
 
@@ -706,6 +709,11 @@
             add.classList.add("ocultar");
 
             };
+
+            function wait(ms){
+            var start = new Date().getTime();
+            var end = start;
+            while(end < start + ms) { end=new Date().getTime(); } }
             </script>
 
 
