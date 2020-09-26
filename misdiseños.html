@@ -255,7 +255,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small"><script>document.write(  window.sessionStorage.getItem('apellido') + " " + window.sessionStorage.getItem('nombre') );</script></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -462,8 +462,8 @@ $( document ).ready(function() {
 
   // Configuracion
   // @TODO: aca falta las rutas del servidor
-  //const RUTA_ACCESO = 'http://66.97.46.179:8080/';
-  const RUTA_ACCESO = 'http://127.0.0.1:8080/';
+  const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+  //const RUTA_ACCESO = 'http://127.0.0.1:8080/';
   const RUTA_API = 'api/setDisenio';
   const RUTA_API_SERVICES = 'api/getMyServices';
   const RUTA_AUTHENTICATE = 'api/authentication';
@@ -819,7 +819,62 @@ $( document ).ready(function() {
     window.event.cancelBubble=true;
     event.stopImmediatePropagation()
     console.info($(this).attr('disenio'));
-    alert('holi444444444444444444444444444444444444444444444444');
+
+    // tengo que cargar en una variable de sesion $(this).attr('disenio') que es el diseño a mostrar....
+
+    //console.log("createRecentFileEntry. fileStr.length:", fileStr.length, "info:", info);
+
+
+    // get the next avail slot
+    var lastSlot = -1;
+    for(var ctr = 0; ctr < 200; ctr++) {
+        if ('com-chilipeppr-elem-dragdrop-recent' + ctr in localStorage) {
+            console.log("found recent file entry. ctr:", ctr);
+            lastSlot = ctr;
+        }
+    }
+    console.log("lastSlot we found:", lastSlot);
+
+    var nextSlot = lastSlot + 1;
+    var recent = localStorage.getItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot);
+    if (recent == null) {
+        console.log("empty slot. filling.");
+        // this could fail if we are out of quota (happens often)
+        try {
+            //
+            //  chilipeppr.publish("/com-chilipeppr-elem-dragdrop/loadGcodeFromUrl", "http://www.shapeoko.com/wiki/images/0/09/Circle-diamond-square-50-45-40mm.txt");
+
+
+            //localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot, fileStr);
+            localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot, $(this).attr('disenio'));
+        } catch(e) {
+          console.log('* * * * * * * * * * * * * * * * * ');
+          console.log('entre por el catch');
+          console.log('* * * * * * * * * * * * * * * * * ');
+          // No tengo mucha idea de este handler...
+            if (e.name === 'QUOTA_EXCEEDED_ERR' || e.name == "QuotaExceededError" || e.code == 22 || e.name == "NS_ERROR_DOM_QUOTA_REACHED" || e.code == 1014) {
+                console.error("Drag/drop Widget. out of local storage space, but letting user proceed. err:", e);
+                info.name += " (No local storage available, not saving.)";
+                localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot, "(No local storage available, not saved.)");
+                $('#com-chilipeppr-widget-dragdrop-outofspace').modal();
+            } else {
+                console.error("Drag/drop Widget. got err with localStorage:", e);
+            }
+        }
+        var falseName = 'HARDCODE-NAME';
+        //localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot + "-name", info.name);
+        localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot + "-name", falseName);
+        var falsLastModified = new Date();
+        //localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot + "-lastMod", info.lastModified);
+        localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot + "-lastMod", falsLastModified);
+        //this.buildRecentFileMenu();
+    }
+
+
+    // Redirecciono
+    alert('Redirecciono bro');
+    window.location.href = './cnc_test.html';
+
   });
 
 
@@ -870,9 +925,31 @@ $( document ).ready(function() {
           // Obtengo los datos del formulario
           var form = $('#formularioDisenio')[0];
 
+          // Obtengo el valor separado
+          var fileName = $('#nombreDisenio').val();
+          var fileToLoad = $('#FILEDISENIO').val();
+
+          if( !fileName || !fileToLoad ){
+            // Dejo el formulario como esta
+
+            // Creo el mensaje del modal
+            var mensaje = 'Falta ingresar el nombre o seleccionar el archivo. ';
+
+            //  Muestro el texto
+            $('#textoModal').text( mensaje );
+
+            $('#modalRegistro').modal('show');
+
+            return;
+          }
+
           // Creo un objeto para enviar los datos
           var data = new FormData(form);
 
+          console.log('* * * * * * * * * * * * * ');
+          console.info(fileName);
+          console.info(fileToLoad);
+          console.log('* * * * * * * * * * * * * ');
           // Armo el ajax, para enviar los datos correspondientes
           $.ajax({
             type: 'POST',
@@ -913,8 +990,10 @@ $( document ).ready(function() {
                   for(let i=0; i < cantDisenios; i++){
                     let urlPath = RUTA_ACCESO + 'static/' + idFolder + '/' + datosDataTable[i][3];
                     datosDataTable[i][3] = urlPath;
-                    datosDisenios[i][7] = '<span class="table-remove"> <button type="button" disenio="'+ urlPath +'" class="btn btn-danger btn-rounded btn-sm my-0 cnc"> Ir </button> </span>';
+                    datosDataTable[i][7] = '<span class="table-remove"> <button type="button" disenio="'+ urlPath +'" class="btn btn-danger btn-rounded btn-sm my-0 cnc"> Ir </button> </span>';
                   }
+
+
 
 
                   $('#misDisenios').DataTable({
