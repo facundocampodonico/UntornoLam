@@ -14,7 +14,8 @@
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.css" rel="stylesheet">
 
@@ -27,7 +28,6 @@
 
   <!--	Cargo AJAX, esto podria hacerse sobre un archivo local si es muy lento	-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
 </head>
 
 <body id="page-top">
@@ -341,9 +341,119 @@
                 </table>
               </div>
             </div>
+            <div class="nav justify-content-end">
+            <button type="button" class="btn btn-primary btn-circle btn-md   m-2" data-toggle="modal" data-target="#ModalPedidos" data-toggle="tooltip" title="Add Pedido">
+                <i class="fas fa-plus" style="font-size:16px;color:white;"></i>
+            </button>
+            </div>
           </div>
         </div>
     </div>
+
+     <!-- Modal para ver el estado del pedido -->
+
+    <div class="modal fade" id="ModalPedidos" tabindex="-1" role="dialog" aria-labelledby="ModalPedidos" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <div class="container-fluid" id="grad1">
+                <div class="row justify-content-center mt-0">
+                    <div >
+                        <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                            <h2><strong>&nbsp;&nbsp; Realizar Pedido</strong></h2>
+
+                            <div class="row">
+                                <div class="col-md-12 mx-0">
+                                    <form id="msform">
+                                        <!-- progressbar -->
+                                        <ul id="progressbar">
+                                            <li class="active" id="account"><strong>PASO1</strong></li>
+                                            <li id="personal"><strong>PASO2</strong></li>
+                                            <li id="payment"><strong>PASO2</strong></li>
+                                            <li id="confirm"><strong>FINAL</strong></li>
+                                        </ul> <!-- fieldsets -->
+                                        <fieldset>
+                                            <div class="form-card">
+                                                <h2 class="fs-title">Account Information</h2> <input type="email" name="email" placeholder="Email Id" /> <input type="text" name="uname" placeholder="UserName" /> <input type="password" name="pwd" placeholder="Password" /> <input type="password" name="cpwd" placeholder="Confirm Password" />
+                                            </div> <input type="button" name="next" class="next action-button" value="Siguiente" />
+                                        </fieldset>
+                                        <fieldset>
+                                            <div class="form-card">
+                                                <h2 class="fs-title">Personal Information</h2> <input type="text" name="fname" placeholder="First Name" /> <input type="text" name="lname" placeholder="Last Name" /> <input type="text" name="phno" placeholder="Contact No." /> <input type="text" name="phno_2" placeholder="Alternate Contact No." />
+                                            </div> <input type="button" name="previous" class="previous action-button-previous" value="Anterior " /> <input type="button" name="next" class="next action-button" value="Siguiente" />
+                                        </fieldset>
+                                        <fieldset>
+                                            <div class="form-card">
+                                                <h2 class="fs-title">Payment Information</h2>
+                                                <div class="radio-group">
+                                                    <div class='radio' data-value="credit"><img src="https://i.imgur.com/XzOzVHZ.jpg" width="200px" height="100px"></div>
+                                                    <div class='radio' data-value="paypal"><img src="https://i.imgur.com/jXjwZlj.jpg" width="200px" height="100px"></div> <br>
+                                                </div> <label class="pay">Card Holder Name*</label> <input type="text" name="holdername" placeholder="" />
+                                                <div class="row">
+                                                    <div class="col-9"> <label class="pay">Card Number*</label> <input type="text" name="cardno" placeholder="" /> </div>
+                                                    <div class="col-3"> <label class="pay">CVC*</label> <input type="password" name="cvcpwd" placeholder="***" /> </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3"> <label class="pay">Expiry Date*</label> </div>
+                                                    <div class="col-9"> <select class="list-dt" id="month" name="expmonth">
+                                                            <option selected>Month</option>
+                                                            <option>January</option>
+                                                            <option>February</option>
+                                                            <option>March</option>
+                                                            <option>April</option>
+                                                            <option>May</option>
+                                                            <option>June</option>
+                                                            <option>July</option>
+                                                            <option>August</option>
+                                                            <option>September</option>
+                                                            <option>October</option>
+                                                            <option>November</option>
+                                                            <option>December</option>
+                                                        </select> <select class="list-dt" id="year" name="expyear">
+                                                            <option selected>Year</option>
+                                                        </select> </div>
+                                                </div>
+                                            </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="make_payment" class="next action-button" value="Confirmar" />
+                                        </fieldset>
+                                        <fieldset>
+                                            <div class="form-card">
+                                                <h2 class="fs-title text-center">Success !</h2> <br><br>
+                                                <div class="row justify-content-center">
+                                                    <div class="col-3"> <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image"> </div>
+                                                </div> <br><br>
+                                                <div class="row justify-content-center">
+                                                    <div class="col-7 text-center">
+                                                        <h5>You Have Successfully Signed Up</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
 
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
@@ -430,7 +540,76 @@ $(document).ready( function () {
     });
 
 });</script>
+<script>
+$(document).ready(function(){
 
+var current_fs, next_fs, previous_fs; //fieldsets
+var opacity;
+
+$(".next").click(function(){
+
+current_fs = $(this).parent();
+next_fs = $(this).parent().next();
+
+//Add Class Active
+$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+//show the next fieldset
+next_fs.show();
+//hide the current fieldset with style
+current_fs.animate({opacity: 0}, {
+step: function(now) {
+// for making fielset appear animation
+opacity = 1 - now;
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+next_fs.css({'opacity': opacity});
+},
+duration: 600
+});
+});
+
+$(".previous").click(function(){
+
+current_fs = $(this).parent();
+previous_fs = $(this).parent().prev();
+
+//Remove class active
+$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+//show the previous fieldset
+previous_fs.show();
+
+//hide the current fieldset with style
+current_fs.animate({opacity: 0}, {
+step: function(now) {
+// for making fielset appear animation
+opacity = 1 - now;
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+previous_fs.css({'opacity': opacity});
+},
+duration: 600
+});
+});
+
+$('.radio-group .radio').click(function(){
+$(this).parent().find('.radio').removeClass('selected');
+$(this).addClass('selected');
+});
+
+$(".submit").click(function(){
+return false;
+})
+
+});
+</script>
 </body>
 
 </html>
