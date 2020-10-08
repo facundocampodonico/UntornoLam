@@ -3,1048 +3,1120 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
- <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-  <title>UNtornoLaM</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>UNtornoLaM</title>
 
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.css" rel="stylesheet">
 
-  <!-- Carga de Variables -->
-  <!-- Custom styles for this template -->
-  <  <!-- Custom styles for this page -->
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Carga de Variables -->
+    <!-- Custom styles for this template -->
+    < <!-- Custom styles for this page -->
+        <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-  <!--	Cargo AJAX, esto podria hacerse sobre un archivo local si es muy lento	-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!--	Cargo AJAX, esto podria hacerse sobre un archivo local si es muy lento	-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 
 <body id="page-top">
 
-  <!-- Page Wrapper -->
-  <div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <img src="img/logo.png" alt="Logo">
-        </div>
-        <div class="sidebar-brand-text mx-3">UNtornoLaM</div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Tablero General</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Herramientas
-      </div>
-
-         <li class="nav-item">
-        <a class="nav-link" href="cnc.html">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Mis CNC</span></a>
-      </li>
-
-         <li class="nav-item">
-        <a class="nav-link" href="misdiseños.html">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Mis Diseños</span></a>
-      </li>
-               <li class="nav-item">
-        <a class="nav-link" href="mispedidos.html">
-          <i class="fas fa-fw fa-sticky-note"></i>
-          <span>Mis Pedidos</span></a>
-      </li>
-         <li class="nav-item">
-        <a class="nav-link" href="misservicios.html">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Mis Servicios</span></a>
-      </li>
-
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-    </ul>
-    <!-- End of Sidebar -->
-
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-
-      <!-- Main Content -->
-      <div id="content">
-
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-
-          <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group" style="display:none;">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none" style="display:none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
-
-            <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
-              </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alerts Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
-            </li>
-
-            <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-                    <div class="status-indicator"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-                    <div class="status-indicator bg-warning"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-              </div>
-            </li>
-
-            <div class="topbar-divider d-none d-sm-block"></div>
-
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="mr-2 d-none d-lg-inline text-gray-600 small"><script>document.write(  window.sessionStorage.getItem('apellido') + " " + window.sessionStorage.getItem('nombre') );</script></span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-              </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
-              </div>
-            </li>
-
-          </ul>
-
-        </nav>
-        <!-- End of Topbar -->
-
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- Page Heading -->
-
-          <div class="card border-bottom-danger shadow h-100 py-2">
-             <div class="card-body">
-               <div class="row no-gutters align-items-center">
-                 <div class="col mr-2">
-                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                       <h1 class="h3 mb-0 text-gray-800">Mis Diseños</h1>
-                       </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-           <br>
-
-
-          <!-- DataTales Example -->
-<div class="row">
-  <div class="col-lg-8">
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-danger">Tus Diseños</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered table-hover  table-sm dataTable" id="misDisenios" width="100%" cellspacing="0">
-
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
-    <div class="col-lg-4">
-			<div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-danger">Preview 3D</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Opciones:</div>
-                      <a class="dropdown-item" href="#">Modificar tamaño</a>
-                      <a class="dropdown-item" href="#">Simular torneado</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Generar G-CODE</a>
-                    </div>
-                  </div>
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <img src="img/logo.png" alt="Logo">
                 </div>
-                <!-- Card Body -->
-                <div class="card-body" id="preview">
+                <div class="sidebar-brand-text mx-3">UNtornoLaM</div>
+            </a>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Tablero General</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Herramientas
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="cnc.html">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Mis CNC</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="misdiseños.html">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Mis Diseños</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="mispedidos.html">
+                    <i class="fas fa-fw fa-sticky-note"></i>
+                    <span>Mis Pedidos</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="misservicios.html">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Mis Servicios</span></a>
+            </li>
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group" style="display:none;">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none" style="display:none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Alerts Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 12, 2019</div>
+                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-success">
+                                            <i class="fas fa-donate text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 7, 2019</div>
+                                        $290.29 has been deposited into your account!
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i class="fas fa-exclamation-triangle text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 2, 2019</div>
+                                        Spending Alert: We've noticed unusually high spending for your account.
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>
+                                <!-- Counter - Messages -->
+                                <span class="badge badge-danger badge-counter">7</span>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    Message Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+                                        <div class="status-indicator"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+                                        <div class="status-indicator bg-warning"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    <script>
+                                        document.write(window.sessionStorage.getItem('apellido') + " " + window.sessionStorage.getItem('nombre'));
+                                    </script>
+                                </span>
+                                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+
+                    <div class="card border-bottom-danger shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        <h1 class="h3 mb-0 text-gray-800">Mis Diseños</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+
+                    <!-- DataTales Example -->
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-danger">Tus Diseños</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover  table-sm dataTable" id="misDisenios" width="100%" cellspacing="0">
+
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="nav justify-content-end">
+                                    <button type="button" class="btn btn-danger btn-circle btn-md   m-2" data-toggle="modal" data-target="#ModalDisenios" data-toggle="tooltip" title="Add disenio">
+                                        <i class="fas fa-plus" style="font-size:16px;color:white;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-danger">Preview 3D</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Opciones:</div>
+                                            <a class="dropdown-item" href="#">Modificar tamaño</a>
+                                            <a class="dropdown-item" href="#">Simular torneado</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Generar G-CODE</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body" id="preview">
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="modal fade" id="ModalDisenios" tabindex="-1" role="dialog" aria-labelledby="ModalDisenios" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+
+                                        <form id="formularioDisenio" enctype="multipart/form-data">
+                                            <div class="card shadow mb-4">
+                                                <div class="card-header py-3">
+                                                    <h6 class="m-0 font-weight-bold text-danger">Agregar Diseños</h6>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <input class="form-control" id="nombreDisenio" name="nombreDisenio" type="text" placeholder="Ingrese el nombre">
+                                                    </div>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="FILEDISENIO" name="FILEDISENIO" lang="es">
+                                                        <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label> &nbsp;</label>
+
+                                                    </div>
+                                                    <div class="form-group" align="right">
+                                                        <button class="btn btn-danger dropdown-" type="button" id="agregarDisenio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            AGREGAR
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
-              </div>
-
-  </div>
-</div>
-
-<div class="row">
-	<div class="col-lg-8">
-		<form id="formularioDisenio"  enctype="multipart/form-data">
-			<div class="card shadow mb-4">
-				<div class="card-header py-3">
-				  <h6 class="m-0 font-weight-bold text-danger">Agregar Diseños</h6>
-				</div>
-				<div class="card-body">
-					<div class="form-group">
-						<input class="form-control" id="nombreDisenio" name="nombreDisenio" type="text" placeholder="Ingrese el nombre">
-					</div>
-					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="FILEDISENIO" name="FILEDISENIO" lang="es">
-						<label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-					</div>
-					<div class="form-group">
-						<label> &nbsp;</label>
-
-					</div>
-					<div class="form-group" align="right">
-						<button class="btn btn-danger dropdown-" type="button" id="agregarDisenio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-							AGREGAR
-						</button>
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
-</div>
-
-</div>
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; UNtornoLaM 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
-    </div>
-    <!-- End of Content Wrapper -->
-
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal de registro -->
-  <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalMisDiseniosLabel"> Registro de diseño</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
-            <div class="modal-body" id="textoModal"> </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="button" data-dismiss="modal" id="cerrar">Cerrar</button>
+
+
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; UNtornoLaM 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
             </div>
         </div>
     </div>
-  </div>
-  <!-- Modal de registro -->
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-
-<script type="module">
-
-	import * as THREE from './3d/build/three.module.js';
-
-	import Stats from './3d/jsm/libs/stats.module.js';
-
-	import { OrbitControls } from './3d/jsm/controls/OrbitControls.js';
-
-	import { STLLoader } from './3d/jsm/loaders/STLLoader.js';
-
-$( document ).ready(function() {
-
-  // Configuracion
-  // @TODO: aca falta las rutas del servidor
-  const RUTA_ACCESO = 'http://66.97.46.179:8080/';
-  //const RUTA_ACCESO = 'http://127.0.0.1:8080/';
-  const RUTA_API = 'api/setDisenio';
-  const RUTA_API_SERVICES = 'api/getMyServices';
-  const RUTA_AUTHENTICATE = 'api/authentication';
-
-  // Handle para saber si puede acceder a esta pantalla
-  var token     = window.sessionStorage.getItem('tokenUntornolam');
-
-  if(!token){
-    alert('No habia token - este mensaje seguro desaparece en un futuro');
-    // Redirecciono
-    window.location.href = './login.html';
-  }
-
-  $.ajax({
-    type: 'GET',
-    enctype: 'multipart/form-data',
-    url: RUTA_ACCESO + RUTA_AUTHENTICATE,
-    headers: {
-        "Authorization": `Bearer ${token}`
-    },
-    data: JSON.stringify( {} ),
-    processData: false,
-    contentType: "application/json; charset=utf-8",
-    cache: false,
-    crossDomain: true,
-
-    success: function( data, textStatus, jQxhr ){
-
-        if(data.status != 'OK'){
-          alert('Debe ingresar - este mensaje seguro desaparece en un futuro');
-          // Redirecciono
-          window.location.href = './login.html';
-        }
-
-    },
-    error: function( jqXhr, textStatus, errorThrown ){
-      console.log( errorThrown );
-    }
-  });
-
-  //  Obtengo el name de la carpeta
-  var idFolder = window.sessionStorage.getItem('nameFolderId');
-
-  // Obtengo la informacion inicial de los diseños
-  var dataInicial = localStorage.getItem('misDisenios');
-
-  console.log('aa');
-  console.info(dataInicial);
-  console.info(localStorage.getItem('misDisenios'));
-  // Parseo la informacion
-  var datosDisenios = JSON.parse(dataInicial);
-
-  // Obtengo la cantidad
-  var cantDisenios = datosDisenios.length;
-
-  if( cantDisenios <= 1 ){
-    dataInicial = "[]";
-  }else{
-    // Elimino el primerSeleccionado
-    localStorage.removeItem('seleccionadoDisenio');
-
-    // Seteo el primero
-    localStorage.setItem('seleccionadoDisenio', RUTA_ACCESO + 'static/' + idFolder + '/' + datosDisenios[0][3] );
-
-    // Armo las rutas
-    for(let i=0; i < cantDisenios; i++){
-      let urlPath = RUTA_ACCESO + 'static/' + idFolder + '/' + datosDisenios[i][3];
-      datosDisenios[i][3] = urlPath;
-      datosDisenios[i][7] = '<span class="table-remove"> <button type="button" disenio="'+ urlPath +'" class="btn btn-danger btn-rounded btn-sm my-0 cnc"> Ir </button> </span>';
-    }
-  }
-
-  var events = $('#events');
-
-  var table = $('#misDisenios').DataTable({
-      destroy: true,
-      select: true,
-      data: datosDisenios,
-      columns:  [
-        { title: "id" },
-        { title: "usuarios_id" },
-        { title: "nombre" },
-        { title: "archivo" },
-        { title: "imgPreview" },
-        { title: "tamanio" },
-        { title: "extension" },
-        { title: "cnc" }
-      ]
-    });
-
-    console.log( "ready!" );
-
-
-
-
-						var container, stats;
-						var scene, camera, renderer, exporter, mesh;
-						var camera, cameraTarget, scene, renderer;
-
-						/*if (window.File && window.FileReader && window.FileList && window.Blob) {
-						  // Great success! All the File APIs are supported.
-						} else {
-						  alert('The File APIs are not fully supported in this browser.');
-						}*/
-
-						init();
-						animate();
-
-						/*function handleFileSelect(evt) {
-						    var files = evt.target.files; // FileList object
-
-						    // files is a FileList of File objects. List some properties.
-						    var output = [];
-						    for (var i = 0, f; f = files[i]; i++) {
-						      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-						                  f.size, ' bytes, last modified: ',
-						                  f.lastModifiedDate.toLocaleDateString(), '</li>');
-						    }
-						    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-						  }*/
-
-						function init() {
-
-
-							//container = document.getElementById('prueba-3d');
-
-							//mycanvas = document.getElementById('mycanvas');
-
-
-							/////////container = document.createElement('div');
-
-
-							//agrego
-
-							/////////document.body.appendChild( container );
-							/////////document.body.appendChild( mycanvas );
-
-							//var width1 = document.getElementById("div").style.width;
-							//console.log('Tengo en valor y mentiroso:	' + width1 );
-
-
-							camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
-							camera.position.set( 200, 100, 200 );
-
-							//cameraTarget = new THREE.Vector3( 0, - 0.25, 0 );
-
-							scene = new THREE.Scene();
-							scene.background = new THREE.Color( 0xa0a0a0 );
-							//scene.fog = new THREE.Fog( 0xa0a0a0, 200, 1000 );
-
-
-							// Ground
-
-							//new THREE.MeshPhongMaterial( { color: 0x999999, specular: 0x101010 } )
-
-							var plane = new THREE.Mesh(
-								new THREE.PlaneBufferGeometry( 600, 400 ),
-								new THREE.MeshPhongMaterial( { color: 0x000000, specular: 0x101010 } )
-							);
-							//plane.rotation.x = - Math.PI / 2;
-							plane.rotation.x = - Math.PI / 2;
-							plane.position.y = 0;
-							scene.add( plane );
-
-							plane.receiveShadow = true;
-
-
-							// ASCII file
-
-							var loader = new STLLoader();
-
-							// Binary files
-
-							var material = new THREE.MeshPhongMaterial( { specular: 0x111111, shininess: 200 } );
-
-							// Colored binary STL
-              console.log(localStorage.getItem('seleccionadoDisenio'));
-
-							//loader.load( './models/stl/binary/colored.stl', function ( geometry ) {
-							loader.load( localStorage.getItem('seleccionadoDisenio'), function ( geometry ) {
-
-								var meshMaterial = material;
-								if ( geometry.hasColors ) {
-
-									meshMaterial = new THREE.MeshPhongMaterial( { opacity: geometry.alpha, vertexColors: true } );
-
-								}
-
-								//geometry.computeBoundingBox();
-								//var box = geometry.boundingBox;
-								//alert(box.max["x"]);
-
-								console.log(geometry.boundingBox);
-
-								//aca verificar valores y en caso de ser menores o mayores a los necesarios cambiarlos y avisar
-								geometry.scale(100,100,100)
-
-								var mesh = new THREE.Mesh( geometry, meshMaterial );
-
-								//mesh
-
-
-								mesh.position.set( -35, 0, 0 );
-								mesh.rotation.set( - Math.PI / 2, 0, 0 );
-								//mesh.scale.set( 100, 100, 100 );
-
-								mesh.castShadow = true;
-								mesh.receiveShadow = true;
-
-								scene.add( mesh );
-
-								//geometry.computeBoundingBox();
-								//var box = geometry.boundingBox;
-								//alert(box.max["x"]);
-
-								console.log(geometry.boundingBox);
-
-							} );
-
-
-							// Lights
-
-							scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
-
-							addShadowedLight( 1, 1, 1, 0xffffff, 0.60 );
-							addShadowedLight( 0.5, 1, - 1, 0xffaaaaa, 1 );
-							// renderer
-
-							renderer = new THREE.WebGLRenderer( { antialias: true } );
-							renderer.setPixelRatio( window.devicePixelRatio );
-							console.log('Tengo en valor X:	' + window.innerWidth );
-							console.log('Tengo en valor y:	' + window.innerHeight );
-
-							//console.log('Tengo en valor X:	' + container.body.scrollWidth );
-							//console.log('Tengo en valor y:	' + container.innerWidth );
-
-							//var elemento = document.getElementById("mycanvas");
-
-							//console.log('Tengo en valor X:	' + container.style.maxWidth );
-							//console.log('Tengo en valor y:	' + elemento.height );
-
-							//var currentDiv = document.getElementsByName("chota");
-							//var ancho = currentDiv.getAttribute("name");
-
-							//console.log('Tengo en valor X:	' + currentDiv.width );
-							//console.log('Tengo en valor y:	' + ancho );
-
-							//renderer.setSize( container., container.height );
-							//renderer.setSize( window.innerWidth, window.innerHeight );
-							//renderer.setSize( 600, 400 );
-							renderer.setSize( preview.clientWidth - 40, preview.clientWidth /2 );
-
-							renderer.outputEncoding = THREE.sRGBEncoding;
-
-							renderer.shadowMap.enabled = true;
-
-
-							////////////container.appendChild( renderer.domElement );
-
-							//
-							var controls = new OrbitControls( camera, renderer.domElement );
-							controls.target.set( 0, 25, 0 );
-							controls.update();
-
-							// stats
-
-							//stats = new Stats();
-							//container.appendChild( stats.dom );
-
-
-/*
-2.To remove the following code
-  renderer.domElement = canvas;
-3.Add the following line in your code
-  canvas.appendChild( renderer.domElement );
-*/
-						//	window.addEventListener( 'resize', onWindowResize, false );
-
-							//container.addEventListener( 'resize', onWindowResize, false );
-
-						//	var buttonExportASCII = document.getElementById( 'abrirArchivo' );
-						//	buttonExportASCII.addEventListener( 'click', abrirArchivo );
-							//chota.appendChild(renderer);
-							//chota.appendChild(container);
-							//chota.height=600;
-							//////////mycanvas.appendChild(container);
-							preview.appendChild(renderer.domElement);
-
-						}
-
-						function resizeRendererToDisplaySize(renderer) {
-						  const canvas = renderer.domElement;
-						  const width = canvas.clientWidth;
-						  const height = canvas.clientHeight;
-						  const needResize = canvas.width !== width || canvas.height !== height;
-						  if (needResize) {
-						    renderer.setSize(width, height, false);
-						  }
-						  return needResize;
-						}
-
-
-						function addShadowedLight( x, y, z, color, intensity ) {
-
-							var directionalLight = new THREE.DirectionalLight( color, intensity );
-							directionalLight.position.set( x, y, z );
-							scene.add( directionalLight );
-
-							directionalLight.castShadow = true;
-
-							var d = 1;
-							directionalLight.shadow.camera.left = - d;
-							directionalLight.shadow.camera.right = d;
-							directionalLight.shadow.camera.top = d;
-							directionalLight.shadow.camera.bottom = - d;
-
-							directionalLight.shadow.camera.near = 1;
-							directionalLight.shadow.camera.far = 4;
-
-							directionalLight.shadow.bias = - 0.002;
-
-						}
-
-						function onWindowResize() {
-
-							camera.aspect = window.innerWidth / window.innerHeight;
-							camera.updateProjectionMatrix();
-
-							renderer.setSize( window.innerWidth, window.innerHeight );
-
-						}
-
-						function animate() {
-
-							//console.log('Tengo en valor y:	' + mycanvas.clientWidth );
-
-							/*if (resizeRendererToDisplaySize(renderer)) {
-							    const canvas = renderer.domElement;
-							    camera.aspect = canvas.clientWidth / canvas.clientHeight;
-							    camera.updateProjectionMatrix();
-							}*/
-
-							renderer.setSize( preview.clientWidth - 40, preview.clientWidth /2 );
-
-							requestAnimationFrame( animate );
-							renderer.render( scene, camera );
-
-						}
-
-  $('#misDisenios tbody').on( 'click', '.cnc', function () {
-    event.preventDefault();
-    event.stopPropagation();
-    window.event.cancelBubble=true;
-    event.stopImmediatePropagation()
-    console.info($(this).attr('disenio'));
-
-    // tengo que cargar en una variable de sesion $(this).attr('disenio') que es el diseño a mostrar....
-
-    //console.log("createRecentFileEntry. fileStr.length:", fileStr.length, "info:", info);
-
-
-    // get the next avail slot
-    var lastSlot = -1;
-    for(var ctr = 0; ctr < 200; ctr++) {
-        if ('com-chilipeppr-elem-dragdrop-recent' + ctr in localStorage) {
-            console.log("found recent file entry. ctr:", ctr);
-            lastSlot = ctr;
-        }
-    }
-    console.log("lastSlot we found:", lastSlot);
-
-    var nextSlot = lastSlot + 1;
-    var recent = localStorage.getItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot);
-    if (recent == null) {
-        console.log("empty slot. filling.");
-        // this could fail if we are out of quota (happens often)
-        try {
-            //
-            //  chilipeppr.publish("/com-chilipeppr-elem-dragdrop/loadGcodeFromUrl", "http://www.shapeoko.com/wiki/images/0/09/Circle-diamond-square-50-45-40mm.txt");
-
-
-            //localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot, fileStr);
-            localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot, $(this).attr('disenio'));
-        } catch(e) {
-          console.log('* * * * * * * * * * * * * * * * * ');
-          console.log('entre por el catch');
-          console.log('* * * * * * * * * * * * * * * * * ');
-          // No tengo mucha idea de este handler...
-            if (e.name === 'QUOTA_EXCEEDED_ERR' || e.name == "QuotaExceededError" || e.code == 22 || e.name == "NS_ERROR_DOM_QUOTA_REACHED" || e.code == 1014) {
-                console.error("Drag/drop Widget. out of local storage space, but letting user proceed. err:", e);
-                info.name += " (No local storage available, not saving.)";
-                localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot, "(No local storage available, not saved.)");
-                $('#com-chilipeppr-widget-dragdrop-outofspace').modal();
-            } else {
-                console.error("Drag/drop Widget. got err with localStorage:", e);
+    <!-- Modal de registro -->
+    <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalMisDiseniosLabel"> Registro de diseño</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body" id="textoModal"> </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-dismiss="modal" id="cerrar">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal de registro -->
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+
+    <script type="module">
+        import * as THREE from './3d/build/three.module.js';
+
+        import Stats from './3d/jsm/libs/stats.module.js';
+
+        import {
+            OrbitControls
+        } from './3d/jsm/controls/OrbitControls.js';
+
+        import {
+            STLLoader
+        } from './3d/jsm/loaders/STLLoader.js';
+
+        $(document).ready(function() {
+
+            // Configuracion
+            // @TODO: aca falta las rutas del servidor
+            const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+            //const RUTA_ACCESO = 'http://127.0.0.1:8080/';
+            const RUTA_API = 'api/setDisenio';
+            const RUTA_API_SERVICES = 'api/getMyServices';
+            const RUTA_AUTHENTICATE = 'api/authentication';
+
+            // Handle para saber si puede acceder a esta pantalla
+            var token = window.sessionStorage.getItem('tokenUntornolam');
+
+            if (!token) {
+                alert('No habia token - este mensaje seguro desaparece en un futuro');
+                // Redirecciono
+                window.location.href = './login.html';
             }
-        }
-        var falseName = 'HARDCODE-NAME';
-        //localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot + "-name", info.name);
-        localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot + "-name", falseName);
-        var falsLastModified = new Date();
-        //localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot + "-lastMod", info.lastModified);
-        localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot + "-lastMod", falsLastModified);
-        //this.buildRecentFileMenu();
-    }
 
+            $.ajax({
+                type: 'GET',
+                enctype: 'multipart/form-data',
+                url: RUTA_ACCESO + RUTA_AUTHENTICATE,
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                },
+                data: JSON.stringify({}),
+                processData: false,
+                contentType: "application/json; charset=utf-8",
+                cache: false,
+                crossDomain: true,
 
-    // Redirecciono
-    alert('Redirecciono bro');
-    window.location.href = './cnc_test.html';
+                success: function(data, textStatus, jQxhr) {
 
-  });
+                    if (data.status != 'OK') {
+                        alert('Debe ingresar - este mensaje seguro desaparece en un futuro');
+                        // Redirecciono
+                        window.location.href = './login.html';
+                    }
 
+                },
+                error: function(jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+            });
 
-  $('#misDisenios tbody').on( 'click', 'tr', function () {
-    console.info(event.stopPropagation() );
-    alert('holi');
-    let table2 = $('#misDisenios').DataTable();
-    var disenio = table2.row($(this)).data();
-    /*console.info($(this));
-    if(disenio === 'undefined'){
+            //  Obtengo el name de la carpeta
+            var idFolder = window.sessionStorage.getItem('nameFolderId');
 
-      disenio = this;
-    }*/
-    console.log('disenio.....');
-    console.info(disenio);
-//    console.info(this);
-//    console.info(table.row().data().column(3));
-  //  if(disenio)
+            // Obtengo la informacion inicial de los diseños
+            var dataInicial = localStorage.getItem('misDisenios');
 
-    // Elimino el seleccionado
-    localStorage.removeItem('seleccionadoDisenio');
+            console.log('aa');
+            console.info(dataInicial);
+            console.info(localStorage.getItem('misDisenios'));
+            // Parseo la informacion
+            var datosDisenios = JSON.parse(dataInicial);
 
-    // Setep el nuevo nuevo seleccionado
-    localStorage.setItem('seleccionadoDisenio', disenio[3]);
+            // Obtengo la cantidad
+            var cantDisenios = datosDisenios.length;
 
-    $('#preview').html('');
-    if ($(this).hasClass('selecteddis')) {
-        $(this).removeClass('selecteddis');
+            if (cantDisenios <= 1) {
+                dataInicial = "[]";
+            } else {
+                // Elimino el primerSeleccionado
+                localStorage.removeItem('seleccionadoDisenio');
 
-    } else {
+                // Seteo el primero
+                localStorage.setItem('seleccionadoDisenio', RUTA_ACCESO + 'static/' + idFolder + '/' + datosDisenios[0][3]);
 
-        table2.$('tr.selecteddis').removeClass('selecteddis');
-        $(this).addClass('selecteddis');
-    }
+                // Armo las rutas
+                for (let i = 0; i < cantDisenios; i++) {
+                    let urlPath = RUTA_ACCESO + 'static/' + idFolder + '/' + datosDisenios[i][3];
+                    datosDisenios[i][3] = urlPath;
+                    datosDisenios[i][7] = '<span class="table-remove"> <button type="button" disenio="' + urlPath + '" class="btn btn-danger btn-rounded btn-sm my-0 cnc"> Ir </button> </span>';
+                }
+            }
 
-    // Llamo a la funcion para actualizar el componente
-    init();
+            var events = $('#events');
 
-    //console.info(table.$('tr.selecteddis').column(0).data() );
+            var table = $('#misDisenios').DataTable({
+                destroy: true,
+                select: true,
+                data: datosDisenios,
+                columns: [{
+                        title: "id"
+                    },
+                    {
+                        title: "usuarios_id"
+                    },
+                    {
+                        title: "nombre"
+                    },
+                    {
+                        title: "archivo"
+                    },
+                    {
+                        title: "imgPreview"
+                    },
+                    {
+                        title: "tamanio"
+                    },
+                    {
+                        title: "extension"
+                    },
+                    {
+                        title: "cnc"
+                    }
+                ]
+            });
 
-} );
-
-    $("#agregarDisenio").click(function(){
-
-          // stop submit the form, we will post it manually.
-          event.preventDefault();
-
-          // Obtengo los datos del formulario
-          var form = $('#formularioDisenio')[0];
-
-          // Obtengo el valor separado
-          var fileName = $('#nombreDisenio').val();
-          var fileToLoad = $('#FILEDISENIO').val();
-
-          if( !fileName || !fileToLoad ){
-            // Dejo el formulario como esta
-
-            // Creo el mensaje del modal
-            var mensaje = 'Falta ingresar el nombre o seleccionar el archivo. ';
-
-            //  Muestro el texto
-            $('#textoModal').text( mensaje );
-
-            $('#modalRegistro').modal('show');
-
-            return;
-          }
-
-          // Creo un objeto para enviar los datos
-          var data = new FormData(form);
-
-          console.log('* * * * * * * * * * * * * ');
-          console.info(fileName);
-          console.info(fileToLoad);
-          console.log('* * * * * * * * * * * * * ');
-          // Armo el ajax, para enviar los datos correspondientes
-          $.ajax({
-            type: 'POST',
-            enctype: 'multipart/form-data',
-            url: RUTA_ACCESO + RUTA_API,
-            data: data,
-            processData: false,
-            contentType: false,
-            cache: false,
-            headers: {
-                'Access-Control-Allow-Origin': "*",
-                "Authorization": `Bearer ${window.sessionStorage.getItem('tokenUntornolam')}`
-              },
-            crossDomain: true,
-
-            success: function( datosReq, textStatus, jQxhr ){
-
-                $('#nombreDisenio').val('');
-                //$('#response pre').html( JSON.stringify( datos ) );
-              //  alert( JSON.stringify( datos.data ) );
-              //  console.info(datos2.data);
-              //  console.log('holis');
-                //console.info(localStorage.getItem('misDisenios'));
-              //  console.info(datos.data );
-                //  alert( 'asdasd' );
-                //localStorage.removeItem('misDisenios');
-                //localStorage.setItem('misDisenios', JSON.stringify(datos.data) );
-
-                // En caso de exito
-                if( datosReq.status === 'OK'){
-                  // Parseo la informacion
-                  var datosDataTable = datosReq.data;
-
-                  // Obtengo la cantidad
-                  var cantDisenios = datosDataTable.length;
-
-                  // Armo las rutas
-                  for(let i=0; i < cantDisenios; i++){
-                    let urlPath = RUTA_ACCESO + 'static/' + idFolder + '/' + datosDataTable[i][3];
-                    datosDataTable[i][3] = urlPath;
-                    datosDataTable[i][7] = '<span class="table-remove"> <button type="button" disenio="'+ urlPath +'" class="btn btn-danger btn-rounded btn-sm my-0 cnc"> Ir </button> </span>';
-                  }
+            console.log("ready!");
 
 
 
 
-                  $('#misDisenios').DataTable({
-                    destroy: true,
-                    select: true,
-                    data:  datosDataTable,
-                    columns:  [
-                      { title: "id" },
-                      { title: "usuarios_id" },
-                      { title: "nombre" },
-                      { title: "archivo" },
-                      { title: "imgPreview" },
-                      { title: "tamanio" },
-                      { title: "extension" },
-                      { title: "cnc" }
-                    ]
-                  });
+            var container, stats;
+            var scene, camera, renderer, exporter, mesh;
+            var camera, cameraTarget, scene, renderer;
 
-                  // Creo el mensaje del modal
-                  let mensaje = 'Se registro con exito el disenio ingresado.'
+            /*if (window.File && window.FileReader && window.FileList && window.Blob) {
+              // Great success! All the File APIs are supported.
+            } else {
+              alert('The File APIs are not fully supported in this browser.');
+            }*/
 
-                  //  Muestro el texto
-                  $('#textoModal').text( mensaje );
+            init();
+            animate();
 
-                  $('#modalRegistro').modal('show');
-                }else{
+            /*function handleFileSelect(evt) {
+                var files = evt.target.files; // FileList object
+
+                // files is a FileList of File objects. List some properties.
+                var output = [];
+                for (var i = 0, f; f = files[i]; i++) {
+                  output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                              f.size, ' bytes, last modified: ',
+                              f.lastModifiedDate.toLocaleDateString(), '</li>');
+                }
+                document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+              }*/
+
+            function init() {
+
+
+                //container = document.getElementById('prueba-3d');
+
+                //mycanvas = document.getElementById('mycanvas');
+
+
+                /////////container = document.createElement('div');
+
+
+                //agrego
+
+                /////////document.body.appendChild( container );
+                /////////document.body.appendChild( mycanvas );
+
+                //var width1 = document.getElementById("div").style.width;
+                //console.log('Tengo en valor y mentiroso:	' + width1 );
+
+
+                camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
+                camera.position.set(200, 100, 200);
+
+                //cameraTarget = new THREE.Vector3( 0, - 0.25, 0 );
+
+                scene = new THREE.Scene();
+                scene.background = new THREE.Color(0xa0a0a0);
+                //scene.fog = new THREE.Fog( 0xa0a0a0, 200, 1000 );
+
+
+                // Ground
+
+                //new THREE.MeshPhongMaterial( { color: 0x999999, specular: 0x101010 } )
+
+                var plane = new THREE.Mesh(
+                    new THREE.PlaneBufferGeometry(600, 400),
+                    new THREE.MeshPhongMaterial({
+                        color: 0x000000,
+                        specular: 0x101010
+                    })
+                );
+                //plane.rotation.x = - Math.PI / 2;
+                plane.rotation.x = -Math.PI / 2;
+                plane.position.y = 0;
+                scene.add(plane);
+
+                plane.receiveShadow = true;
+
+
+                // ASCII file
+
+                var loader = new STLLoader();
+
+                // Binary files
+
+                var material = new THREE.MeshPhongMaterial({
+                    specular: 0x111111,
+                    shininess: 200
+                });
+
+                // Colored binary STL
+                console.log(localStorage.getItem('seleccionadoDisenio'));
+
+                //loader.load( './models/stl/binary/colored.stl', function ( geometry ) {
+                loader.load(localStorage.getItem('seleccionadoDisenio'), function(geometry) {
+
+                    var meshMaterial = material;
+                    if (geometry.hasColors) {
+
+                        meshMaterial = new THREE.MeshPhongMaterial({
+                            opacity: geometry.alpha,
+                            vertexColors: true
+                        });
+
+                    }
+
+                    //geometry.computeBoundingBox();
+                    //var box = geometry.boundingBox;
+                    //alert(box.max["x"]);
+
+                    console.log(geometry.boundingBox);
+
+                    //aca verificar valores y en caso de ser menores o mayores a los necesarios cambiarlos y avisar
+                    geometry.scale(100, 100, 100)
+
+                    var mesh = new THREE.Mesh(geometry, meshMaterial);
+
+                    //mesh
+
+
+                    mesh.position.set(-35, 0, 0);
+                    mesh.rotation.set(-Math.PI / 2, 0, 0);
+                    //mesh.scale.set( 100, 100, 100 );
+
+                    mesh.castShadow = true;
+                    mesh.receiveShadow = true;
+
+                    scene.add(mesh);
+
+                    //geometry.computeBoundingBox();
+                    //var box = geometry.boundingBox;
+                    //alert(box.max["x"]);
+
+                    console.log(geometry.boundingBox);
+
+                });
+
+
+                // Lights
+
+                scene.add(new THREE.HemisphereLight(0x443333, 0x111122));
+
+                addShadowedLight(1, 1, 1, 0xffffff, 0.60);
+                addShadowedLight(0.5, 1, -1, 0xffaaaaa, 1);
+                // renderer
+
+                renderer = new THREE.WebGLRenderer({
+                    antialias: true
+                });
+                renderer.setPixelRatio(window.devicePixelRatio);
+                console.log('Tengo en valor X:	' + window.innerWidth);
+                console.log('Tengo en valor y:	' + window.innerHeight);
+
+                //console.log('Tengo en valor X:	' + container.body.scrollWidth );
+                //console.log('Tengo en valor y:	' + container.innerWidth );
+
+                //var elemento = document.getElementById("mycanvas");
+
+                //console.log('Tengo en valor X:	' + container.style.maxWidth );
+                //console.log('Tengo en valor y:	' + elemento.height );
+
+                //var currentDiv = document.getElementsByName("chota");
+                //var ancho = currentDiv.getAttribute("name");
+
+                //console.log('Tengo en valor X:	' + currentDiv.width );
+                //console.log('Tengo en valor y:	' + ancho );
+
+                //renderer.setSize( container., container.height );
+                //renderer.setSize( window.innerWidth, window.innerHeight );
+                //renderer.setSize( 600, 400 );
+                renderer.setSize(preview.clientWidth - 40, preview.clientWidth / 2);
+
+                renderer.outputEncoding = THREE.sRGBEncoding;
+
+                renderer.shadowMap.enabled = true;
+
+
+                ////////////container.appendChild( renderer.domElement );
+
+                //
+                var controls = new OrbitControls(camera, renderer.domElement);
+                controls.target.set(0, 25, 0);
+                controls.update();
+
+                // stats
+
+                //stats = new Stats();
+                //container.appendChild( stats.dom );
+
+
+                /*
+                2.To remove the following code
+                  renderer.domElement = canvas;
+                3.Add the following line in your code
+                  canvas.appendChild( renderer.domElement );
+                */
+                //	window.addEventListener( 'resize', onWindowResize, false );
+
+                //container.addEventListener( 'resize', onWindowResize, false );
+
+                //	var buttonExportASCII = document.getElementById( 'abrirArchivo' );
+                //	buttonExportASCII.addEventListener( 'click', abrirArchivo );
+                //chota.appendChild(renderer);
+                //chota.appendChild(container);
+                //chota.height=600;
+                //////////mycanvas.appendChild(container);
+                preview.appendChild(renderer.domElement);
+
+            }
+
+            function resizeRendererToDisplaySize(renderer) {
+                const canvas = renderer.domElement;
+                const width = canvas.clientWidth;
+                const height = canvas.clientHeight;
+                const needResize = canvas.width !== width || canvas.height !== height;
+                if (needResize) {
+                    renderer.setSize(width, height, false);
+                }
+                return needResize;
+            }
+
+
+            function addShadowedLight(x, y, z, color, intensity) {
+
+                var directionalLight = new THREE.DirectionalLight(color, intensity);
+                directionalLight.position.set(x, y, z);
+                scene.add(directionalLight);
+
+                directionalLight.castShadow = true;
+
+                var d = 1;
+                directionalLight.shadow.camera.left = -d;
+                directionalLight.shadow.camera.right = d;
+                directionalLight.shadow.camera.top = d;
+                directionalLight.shadow.camera.bottom = -d;
+
+                directionalLight.shadow.camera.near = 1;
+                directionalLight.shadow.camera.far = 4;
+
+                directionalLight.shadow.bias = -0.002;
+
+            }
+
+            function onWindowResize() {
+
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+
+                renderer.setSize(window.innerWidth, window.innerHeight);
+
+            }
+
+            function animate() {
+
+                //console.log('Tengo en valor y:	' + mycanvas.clientWidth );
+
+                /*if (resizeRendererToDisplaySize(renderer)) {
+                    const canvas = renderer.domElement;
+                    camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                    camera.updateProjectionMatrix();
+                }*/
+
+                renderer.setSize(preview.clientWidth - 40, preview.clientWidth / 2);
+
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+
+            }
+
+            $('#misDisenios tbody').on('click', '.cnc', function() {
+                event.preventDefault();
+                event.stopPropagation();
+                window.event.cancelBubble = true;
+                event.stopImmediatePropagation()
+                console.info($(this).attr('disenio'));
+
+                // tengo que cargar en una variable de sesion $(this).attr('disenio') que es el diseño a mostrar....
+
+                //console.log("createRecentFileEntry. fileStr.length:", fileStr.length, "info:", info);
+
+
+                // get the next avail slot
+                var lastSlot = -1;
+                for (var ctr = 0; ctr < 200; ctr++) {
+                    if ('com-chilipeppr-elem-dragdrop-recent' + ctr in localStorage) {
+                        console.log("found recent file entry. ctr:", ctr);
+                        lastSlot = ctr;
+                    }
+                }
+                console.log("lastSlot we found:", lastSlot);
+
+                var nextSlot = lastSlot + 1;
+                var recent = localStorage.getItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot);
+                if (recent == null) {
+                    console.log("empty slot. filling.");
+                    // this could fail if we are out of quota (happens often)
+                    try {
+                        //
+                        //  chilipeppr.publish("/com-chilipeppr-elem-dragdrop/loadGcodeFromUrl", "http://www.shapeoko.com/wiki/images/0/09/Circle-diamond-square-50-45-40mm.txt");
+
+
+                        //localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot, fileStr);
+                        localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot, $(this).attr('disenio'));
+                    } catch (e) {
+                        console.log('* * * * * * * * * * * * * * * * * ');
+                        console.log('entre por el catch');
+                        console.log('* * * * * * * * * * * * * * * * * ');
+                        // No tengo mucha idea de este handler...
+                        if (e.name === 'QUOTA_EXCEEDED_ERR' || e.name == "QuotaExceededError" || e.code == 22 || e.name == "NS_ERROR_DOM_QUOTA_REACHED" || e.code == 1014) {
+                            console.error("Drag/drop Widget. out of local storage space, but letting user proceed. err:", e);
+                            info.name += " (No local storage available, not saving.)";
+                            localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot, "(No local storage available, not saved.)");
+                            $('#com-chilipeppr-widget-dragdrop-outofspace').modal();
+                        } else {
+                            console.error("Drag/drop Widget. got err with localStorage:", e);
+                        }
+                    }
+                    var falseName = 'HARDCODE-NAME';
+                    //localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot + "-name", info.name);
+                    localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot + "-name", falseName);
+                    var falsLastModified = new Date();
+                    //localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot + "-lastMod", info.lastModified);
+                    localStorage.setItem("com-chilipeppr-elem-dragdrop-recent" + nextSlot + "-lastMod", falsLastModified);
+                    //this.buildRecentFileMenu();
+                }
+
+
+                // Redirecciono
+                alert('Redirecciono bro');
+                window.location.href = './cnc_test.html';
+
+            });
+
+
+            $('#misDisenios tbody').on('click', 'tr', function() {
+                console.info(event.stopPropagation());
+                alert('holi');
+                let table2 = $('#misDisenios').DataTable();
+                var disenio = table2.row($(this)).data();
+                /*console.info($(this));
+                if(disenio === 'undefined'){
+
+                  disenio = this;
+                }*/
+                console.log('disenio.....');
+                console.info(disenio);
+                //    console.info(this);
+                //    console.info(table.row().data().column(3));
+                //  if(disenio)
+
+                // Elimino el seleccionado
+                localStorage.removeItem('seleccionadoDisenio');
+
+                // Setep el nuevo nuevo seleccionado
+                localStorage.setItem('seleccionadoDisenio', disenio[3]);
+
+                $('#preview').html('');
+                if ($(this).hasClass('selecteddis')) {
+                    $(this).removeClass('selecteddis');
+
+                } else {
+
+                    table2.$('tr.selecteddis').removeClass('selecteddis');
+                    $(this).addClass('selecteddis');
+                }
+
+                // Llamo a la funcion para actualizar el componente
+                init();
+
+                //console.info(table.$('tr.selecteddis').column(0).data() );
+
+            });
+
+            $("#agregarDisenio").click(function() {
+
+                // stop submit the form, we will post it manually.
+                event.preventDefault();
+
+                // Obtengo los datos del formulario
+                var form = $('#formularioDisenio')[0];
+
+                // Obtengo el valor separado
+                var fileName = $('#nombreDisenio').val();
+                var fileToLoad = $('#FILEDISENIO').val();
+
+                if (!fileName || !fileToLoad) {
                     // Dejo el formulario como esta
 
                     // Creo el mensaje del modal
-                    let mensaje = 'Hubo un error al registrar, por favor intentelo nuevamente'
+                    var mensaje = 'Falta ingresar el nombre o seleccionar el archivo. ';
 
                     //  Muestro el texto
-                    $('#textoModal').text( mensaje );
+                    $('#textoModal').text(mensaje);
 
                     $('#modalRegistro').modal('show');
+
+                    return;
                 }
-            },
-            error: function( jqXhr, textStatus, errorThrown ){
-              console.log( errorThrown );
-            }
-          });
-    });
 
-});
+                // Creo un objeto para enviar los datos
+                var data = new FormData(form);
+
+                console.log('* * * * * * * * * * * * * ');
+                console.info(fileName);
+                console.info(fileToLoad);
+                console.log('* * * * * * * * * * * * * ');
+                // Armo el ajax, para enviar los datos correspondientes
+                $.ajax({
+                    type: 'POST',
+                    enctype: 'multipart/form-data',
+                    url: RUTA_ACCESO + RUTA_API,
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    headers: {
+                        'Access-Control-Allow-Origin': "*",
+                        "Authorization": `Bearer ${window.sessionStorage.getItem('tokenUntornolam')}`
+                    },
+                    crossDomain: true,
+
+                    success: function(datosReq, textStatus, jQxhr) {
+
+                        $('#nombreDisenio').val('');
+                        //$('#response pre').html( JSON.stringify( datos ) );
+                        //  alert( JSON.stringify( datos.data ) );
+                        //  console.info(datos2.data);
+                        //  console.log('holis');
+                        //console.info(localStorage.getItem('misDisenios'));
+                        //  console.info(datos.data );
+                        //  alert( 'asdasd' );
+                        //localStorage.removeItem('misDisenios');
+                        //localStorage.setItem('misDisenios', JSON.stringify(datos.data) );
+
+                        // En caso de exito
+                        if (datosReq.status === 'OK') {
+                            // Parseo la informacion
+                            var datosDataTable = datosReq.data;
+
+                            // Obtengo la cantidad
+                            var cantDisenios = datosDataTable.length;
+
+                            // Armo las rutas
+                            for (let i = 0; i < cantDisenios; i++) {
+                                let urlPath = RUTA_ACCESO + 'static/' + idFolder + '/' + datosDataTable[i][3];
+                                datosDataTable[i][3] = urlPath;
+                                datosDataTable[i][7] = '<span class="table-remove"> <button type="button" disenio="' + urlPath + '" class="btn btn-danger btn-rounded btn-sm my-0 cnc"> Ir </button> </span>';
+                            }
 
 
-</script>
 
 
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+                            $('#misDisenios').DataTable({
+                                destroy: true,
+                                select: true,
+                                data: datosDataTable,
+                                columns: [{
+                                        title: "id"
+                                    },
+                                    {
+                                        title: "usuarios_id"
+                                    },
+                                    {
+                                        title: "nombre"
+                                    },
+                                    {
+                                        title: "archivo"
+                                    },
+                                    {
+                                        title: "imgPreview"
+                                    },
+                                    {
+                                        title: "tamanio"
+                                    },
+                                    {
+                                        title: "extension"
+                                    },
+                                    {
+                                        title: "cnc"
+                                    }
+                                ]
+                            });
+
+                            // Creo el mensaje del modal
+                            let mensaje = 'Se registro con exito el disenio ingresado.'
+
+                            //  Muestro el texto
+                            $('#textoModal').text(mensaje);
+
+                            $('#modalRegistro').modal('show');
+                        } else {
+                            // Dejo el formulario como esta
+
+                            // Creo el mensaje del modal
+                            let mensaje = 'Hubo un error al registrar, por favor intentelo nuevamente'
+
+                            //  Muestro el texto
+                            $('#textoModal').text(mensaje);
+
+                            $('#modalRegistro').modal('show');
+                        }
+                    },
+                    error: function(jqXhr, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                    }
+                });
+            });
+
+        });
+    </script>
+
+
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 
 
