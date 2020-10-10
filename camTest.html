@@ -9,7 +9,6 @@
       href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
     <style>
     body {
   margin: 0;
@@ -279,7 +278,7 @@ if (remoteVideo) {
 }
 };
 
-navigator.getUserMedia(
+navigator.mediaDevices.getUserMedia(
 { video: true, audio: true },
 stream => {
   const localVideo = document.getElementById("local-video");
