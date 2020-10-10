@@ -214,7 +214,7 @@ socketIds.forEach(socketId => {
 });
 }
 
-const socket = io.connect('http://127.0.0.1:3001');
+const socket = io.connect('http://66.97.46.179:3003');
 
 socket.on("update-user-list", ({ users }) => {
 updateUserList(users);
