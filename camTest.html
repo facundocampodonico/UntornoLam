@@ -281,7 +281,7 @@ if (remoteVideo) {
 //  @TODO: nuevo para probar
 var constraints = { video: true, audio: true };
 navigator.mediaDevices.getUserMedia(constraints)
-.then(funciton(stream){
+.then(function(stream) {
   const localVideo = document.getElementById("local-video");
   if (localVideo) {
     localVideo.srcObject = stream;
