@@ -17,7 +17,7 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.css" rel="stylesheet">
-  
+
   <!-- Carga de Variables -->
   <!-- Custom styles for this template -->
   <link href="css/sb-admin-2.css" rel="stylesheet">
@@ -31,37 +31,37 @@
 
 <script>
 
-// Importacion de librerias del pulgin three.js 
+// Importacion de librerias del pulgin three.js
 // Se empieza a mezclar parte de las funciones de la libreria, con lo necesario para la logica del modelo de negocios
 
 
 $( document ).ready(function() {
     //
     console.log('Comienza a cargar la pagina...');
-	
-	// Voy a obtener datos del servidor 
+
+	// Voy a obtener datos del servidor
 	var pepe1="prueba";
 	var pepe2="funciona";
-	
-	// Informacion necesaria para el request 
-	const RUTA_ACCESO = 'http://66.97.46.179:8080';
+
+	// Informacion necesaria para el request
+	const RUTA_ACCESO = 'https://66.97.46.179:8080';
 	const RUTA_API_GET_MY_SERVICES = '/api/getMyServices';
-	
-	//	Request de ejemplo de hola mundo 
-	//	Ruta del request 
+
+	//	Request de ejemplo de hola mundo
+	//	Ruta del request
 	const RUTA_EXAMPLE = '/api/hello';
-	
-	// Armo el llamado 
+
+	// Armo el llamado
 	$.ajax({
-		// Aca va la URL a la que se quiere pegar, para esta caso seria 'http://66.97.46.179:8080/api/hello
-		url: RUTA_ACCESO + RUTA_EXAMPLE,		
+		// Aca va la URL a la que se quiere pegar, para esta caso seria 'https://66.97.46.179:8080/api/hello
+		url: RUTA_ACCESO + RUTA_EXAMPLE,
 		type: 'dataType',
-		headers: {  'Access-Control-Allow-Origin': '*' },		
-		crossDomain: true,			
-		type: 'get',	// Este puede ser GET/POST principalmente, tambien se puede llegar usar un update/delete/put 
+		headers: {  'Access-Control-Allow-Origin': '*' },
+		crossDomain: true,
+		type: 'get',	// Este puede ser GET/POST principalmente, tambien se puede llegar usar un update/delete/put
 		contentType: 'application/json',
 		// Aca van los datos en formato JSON para enviarse, esta es un poco la parte compleja dependiendo el request, ver como obtener estos datos....
-		data: JSON.stringify( { 
+		data: JSON.stringify( {
 				'user': 'prueba',
 				'pass': 'prueba',
 				'token': 'asd123'
@@ -72,28 +72,28 @@ $( document ).ready(function() {
 			console.log('Tengo estos datos: ');
 			console.info(data);
 			console.log(' fin data.. ');
-			// Vamos a cargar un dato en un div 
-			let textoBackend = data.msg; 
+			// Vamos a cargar un dato en un div
+			let textoBackend = data.msg;
 			$('#texto-2').text(textoBackend);
-			// Ojo que estoy usando jQuery para que esto sea asi de simple de mandar el # para que sea un div y de usar el .text() para pasar el valor 
-		
+			// Ojo que estoy usando jQuery para que esto sea asi de simple de mandar el # para que sea un div y de usar el .text() para pasar el valor
+
 		},
 		error: function( jqXhr, textStatus, errorThrown ){
 			console.log( errorThrown );
 		}
-	}); 
-	
-	
+	});
+
+
 	// Armado del llamado para los datos de mis servicios
-	
+
 	$.ajax({
 		url: RUTA_ACCESO + RUTA_API_GET_MY_SERVICES,
 		type: 'dataType',
-		headers: {  'Access-Control-Allow-Origin': '*' },		
-		crossDomain: true,			
+		headers: {  'Access-Control-Allow-Origin': '*' },
+		crossDomain: true,
 		type: 'get',
 		contentType: 'application/json',
-		data: JSON.stringify( { 
+		data: JSON.stringify( {
 				'user': 'prueba',
 				'pass': 'prueba'
 			} ),
@@ -101,15 +101,15 @@ $( document ).ready(function() {
 			/*console.log('');
 			console.log('En la variable: data');
 			console.log('Tengo estos datos: ');
-			// Aca estan todos los datos 
+			// Aca estan todos los datos
 			console.info(data);*/
-			
+
 			// En data tengo un JSON
-			
-			// Lo que hay que buscar es si hay forma de no tener que hacer algo como esto: 
+
+			// Lo que hay que buscar es si hay forma de no tener que hacer algo como esto:
 			//$('#texto-3').text( JSON.stringify( data ));
-			
-			
+
+
 			for(var i=0; i<data.count; i++){
                 var tr = `<tr>
                 <td>`+data.services[i].name+`</td>
@@ -121,13 +121,13 @@ $( document ).ready(function() {
                 </tr>`;
                 $("#dataTable").append(tr)
                 }
-	            $("#dataTable").DataTable();		
+	            $("#dataTable").DataTable();
 
-                      
-                      
+
+
 	/*		$('#campo1').text( JSON.stringify( data.services[1].name ));
 			//texto_datos=JSON.stringify( data )
-			
+
 			console.log('status: ' + data.status);
 			console.log('count: '  + data.count);
 			console.log('Services:' );
@@ -145,17 +145,17 @@ $( document ).ready(function() {
 			console.log(data.services[1].startDate);
 			console.log(data.services[1].salary);
 			console.log(' fin data.. '); */
-			
-			
-		
+
+
+
 		},
 		error: function( jqXhr, textStatus, errorThrown ){
 			console.log( errorThrown );
 		}
 	});
-	
+
 });
-	
+
 </script>
 
 
@@ -172,7 +172,7 @@ for(var i=0; i<data.count; i++){
                 </tr>`;
                 $("#dataTable").append(tr)
                 }
-	            $("#dataTable").DataTable();		
+	            $("#dataTable").DataTable();
             }
 
 </script>
@@ -212,13 +212,13 @@ for(var i=0; i<data.count; i++){
       <div class="sidebar-heading">
         Herramientas
       </div>
-      
+
          <li class="nav-item">
         <a class="nav-link" href="cnc.html">
           <i class="fas fa-fw fa-cog"></i>
           <span>Mis CNC</span></a>
       </li>
-      
+
          <li class="nav-item">
         <a class="nav-link" href="misdiseños.html">
           <i class="fas fa-fw fa-folder"></i>
@@ -235,7 +235,7 @@ for(var i=0; i<data.count; i++){
           <span>Mis Servicios</span></a>
       </li>
 
-  
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
@@ -435,20 +435,20 @@ for(var i=0; i<data.count; i++){
 
         </nav>
         <!-- End of Topbar -->
-	
+
 		<!-- Este ejemplo seguramente sea borrado -->
 		<div id='ejemploRequestHello'>
 			<div id='texto-1'>
-				Inicialmente abajo hay un div que esta vacio, mira el codigo si no me crees :O 
+				Inicialmente abajo hay un div que esta vacio, mira el codigo si no me crees :O
 			</div>
 			<div id='texto-2'>
 			</div>
 			<br>
 			<div id='texto-3'>
-			    
+
 			</div>
 		</div>
-	
+
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -456,8 +456,8 @@ for(var i=0; i<data.count; i++){
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Mis Servicios</h1>
           </div>
-          
-          
+
+
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -554,7 +554,7 @@ for(var i=0; i<data.count; i++){
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
 
-  
+
 
 
 <script src="vendor/datatables/jquery.dataTables.min.js"></script>
@@ -562,7 +562,7 @@ for(var i=0; i<data.count; i++){
 
 <!-- Page level custom scripts -->
 <script src="js/demo/datatables-demo.js"></script>
-  
+
 
 </body>
 

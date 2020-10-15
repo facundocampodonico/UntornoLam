@@ -53,7 +53,7 @@
                   <div class="col-sm-6">
                     <input type="text" class="form-control form-control-user" id="usuario" placeholder="Usuario">
                   </div>
-                 
+
                 </div>
 
                 <div class="form-group row">
@@ -90,9 +90,9 @@
                 <hr>
               <!--
                 <a href="login.html" class="btn btn-primary btn-user btn-block">
-                    Registrar 
+                    Registrar
                 </a>
-             
+
                 <hr>
                 <a href="index.html" class="btn btn-google btn-user btn-block">
                   <i class="fab fa-google fa-fw"></i> Register with Google
@@ -102,7 +102,7 @@
                 </a>
               -->
               </form>
-              
+
               <div class="text-center">
                 <a class="small" href="forgot-password.html">Forgot Password?</a>
               </div>
@@ -153,8 +153,8 @@
 $(document).ready( function () {
   // Configuracion
 	// @TODO: aca falta las rutas del servidor
-  const RUTA_ACCESO = 'http://66.97.46.179:8080/';
-	//const RUTA_ACCESO = 'http://127.0.0.1:8080/';
+  const RUTA_ACCESO = 'https://66.97.46.179:8080/';
+	//const RUTA_ACCESO = 'https://127.0.0.1:8080/';
 	const RUTA_API = 'api/registrarUsuario';
 
   $("#registrar").click(function(){
@@ -162,19 +162,19 @@ $(document).ready( function () {
 			// stop submit the form, we will post it manually.
       event.preventDefault();
 
-      // Obtengo los datos del formulario 
+      // Obtengo los datos del formulario
       //var form = $('#formularioDisenio')[0];
-      var nombre = $('#nombre').val();			
+      var nombre = $('#nombre').val();
       var apellido = $('#apellido').val();
-      var email = $('#email').val();			
-      var usuario = $('#usuario').val();			
-      var contrasenia = $('#contrasenia').val();			
+      var email = $('#email').val();
+      var usuario = $('#usuario').val();
+      var contrasenia = $('#contrasenia').val();
       var tipoDoc = $('#tipoDoc').val();
       var nroDoc = $('#nroDoc').val();
-      var cuilCuit = $('#cuilCuit').val();			
-      var telefono = $('#telefono').val();			
-     										
-      // Creo un objeto para enviar los datos 
+      var cuilCuit = $('#cuilCuit').val();
+      var telefono = $('#telefono').val();
+
+      // Creo un objeto para enviar los datos
       //var data = new FormData(form);
 
       // Armo el ajax, para enviar los datos correspondientes
@@ -196,9 +196,9 @@ $(document).ready( function () {
           processData: false,
           contentType: "application/json; charset=utf-8",
           cache: false,
-          headers: { 'Access-Control-Allow-Origin': "*" },	
-          crossDomain: true,			
-          
+          headers: { 'Access-Control-Allow-Origin': "*" },
+          crossDomain: true,
+
           success: function( datos, textStatus, jQxhr ){
               alert( JSON.stringify( datos) );
 
@@ -212,7 +212,7 @@ $(document).ready( function () {
                   alert('Error al registrar');
                   alert(datos);
               }
-              
+
 
               //alert("Respuesta: " + JSON.stringify( datos ) );
           },
