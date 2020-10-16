@@ -213,7 +213,7 @@ socketIds.forEach(socketId => {
 });
 }
 
-const socket = io.connect('66.97.46.179:3003');
+const socket = io.connect('https://66.97.46.179:3003');
 
 socket.on("update-user-list", ({ users }) => {
 updateUserList(users);
