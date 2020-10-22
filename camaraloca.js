@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<!--<body id="page-top">-->
+
+<body>
+guido topu
+</body>
+
+<script>
 import React,{Component} from 'react'
 import styled from 'styled-components'
 import Hls from 'hls.js'
@@ -86,3 +99,4 @@ export default class Player extends Component{
         </PlayerWrapper>
     }
 }
+</script>
