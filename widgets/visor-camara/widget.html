@@ -196,10 +196,16 @@
             </div> -->
 
             <div>
-              <video src=http://200.3.186.219:8080/stream_simple.html></video>
+
+              <div id="camara_live"></div>
+
             </div>
 
-            <!--<div class="xoverlayWrapper xwell install-msg isrunning xhidden">
+            <!--
+              <iframe src=http://200.3.186.219:8080/stream_simple.html> </iframe>
+
+
+            <div class="xoverlayWrapper xwell install-msg isrunning xhidden">
                 <div class="videoWrapper video1" style="width:33.33%;float:left;xborder:1px solid green;">
                     <video id="com-chilipeppr-widget-cam-remote-video" style="margin-bottom: -5px;width: 100%;"></video>
                     <div class="cam-line-horiz"></div>
@@ -299,6 +305,14 @@
         <!-- /.modal -->
 
     </div>
+
+
+<script>
+    $.get("http://200.3.186.219:8080/stream_simple.html", function(htmlexterno5){
+    $("#camara_live").html(htmlexterno5);
+    });
+</script>
+
 </body>
 
 </html>
