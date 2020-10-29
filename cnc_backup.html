@@ -23,7 +23,6 @@
     <link href="css/sb-admin-2.css" rel="stylesheet">
 
     <!-- jquerys -->
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
@@ -46,7 +45,7 @@
 
 <!--<body id="page-top">-->
 
-<body >
+<body>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -82,7 +81,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="cnc.html">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Mis CNCs</span></a>
+                    <span>Mis CNC</span></a>
             </li>
 
             <li class="nav-item">
@@ -268,10 +267,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">El Tano</span>
-                                <!--
-                                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-                                -->
-                                <img class="img-profile rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg">
+                                <!--     <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">     -->
+                                <img class="img-profile rounded-circle" src="https://es.wikipedia.org/wiki/Bandera_de_Italia#/media/Archivo:Flag_of_Italy.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -301,296 +298,227 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="centrado-preload" id="preloadpage">
-                    <div class="lds-ellipsis">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+                <div class="container-fluid">
 
-                    <!-- <div><img src="img/gift.gif" style="height:160px"></div> -->
-
-                </div>
-                <div class="ocultar" id="ocultar1">
-
-                    <div class="container-fluid ">
-
-
-                        <!-- Page Heading -->
-                        <div class="card border-bottom-info shadow h-100 py-2">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    <h1 class="h3 mb-0 text-gray-800">Mis CNCs</h1>
-                                </div>
-                                <!-- <div class="dropdown mb-0">
-                                    <button class="btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Seleccione CNC
-                                    </button>
-                                    <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton" onclick="location.reload()">
-                                        <a class="dropdown-item" href="#">CNC-1</a>
-                                        <a class="dropdown-item" href="#">CNC-2</a>
-                                        <a class="dropdown-item" href="#">CNC-N</a>
-                                    </div>
-                                </div> -->
-
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal2">
-                                    Selección CNC
+                    <!-- Page Heading -->
+                    <div class="card border-bottom-info shadow h-100 py-2">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <h1 class="h3 mb-0 text-gray-800">Mis Cnc</h1>
+                            </div>
+                            <div class="dropdown mb-0">
+                                <button class="btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Seleccione CNC
                                 </button>
+                                <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton" onclick="location.reload()">
+                                    <a class="dropdown-item" href="#">CNC-1</a>
+                                    <a class="dropdown-item" href="#">CNC-2</a>
+                                    <a class="dropdown-item" href="#">CNC-N</a>
+                                </div>
                             </div>
                         </div>
-                        <br>
-                        <div class="row">
+                    </div>
+                    <br>
+                    <div class="row">
 
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-4 col-md-6 mb-4">
-                                <div class="card border-left-info shadow  py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="font-weight-bold text-info text-uppercase mb-1">Estado</div>
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-info shadow  py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="font-weight-bold text-info text-uppercase mb-1">Estado</div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
 
-                                                            <!-- LIBRE -->
-                                                            <script>
-                                                                document.write(EstadoEquipo);
-                                                            </script>
+                                                        <!-- LIBRE -->
+                                                        <script>
+                                                            document.write(EstadoEquipo);
+                                                        </script>
 
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="progress progress-sm mr-2">
-                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <button type="button" class="btn btn-info m-2" data-toggle="modal" data-target="#exampleModal" data-toggle="tooltip" title="Configurar tu panel">
-                                                <i class="fas fa-tools" style="font-size:16px;color:white;"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-4 col-md-6 mb-4">
-                                <div class="card border-left-info shadow  py-3">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class=" font-weight-bold text-info text-uppercase mb-1">Diseños Enviados (Total)&nbsp; <b>
-                                                        <script>
-                                                            document.write(CantidadDiseños);
-                                                        </script>
-                                                    </b>
-                                                </div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div id="listadodegcode"> </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-4 col-md-6 mb-4">
-                                <div class="card border-left-info shadow  py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="font-weight-bold text-info text-uppercase mb-1">Fecha último servicio técnico&nbsp;<b>
-                                                        <script>
-                                                            document.write(FechaUltimoService);
-                                                        </script>
-                                                    </b>
-                                                </div>
-                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-info m-2" data-toggle="tooltip" title="Solcitar nuevo servicio tecnico">
-                                                <i class="fas fa-hammer" style="font-size:16px;color:white;"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- Pruebas de draggable -->
-                        <!-- Button trigger modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Mostrar/Ocultar Contenidos.</h5>
-
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
+                                        <button type="button" class="btn btn-info m-2" data-toggle="modal" data-target="#exampleModal" data-toggle="tooltip" title="Configurar tu panel">
+                                            <i class="fas fa-tools" style="font-size:16px;color:white;"></i>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
-                                        <table>
+                                </div>
+                            </div>
+                        </div>
 
-                                            <tr>
-                                                <td><input class="bt1 btn btn-outline-info btn-block" id="button1" type="button" value="Control CNC"></td>
-                                                <td> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-
-                                                <td> <input class="bt4 btn btn-outline-info btn-block " id="button4" type="button" value="Consola de Comandos"></td>
-                                            </tr>
-                                            <tr>
-                                                <td> <input class="bt2 btn btn-outline-info btn-block" id="button2" type="button" value="Herramienta de Texto"></td>
-                                                <td> &nbsp; </td>
-                                                <td> <input class="bt5 btn btn-outline-info btn-block" id="button5" type="button" value="Conexion"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td> <input class="bt3 btn btn-outline-info btn-block" id="button3" type="button" value="Gcode Preview"></td>
-                                                <td> &nbsp; </td>
-                                                <td> <input class="bt6 btn btn-outline-info btn-block" id="button6" type="button" value="Camara"></td>
-                                            <tr>
-                                        </table>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-info shadow  py-3">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class=" font-weight-bold text-info text-uppercase mb-1">Diseños enviados (Total)&nbsp; <b>
+                                                    <script>
+                                                        document.write(CantidadDiseños);
+                                                    </script>
+                                                </b>
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            </div>
+                                        </div>
+                                        <div id="listadodegcode"> </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class=row>
 
-                            <div class="col-lg-3" data-toggle="tooltip" title="Descripción de la funcionalidad">
-                                <div class="card shadow mb-6">
-                                    <div id="listWithHandle" class="list-group1">
-                                        <div class="list-group-item 1">
-                                            <button type="button" class="contraer"><i class="material-icons" aria-hidden="true">swap_vert</i></span> &nbsp;Control CNC</button>
-                                            <div class="contentcnc">
-                                                <div id="ejes"></div>
-
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-info shadow  py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="font-weight-bold text-info text-uppercase mb-1">Fecha ultimo servicio tecnico&nbsp;<b>
+                                                    <script>
+                                                        document.write(FechaUltimoService);
+                                                    </script>
+                                                </b>
                                             </div>
-
-                                        </div>
-
-                                        <div class="list-group-item 2">
-                                            <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true">swap_vert</i></span>&nbsp; Herramienta de Texto</button>
-                                            <div class="contentcnc">
-                                                <div id="texto"></div>
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                             </div>
                                         </div>
-
-
-                                        <div class="list-group-item 3">
-                                            <button type="button" class="contraer"><i class="material-icons" aria-hidden="true">swap_vert</i></span>&nbsp; Vista Previa GCODE</button>
-                                            <div class="contentcnc">
-                                                <div id="gcode"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="col-lg-6 " data-toggle="tooltip" title="Descripción de la funcionalidad">
-                                <div class="card shadow mb-4">
-                                    <button type="button" class="contraer"></span> &nbsp; Vista Previa 3D</button>
-                                    <div class="contentcnc">
-                                        <div id="3d"></div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="col-lg-3 " data-toggle="tooltip" title="Descripción de la funcionalidad">
-                                <div class="card shadow mb-4">
-                                    <div id="listWithHandle2" class="list-group">
-                                        <div class="list-group-item 4">
-                                            <button type="button" class="contraer"><i class="material-icons" aria-hidden="true">swap_vert</i></span> &nbsp; Consola de Comandos</button>
-
-                                            <div class="contentcnc">
-                                                <div id="consola"></div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="list-group-item 5">
-                                            <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true">swap_vert</i></span>&nbsp; Conexión</button>
-                                            <div class="contentcnc">
-                                                <div id="grbl"></div>
-                                            </div>
-                                        </div>
-                                        <div class="list-group-item 6">
-                                            <button type="button" class="contraer"><i class="material-icons" aria-hidden="true">swap_vert</i></span>&nbsp; Cámara</button>
-                                            <div class="contentcnc">
-                                                <div id="camara"></div>
-                                            </div>
-                                        </div>
+                                        <button type="button" class="btn btn-info m-2" data-toggle="tooltip" title="Solcitar nuevo servicio tecnico">
+                                            <i class="fas fa-hammer" style="font-size:16px;color:white;"></i>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                        </div> <!-- Fin draggable     -->
                     </div>
-                </div>
-            </div>
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="login.html">Logout</a>
+                    <!-- Pruebas de draggable -->
+                    <!-- Button trigger modal -->
+                    <!--    <button type="button" class="btn btn-info m-2" data-toggle="modal" data-target="#exampleModal">
+    <i class="fas fa-tools" style="font-size:16px;color:white;"></i>
+</button>-->
+
+                    <!-- Modal -->
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Mostrar/Ocultar contenidos.</h5>
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+
+                                        <tr>
+                                            <td><input class="bt1 btn btn-outline-info btn-block" id="button1" type="button" value="Control CNC"></td>
+                                            <td> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+                                            <td> <input class="bt4 btn btn-outline-info btn-block " id="button4" type="button" value="Consola de Comandos"></td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input class="bt2 btn btn-outline-info btn-block" id="button2" type="button" value="Herramienta de Texto"></td>
+                                            <td> &nbsp; </td>
+                                            <td> <input class="bt5 btn btn-outline-info btn-block" id="button5" type="button" value="Conexion"> </td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input class="bt3 btn btn-outline-info btn-block" id="button3" type="button" value="Gcode Preview"></td>
+                                            <td> &nbsp; </td>
+                                            <td> <input class="bt6 btn btn-outline-info btn-block" id="button6" type="button" value="Camara"></td>
+                                        <tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <div class=row>
+
+                        <div class="col-lg-3" data-toggle="tooltip" title="Descripción de la funcionalidad">
+                            <div class="card shadow mb-6">
+                                <div id="listWithHandle" class="list-group1">
+                                    <div class="list-group-item 1">
+                                        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true">swap_vert</i></span> &nbsp;Control CNC</button>
+                                        <div class="contentcnc">
+                                            <div id="ejes"></div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="list-group-item 2">
+                                        <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true">swap_vert</i></span>&nbsp; Herramienta de texto</button>
+                                        <div class="contentcnc">
+                                            <div id="texto"></div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="list-group-item 3">
+                                        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true">swap_vert</i></span>&nbsp; GCODE Preview</button>
+                                        <div class="contentcnc">
+                                            <div id="gcode"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6 " data-toggle="tooltip" title="Descripción de la funcionalidad">
+                            <div class="card shadow mb-4">
+                                <button type="button" class="contraer"></span> &nbsp; 3D Preview</button>
+                                <div class="contentcnc">
+                                    <div id="3d"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-3 " data-toggle="tooltip" title="Descripción de la funcionalidad">
+                            <div class="card shadow mb-4">
+                                <div id="listWithHandle2" class="list-group">
+                                    <div class="list-group-item 4">
+                                        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true">swap_vert</i></span> &nbsp; Consola de comandos</button>
+
+                                        <div class="contentcnc">
+                                            <div id="consola"></div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="list-group-item 5">
+                                        <button type="button" class="contraer"> <i class="material-icons" aria-hidden="true">swap_vert</i></span>&nbsp; Conexión</button>
+                                        <div class="contentcnc">
+                                            <div id="grbl"></div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item 6">
+                                        <button type="button" class="contraer"><i class="material-icons" aria-hidden="true">swap_vert</i></span>&nbsp; Camara</button>
+                                        <div class="contentcnc">
+                                            <div id="camara"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> <!-- Fin draggable     -->
+
                 </div>
             </div>
-            <div class="container demo">
-
-
-            <!-- Modal Cnc -->
-                <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-
-                            <div class="modal-header bg-info">
-                                <h4 class="modal-title text-white" id="myModalLabel2">Lista de CNCs</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                            </div>
-
-                            <div class="modal-body ">
-                                <div class="col-md-6">
-
-                                <nav class="nav flex-column grey lighten-4 py-4 font-weight-bold">
-                                    <a class="nav-link  text-secondary" href="#"><img src="img/iconcnc.svg" alt="" style="height:24px"> &nbsp;CNC-1 </a>
-                                    <a class="nav-link  text-secondary" href="#"><img src="img/iconcnc.svg" alt="" style="height:24px"> &nbsp;CNC-2</a>
-                                    <a class="nav-link text-secondary"  href="#"><img src="img/iconcnc.svg" alt="" style="height:24px"> &nbsp;CNC-3</a>
-                                    <a class="nav-link text-secondary"  href="#"><img src="img/iconcnc.svg" alt="" style="height:24px"> &nbsp;CNC-4</a>
-                                </nav>
-
-                            </div>
-                            </div>
-
-                        </div><!-- modal-content -->
-                    </div><!-- modal-dialog -->
-                </div><!-- modal -->
-
-
-            </div><!-- container -->
-
-
-
-
-
-
-
                     <script>
                         $.get("widgets/visor-3d/widget.html", function(htmlexterno1) {
                             $("#3d").html(htmlexterno1);
@@ -609,19 +537,19 @@
                             $("#texto").html(htmlexterno6);
                           });
 
-                        $.get("widgets/visor-consola/widget.html", function(htmlexterno3){
+                        /*$.get("widgets/visor-consola/widget.html", function(htmlexterno3){
                             $("#consola").html(htmlexterno3);
-                          });
+                          });*/
 
                         $.get("widgets/visor-grbl2/widget.html", function(htmlexterno4){
                             $("#grbl").html(htmlexterno4);
                           });
 
-                          $.get("widgets/visor-camara/widget.html", function(htmlexterno5){
+                        /*$.get("widgets/visor-camara/widget.html", function(htmlexterno5){
                           $("#camara").html(htmlexterno5);
-                        });
+                        });*/
 
-                        //juan es un salame
+
                         //$('body').prepend('<div id="test-drag-drop"></div>');
                         $.get("widgets/drag-and-drop/widget.html", function(htmlexterno5) {
                             $("#listadodegcode").html(htmlexterno5);
@@ -648,6 +576,24 @@
                 <i class="fas fa-angle-up"></i>
             </a>
 
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="login.html">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Bootstrap core JavaScript-->
 
@@ -703,23 +649,7 @@
                 hideToggle(".bt5", ".5");
                 hideToggle(".bt6", ".6");
             </script>
-            <script>
-            window.onload=function () {
-            // sleep(100);
-            wait(500);
-            var eliminar = document.getElementById("ocultar1");
-            eliminar.classList.remove("ocultar");
 
-            var add = document.getElementById("preloadpage");
-            add.classList.add("ocultar");
-
-            };
-
-            function wait(ms){
-            var start = new Date().getTime();
-            var end = start;
-            while(end < start + ms) { end=new Date().getTime(); } }
-            </script>
 
 
 
