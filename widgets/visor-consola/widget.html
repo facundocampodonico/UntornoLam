@@ -99,6 +99,34 @@
     </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+
+    <script>
+
+      //Creates socket (default same server)
+
+
+$(document).ready(function() {
+        var socket = io.connect('http://66.97.46.179:3003/', {rejectUnauthorized: false});
+        //var socket = io.connect('http://127.0.0.1:3001');
+        //submit event emits the message
+    /*        $('form').submit(function(e){
+          e.preventDefault();
+
+          socket.emit('chat message', $('#m').val() );
+          $('#m').val('');
+          return false;
+
+        });*/
+        //Listen for message from the server
+        socket.on('chat message', function(msg){
+          console.log("ENTRA O NO ENTRA LPMQLRP");
+          //$('#com-chilipeppr-widget-spconsole-consoleform').append($('<li>').text(msg));
+          $('#com-chilipeppr-widget-spconsole-consoleform').val(msg);
+        });
+      });
+    </script>
+
 </body>
 
 </html>
