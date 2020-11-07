@@ -84,8 +84,8 @@
                         </ul>
 
                         </span>
-                        <input type="text" class="user-txt-input form-control" placeholder="Type serial port command" /><span class="input-group-btn">
-                    <button class="btn btn-secondary" type="submit">Go!</button>
+                        <input type="text" class="user-txt-input form-control" id="textoEnviar" placeholder="Type serial port command" /><span class="input-group-btn">
+                    <button class="btn btn-secondary" type="submit" id="enviar">Go!</button>
                         </span>
 
                         <!-- /input-group -->
@@ -99,7 +99,7 @@
     </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+
 
     <script>
 
@@ -121,9 +121,20 @@ $(document).ready(function() {
         //Listen for message from the server
         socket.on('chat message', function(msg){
           console.log("ENTRA O NO ENTRA LPMQLRP");
-          //$('#com-chilipeppr-widget-spconsole-consoleform').append($('<li>').text(msg));
-          $('#com-chilipeppr-widget-spconsole-consoleform').val(msg);
+          $('#com-chilipeppr-widget-spconsole-consoleform').append($('<li>').text(msg));
+          //$('#com-chilipeppr-widget-spconsole-consoleform').html(msg);
         });
+
+        $("#enviar").click(function(){
+            var texto = $('#textoEnviar').val();  
+            socket.emit('chat message', texto );
+            $('#enviar').val('');
+            return true;
+        });
+
+
+
+
       });
     </script>
 
