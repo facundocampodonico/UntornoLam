@@ -287,6 +287,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             // Added on 1/2/17 by JLauer so we can allow onPlay to get interrupted
             // subscribe to our own /onPlay event at lowest priority so we get it last
             // setting priority to 11 because default is 10 and lower values have higher priority
+            // @FLAG_02 NO tengo la mas puta idea que carajo flasheao aca
             chilipeppr.subscribe("/com-chilipeppr-widget-gcode/onplay", this, this.onPlayAfter, 11);
 
             this.setupOptionsModal();
@@ -1720,6 +1721,8 @@ mega*/
          */
         onPlay: function(event) {
 
+            // @FLAG_01
+
             console.log("got onPlay. this:", this, "event:", event);
 
             // indicate we're starting play in the UI
@@ -2028,9 +2031,18 @@ mega*/
             // to know exactly when our gcode command is executed
             // ACTUALLY just pass in "markSent" to gotoLine below
 
+            console.log('Tengo en line: ' + ctr);
+            console.log('Tengo en gcode: ' + linegcode);
+
+            console.log('------------------------------------------------------------------------------------------------------------------------');
+            console.log('envio socket...');
+
+            console.log('envio aviso al 3d');
             // publish to 3d viewer so it syncs to us
             if (this.options.whenPlay == "3d")
                 chilipeppr.publish("/com-chilipeppr-widget-3dviewer/gotoline", { line: ctr, gcode: linegcode });
+
+          console.log('------------------------------------------------------------------------------------------------------------------------');
 
             // sync gcode list view
             /* we are no longer scrolling on queue, but on complete, so its done
