@@ -514,7 +514,7 @@
 
                                 <nav class="nav flex-column grey lighten-4 py-4 font-weight-bold">
                                 <!--    <a class="nav-link  text-secondary" href="#"><img src="img/iconcnc.svg" alt="" style="height:24px"> &nbsp;CNC-1 </a>-->
-                                <table class="table" name="ListCnc">
+                                <table class="table" id="ListCnc">
                                  <tbody>
                                      <tr>
                                         <!--GUIDO Aca agregar el contenido de los cns-->
@@ -612,6 +612,7 @@
                 });
             </script>
             <script>
+            //CONTRAER
                 var coll = document.getElementsByClassName("contraer");
                 var i;
 
@@ -629,6 +630,7 @@
             </script>
 
             <script type="text/javascript">
+            //ELIMINAR BOTONES
                 function hideToggle(button, elem) {
                     $(button).click(function() {
                         $(elem).toggle();
@@ -643,6 +645,7 @@
                 hideToggle(".bt6", ".6");
             </script>
             <script>
+            //PREOLOAD PARA LA CARGA DE LA PAGINA CNC
             window.onload=function () {
             // sleep(100);
             wait(500);
@@ -660,6 +663,11 @@
             while(end < start + ms) { end=new Date().getTime(); } }
             </script>
 
+            <script>
+            //TRAER CNC
+            
+
+            </script>
 
 
 
