@@ -71,9 +71,9 @@
         </div>
         <div class="card-block com-chilipeppr-widget-spconsole-body">
             <div class="com-chilipeppr-widget-spconsole-console-log">
-                <pre></pre>
+                <pre style="color: #36b9cc;"></pre>
             </div>
-            <div class="com-chilipeppr-widget-spconsole-consoleinput">
+            <div class="com-chilipeppr-widget-spconsole-consoleinput" style="position:static">
                 <form id="com-chilipeppr-widget-spconsole-consoleform">
                     <div class="input-group">
                         <span class="input-group-btn dropup">
@@ -126,7 +126,7 @@ $(document).ready(function() {
         });
 
         $("#enviar").click(function(){
-            var texto = $('#textoEnviar').val();  
+            var texto = $('#textoEnviar').val();
             socket.emit('chat message', texto );
             $('#enviar').val('');
             return true;

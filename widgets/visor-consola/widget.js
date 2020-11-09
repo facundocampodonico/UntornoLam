@@ -48,7 +48,7 @@ cprequire_test(["inline:com-chilipeppr-widget-spconsole"], function(sp) {
 
             setTimeout(function() {
                 chilipeppr.publish("/com-chilipeppr-widget-serialport/recvline", {
-                    dataline: 'G91 G1 Y10.001 F100\nG90\n'
+                    dataline: 'Linea de Log\nUntornolam\n'
                 });
             }, 2000);
 
@@ -611,7 +611,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                 this.resizePtr = setTimeout(this.resizeCallback.bind(this), 500);
             }
         },
-        resizeCallback: function() {
+    /*    resizeCallback: function() {
             // add the top of the widget + height of widget
             // to get sizing. then subtract that from height of window to figure out what height to add (subtract) from log
             var wdgt = $('.com-chilipeppr-widget-spconsole');
@@ -625,7 +625,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
             console.log("resize: serial port console newHeight:", newHeight);
             $('.com-chilipeppr-widget-spconsole-console-log').height(newHeight);
             this.resizePtr = null;
-        },
+        },*/
         resizerSetup: function() {
             // due to the layout complexity here of being
             // nested very deep, doing absolute positioning
