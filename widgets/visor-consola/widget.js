@@ -288,7 +288,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
         onClear: function(evt) {
             console.log("onClear. evt:", evt);
             var log = this.logEls.log;
-            log.html("");
+            log.html("pepe");
         },
         setupPauseBtn: function() {
             $('.com-chilipeppr-widget-spconsole .spconsole-pause').click(this.onPause.bind(this));
