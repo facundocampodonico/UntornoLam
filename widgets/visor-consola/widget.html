@@ -127,6 +127,7 @@ $(document).ready(function() {
 
         $("#enviar").click(function(){
             var texto = $('#textoEnviar').val();
+  
             socket.emit('chat message', texto );
             $('#enviar').val('');
             return true;

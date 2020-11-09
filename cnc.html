@@ -43,7 +43,7 @@
 
     <!-- Carga de Variables -->
     <script>
-        var CantidadCnc = '5';
+        //var CantidadCnc = '5';
         var CantidadDiseños = '10';
         var ReportesPendientes = '1';
         var EstadoEquipo = 'LIBRE';
@@ -534,7 +534,38 @@
 
             </div><!-- container -->
 
+    <script type="text/javascript">
+    //TRAER CNC
+    $(document).ready(function(){
 
+      // Obtengo la data de los CNC
+      var dataCNC = "";
+      dataCNC = JSON.parse( localStorage.getItem('miCncs') ) ;
+
+      console.info(dataCNC);
+
+      var countCncs = "";
+      countCncs = parseInt(  localStorage.getItem('countCnc') );
+
+      if( countCncs && countCncs > 0 ){
+        // Agrego las opciones al listado
+        for(let i=0; i < countCncs; i++){
+          let elemento = '';
+          elemento = ' <tr> <td id="' + dataCNC[i].id + '" name="' + dataCNC[i].nombre + '"> ' + dataCNC[i].nombre + ' </td> </tr>';
+          $('#ListCnc').append(elemento);
+        }
+        // id="ListCnc"
+
+      }else{
+        let elemento = '';
+        elemento = ' <tr> <td id="0" name="-"> No posee un CNC </td> </tr>';
+        $('#ListCnc').append(elemento);
+      }
+
+
+    });
+
+    </script>
 
 
 
@@ -663,11 +694,7 @@
             while(end < start + ms) { end=new Date().getTime(); } }
             </script>
 
-            <script>
-            //TRAER CNC
-            
 
-            </script>
 
 
 
