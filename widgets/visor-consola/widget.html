@@ -70,7 +70,7 @@
 
         </div>
         <div class="card-block com-chilipeppr-widget-spconsole-body">
-            <div class="com-chilipeppr-widget-spconsole-console-log">
+            <div class="com-chilipeppr-widget-spconsole-console-log" id="consola-para-escribir">
                 <pre style="color: #36b9cc;"></pre>
             </div>
             <div class="com-chilipeppr-widget-spconsole-consoleinput" style="position:static">
@@ -121,13 +121,14 @@ $(document).ready(function() {
         //Listen for message from the server
         socket.on('chat message', function(msg){
           console.log("ENTRA O NO ENTRA LPMQLRP");
-          $('#com-chilipeppr-widget-spconsole-consoleform').append($('<li>').text(msg));
+
+          $('#consola-para-escribir').append(msg + "<br>");
+          //log.html(log.html() + msg);
           //$('#com-chilipeppr-widget-spconsole-consoleform').html(msg);
         });
 
         $("#enviar").click(function(){
             var texto = $('#textoEnviar').val();
-  
             socket.emit('chat message', texto );
             $('#enviar').val('');
             return true;
