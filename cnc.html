@@ -59,7 +59,7 @@
 
 <!--<body id="page-top">-->
 
-<body >
+<body>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -475,8 +475,21 @@
 
                         </div> <!-- Fin draggable     -->
                     </div>
+
+                    <!--  Footer -->
+                            <footer class="sticky-footer bg-white">
+                                <div class="container my-auto">
+                                    <div class="copyright text-center my-auto">
+                                        <span>Copyright &copy; UNtornoLaM 2020</span>
+                                    </div>
+                                </div>
+                            </footer>
+                            <!-- End of Footer -->
                 </div>
+
             </div>
+
+
             <!-- Logout Modal-->
             <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -498,7 +511,7 @@
             <div class="container demo">
 
 
-            <!-- Modal Cnc -->
+                <!-- Modal Cnc -->
                 <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -512,19 +525,19 @@
                             <div class="modal-body ">
                                 <div class="col-md-12">
 
-                                <nav class="nav flex-column grey lighten-4 py-4 font-weight-bold">
-                                <!--    <a class="nav-link  text-secondary" href="#"><img src="img/iconcnc.svg" alt="" style="height:24px"> &nbsp;CNC-1 </a>-->
-                                <table class="table-cnc" id="ListCnc">
-                                <!--   <tbody>
+                                    <nav class="nav flex-column grey lighten-4 py-4 font-weight-bold">
+                                        <!--    <a class="nav-link  text-secondary" href="#"><img src="img/iconcnc.svg" alt="" style="height:24px"> &nbsp;CNC-1 </a>-->
+                                        <table class="table-cnc" id="ListCnc">
+                                            <!--   <tbody>
                                      <tr>
 
                                      </tr>
                                  </tbody>-->
-                                </table>
+                                        </table>
 
-                                </nav>
+                                    </nav>
 
-                            </div>
+                                </div>
                             </div>
 
                         </div><!-- modal-content -->
@@ -534,150 +547,141 @@
 
             </div><!-- container -->
 
+            <script type="text/javascript">
+                //TRAER CNC
+                $(document).ready(function() {
+
+                    // Obtengo la data de los CNC
+                    var dataCNC = "";
+                    dataCNC = JSON.parse(localStorage.getItem('miCncs'));
+
+                    console.info(dataCNC);
+
+                    var countCncs = "";
+                    countCncs = parseInt(localStorage.getItem('countCnc'));
+
+                    if (countCncs && countCncs > 0) {
+                        // Agrego las opciones al listado
+                        for (let i = 0; i < countCncs; i++) {
+                            let elemento = '';
+                            elemento = ' <tr> <td id="' + dataCNC[i].id + '" name="' + dataCNC[i].nombre + '"> ' + dataCNC[i].nombre + ' </td> </tr>';
+                            $('#ListCnc').append(elemento);
+                        }
+                        // id="ListCnc"
+
+                    } else {
+                        let elemento = '';
+                        elemento = ' <tr> <td id="0" name="-"> No posee un CNC </td> </tr>';
+                        $('#ListCnc').append(elemento);
+                    }
+
+
+                });
+            </script>
+
+
+
+
+
+            <script>
+                $.get("widgets/visor-3d/widget.html", function(htmlexterno1) {
+                    $("#3d").html(htmlexterno1);
+                });
+
+
+                $.get("widgets/visor-gcode/widget.html", function(htmlexterno) {
+                    $("#gcode").html(htmlexterno);
+                });
+
+                $.get("widgets/visor-ejes/widget.html", function(htmlexterno2) {
+                    $("#ejes").html(htmlexterno2);
+                });
+
+                $.get("widgets/texto-a-gcode3/widget.html", function(htmlexterno6) {
+                    $("#texto").html(htmlexterno6);
+                });
+
+                $.get("widgets/visor-consola/widget.html", function(htmlexterno3) {
+                    $("#consola").html(htmlexterno3);
+                });
+
+                $.get("widgets/visor-grbl2/widget.html", function(htmlexterno4) {
+                    $("#grbl").html(htmlexterno4);
+                });
+
+                $.get("widgets/visor-camara/widget.html", function(htmlexterno5) {
+                    $("#camara").html(htmlexterno5);
+                });
+
+                //juan es un salame
+                //$('body').prepend('<div id="test-drag-drop"></div>');
+                $.get("widgets/drag-and-drop/widget.html", function(htmlexterno5) {
+                    $("#listadodegcode").html(htmlexterno5);
+                });
+            </script>
+
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+
+
     <script type="text/javascript">
-    //TRAER CNC
-    $(document).ready(function(){
+        // List with handle
+        Sortable.create(listWithHandle, {
+            handle: '.material-icons',
+            animation: 150
+        });
+        Sortable.create(listWithHandle2, {
+            handle: '.material-icons',
+            animation: 150
+        });
+    </script>
+    <script>
+        //CONTRAER
+        var coll = document.getElementsByClassName("contraer");
+        var i;
 
-      // Obtengo la data de los CNC
-      var dataCNC = "";
-      dataCNC = JSON.parse( localStorage.getItem('miCncs') ) ;
-
-      console.info(dataCNC);
-
-      var countCncs = "";
-      countCncs = parseInt(  localStorage.getItem('countCnc') );
-
-      if( countCncs && countCncs > 0 ){
-        // Agrego las opciones al listado
-        for(let i=0; i < countCncs; i++){
-          let elemento = '';
-          elemento = ' <tr> <td id="' + dataCNC[i].id + '" name="' + dataCNC[i].nombre + '"> ' + dataCNC[i].nombre + ' </td> </tr>';
-          $('#ListCnc').append(elemento);
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
         }
-        // id="ListCnc"
-
-      }else{
-        let elemento = '';
-        elemento = ' <tr> <td id="0" name="-"> No posee un CNC </td> </tr>';
-        $('#ListCnc').append(elemento);
-      }
-
-
-    });
-
     </script>
 
+    <script type="text/javascript">
+        //ELIMINAR BOTONES
+        function hideToggle(button, elem) {
+            $(button).click(function() {
+                $(elem).toggle();
+            })
+        }
 
-
-
-
-                    <script>
-                        $.get("widgets/visor-3d/widget.html", function(htmlexterno1) {
-                            $("#3d").html(htmlexterno1);
-                        });
-
-
-                        $.get("widgets/visor-gcode/widget.html", function(htmlexterno) {
-                            $("#gcode").html(htmlexterno);
-                        });
-
-                        $.get("widgets/visor-ejes/widget.html", function(htmlexterno2) {
-                            $("#ejes").html(htmlexterno2);
-                        });
-
-                        $.get("widgets/texto-a-gcode3/widget.html", function(htmlexterno6){
-                            $("#texto").html(htmlexterno6);
-                          });
-
-                        $.get("widgets/visor-consola/widget.html", function(htmlexterno3){
-                            $("#consola").html(htmlexterno3);
-                          });
-
-                        $.get("widgets/visor-grbl2/widget.html", function(htmlexterno4){
-                            $("#grbl").html(htmlexterno4);
-                          });
-
-                          $.get("widgets/visor-camara/widget.html", function(htmlexterno5){
-                          $("#camara").html(htmlexterno5);
-                        });
-
-                        //juan es un salame
-                        //$('body').prepend('<div id="test-drag-drop"></div>');
-                        $.get("widgets/drag-and-drop/widget.html", function(htmlexterno5) {
-                            $("#listadodegcode").html(htmlexterno5);
-                        });
-                    </script>
-
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; UNtornoLaM 2020</span>
-                            </div>
-                        </div>
-                    </footer>
-                    <!-- End of Footer -->
-
-                </div>
-                <!-- End of Content Wrapper -->
-
-            </div>
-            <!-- End of Page Wrapper -->
-
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
-
-
-
-
-            <script type="text/javascript">
-                // List with handle
-                Sortable.create(listWithHandle, {
-                    handle: '.material-icons',
-                    animation: 150
-                });
-                Sortable.create(listWithHandle2, {
-                    handle: '.material-icons',
-                    animation: 150
-                });
-            </script>
-            <script>
-            //CONTRAER
-                var coll = document.getElementsByClassName("contraer");
-                var i;
-
-                for (i = 0; i < coll.length; i++) {
-                    coll[i].addEventListener("click", function() {
-                        this.classList.toggle("active");
-                        var content = this.nextElementSibling;
-                        if (content.style.maxHeight) {
-                            content.style.maxHeight = null;
-                        } else {
-                            content.style.maxHeight = content.scrollHeight + "px";
-                        }
-                    });
-                }
-            </script>
-
-            <script type="text/javascript">
-            //ELIMINAR BOTONES
-                function hideToggle(button, elem) {
-                    $(button).click(function() {
-                        $(elem).toggle();
-                    })
-                }
-
-                hideToggle(".bt1", ".1");
-                hideToggle(".bt2", ".2");
-                hideToggle(".bt3", ".3");
-                hideToggle(".bt4", ".4");
-                hideToggle(".bt5", ".5");
-                hideToggle(".bt6", ".6");
-            </script>
-            <script>
-            //PREOLOAD PARA LA CARGA DE LA PAGINA CNC
-            window.onload=function () {
+        hideToggle(".bt1", ".1");
+        hideToggle(".bt2", ".2");
+        hideToggle(".bt3", ".3");
+        hideToggle(".bt4", ".4");
+        hideToggle(".bt5", ".5");
+        hideToggle(".bt6", ".6");
+    </script>
+    <script>
+        //PREOLOAD PARA LA CARGA DE LA PAGINA CNC
+        window.onload = function() {
             // sleep(100);
             wait(500);
             var eliminar = document.getElementById("ocultar1");
@@ -686,13 +690,16 @@
             var add = document.getElementById("preloadpage");
             add.classList.add("ocultar");
 
-            };
+        };
 
-            function wait(ms){
+        function wait(ms) {
             var start = new Date().getTime();
             var end = start;
-            while(end < start + ms) { end=new Date().getTime(); } }
-            </script>
+            while (end < start + ms) {
+                end = new Date().getTime();
+            }
+        }
+    </script>
 
 
 
