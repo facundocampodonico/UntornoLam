@@ -460,13 +460,16 @@ $( document ).ready(function() {
     // Elimino el primerSeleccionado
     localStorage.removeItem('seleccionadoDisenio');
 
+
+
     // Seteo el primero
-    localStorage.setItem('seleccionadoDisenio', RUTA_ACCESO + 'static/' + idFolder + '/' + datosDisenios[0][3] );
-    //localStorage.setItem('seleccionadoDisenio', RUTA_ACCESO + 'private/usuarios/' + idFolder + '/' + datosDisenios[0][3] );
+    localStorage.setItem('seleccionadoDisenio', RUTA_ACCESO + 'static/usuarios/' + idFolder + '/' + datosDisenios[0][3] );
+    //localStorage.setItem('seleccionadoDisenio', RUTA_ACCESO + 'static/' + idFolder + '/' + datosDisenios[0][3] );
 
     // Armo las rutas
     for(let i=0; i < cantDisenios; i++){
-      let urlPath = RUTA_ACCESO + 'static/' + idFolder + '/' + datosDisenios[i][3];
+      let urlPath = RUTA_ACCESO + 'static/usuarios/' + idFolder + '/' + datosDisenios[i][3];
+      //let urlPath = RUTA_ACCESO + 'static/' + idFolder + '/' + datosDisenios[i][3];
     //  let urlPath = RUTA_ACCESO + 'private/usuarios/' + idFolder + '/' + datosDisenios[i][3];
       datosDisenios[i][3] = urlPath;
     }
@@ -836,7 +839,8 @@ $( document ).ready(function() {
 
                 // Armo las rutas
                 for(let i=0; i < cantDisenios; i++){
-                  let urlPath = RUTA_ACCESO + 'static/' + idFolder + '/' + datosDataTable[i][3];
+                  //  let urlPath = RUTA_ACCESO + 'static/' + idFolder + '/' + datosDataTable[i][3];
+                  let urlPath = RUTA_ACCESO + 'static/usuarios/' + idFolder + '/' + datosDataTable[i][3];
                   datosDataTable[i][3] = urlPath;
                 }
 
@@ -905,7 +909,7 @@ $( document ).ready(function() {
 
               // Armo las rutas
               for(let i=0; i < cantDisenios; i++){
-                let urlPath = RUTA_ACCESO + 'static/' + idFolder + '/' + datosDataTable[i][3];
+                let urlPath = RUTA_ACCESO + 'static/usuarios/' + idFolder + '/' + datosDataTable[i][3];
                 datosDataTable[i][3] = urlPath;
               }
 
