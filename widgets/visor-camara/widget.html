@@ -95,7 +95,7 @@
                         data-title="Stop Streaming" data-content="Stop streaming the video feed from your server.">
                         <span class="fa fa-times-circle"></span>
                     </button>
-                    <button type="button" class="btn btn-sm btn-info btn-startstreaming" data-delay="1000"
+                    <button type="button" class="btn btn-sm btn-info btn-startstreaming" id="startcam" data-delay="1000"
                         data-animation="true" data-placement="auto" data-container="body" data-trigger="hover"
                         data-title="Start Streaming" data-content="Start streaming the video feed from your server.">
                         <span class="fa fa-check-circle"></span>
@@ -213,7 +213,15 @@
     $("#camara_live").html(htmlextern);
     });
 </script>-->
+<script>
+$("#startcam").click(function(){
+    var texto = $('#textoEnviar').val();
+    socket.emit('control message', "prender camara" );
+    $('#startcam').val('');
+    return true;
+});
 
+</script>
 </body>
 
 </html>
