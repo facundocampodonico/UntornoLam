@@ -90,7 +90,7 @@
                 </div> -->
 
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-info btn-stopstreaming" data-delay="1000"
+                    <button type="button" class="btn btn-sm btn-info btn-stopstreaming" id="stopcam" data-delay="1000"
                         data-animation="true" data-placement="auto" data-container="body" data-trigger="hover"
                         data-title="Stop Streaming" data-content="Stop streaming the video feed from your server.">
                         <span class="fa fa-times-circle"></span>
@@ -221,6 +221,13 @@
         $("#startcam").click(function() {
 
             socket.emit('control message', "prender_camara");
+
+            return true;
+        });
+
+        $("#stopcam").click(function() {
+
+            socket.emit('control message', "apagar_camara");
 
             return true;
         });
