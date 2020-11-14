@@ -220,7 +220,7 @@
         });
         $("#startcam").click(function() {
             var texto = $('#textoEnviar').val();
-            socket.emit('control message', "prender camara");
+            socket.emit('control message', "prender_camara");
             $('#startcam').val('');
             return true;
         });
