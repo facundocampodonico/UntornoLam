@@ -129,7 +129,7 @@ $(document).ready(function() {
 
         $("#enviar").click(function(){
             var texto = $('#textoEnviar').val();
-            socket.emit('GCODE Box', texto );
+            socket.emit('GCODE Box Send', texto );
             $('#enviar').val('');
             return true;
         });
