@@ -33,7 +33,7 @@
         var socket = io.connect('http://66.97.46.179:3003/', {rejectUnauthorized: false});
         //var socket = io.connect('http://127.0.0.1:3003/', {rejectUnauthorized: false});
 
-        socket.emit('control', 'TORNO');
+        socket.emit('control', 'USER');
 
         //Listen for message from the server
         socket.on('control client', function(msg){
