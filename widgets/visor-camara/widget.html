@@ -232,18 +232,19 @@
             return true;
         });
 
-        socket.on('control message', function(msg){
-            // msg=camara_prendida;
-            if(msg =='camara_prendida'){
-            //    window.location.reload();
-                //$("#com-chilipeppr-widget-cam").load(location.href + " #ccom-chilipeppr-widget-cam>*", "");
-                 $('#com-chilipeppr-widget-cam').load(location.href + "#com-chilipeppr-widget-cam");
-            }
-            if(msg =='camara_apagada'){
-                window.location.reload();
-            }
-
-        });
+        // socket.on('control message', function(msg){
+        //     // msg=camara_prendida;
+        //     if(msg =='camara_prendida'){
+        //     window.location.reload();
+        //         //$("#com-chilipeppr-widget-cam").load(location.href + " #ccom-chilipeppr-widget-cam>*", "");
+        //         // $('#com-chilipeppr-widget-cam').load(location.href + "#com-chilipeppr-widget-cam");
+        //         // $("#com-chilipeppr-widget-cam").load("widgets.html");
+        //     }
+        //     if(msg =='camara_apagada'){
+        //         window.location.reload();
+        //     }
+        //
+        // });
 
 
     });

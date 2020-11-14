@@ -701,7 +701,25 @@
             }
         }
     </script>
+    <script>
+        $(document).ready(function() {
+            var socket = io.connect('http://66.97.46.179:3003/', {
+                rejectUnauthorized: false
+            });
 
+            socket.on('control message', function(msg){
+                if(msg =='camara_prendida'){
+                //window.location.reload();
+                $("#camara").load("widgets/visor-camara/widget.html");
+                }
+                if(msg =='camara_apagada'){
+                //    window.location.reload();
+                $("#camara").load("widgets/visor-camara/widget.html");
+                }
+
+            });
+        });
+    </script>
 
 
 
