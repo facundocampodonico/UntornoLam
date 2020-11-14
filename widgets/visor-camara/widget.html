@@ -214,13 +214,17 @@
     });
 </script>-->
 <script>
-$("#startcam").click(function(){
-    var texto = $('#textoEnviar').val();
-    socket.emit('control message', "prender camara" );
-    $('#startcam').val('');
-    return true;
-});
-
+    $(document).ready(function() {
+        var socket = io.connect('http://66.97.46.179:3003/', {
+            rejectUnauthorized: false
+        });
+        $("#startcam").click(function() {
+            var texto = $('#textoEnviar').val();
+            socket.emit('control message', "prender camara");
+            $('#startcam').val('');
+            return true;
+        });
+    });
 </script>
 </body>
 
