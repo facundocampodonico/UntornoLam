@@ -1249,7 +1249,7 @@ mega*/
             $('#com-chilipeppr-widget-gcode-feedrate-up').click(this.feedrateUp.bind(this));
             $('#com-chilipeppr-widget-gcode-feedrate-down').click(this.feedrateDown.bind(this));
             $('#com-chilipeppr-widget-gcode-feedrate-reset').click(this.feedrateReset.bind(this));
-            //facu $('#com-chilipeppr-widget-gcode-feedrate-adjust').click(this.feedrateAdjust.bind(this));
+            $('#com-chilipeppr-widget-gcode-feedrate-adjust').click(this.feedrateAdjust.bind(this));
 
             // attach to any keypress
             $('#com-chilipeppr-widget-gcode-feedrate-val').keyup(this.feedrateAdjust.bind(this));
@@ -1262,7 +1262,7 @@ mega*/
           $('#com-chilipeppr-widget-gcode-feedrate-up').attr('disabled', true);
           $('#com-chilipeppr-widget-gcode-feedrate-down').attr('disabled', true);
           $('#com-chilipeppr-widget-gcode-feedrate-reset').attr('disabled', true);
-         //facu  $('#com-chilipeppr-widget-gcode-feedrate-adjust').attr('disabled', true);
+         $('#com-chilipeppr-widget-gcode-feedrate-adjust').attr('disabled', true);
           $('#com-chilipeppr-widget-gcode-feedrate-val').attr('disabled', true);
 
         },
@@ -1271,7 +1271,7 @@ mega*/
           $('#com-chilipeppr-widget-gcode-feedrate-up').attr('disabled', false);
           $('#com-chilipeppr-widget-gcode-feedrate-down').attr('disabled', false);
           $('#com-chilipeppr-widget-gcode-feedrate-reset').attr('disabled', false);
-    //facu      $('#com-chilipeppr-widget-gcode-feedrate-adjust').attr('disabled', false);
+         $('#com-chilipeppr-widget-gcode-feedrate-adjust').attr('disabled', false);
           $('#com-chilipeppr-widget-gcode-feedrate-val').attr('disabled', false);
 
         },
@@ -3207,7 +3207,7 @@ mega*/
                     if (isJustGettingRaw == true) {
                         origline = origline.replace(item, "F" + fval.toFixed(2) + "");
                     } else {
-                        // facu origline = origline.replace(item, "<span class=\"feedrate-adjust\">F" + fval.toFixed(2) + "</span>");
+                        origline = origline.replace(item, "<span class=\"feedrate-adjust\">F" + fval.toFixed(2) + "</span>");
 
 
                     }

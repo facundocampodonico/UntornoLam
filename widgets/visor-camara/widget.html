@@ -120,7 +120,7 @@
             <!-- </div> <span class="card-header" data-toggle="popover">Cam</span> <span style="font-size:9px;" class="fb-build">v1</span> -->
 
         </div>
-        <div class="card-block" style="padding: 0px;">
+        <div class="card-block" id="cam" style="padding: 0px;">
               <div id="camara_live">
                   <img src= "http://200.3.186.219:8080/?action=stream" width="100%" onerror="this.src='img/camera-off-icon.png';" />
               </div>
@@ -231,6 +231,21 @@
 
             return true;
         });
+
+        socket.on('control message', function(msg){
+            // msg=camara_prendida;
+            if(msg =='camara_prendida'){
+            //    window.location.reload();
+                //$("#com-chilipeppr-widget-cam").load(location.href + " #ccom-chilipeppr-widget-cam>*", "");
+                 $('#com-chilipeppr-widget-cam').load(location.href + "#com-chilipeppr-widget-cam");
+            }
+            if(msg =='camara_apagada'){
+                window.location.reload();
+            }
+
+        });
+
+
     });
 </script>
 </body>
