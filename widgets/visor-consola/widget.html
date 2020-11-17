@@ -48,7 +48,7 @@
                 <!-- </ul>
             </div> -->
             <div class="btn-group float-xs-right" style="margin-right:6px;">
-                <button type="button" class="btn btn-sm btn-info spconsole-clear" data-container="body" data-toggle="popover" data-placement="auto" data-content="Clear the console window." data-trigger="hover" data-delay="500">Clear</button>
+                <button type="button" class="btn btn-sm btn-info spconsole-clear" data-container="body" data-toggle="popover" data-placement="auto" data-content="Clear the console window." data-trigger="hover" data-delay="500">Borrar</button>
                 <!-- <button type="button" class="btn btn-sm btn-secondary spconsole-pause " data-container="body" data-toggle="popover" data-placement="auto" data-content="Disable the serial port console from updating. This can help reduce load on your browser." data-trigger="hover"
                 data-delay="500"><span class="fa fa-ban-circle"></span></button> -->
                 <button type="button" class="hidden btn btn-sm btn-secondary spconsole-filter active" data-container="body" data-toggle="popover" data-placement="auto" data-content="Toggle the filter. A filter can be applied to remove lower priority information from getting logged. The filter is set by the workspace you are in."
@@ -58,12 +58,14 @@
             </div>
 
             <div class="hidden com-chilipeppr-widget-spconsole-regexp-region" style="padding-top:10px;">
-                <div style="font-size:11px;">You need to enter a regular expression. Note that special characters must be escaped like $[].*?, etc. Your
-                regular expression should start/end with slashes.</div>
+                <div style="font-size:11px;">Debe ingresar una expresión regular. Tenga en cuenta que los caracteres especiales deben ser por ej. $ []. *?, etc. Su expresión regular debe comenzar y terminar con barras.</div>
+                <!-- <div style="font-size:11px;">You need to enter a regular expression. Note that special characters must be escaped like $[].*?, etc. Your
+            regular expression should start/end with slashes.</div> -->
+
             <div class="input-group" >
               <input type="text" class="form-control com-chilipeppr-widget-spconsole-regexp-input" placeholder="Enter regular expression, i.e. /^G|^\$/">
               <span class="input-group-btn">
-                <button class="btn btn-secondary com-chilipeppr-widget-spconsole-regexp-setbtn" type="button">Set as Filter</button>
+                <button class="btn btn-secondary com-chilipeppr-widget-spconsole-regexp-setbtn" type="button">Establecer como filtro</button>
               </span>
             </div><!-- /input-group -->
             </div>
@@ -85,7 +87,7 @@
 
                         </span>
                         <input type="text" class="user-txt-input form-control" id="textoEnviar" placeholder="Type serial port command" /><span class="input-group-btn">
-                    <button class="btn btn-secondary" type="submit" id="enviar">Go!</button>
+                    <button class="btn btn-secondary" type="submit" id="enviar">Enviar!</button>
                         </span>
 
                         <!-- /input-group -->
