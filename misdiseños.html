@@ -445,7 +445,6 @@ $( document ).ready(function() {
   // Obtengo la informacion inicial de los diseños
   var dataInicial = localStorage.getItem('misDisenios');
 
-  console.log('aa');
   console.info(dataInicial);
   console.info(localStorage.getItem('misDisenios'));
   // Parseo la informacion
@@ -459,8 +458,6 @@ $( document ).ready(function() {
   }else{
     // Elimino el primerSeleccionado
     localStorage.removeItem('seleccionadoDisenio');
-
-
 
     // Seteo el primero
     localStorage.setItem('seleccionadoDisenio', RUTA_ACCESO + 'static/usuarios/' + idFolder + '/' + datosDisenios[0][3] );
@@ -833,6 +830,8 @@ $( document ).ready(function() {
                 //JSON.parse(dataInicial)
                 // Parseo la informacion
                 var datosDataTable = datos2.data;
+
+                localStorage.setItem('misPedidos', JSON.stringify(datos2.data) );
 
                 // Obtengo la cantidad
                 var cantDisenios = datosDataTable.length;
