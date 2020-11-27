@@ -246,6 +246,7 @@
           </div>
           <br>
 
+
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -253,33 +254,8 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Fecha Pedido</th>
-                      <th>Fecha Realizado</th>
-                      <th>Estado</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Fecha Pedido</th>
-                      <th>Fecha Realizado</th>
-                      <th>Estado</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                    <!--<tr>
-                      <td>este estaba</td>
-                      <td>este estaba</td>
-                      <td>este estaba</td>
-                      <td>este estaba</td>
-                      <td>este estaba</td>
-                      <td>este estaba</td>
-                    </tr>-->
-        			</tbody>
+                <table class="table table-bordered dataTable" id="misPedidos" width="100%" cellspacing="0">
+
                 </table>
               </div>
             </div>
@@ -290,6 +266,76 @@
             </div>
           </div>
       </div>
+
+      <div class="container-fluid">
+      		<form id="formulario"  enctype="multipart/form-data">
+      			<div class="card shadow mb-4">
+      				<div class="card-header py-3">
+      				  <h6 class="m-0 font-weight-bold text-primary">Agregar Pedido</h6>
+      				</div>
+      				<div class="card-body">
+                <div class="form-group">
+                  <select class="form-control input-font" id="selectDisenio">
+                        <option value="" disabled="" selected="">Seleccione un diseño</option>
+                  </select>
+      					</div>
+
+                <div class="form-group">
+                  <label>Agregue una descripcion o aclaraciones que crea necesarias: </label>
+                  <textarea class="form-control" rows="5" id="descripcion"></textarea>
+                </div>
+
+      					<div class="form-group" align="right">
+      						<button class="btn btn-primary dropdown-" type="button" id="agregarPedido" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+      							AGREGAR
+      						</button>
+      					</div>
+      				</div>
+      			</div>
+      		</form>
+
+      </div>
+
+      <div class="container-fluid">
+      		<form id="formulario2"  enctype="multipart/form-data">
+      			<div class="card shadow mb-4">
+      				<div class="card-header py-3">
+      				  <h6 class="m-0 font-weight-bold text-primary">Gestion de Pedido</h6>
+      				</div>
+      				<div class="card-body">
+                <div class="form-group">
+      					  <p> Su pedido debe estar en estado 1 - Pendiente, de otra forma no puede anularlo, contacte con @@@@@@@@@@@@@@@ para mas informacion </p>
+      					</div>
+                <div class="form-group">
+                  <p> Su pedido debe estar en estado 3 - Cotizado , de otra forma no puede aceptarlo </p>
+                </div>
+                <div class="form-group">
+                  <p> Su pedido debe estar en estado 5 - ?????? , de otra forma no puede finalizarlo </p>
+                </div>
+                <div class="form-group">
+      						<input class="form-control" id="pedidoId" type="text" placeholder="ID">
+      					</div>
+
+      					<div class="form-group" align="right">
+      						<button class="btn btn-primary dropdown-" type="button" id="anularPedido" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+      							ANULAR
+      						</button>
+                  <button class="btn btn-primary dropdown-" type="button" id="aceptarPedido" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+      							ACEPTAR
+      						</button>
+                  <button class="btn btn-primary dropdown-" type="button" id="finalizarPedido" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                    FINALIZAR
+                  </button>
+      					</div>
+      				</div>
+      			</div>
+      		</form>
+
+      </div>
+
+
+
+
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -342,8 +388,10 @@
                                             <div class="form-card">
                                                 <h2 class="fs-title">Payment Information</h2>
                                                 <div class="radio-group">
+                                                  <!--
                                                     <div class='radio' data-value="credit"><img src="https://i.imgur.com/XzOzVHZ.jpg" width="200px" height="100px"></div>
                                                     <div class='radio' data-value="paypal"><img src="https://i.imgur.com/jXjwZlj.jpg" width="200px" height="100px"></div> <br>
+                                                  -->
                                                 </div> <label class="pay">Card Holder Name*</label> <input type="text" name="holdername" placeholder="" />
                                                 <div class="row">
                                                     <div class="col-9"> <label class="pay">Card Number*</label> <input type="text" name="cardno" placeholder="" /> </div>
@@ -444,16 +492,406 @@
 <script src="js/sb-admin-2.min.js"></script>
 
 
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
 
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 
 <script>
 $(document).ready( function () {
 
-    console.log('Comienza a cargar la pagina UNtornoLaM ...');
+    // Configuracion
+    const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+    //const RUTA_ACCESO = 'http://127.0.0.1:8080/';
+    const RUTA_AUTHENTICATE = 'api/authentication';
+    const RUTA_API_CREAR_PEDIDO = 'api/crearPedido';
+    const RUTA_API_ANULAR_PEDIDO = 'api/anularPedido';
+    const RUTA_API_ACEPTAR_PEDIDO = 'api/aceptarPedido';
+    const RUTA_API_FINALIZAR_PEDIDO = 'api/finalizarPedido';
 
+    // Handle para saber si puede acceder a esta pantalla
+    var token     = window.sessionStorage.getItem('tokenUntornolam');
+
+    if(!token){
+      alert('No habia token - este mensaje seguro desaparece en un futuro');
+      // Redirecciono
+      window.location.href = './login.html';
+    }
+
+    $.ajax({
+      type: 'GET',
+      enctype: 'multipart/form-data',
+      url: RUTA_ACCESO + RUTA_AUTHENTICATE,
+      headers: {
+          "Authorization": `Bearer ${token}`
+      },
+      data: JSON.stringify( {} ),
+      processData: false,
+      contentType: "application/json; charset=utf-8",
+      cache: false,
+      crossDomain: true,
+
+      success: function( data, textStatus, jQxhr ){
+
+          if(data.status != 'OK'){
+            alert('Debe ingresar - este mensaje seguro desaparece en un futuro');
+            // Redirecciono
+            window.location.href = './login.html';
+          }
+
+      },
+      error: function( jqXhr, textStatus, errorThrown ){
+        console.log( errorThrown );
+      }
+    });
+
+    // Obtengo la informacion inicial de los diseños
+    var dataInicial = localStorage.getItem('misPedidos');
+
+    // Parseo la informacion
+    var datosPedidos = JSON.parse(dataInicial);
+
+    // Obtengo la cantidad
+    var cantPedidos = datosPedidos.length;
+
+    if( cantPedidos < 1 ){
+      dataInicial = "[]";
+    }
+
+    var events = $('#events');
+
+    var table = $('#misPedidos').DataTable({
+        destroy: true,
+        select: true,
+        data: JSON.parse(dataInicial),
+        columns:  [
+          { title: "id" },
+          { title: "usuarios_id_solicita" },
+          { title: "disenios_id" },
+          { title: "usuarios_id_vaRealizar" },
+          { title: "descripcion" },
+          { title: "fechaInicio" },
+          { title: "fechaFin" },
+          { title: "estado" },
+          { title: "cotizacion" },
+          { title: "cnc_id" },
+          { title: "comentarios" }
+        ]
+      });
+
+      // Cargo el select de los diseños
+      // Obtengo la informacion inicial de los diseños
+      var datosD = localStorage.getItem('misDisenios');
+
+      // Parseo la informacion
+      var datosDisenios = JSON.parse(datosD);
+     $("#selectDisenio").empty();
+     $("#selectDisenio").append($('<option value="0" >').text("Seleccione un Diseño"));
+     $.each(datosDisenios, function(i, obj){
+        $("#selectDisenio").append($('<option>').text(obj[2]).attr('value', obj[0]));
+     });
+
+
+     $("#agregarPedido").click(function(){
+
+           // stop submit the form, we will post it manually.
+           event.preventDefault();
+
+           var disenio = $("#selectDisenio").val();
+           var descripcion = $("#descripcion").val();
+
+           if(disenio == 0 || descripcion.length <= 0){
+             alert('Seleccione un diseño creado y agregue una descripcion');
+           }
+
+           // Armo el ajax, para enviar los datos correspondientes
+           $.ajax({
+               type: 'POST',
+               enctype: 'multipart/form-data',
+               url: RUTA_ACCESO + RUTA_API_CREAR_PEDIDO,
+               data: JSON.stringify( {
+                 'disenio': disenio,
+                 'descripcion': descripcion
+               } ),
+               processData: false,
+               contentType: "application/json; charset=utf-8",
+               cache: false,
+               headers: {
+                   'Access-Control-Allow-Origin': "*",
+                   "Authorization": `Bearer ${window.sessionStorage.getItem('tokenUntornolam')}`
+                 },
+               crossDomain: true,
+
+               success: function( datos2, textStatus, jQxhr ){
+
+                   // En caso de exito
+     				      if( datos2.status === 'OK'){
+                      $('#descripcion').val('');
+
+                      // Obtengo la cantidad
+                      var cantPedidos = datos2.pedidos.length;
+
+                      if( cantPedidos < 1 ){
+                        pedidosActualizado = JSON.parse("[]");
+                      }else{
+                        pedidosActualizado = JSON.parse( JSON.stringify(datos2.pedidos) );
+                      }
+
+                      localStorage.setItem('misPedidos', JSON.stringify(datos2.pedidos) );
+
+                      $('#misPedidos').DataTable({
+                          destroy: true,
+                          select: true,
+                          data: pedidosActualizado,
+                          columns:  [
+                            { title: "id" },
+                            { title: "usuarios_id_solicita" },
+                            { title: "disenios_id" },
+                            { title: "usuarios_id_vaRealizar" },
+                            { title: "descripcion" },
+                            { title: "fechaInicio" },
+                            { title: "fechaFin" },
+                            { title: "estado" },
+                            { title: "cotizacion" },
+                            { title: "cnc_id" },
+                            { title: "comentarios" }
+                          ]
+                        });
+                      alert('Registrado!');
+                   }else{
+                       // Dejo el formulario como esta
+                       alert('Error al registrar');
+                   }
+               },
+               error: function( jqXhr, textStatus, errorThrown ){
+                 console.log( errorThrown );
+               }
+           });
+     });
+
+
+
+      $("#anularPedido").click(function(){
+        // stop submit the form, we will post it manually.
+        event.preventDefault();
+
+        var pedidoId = $("#pedidoId").val();
+
+        // Armo el ajax, para enviar los datos correspondientes
+        $.ajax({
+            type: 'POST',
+            enctype: 'multipart/form-data',
+            url: RUTA_ACCESO + RUTA_API_ANULAR_PEDIDO,
+            data: JSON.stringify( {
+              'id': pedidoId
+            } ),
+            processData: false,
+            contentType: "application/json; charset=utf-8",
+            cache: false,
+            headers: {
+                'Access-Control-Allow-Origin': "*",
+                "Authorization": `Bearer ${window.sessionStorage.getItem('tokenUntornolam')}`
+              },
+            crossDomain: true,
+
+            success: function( datos3, textStatus, jQxhr ){
+
+                // En caso de exito
+               if( datos3.status === 'OK'){
+                   $('#pedidoId').val('');
+
+                   // Obtengo la cantidad
+                   var cantPedidos = datos3.pedidos.length;
+
+                   if( cantPedidos < 1 ){
+                     pedidosActualizado = JSON.parse("[]");
+                   }else{
+                     pedidosActualizado = JSON.parse( JSON.stringify(datos3.pedidos) );
+                   }
+
+                   localStorage.setItem('misPedidos', JSON.stringify(datos3.pedidos) );
+
+
+                   $('#misPedidos').DataTable({
+                       destroy: true,
+                       select: true,
+                       data: pedidosActualizado,
+                       columns:  [
+                         { title: "id" },
+                         { title: "usuarios_id_solicita" },
+                         { title: "disenios_id" },
+                         { title: "usuarios_id_vaRealizar" },
+                         { title: "descripcion" },
+                         { title: "fechaInicio" },
+                         { title: "fechaFin" },
+                         { title: "estado" },
+                         { title: "cotizacion" },
+                         { title: "cnc_id" },
+                         { title: "comentarios" }
+                       ]
+                     });
+                   alert('Anulado!');
+                }else{
+                    // Dejo el formulario como esta
+                    alert('Error al anular');
+                }
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+              console.log( errorThrown );
+            }
+        });
+
+
+      });
+
+      $("#aceptarPedido").click(function(){
+        // stop submit the form, we will post it manually.
+        event.preventDefault();
+
+        var pedidoId = $("#pedidoId").val();
+
+        // Armo el ajax, para enviar los datos correspondientes
+        $.ajax({
+            type: 'POST',
+            enctype: 'multipart/form-data',
+            url: RUTA_ACCESO + RUTA_API_ACEPTAR_PEDIDO,
+            data: JSON.stringify( {
+              'id': pedidoId
+            } ),
+            processData: false,
+            contentType: "application/json; charset=utf-8",
+            cache: false,
+            headers: {
+                'Access-Control-Allow-Origin': "*",
+                "Authorization": `Bearer ${window.sessionStorage.getItem('tokenUntornolam')}`
+              },
+            crossDomain: true,
+
+            success: function( datos4, textStatus, jQxhr ){
+
+                // En caso de exito
+               if( datos4.status === 'OK'){
+                   $('#pedidoId').val('');
+
+                   // Obtengo la cantidad
+                   var cantPedidos = datos4.pedidos.length;
+
+                   if( cantPedidos < 1 ){
+                     pedidosActualizado = JSON.parse("[]");
+                   }else{
+                     pedidosActualizado = JSON.parse( JSON.stringify(datos4.pedidos) );
+                   }
+
+                   localStorage.setItem('misPedidos', JSON.stringify(datos4.pedidos) );
+
+
+                   $('#misPedidos').DataTable({
+                       destroy: true,
+                       select: true,
+                       data: pedidosActualizado,
+                       columns:  [
+                         { title: "id" },
+                         { title: "usuarios_id_solicita" },
+                         { title: "disenios_id" },
+                         { title: "usuarios_id_vaRealizar" },
+                         { title: "descripcion" },
+                         { title: "fechaInicio" },
+                         { title: "fechaFin" },
+                         { title: "estado" },
+                         { title: "cotizacion" },
+                         { title: "cnc_id" },
+                         { title: "comentarios" }
+                       ]
+                     });
+                   alert('Aceptado!');
+                }else{
+                    // Dejo el formulario como esta
+                    alert('Error al aceptar');
+                }
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+              console.log( errorThrown );
+            }
+        });
+
+
+      });
+
+      $("#finalizarPedido").click(function(){
+        // stop submit the form, we will post it manually.
+        event.preventDefault();
+
+        var pedidoId = $("#pedidoId").val();
+
+        // Armo el ajax, para enviar los datos correspondientes
+        $.ajax({
+            type: 'POST',
+            enctype: 'multipart/form-data',
+            url: RUTA_ACCESO + RUTA_API_FINALIZAR_PEDIDO,
+            data: JSON.stringify( {
+              'id': pedidoId
+            } ),
+            processData: false,
+            contentType: "application/json; charset=utf-8",
+            cache: false,
+            headers: {
+                'Access-Control-Allow-Origin': "*",
+                "Authorization": `Bearer ${window.sessionStorage.getItem('tokenUntornolam')}`
+              },
+            crossDomain: true,
+
+            success: function( datos5, textStatus, jQxhr ){
+
+                // En caso de exito
+               if( datos5.status === 'OK'){
+                   $('#pedidoId').val('');
+
+                   // Obtengo la cantidad
+                   var cantPedidos = datos5.pedidos.length;
+
+                   if( cantPedidos < 1 ){
+                     pedidosActualizado = JSON.parse("[]");
+                   }else{
+                     pedidosActualizado = JSON.parse( JSON.stringify(datos5.pedidos) );
+                   }
+
+                   localStorage.setItem('misPedidos', JSON.stringify(datos5.pedidos) );
+
+
+                   $('#misPedidos').DataTable({
+                       destroy: true,
+                       select: true,
+                       data: pedidosActualizado,
+                       columns:  [
+                         { title: "id" },
+                         { title: "usuarios_id_solicita" },
+                         { title: "disenios_id" },
+                         { title: "usuarios_id_vaRealizar" },
+                         { title: "descripcion" },
+                         { title: "fechaInicio" },
+                         { title: "fechaFin" },
+                         { title: "estado" },
+                         { title: "cotizacion" },
+                         { title: "cnc_id" },
+                         { title: "comentarios" }
+                       ]
+                     });
+                   alert('Finalizado!');
+                }else{
+                    // Dejo el formulario como esta
+                    alert('Error al finalizar el pedido');
+                }
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+              console.log( errorThrown );
+            }
+        });
+
+
+      });
+
+
+
+    console.log('Comienza a cargar la pagina UNtornoLaM ...');
+/*
     $('#dataTable').DataTable({
         ajax: {
            url: 'https://www.untornolam.com.ar/api/getMyServices',
@@ -473,8 +911,15 @@ $(document).ready( function () {
             { "data": "salary" }
         ]
     });
+*/
+});
 
-});</script>
+
+
+</script>
+
+
+
 <script>
 $(document).ready(function(){
 
@@ -545,6 +990,10 @@ return false;
 
 });
 </script>
+
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 </body>
 
 </html>

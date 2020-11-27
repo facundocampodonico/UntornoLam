@@ -108,7 +108,6 @@
 
 <script type="text/javascript">
 	// Configuracion
-	// @TODO: aca falta las rutas del servidor
 	const RUTA_ACCESO = 'http://66.97.46.179:8080/';
 	//const RUTA_ACCESO = 'http://127.0.0.1:8080/';
 	const RUTA_API = 'api/login';
@@ -186,13 +185,14 @@ $(document).ready(function() {
 
               // Primero borro la informacion previa que haya
               localStorage.removeItem('miCncs');
-              localStorage.removeItem('miDisenios');
+              localStorage.removeItem('misDisenios');
+              localStorage.removeItem('misPedidos');
+              localStorage.removeItem('misServicios');
 
               // Informacion de los CNCs del usuario que ingresa
               localStorage.setItem('miCncs', JSON.stringify(data.cnc) );
 
               // Guardo el dato de la cantidad de CNC que tiene el usuario
-              // @TODO: esto puede que un futuro cambie
               var countCncs = 0;
               countCncs = countCncs + parseInt( data.cnc.length);
               localStorage.setItem('countCnc', countCncs);
@@ -201,10 +201,19 @@ $(document).ready(function() {
               localStorage.setItem('misDisenios', JSON.stringify(data.disenios) );
 
               // Guardo el dato de la cantidad de Disenios que tiene el usuario
-              // @TODO: esto puede que un futuro cambie
               var countDisenios = 0 +  data.disenios.length ;
 
               localStorage.setItem('countDisenios', countDisenios);
+
+              // Informacion de los Pedidos del usuario que ingresa
+              localStorage.setItem('misPedidos', JSON.stringify(data.pedidos) );
+
+              // Informacion de los Servicios del usuario que ingresa
+              localStorage.setItem('misServicios', JSON.stringify(data.servicios) );
+
+              var countServicios = 0;
+              countServicios = countServicios + parseInt( data.servicios.length );
+              localStorage.setItem('countServicios', countServicios);
 
               // Informacion de los reportes del usuario
               localStorage.setItem('reportes', JSON.stringify(data.reportes) );

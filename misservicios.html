@@ -196,7 +196,7 @@
               </div>
             </li>
 
-        
+
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -256,37 +256,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                    <!--<tr>
-                      <td>este estaba</td>
-                      <td>este estaba</td>
-                      <td>este estaba</td>
-                      <td>este estaba</td>
-                      <td>este estaba</td>
-                      <td>este estaba</td>
-                    </tr>-->
-        			</tbody>
+                <table class="table table-bordered dataTable" id="misServicios" width="100%" cellspacing="0">
                 </table>
               </div>
             </div>
@@ -393,27 +363,80 @@
 <script>
 $(document).ready( function () {
 
+  // Configuracion
+  const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+  //const RUTA_ACCESO = 'http://127.0.0.1:8080/';
+  const RUTA_AUTHENTICATE = 'api/authentication';
+
+  // Handle para saber si puede acceder a esta pantalla
+  var token     = window.sessionStorage.getItem('tokenUntornolam');
+
+  if(!token){
+    alert('No habia token - este mensaje seguro desaparece en un futuro');
+    // Redirecciono
+    window.location.href = './login.html';
+  }
+
+  $.ajax({
+    type: 'GET',
+    enctype: 'multipart/form-data',
+    url: RUTA_ACCESO + RUTA_AUTHENTICATE,
+    headers: {
+        "Authorization": `Bearer ${token}`
+    },
+    data: JSON.stringify( {} ),
+    processData: false,
+    contentType: "application/json; charset=utf-8",
+    cache: false,
+    crossDomain: true,
+
+    success: function( data, textStatus, jQxhr ){
+
+        if(data.status != 'OK'){
+          alert('Debe ingresar - este mensaje seguro desaparece en un futuro');
+          // Redirecciono
+          window.location.href = './login.html';
+        }
+
+    },
+    error: function( jqXhr, textStatus, errorThrown ){
+      console.log( errorThrown );
+    }
+  });
+
+  // Obtengo la informacion inicial de los diseños
+  var dataInicial = localStorage.getItem('misServicios');
+
+  // Parseo la informacion
+  var datosServicios = JSON.parse(dataInicial);
+
+  // Obtengo la cantidad
+  var cantServicios = datosServicios.length;
+
+  if( cantServicios < 1 ){
+    dataInicial = "[]";
+  }
+
+  var events = $('#events');
+
+  var table = $('#misServicios').DataTable({
+      destroy: true,
+      select: true,
+      data: JSON.parse(dataInicial),
+      columns:  [
+        { title: "id" },
+        { title: "para_usuarios_id " },
+        { title: "para_cnc_id " },
+        { title: "tipo" },
+        { title: "estado" },
+        { title: "descripcion" },
+        { title: "fechaSolicitud" },
+        { title: "fechaResolucion" }
+      ]
+    });
+
     console.log('Comienza a cargar la pagina UNtornoLaM ...');
 
-    $('#dataTable').DataTable({
-        ajax: {
-           url: 'https://www.untornolam.com.ar/api/getMyServices',
-           contentType: 'application/json',
-           method: "GET",
-           xhrFields: {
-               withCredentials: false
-           },
-           dataSrc: "services"
-        },
-        columns: [
-            { "data": "name" },
-            { "data": "position" },
-            { "data": "office" },
-            { "data": "age" },
-            { "data": "startDate" },
-            { "data": "salary" }
-        ]
-    });
 
 });</script>
 
