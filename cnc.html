@@ -298,7 +298,7 @@
                                                           <label id="estadoEquipo">
 
                                                           </label>
-                                                          
+
                                                         </div>
                                                     </div>
                                                     <div class="col">
@@ -716,6 +716,15 @@
                 $("#camara").load("widgets/visor-camara/widget.html");
                 }
 
+                if(msg =='Enc_SinCal'){
+                  $('#estadoEquipo').html("pepe");
+                  }
+                if(msg =='Calibrando'){
+                  $('#estadoEquipo').html("chota");
+                  }
+                if(msg =='Enc_Calibr'){
+                  $('#estadoEquipo').html("juanselacome");
+                  }
             });
 
 
