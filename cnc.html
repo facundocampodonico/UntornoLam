@@ -296,7 +296,9 @@
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-auto">
                                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                          <label id="estadoEquipo">
 
+                                                          </label>
                                                             <!-- LIBRE -->
                                                             <script>
                                                                 document.write(EstadoEquipo);
@@ -707,6 +709,8 @@
                 rejectUnauthorized: false
             });
 
+            socket.emit('GCODE STATUS TORNO', 'nada');
+
             socket.on('control message', function(msg){
                 if(msg =='camara_prendida'){
                 //window.location.reload();
@@ -717,6 +721,13 @@
                 $("#camara").load("widgets/visor-camara/widget.html");
                 }
 
+            });
+
+
+            socket.on('STATUS TORNO', function(msg){
+              console.log(' ####### *******  ####### ******* ');
+              console.log('entre en estado equipo: ' + msg);
+                $('#estadoEquipo').html(msg);
             });
         });
     </script>
