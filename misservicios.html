@@ -200,7 +200,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><script>document.write(  window.sessionStorage.getItem('apellido') + " " + window.sessionStorage.getItem('nombre') );</script></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -260,6 +260,36 @@
                 </table>
               </div>
             </div>
+          </div>
+</div>
+
+          <div class="container-fluid">
+              <form id="formulario"  enctype="multipart/form-data">
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-warning">Agregar Servicio</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group">
+                      <select class="form-control input-font" id="selectCNC">
+                            <option value="" disabled="" selected="">Seleccione un CNC </option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Agregue una descripcion o aclaraciones que crea necesarias: </label>
+                      <textarea class="form-control" rows="5" id="descripcion"></textarea>
+                    </div>
+
+                    <div class="form-group" align="right">
+                      <button class="btn btn-warning dropdown-" type="button" id="agregarServicio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                        AGREGAR
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
           </div>
 
 
@@ -328,15 +358,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">¿Esta seguro que desea salir?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">Seleccione "Salir" si quiere terminar la sesion.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" id="btnLogout">Salir</a>
         </div>
       </div>
     </div>
@@ -364,9 +394,10 @@
 $(document).ready( function () {
 
   // Configuracion
-  const RUTA_ACCESO = 'http://66.97.46.179:8080/';
-  //const RUTA_ACCESO = 'http://127.0.0.1:8080/';
+  //const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+  const RUTA_ACCESO = 'http://127.0.0.1:8080/';
   const RUTA_AUTHENTICATE = 'api/authentication';
+  const RUTA_API_CREAR_SERVICIO = 'api/crearServicio';
 
   // Handle para saber si puede acceder a esta pantalla
   var token     = window.sessionStorage.getItem('tokenUntornolam');
@@ -434,6 +465,95 @@ $(document).ready( function () {
         { title: "fechaResolucion" }
       ]
     });
+
+    // Cargo el select de los cnc
+    // Obtengo la informacion inicial de los CNCs
+    var datosC = localStorage.getItem('miCncs');
+
+    // Parseo la informacion
+    var datosCncs = JSON.parse(datosC);
+
+   $("#selectCNC").empty();
+   $("#selectCNC").append($('<option value="0" >').text("Seleccione un CNC"));
+   $.each(datosCncs, function(i, obj){
+      $("#selectCNC").append($('<option>').text(obj['nombre']).attr('value', obj['id']));
+   });
+
+
+   $("#agregarServicio").click(function(){
+
+         // stop submit the form, we will post it manually.
+         event.preventDefault();
+
+         var cnc = $("#selectCNC").val();
+         var descripcion = $("#descripcion").val();
+
+         if(cnc == 0 || descripcion.length <= 0){
+           alert('Seleccione un CNC y agregue una descripcion');
+           return;
+         }
+
+         // Armo el ajax, para enviar los datos correspondientes
+         $.ajax({
+             type: 'POST',
+             enctype: 'multipart/form-data',
+             url: RUTA_ACCESO + RUTA_API_CREAR_SERVICIO,
+             data: JSON.stringify( {
+               'cncId': cnc,
+               'descripcion': descripcion
+             } ),
+             processData: false,
+             contentType: "application/json; charset=utf-8",
+             cache: false,
+             headers: {
+                 'Access-Control-Allow-Origin': "*",
+                 "Authorization": `Bearer ${window.sessionStorage.getItem('tokenUntornolam')}`
+               },
+             crossDomain: true,
+
+             success: function( datos2, textStatus, jQxhr ){
+
+                 // En caso de exito
+                if( datos2.status === 'OK'){
+                    $('#descripcion').val('');
+
+                    // Obtengo la cantidad
+                    var cantServicios = datos2.servicios.length;
+
+                    if( cantServicios < 1 ){
+                      serviciosActualizado = JSON.parse("[]");
+                    }else{
+                      serviciosActualizado = JSON.parse( JSON.stringify(datos2.servicios) );
+                    }
+
+                    localStorage.setItem('misServicios', JSON.stringify(datos2.servicios) );
+
+                    $('#misServicios').DataTable({
+                        destroy: true,
+                        select: true,
+                        data: serviciosActualizado,
+                        columns:  [
+                          { title: "id" },
+                          { title: "para_usuarios_id " },
+                          { title: "para_cnc_id " },
+                          { title: "tipo" },
+                          { title: "estado" },
+                          { title: "descripcion" },
+                          { title: "fechaSolicitud" },
+                          { title: "fechaResolucion" }
+                        ]
+                      });
+                    alert('Registrado!');
+                 }else{
+                     // Dejo el formulario como esta
+                     alert('Error al registrar');
+                 }
+             },
+             error: function( jqXhr, textStatus, errorThrown ){
+               console.log( errorThrown );
+             }
+         });
+   });
 
     console.log('Comienza a cargar la pagina UNtornoLaM ...');
 
