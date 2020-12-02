@@ -756,6 +756,7 @@ mega*/
                 D: gcode,
                 Id: "jog" + this.sendCtr
             };
+            console.log("mega envio");
             chilipeppr.publish("/com-chilipeppr-widget-serialport/jsonSend", jsonSend);
             this.sendCtr++;
             if (this.sendCtr > 999999) this.sendCtr = 0;
@@ -1334,6 +1335,8 @@ mega*/
                 D: gcode,
                 Id: "jog" + this.sendCtr
             };
+            console.log("este si es mega envio");
+            socket.emit('GCODE Box', gcode );
             chilipeppr.publish("/com-chilipeppr-widget-serialport/jsonSend", jsonSend);
             this.sendCtr++;
             if (this.sendCtr > 999999) this.sendCtr = 0;

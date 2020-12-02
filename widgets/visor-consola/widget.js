@@ -735,7 +735,7 @@ mega*/
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/jsonSend", cmd);
                     }
                     else {
-                        // send traditionally
+                        // send traditionally MEGA REVISAR
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/send", msg.val() + newline);
                     }
 
