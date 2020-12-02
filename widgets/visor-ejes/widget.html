@@ -141,7 +141,7 @@
 
         </div>
         <div id="com-chilipeppr-widget-xyz-body" class="panel-body">
-            <div class="container-fluid">
+            <div class="container-fluid" style="overflow: auto;">
                 <!-- X -->
                 <div id="com-chilipeppr-widget-xyz-x" class="row" style="width: 160px;">
                     <!-- Label -->
@@ -406,26 +406,26 @@
 
 <div class="row d-flex justify-content-center">
 
-     <div class="table-responsive-sm">
+     <div class="table-responsive-sm" style="overflow: auto;">
 
       <table class="table table-borderless" style="padding-left:30px;padding-right:30px;">
         <tbody>
           <tr>
             <td></td>
-            <td><button type="button" class="btn btn-info btn-lg btn-block btn-xs" id="Ymas">Y+</button></td>
+            <td><button type="button" class="btn btn-info btn-lg btn-block btn-xs">Y+</button></td>
             <td></td>
-            <td><button type="button" class="btn btn-info btn-lg btn-block btn-xs" id="Zmas">Z+</button></td>
+            <td><button type="button" class="btn btn-info btn-lg btn-block btn-xs">Z+</button></td>
           </tr>
           <tr>
-            <td>    <button type="button" class="btn btn-info btn-lg btn-block btn-xs text-sm" id="Xmenos">X-</button></td>
+            <td>    <button type="button" class="btn btn-info btn-lg btn-block btn-xs text-sm">X-</button></td>
             <td><i class="fas fa-gamepad fa-2x" style="padding-left:10px; "></i></td>
-            <td> <button type="button" class="btn btn-info btn-lg btn-block btn-xs" id="Xmas">X+</button></td>
+            <td> <button type="button" class="btn btn-info btn-lg btn-block btn-xs">X+</button></td>
         </tr>
           <tr>
             <td></td>
-            <td><button type="button" class="btn btn-info btn-lg btn-block btn-xs" id="Ymenos">Y-</button></td>
+            <td><button type="button" class="btn btn-info btn-lg btn-block btn-xs">Y-</button></td>
                 <td></td>
-            <td><button type="button" class="btn btn-info btn-lg btn-block btn-xs" id="Zmenos">Z-</button></td>
+            <td><button type="button" class="btn btn-info btn-lg btn-block btn-xs">Z-</button></td>
           </tr>
         </tbody>
       </table>
@@ -482,112 +482,6 @@
 
         </div>
     </div>
-
-    <script>
-
-variablevalormovimiento=1;
-
-
-        $(document).ready(function() {
-            var socket = io.connect('http://66.97.46.179:3003/', {
-                rejectUnauthorized: false
-            });
-
-            $("#Xmas").click(function(){
-                var opciones = document.getElementsByName('options');
-                if (opciones[0].checked) {variablevalormovimiento=1;}
-                if (opciones[1].checked) {variablevalormovimiento=0.1;}
-                if (opciones[2].checked) {variablevalormovimiento=0.01;}
-                if (opciones[3].checked) {variablevalormovimiento=0.001;}
-                codigoG="G91 G1 X"+ variablevalormovimiento +" F400";
-                codigoG="G90";
-                return true;
-            });
-
-            $("#Xmenos").click(function(){
-                var opciones = document.getElementsByName('options');
-                if (opciones[0].checked) {variablevalormovimiento=1;}
-                if (opciones[1].checked) {variablevalormovimiento=0.1;}
-                if (opciones[2].checked) {variablevalormovimiento=0.01;}
-                if (opciones[3].checked) {variablevalormovimiento=0.001;}
-                codigoG="G91 G1 X-"+ variablevalormovimiento +" F400";
-                console.log("codigoG");
-                console.log(codigoG);
-                //socket.emit('GCODE Box', codigoG );
-                codigoG="G90";
-
-                return true;
-            });
-
-            $("#Ymas").click(function(){
-                var opciones = document.getElementsByName('options');
-                if (opciones[0].checked) {variablevalormovimiento=1;}
-                if (opciones[1].checked) {variablevalormovimiento=0.1;}
-                if (opciones[2].checked) {variablevalormovimiento=0.01;}
-                if (opciones[3].checked) {variablevalormovimiento=0.001;}
-                codigoG="G91 G1 Y"+ variablevalormovimiento +" F400";
-                console.log("codigoG");
-                console.log(codigoG);
-                //socket.emit('GCODE Box', codigoG );
-                codigoG="G90";
-
-                return true;
-            });
-
-            $("#Ymenos").click(function(){
-                var opciones = document.getElementsByName('options');
-                if (opciones[0].checked) {variablevalormovimiento=1;}
-                if (opciones[1].checked) {variablevalormovimiento=0.1;}
-                if (opciones[2].checked) {variablevalormovimiento=0.01;}
-                if (opciones[3].checked) {variablevalormovimiento=0.001;}
-
-                codigoG="G91 G1 Y-"+ variablevalormovimiento +" F400";
-                console.log("codigoG");
-                console.log(codigoG);
-                //socket.emit('GCODE Box', codigoG );
-                codigoG="G90";
-
-                return true;
-            });
-
-            $("#Zmas").click(function(){
-                //variablevalormovimiento=1
-                var opciones = document.getElementsByName('options');
-                if (opciones[0].checked) {variablevalormovimiento=1;}
-                if (opciones[1].checked) {variablevalormovimiento=0.1;}
-                if (opciones[2].checked) {variablevalormovimiento=0.01;}
-                if (opciones[3].checked) {variablevalormovimiento=0.001;}
-
-                codigoG="G91 G1 Z"+ variablevalormovimiento +" F400";
-                console.log("codigoG");
-                console.log(codigoG);
-                //socket.emit('GCODE Box', codigoG );
-                codigoG="G90";
-
-                return true;
-            });
-
-            $("#Zmenos").click(function(){
-                //variablevalormovimiento=1
-                var opciones = document.getElementsByName('options');
-                if (opciones[0].checked) {variablevalormovimiento=1;}
-                if (opciones[1].checked) {variablevalormovimiento=0.1;}
-                if (opciones[2].checked) {variablevalormovimiento=0.01;}
-                if (opciones[3].checked) {variablevalormovimiento=0.001;}
-
-                codigoG="G91 G1 Z-"+ variablevalormovimiento +" F400";
-                console.log("codigoG");
-                console.log(codigoG);
-                //socket.emit('GCODE Box', codigoG );
-                codigoG="G90";
-
-                return true;
-            });
-
-
-
-        });
-    </script>
 
 </body>
 
