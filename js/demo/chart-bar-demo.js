@@ -32,12 +32,13 @@ var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    // labels: ["Enero", "F", "March", "April", "May", "June"],
+    labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
     datasets: [{
       label: "Revenue",
-      backgroundColor: "#4e73df",
+      backgroundColor: "#6e758b",
       hoverBackgroundColor: "#2e59d9",
-      borderColor: "#4e73df",
+      borderColor: "#6e758b<",
       data: [4215, 5312, 6251, 7841, 9821, 14984],
     }],
   },
@@ -115,12 +116,13 @@ var ctx2 = document.getElementById("myBarChart2");
 var myBarChart2 = new Chart(ctx2, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
-    datasets: [{
+    // labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+        datasets: [{
       label: "Revenue",
-      backgroundColor: "#4e73df",
+      backgroundColor: "#6e758b",
       hoverBackgroundColor: "#2e59d9",
-      borderColor: "#4e73df",
+      borderColor: "#6e758b",
       data: [4215, 5312, 6251, 7841, 9821, 14984],
     }],
   },
