@@ -225,7 +225,7 @@
                             <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                             <!-- <img class="img-profile rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg"> -->
                           </a>
-                          
+
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
@@ -703,35 +703,32 @@
                 rejectUnauthorized: false
             });
 
-            socket.emit('GCODE STATUS TORNO', 'nada');
-
             socket.on('control message', function(msg){
                 if(msg =='camara_prendida'){
-                //window.location.reload();
-                $("#camara").load("widgets/visor-camara/widget.html");
+                  //window.location.reload();
+                  $("#camara").load("widgets/visor-camara/widget.html");
                 }
                 if(msg =='camara_apagada'){
-                //    window.location.reload();
-                $("#camara").load("widgets/visor-camara/widget.html");
+                  //    window.location.reload();
+                  $("#camara").load("widgets/visor-camara/widget.html");
                 }
 
                 if(msg =='Enc_SinCal'){
-                  $('#estadoEquipo').html("pepe");
-                  }
+                  $('#estadoEquipo').html("Encendido sin calibracion");
+                }
                 if(msg =='Calibrando'){
-                  $('#estadoEquipo').html("chota");
-                  }
+                  $('#estadoEquipo').html("Calibrando");
+                }
                 if(msg =='Enc_Calibr'){
-                  $('#estadoEquipo').html("juanselacome");
-                  }
+                  $('#estadoEquipo').html("Encendido y calibrado");
+                }
+                if(msg =='SeDesconecto'){
+                  $('#estadoEquipo').html("Desconectado");
+                }
             });
 
 
-            socket.on('STATUS TORNO', function(msg){
-              console.log(' ####### *******  ####### ******* ');
-              console.log('entre en estado equipo: ' + msg);
-                $('#estadoEquipo').html(msg);
-            });
+
         });
     </script>
 
