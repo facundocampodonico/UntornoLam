@@ -188,6 +188,8 @@ $(document).ready(function() {
               localStorage.removeItem('misDisenios');
               localStorage.removeItem('misPedidos');
               localStorage.removeItem('misServicios');
+              localStorage.removeItem('graficoPedidos');
+              localStorage.removeItem('graficoServicios');
 
               // Informacion de los CNCs del usuario que ingresa
               localStorage.setItem('miCncs', JSON.stringify(data.cnc) );
@@ -226,6 +228,12 @@ $(document).ready(function() {
 
               // Informacion de los reportes pendientes del usuario
               localStorage.setItem('serviciosEnCurso', JSON.stringify(data.serviciosEnCurso) );
+
+              // Informacion de los pedidos del sistema
+              localStorage.setItem('graficoPedidos', JSON.stringify(data.graficoPedidos) );
+
+              // Informacion de los pedidos del sistema
+              localStorage.setItem('graficoServicios', JSON.stringify(data.graficoServicios) );
 
     					// Redirecciono
     					window.location.href = './index.html';
