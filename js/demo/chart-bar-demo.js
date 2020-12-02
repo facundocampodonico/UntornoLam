@@ -35,11 +35,11 @@ var myBarChart = new Chart(ctx, {
     // labels: ["Enero", "F", "March", "April", "May", "June"],
     labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
     datasets: [{
-      label: "Revenue",
+      label: "Cantidad",
       backgroundColor: "#6e758b",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#6e758b<",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [10, 3, 6, 8, 15, 10,10, 3, 6, 8, 15, 10],//servicios
     }],
   },
   options: {
@@ -69,12 +69,12 @@ var myBarChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
+          max: 20,
           maxTicksLimit: 5,
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            return '' + number_format(value);
           }
         },
         gridLines: {
@@ -104,7 +104,7 @@ var myBarChart = new Chart(ctx, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ':' + number_format(tooltipItem.yLabel);
         }
       }
     },
@@ -119,11 +119,11 @@ var myBarChart2 = new Chart(ctx2, {
     // labels: ["January", "February", "March", "April", "May", "June"],
     labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
         datasets: [{
-      label: "Revenue",
+      label: "Cantidad",
       backgroundColor: "#6e758b",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#6e758b",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [10, 3, 6, 8, 15, 10,10, 3, 6, 8, 15, 10],//pedidos
     }],
   },
   options: {
@@ -153,12 +153,12 @@ var myBarChart2 = new Chart(ctx2, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
+          max: 20,
           maxTicksLimit: 5,
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            return '' + number_format(value);
           }
         },
         gridLines: {
@@ -188,7 +188,7 @@ var myBarChart2 = new Chart(ctx2, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ':' + number_format(tooltipItem.yLabel);
         }
       }
     },
