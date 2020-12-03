@@ -439,10 +439,10 @@
             <div class="btn-group flex-wrap" role="group" aria-label="Basic example" style="width: 100%; padding-left: 10px;">
 
                 <!-- <button type="button" class="btn btn-secondary btn-xs " style="border-radius:0px;">Go to G55 Zero</button>
-                <button type="button" class="btn btn-secondary btn-xs">Set G55 Zero</button> -->
-                <button type="button" class="btn btn-secondary btn-xs"style="border-radius:0px;">Ir a Cero de Máquina</button>
-                <button type="button" class="btn btn-secondary btn-xs">Setear Cero de Máquina</button>
-                <button type="button" class="btn btn-secondary btn-xs"><i class="fa fa-home" aria-hidden="true"></i>  Cero de Máquina</button>
+                <button type="button" class="btn btn-secondary btn-xs">Set G55 Zero</button>-->
+                <button type="button" class="btn btn-secondary btn-xs" id="GoZeroBut" style="border-radius:0px;">Ir a Cero de Máquina</button>
+                <button type="button" class="btn btn-secondary btn-xs" id="SetZero">Setear Cero de Máquina</button>
+                <button type="button" class="btn btn-secondary btn-xs" id="GotoHome"><i class="fa fa-home" aria-hidden="true"></i>  Cero de Máquina</button>
 
             </div>
 
@@ -491,6 +491,31 @@
         $(document).ready(function() {
             var socket = io.connect('http://66.97.46.179:3003/', {
                 rejectUnauthorized: false
+            });
+
+
+            $("#SetZero").click(function(){
+                codigoG="G92 X0 Y0 Z0";
+                console.log("codigoG");
+                console.log(codigoG);
+                socket.emit('GCODE Box Chat', codigoG );
+                return true;
+            });
+
+            $("GoZeroBut").click(function(){
+                codigoG="G90 G1 X0 Y0 Z0 F400";
+                console.log("codigoG");
+                console.log(codigoG);
+                socket.emit('GCODE Box Chat', codigoG );
+                return true;
+            });
+
+            $("#GotoHome").click(function(){
+                codigoG="G28 X Y Z";
+                console.log("codigoG");
+                console.log(codigoG);
+                socket.emit('GCODE Box Chat', codigoG );
+                return true;
             });
 
             $("#Xmas").click(function(){

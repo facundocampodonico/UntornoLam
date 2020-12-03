@@ -132,6 +132,7 @@ $(document).ready(function() {
         $("#enviar").click(function(){
             var texto = $('#textoEnviar').val();
             socket.emit('GCODE Box Chat', texto );
+            $('#consola-para-escribir').append(texto + "<br>");
             $('#enviar').val('');
             return true;
         });
