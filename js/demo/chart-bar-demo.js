@@ -26,7 +26,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   }
   return s.join(dec);
 }
-
+// console.log("VALORES DEL GRAFICO " + localStorage.getItem('graficoServicios'));
 // Bar Chart Example
 var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
@@ -39,7 +39,8 @@ var myBarChart = new Chart(ctx, {
       backgroundColor: "#6e758b",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#6e758b<",
-      data: [10, 3, 6, 8, 15, 10,10, 3, 6, 8, 15, 10],//servicios
+      // data: [10, 3, 6, 8, 15, 10,10, 3, 6, 8, 15, 10],//servicios
+      data:localStorage.getItem('graficoServicios'),
     }],
   },
   options: {
@@ -123,7 +124,8 @@ var myBarChart2 = new Chart(ctx2, {
       backgroundColor: "#6e758b",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#6e758b",
-      data: [10, 3, 6, 8, 15, 10,10, 3, 6, 8, 15, 10],//pedidos
+      // data: [10, 3, 6, 8, 15, 10,10, 3, 6, 8, 15, 10],//pedidos
+      data:localStorage.getItem('graficoPedidos'),
     }],
   },
   options: {

@@ -46,7 +46,8 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [0, 10, 15, 20, 30, 8, 7, 3, 4, 5, 0, 10],//aca necesito un array del back
+      //data: [0, 10, 15, 20, 30, 8, 7, 3, 4, 5, 0, 10],//aca necesito un array del back
+      data:localStorage.getItem('graficoPedidos'),
     }],
   },
   options: {
