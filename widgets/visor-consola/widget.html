@@ -121,7 +121,7 @@ $(document).ready(function() {
 
         });*/
         //Listen for message from the server
-        socket.on('GCODE Box web', function(msg){
+        socket.on('GCODE Box Chat', function(msg){
           console.log("ENTRA O NO ENTRA LPMQLRP");
 
           $('#consola-para-escribir').append(msg + "<br>");
@@ -131,7 +131,7 @@ $(document).ready(function() {
 
         $("#enviar").click(function(){
             var texto = $('#textoEnviar').val();
-            socket.emit('GCODE Box', texto );
+            socket.emit('GCODE Box Chat', texto );
             $('#enviar').val('');
             return true;
         });
