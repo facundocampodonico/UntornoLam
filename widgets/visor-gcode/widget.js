@@ -1,4 +1,5 @@
 // Load additional files via Chilipeppr's require.js
+
 requirejs.config({
     paths: {
         //jqueryui: '//chilipeppr.com/js/jquery-ui-1.10.4/ui/minified/jquery.ui.core.min',
@@ -645,7 +646,8 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 }
 
             } else {
-                options = {whenPlay: "serial", perRow: "3d", perRow3dType: "goto", delayPerLine: this.delayPerLine, pauseOnM6: true, preUpload: 'none', multiLineMode: 'yes', multiLines: 50, ppsOnPlayFlush: false, ppsOnStopFeedhold: false, ppsOnPauseFeedhold: false, ppsOnUnpauseResume: false, removeemptylines: true, addlinenums: false, sendOnM6: "", sendOffM6: "", probeCmd: "G28.2 Z0"};
+                options = {whenPlay: "serial", perRow: "3d", perRow3dType: "goto", delayPerLine: this.delayPerLine, pauseOnM6: true, preUpload: 'none', multiLineMode: 'no', multiLines: 1, ppsOnPlayFlush: false, ppsOnStopFeedhold: false, ppsOnPauseFeedhold: false, ppsOnUnpauseResume: false, removeemptylines: true, addlinenums: false, sendOnM6: "", sendOffM6: "", probeCmd: "G28.2 Z0"};
+                //esta estaba options = {whenPlay: "serial", perRow: "3d", perRow3dType: "goto", delayPerLine: this.delayPerLine, pauseOnM6: true, preUpload: 'none', multiLineMode: 'yes', multiLines: 50, ppsOnPlayFlush: false, ppsOnStopFeedhold: false, ppsOnPauseFeedhold: false, ppsOnUnpauseResume: false, removeemptylines: true, addlinenums: false, sendOnM6: "", sendOffM6: "", probeCmd: "G28.2 Z0"};
                 //options = {whenPlay: "serial", perRow: "3d", perRow3dType: "goto", delayPerLine: this.delayPerLine, pauseOnM6: true, preUpload: 'none', multiLineMode: 'yes', multiLines: 50, ppsOnPlayFlush: false, ppsOnStopFeedhold: false, ppsOnPauseFeedhold: false, ppsOnUnpauseResume: false, removeemptylines: true, addlinenums: true, sendOnM6: "", sendOffM6: "", probeCmd: "G28.2 Z0"};
             }
             this.options = options;
@@ -2036,6 +2038,12 @@ mega*/
 
             console.log('------------------------------------------------------------------------------------------------------------------------');
             console.log('envio socket...');
+            var socket = io.connect('http://66.97.46.179:3003/', {
+                rejectUnauthorized: false
+            });
+            socket.emit('GCODE Box Chat', linegcode );
+
+            //ver de esperar el ok para seguir enviando
 
             console.log('envio aviso al 3d');
             // publish to 3d viewer so it syncs to us
@@ -3189,9 +3197,11 @@ mega*/
                 return;
             }
             // lazy cache the dom el cuz this is slow
+            //mega ver feedrate
             if (this.feedrateEl == null) this.feedrateEl = $('#com-chilipeppr-widget-gcode-feedrate-val');
             var frdom = this.feedrateEl;
-            var val = parseFloat(frdom.val());
+            //var val = parseFloat(frdom.val());
+            var val = 1.0;
             if (val == 1.0) return html;
             var origline = html;
             var curF = origline.match(/(F)(\d+\.{0,1}\d*)/gi);

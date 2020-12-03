@@ -482,10 +482,12 @@ Pass in {<br>
             this.options["mode"] = "mill";
             //this.options["laseron"] = $('#' + this.id + ' input[name=com-chilipeppr-widget-font2gcode-laseron]:checked').val();
             this.options["laseron"] = "m3";
-            this.options["feedrate"] = $('#' + this.id + ' .input-feedrate').val();
+            //this.options["feedrate"] = $('#' + this.id + ' .input-feedrate').val();
+            this.options["feedrate"] = "200";
             this.options["millclearanceheight"] = parseFloat($('#' + this.id + ' .input-clearanceheight').val());
             this.options["milldepthcut"] = parseFloat($('#' + this.id + ' .input-milldepthcut').val());
-            this.options["millfeedrateplunge"] = parseFloat($('#' + this.id + ' .input-millfeedrateplunge').val());
+            //this.options["millfeedrateplunge"] = parseFloat($('#' + this.id + ' .input-millfeedrateplunge').val());
+            this.options["millfeedrateplunge"] = "50";
 
 
             // alignment values
