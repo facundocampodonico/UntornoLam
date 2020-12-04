@@ -398,6 +398,19 @@
     <script>
         $(document).ready(function() {
 
+          $("#btnLogout").click(function(e) {
+              event.preventDefault();
+              window.sessionStorage.removeItem('tokenUntornolam');
+              window.sessionStorage.removeItem('username');
+              window.sessionStorage.removeItem('nombre');
+              window.sessionStorage.removeItem('apellido');
+              window.sessionStorage.removeItem('nivelAcceso');
+              window.sessionStorage.removeItem('email');
+              window.sessionStorage.removeItem('miCncs');
+              // Redirecciono
+              window.location.href = './login.html';
+          });
+
             // Configuracion
             const RUTA_ACCESO = 'http://66.97.46.179:8080/';
             //const RUTA_ACCESO = 'http://127.0.0.1:8080/';

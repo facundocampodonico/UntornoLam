@@ -228,7 +228,20 @@
 
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -304,7 +317,7 @@
 
                             <!-- Earnings (Monthly) Card Example -->
                             <div class="col-xl-4 col-md-6 mb-4">
-                                <div class="card border-left-info shadow  py-2">
+                                <div class="card border-left-info shadow  py-3">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
@@ -317,10 +330,7 @@
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-info m-2"  data-toggle="modal" data-target="#envios" data-toggle="tooltip" title="Diseños Enviados">
-                                                <i class="fas fa-pen-square" style="font-size:16px;color:white;"></i>
-                                            </button>
-                                            <!-- <div id="listadodegcode"> </div> -->
+                                            <div id="listadodegcode"> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -341,9 +351,8 @@
                                                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                                 </div>
                                             </div>
-                                            <a  href="http://untornolam.com.ar/misservicios.html" type="button" class="btn btn-info m-2" data-toggle="tooltip" title="Solcitar nuevo servicio tecnico">
+                                            <button type="button" class="btn btn-info m-2" data-toggle="tooltip" title="Solcitar nuevo servicio tecnico">
                                                 <i class="fas fa-hammer" style="font-size:16px;color:white;"></i>
-                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -356,9 +365,9 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Mostrar / Ocultar Contenidos</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Mostrar/Ocultar Contenidos.</h5>
 
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
@@ -374,36 +383,17 @@
                                             <tr>
                                                 <td> <input class="bt2 btn btn-outline-info btn-block" id="button2" type="button" value="Herramienta de Texto"></td>
                                                 <td> &nbsp; </td>
-                                                <td> <input class="bt5 btn btn-outline-info btn-block" id="button5" type="button" value="Conexión"> </td>
+                                                <td> <input class="bt5 btn btn-outline-info btn-block" id="button5" type="button" value="Conexion"> </td>
                                             </tr>
                                             <tr>
-                                                <td> <input class="bt3 btn btn-outline-info btn-block" id="button3" type="button" value="Vista Previa Gcode"></td>
+                                                <td> <input class="bt3 btn btn-outline-info btn-block" id="button3" type="button" value="Gcode Preview"></td>
                                                 <td> &nbsp; </td>
-                                                <td> <input class="bt6 btn btn-outline-info btn-block" id="button6" type="button" value="Cámara"></td>
+                                                <td> <input class="bt6 btn btn-outline-info btn-block" id="button6" type="button" value="Camara"></td>
                                             <tr>
                                         </table>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal fade" id="envios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="enviados">Listado de Diseños cargados</h5>
-
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                            <div id="listadodegcode"> </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
                             </div>
@@ -557,6 +547,18 @@
             <script type="text/javascript">
                 //TRAER CNC
                 $(document).ready(function() {
+                  $("#btnLogout").click(function(e) {
+                      event.preventDefault();
+                      window.sessionStorage.removeItem('tokenUntornolam');
+                      window.sessionStorage.removeItem('username');
+                      window.sessionStorage.removeItem('nombre');
+                      window.sessionStorage.removeItem('apellido');
+                      window.sessionStorage.removeItem('nivelAcceso');
+                      window.sessionStorage.removeItem('email');
+                      window.sessionStorage.removeItem('miCncs');
+                      // Redirecciono
+                      window.location.href = './login.html';
+                  });
 
                     // Obtengo la data de los CNC
                     var dataCNC = "";
