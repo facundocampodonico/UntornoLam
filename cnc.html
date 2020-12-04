@@ -304,7 +304,7 @@
 
                             <!-- Earnings (Monthly) Card Example -->
                             <div class="col-xl-4 col-md-6 mb-4">
-                                <div class="card border-left-info shadow  py-3">
+                                <div class="card border-left-info shadow  py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
@@ -317,7 +317,10 @@
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 </div>
                                             </div>
-                                            <div id="listadodegcode"> </div>
+                                            <button type="button" class="btn btn-info m-2" data-toggle="modal" data-target="#envios" data-toggle="tooltip" title="Diseños Enviados">
+                                                <i class="fas fa-tools" style="font-size:16px;color:white;"></i>
+                                            </button>
+                                            <!-- <div id="listadodegcode"> </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -378,6 +381,25 @@
                                                 <td> <input class="bt6 btn btn-outline-info btn-block" id="button6" type="button" value="Cámara"></td>
                                             <tr>
                                         </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="envios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="enviados">Listado de Diseños cargados</h5>
+
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                            <div id="listadodegcode"> </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
