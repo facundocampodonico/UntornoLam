@@ -51,7 +51,12 @@
         });
 
         //Listen for message from the server
-        socket.on('GCODE Box', function(msg){
+        socket.on('GCODE Box Send', function(msg){
+          $('#messages').append($('<li>').text(msg));
+        });
+
+        //Listen for message from the server
+        socket.on('control message', function(msg){
           $('#messages').append($('<li>').text(msg));
         });
 
