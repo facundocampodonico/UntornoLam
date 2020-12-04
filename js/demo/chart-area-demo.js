@@ -33,10 +33,8 @@ var data=localStorage.getItem('graficoPedidos');
 var dat=data.replace("[","");
 var dataenvio=dat.replace("]","");
 var separador=",";
-   var dataenvio = dataenvio.split(separador);
-      for (var i=0; i < dataenvio.length; i++) {
-      document.write(dataenvio[i] + ",");
-   }
+var dataenvio = dataenvio.split(separador);
+
 
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
@@ -57,7 +55,7 @@ var myLineChart = new Chart(ctx, {
       pointHitRadius: 10,
       pointBorderWidth: 2,
        //data: [99,0,4,4,4,4,4,4,4,4,4,2]
-             // [0,0,4,4,4,4,4,4,4,4,4,2]
+
       data:dataenvio,
 
     }],

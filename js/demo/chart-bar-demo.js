@@ -28,6 +28,13 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 // console.log("VALORES DEL GRAFICO " + localStorage.getItem('graficoServicios'));
 // Bar Chart Example
+var data=localStorage.getItem('graficoServicios');
+var dat=data.replace("[","");
+var dataenvio=dat.replace("]","");
+console.log(dataenvio);
+var separador=",";
+var dataservice = dataenvio.split(separador);
+
 var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
   type: 'bar',
@@ -40,7 +47,7 @@ var myBarChart = new Chart(ctx, {
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#6e758b<",
       // data: [10, 3, 6, 8, 15, 10,10, 3, 6, 8, 15, 10],//servicios
-      data:localStorage.getItem('graficoServicios'),
+      data:dataservice,
     }],
   },
   options: {
@@ -63,15 +70,15 @@ var myBarChart = new Chart(ctx, {
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 6
+          maxTicksLimit: 12
         },
         maxBarThickness: 25,
       }],
       yAxes: [{
         ticks: {
           min: 0,
-          max: 20,
-          maxTicksLimit: 5,
+          max: 5,
+          maxTicksLimit: 6,
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
@@ -111,7 +118,14 @@ var myBarChart = new Chart(ctx, {
     },
   }
 });
-
+var data=localStorage.getItem('graficoPedidos');
+var dat=data.replace("[","");
+var dataenvio=dat.replace("]","");
+var separador=",";
+var dataenvio = dataenvio.split(separador);
+   //    for (var i=0; i < dataenvio.length; i++) {
+   //    document.write(dataenvio[i] + ",");
+   // }
 
 var ctx2 = document.getElementById("myBarChart2");
 var myBarChart2 = new Chart(ctx2, {
@@ -125,7 +139,7 @@ var myBarChart2 = new Chart(ctx2, {
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#6e758b",
       // data: [10, 3, 6, 8, 15, 10,10, 3, 6, 8, 15, 10],//pedidos
-      data:localStorage.getItem('graficoPedidos'),
+      data:dataenvio,
     }],
   },
   options: {
@@ -148,15 +162,15 @@ var myBarChart2 = new Chart(ctx2, {
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 6
+          maxTicksLimit: 12
         },
         maxBarThickness: 25,
       }],
       yAxes: [{
         ticks: {
           min: 0,
-          max: 20,
-          maxTicksLimit: 5,
+          max: 5,
+          maxTicksLimit: 6,
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
