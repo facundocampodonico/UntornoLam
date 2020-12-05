@@ -378,8 +378,8 @@ cpdefine("inline:com-chilipeppr-elem-dragdrop", ["chilipeppr_ready"], function (
         createRecentFileEntry: function(fileStr, info) {
             console.log('* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *');
             console.log('ENTRE aca');
-            consle.info(fileStr);
-            consle.info(info);
+            console.info(fileStr);
+            console.info(info);
             console.log('* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *');
             console.log("createRecentFileEntry. fileStr.length:", fileStr.length, "info:", info);
             // get the next avail slot
