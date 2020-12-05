@@ -83,6 +83,20 @@
                   </div>
                 </div>
 
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <select class="form-control form-control-solid" id="pregunta">
+                        <option value="A">  Nombre de mi mascota   </option>
+                        <option value="B">  Lugar favorito   </option>
+                        <option value="C">  Palermo pateaba mal penales   </option>
+                        <option value="D">  Otro  </option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" id="respuesta" placeholder="Resuesta secreta">
+                  </div>
+                </div>
+
                 <hr>
 
                 <input type="submit" value="Registrar" id="registrar" class="btn btn-success btn-user btn-block" style="color:white;" />
@@ -153,8 +167,8 @@
 $(document).ready( function () {
   // Configuracion
 	// @TODO: aca falta las rutas del servidor
-  const RUTA_ACCESO = 'http://66.97.46.179:8080/';
-	//const RUTA_ACCESO = 'https://127.0.0.1:8080/';
+  //const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+	const RUTA_ACCESO = 'http://127.0.0.1:8080/';
 	const RUTA_API = 'api/registrarUsuario';
 
   $("#registrar").click(function(){
@@ -173,9 +187,8 @@ $(document).ready( function () {
       var nroDoc = $('#nroDoc').val();
       var cuilCuit = $('#cuilCuit').val();
       var telefono = $('#telefono').val();
-
-      // Creo un objeto para enviar los datos
-      //var data = new FormData(form);
+      var pregunta = $('#pregunta').val();
+      var respuesta = $('#respuesta').val();
 
       // Armo el ajax, para enviar los datos correspondientes
       $.ajax({
@@ -191,7 +204,9 @@ $(document).ready( function () {
             'tipoDoc': tipoDoc,
             'nroDoc': nroDoc,
             'cuilCuit': cuilCuit,
-            'telefono': telefono
+            'telefono': telefono,
+            'pregunta': pregunta,
+            'respuesta': respuesta
           } ),
           processData: false,
           contentType: "application/json; charset=utf-8",
@@ -200,7 +215,6 @@ $(document).ready( function () {
           crossDomain: true,
 
           success: function( datos, textStatus, jQxhr ){
-              alert( JSON.stringify( datos) );
 
               // En caso de exito
 				      if( datos.status === 'OK'){
@@ -208,13 +222,11 @@ $(document).ready( function () {
 
                   $('#modalRegistro').modal('show');
               }else{
-                  // Dejo el formulario como esta
-                  alert('Error al registrar');
-                  alert(datos);
+                $('#textoModal').text( 'Ha ocurrido un error al Error al registrarse. Por favor intento mas tarde');
+
+                $('#modalRegistro').modal('show');
               }
 
-
-              //alert("Respuesta: " + JSON.stringify( datos ) );
           },
           error: function( jqXhr, textStatus, errorThrown ){
             console.log( errorThrown );

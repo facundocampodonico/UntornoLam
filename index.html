@@ -56,6 +56,7 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
         <a class="nav-link" href="index.html">
+
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Tablero General</span></a>
       </li>
@@ -67,28 +68,30 @@
       <div class="sidebar-heading">
         Herramientas
       </div>
-
-         <li class="nav-item">
-        <a class="nav-link" href="cnc.html">
+      <div id="menu-usuario">
+     <li class="nav-item">
+        <a class="nav-link" href="cnc.html" id="opcionCNC">
           <i class="fas fa-fw fa-cog"></i>
           <span>Mis CNC</span></a>
       </li>
 
-         <li class="nav-item">
+     <li class="nav-item">
         <a class="nav-link" href="misdiseños.html">
           <i class="fas fa-fw fa-folder"></i>
           <span>Mis Diseños</span></a>
       </li>
-         <li class="nav-item">
+
+     <li class="nav-item">
         <a class="nav-link" href="mispedidos.html">
           <i class="fas fa-fw fa-sticky-note"></i>
           <span>Mis Pedidos</span></a>
       </li>
          <li class="nav-item">
-        <a class="nav-link" href="misservicios.html">
+        <a class="nav-link" href="misservicios.html" id="opcionMisServicios">
           <i class="fas fa-fw fa-wrench"></i>
           <span>Mis Servicios</span></a>
       </li>
+    </div>
 
     <!-- Nav Item - Pages Collapse Menu
       <li class="nav-item">
@@ -229,13 +232,23 @@
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
+                <span class="badge badge-danger badge-counter"> <script>
+                    document.write(localStorage.getItem('countAlertasSinLeer'));
+                </script> </span>
               </a>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
-                  Alerts Center
+                  Alertas
                 </h6>
+                <div id="bodyAlertas">
+                  <div>
+                    <a class="dropdown-item text-center small text-gray-500" href="#">Sin alertas pendientes </a>
+
+                  </div>
+                </div>
+
+<!--
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
                     <div class="icon-circle bg-primary">
@@ -269,9 +282,13 @@
                     Spending Alert: We've noticed unusually high spending for your account.
                   </div>
                 </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+-->
+
+                <a class="dropdown-item text-center small text-gray-500" href="misalertas.html">Ver todas </a>
               </div>
             </li>
+
+
                 <!-- <div class="topbar-divider d-none d-sm-block"></div>-->
 
             <!-- Nav Item - User Information -->
@@ -366,7 +383,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Reportes</div>
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Pedidos</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
                           <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
@@ -392,7 +409,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">ReportesPendientes</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pedidos Pendientes</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
 
                       	<script>
@@ -450,10 +467,10 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pagos Adeudados (Total)</div>
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Servicios Resueltos (Total)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
                         <script>
-                            document.write( localStorage.getItem('pagoAdeudado') );
+                            document.write( localStorage.getItem('serviciosResueltos') );
                         </script>
                       </div>
                     </div>
@@ -529,6 +546,24 @@
     </div>
   </div>
 
+  <!-- Modal para el menu -->
+  <div class="modal fade" id="modalMenu" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Usuario </h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" id="textoModalMenu"> No puede acceder a esta funcionalidad si no posee un CNC </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" type="button" data-dismiss="modal" id="cerrarModalMenu">Cerrar</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--Modal para el menu -->
+
+
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -552,8 +587,8 @@
 
 <script type="text/javascript">
 // Configuracion
-	//const RUTA_ACCESO = 'https://66.97.46.179:8080/';
-  const RUTA_ACCESO = 'https://localhost:8080/';
+	//const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+  const RUTA_ACCESO = 'http://localhost:8080/';
   const RUTA_API = 'api/hello';
 	const RUTA_AUTHENTICATE = 'api/authentication';
 
@@ -568,6 +603,30 @@ var email     = window.sessionStorage.getItem('email');
 var cncs      = JSON.parse( localStorage.getItem('miCncs') || "[]" );
 
 $(document).ready(function() {
+
+  $('#opcionCNC').click(function(){
+      event.preventDefault();
+      var tipoUsuario = window.sessionStorage.getItem('tipoUsuario');
+
+      if( tipoUsuario != 'P'){
+        $('#modalMenu').modal('show');
+        return;
+      }
+
+      window.location.href = 'cnc.html';
+  });
+
+  $('#opcionMisServicios').click(function(){
+      event.preventDefault();
+      var tipoUsuario = window.sessionStorage.getItem('tipoUsuario');
+
+      if( tipoUsuario != 'P'){
+          $('#modalMenu').modal('show');
+          return;
+      }
+
+      window.location.href = 'misservicios.html';
+  });
 
   $("#btnLogout").click(function(e) {
       event.preventDefault();
@@ -587,7 +646,6 @@ $(document).ready(function() {
   token     = window.sessionStorage.getItem('tokenUntornolam');
 
   if(!token){
-    alert('No habia token - este mensaje seguro desaparece en un futuro');
     // Redirecciono
     window.location.href = './login.html';
   }
@@ -609,7 +667,6 @@ $(document).ready(function() {
     success: function( data, textStatus, jQxhr ){
 
         if(data.status != 'OK'){
-          alert('Debe ingresar - este mensaje seguro desaparece en un futuro');
           // Redirecciono
           window.location.href = './login.html';
         }
@@ -619,6 +676,35 @@ $(document).ready(function() {
       console.log( errorThrown );
     }
   });
+
+
+  // Cargo las alertas sin leer
+  let cantAlertas = 0;
+  cantAlertas += parseInt( localStorage.getItem('countAlertasSinLeer') );
+
+  if( cantAlertas > 0 ){
+    $('#bodyAlertas').html('');
+    let datosAlertasSinLeer = JSON.parse(localStorage.getItem('alertasSinLeer') );
+
+    for(let i=0; i < cantAlertas; i++){
+      console.log(datosAlertasSinLeer[0][1]);
+      console.log(datosAlertasSinLeer[0][5]);
+      var elemento = `<a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">` + datosAlertasSinLeer[0][1] + `</div>
+                    <span class="font-weight-bold">` + datosAlertasSinLeer[0][5] + `</span>
+                </div>
+                </a>`;
+
+      $('#bodyAlertas').append(elemento);
+    }
+
+  }
 
 
 	// Handle del boton para la configuracion

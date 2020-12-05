@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+ <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <title>UNtornoLaM</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.css" rel="stylesheet">
+
+  <!-- Carga de Variables -->
+  <!-- Custom styles for this template -->
+  <link href="css/sb-admin-2.css" rel="stylesheet">
+
+  <!-- Custom styles for this page -->
+  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+  <!--	Cargo AJAX, esto podria hacerse sobre un archivo local si es muy lento	-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <img src="img/logo.png" alt="Logo">
+        </div>
+        <div class="sidebar-brand-text mx-3">UNtornoLaM</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Tablero General</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Herramientas
+      </div>
+
+         <li class="nav-item">
+        <a class="nav-link" href="cnc.html" id="opcionCNC">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Mis CNC</span></a>
+      </li>
+
+         <li class="nav-item">
+        <a class="nav-link" href="misdiseños.html">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Mis Diseños</span></a>
+      </li>
+               <li class="nav-item">
+        <a class="nav-link" href="mispedidos.html">
+          <i class="fas fa-fw fa-sticky-note"></i>
+          <span>Mis Pedidos</span></a>
+      </li>
+         <li class="nav-item">
+        <a class="nav-link" href="cnc.html" id="opcionMisServicios">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Mis Servicios</span></a>
+      </li>
+
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group" style="display:none">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none" style="display:none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <!-- Nav Item - Alerts -->
+<!--
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+
+                <span class="badge badge-danger badge-counter">3+</span>
+              </a>
+
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Alerts Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 12, 2019</div>
+                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-success">
+                      <i class="fas fa-donate text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 7, 2019</div>
+                    $290.29 has been deposited into your account!
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 2, 2019</div>
+                    Spending Alert: We've noticed unusually high spending for your account.
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+              </div>
+            </li>
+-->
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><script>document.write(  window.sessionStorage.getItem('apellido') + " " + window.sessionStorage.getItem('nombre') );</script></span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <!-- <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div> -->
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+	    <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+         <div class="card border-bottom-success shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <h1 class="h3 mb-0 text-gray-800">Mis Alertas</h1>
+                      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-success">Listado de Alertas </h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered dataTable" id="misAlertas" width="100%" cellspacing="0">
+
+                </table>
+              </div>
+            </div>
+            <!-- <div class="nav justify-content-end">
+            <button type="button" class="btn btn-success btn-circle btn-md   m-2" data-toggle="modal" data-target="#ModalPedidos" data-toggle="tooltip" title="Add Pedido">
+                <i class="fas fa-plus" style="font-size:16px;color:white;"></i>
+            </button>
+            </div> -->
+          </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; UNtornoLaM 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+    </div>
+
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+
+  <!-- End of Page Wrapper -->
+  </div>
+  <!-- End of Page Wrapper -->
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Esta seguro que desea salir?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Seleccione "Salir" si quiere terminar la sesion.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" id="btnLogout">Salir</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para el menu -->
+  <div class="modal fade" id="modalMenu" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Usuario </h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" id="textoModalMenu"> No puede acceder a esta funcionalidad si no posee un CNC </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal" id="cerrarModalMenu">Cerrar</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--Modal para el menu -->
+
+
+  <!-- Modal Informativo -->
+  <div class="modal fade" id="modalInformativo" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Usuario </h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" id="mensajeInformativo"></div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal" id="cerrarModalInformativo">Cerrar</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--Modal Informativo -->
+
+  <!-- Modal Leer -->
+  <div class="modal fade" id="modalLeer" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Usuario </h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" id="mensajeLeer">Desea dejar leida la Alerta? </div>
+            <div id="alertaSeleccionada" hidden></div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal" id="cerrarModalLeer">Cancelar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal" id="aceptarLectura">Aceptar</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--Modal Leer -->
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+
+
+
+
+<script>
+$(document).ready( function () {
+
+  $('#opcionCNC').click(function(){
+      event.preventDefault();
+      var tipoUsuario = window.sessionStorage.getItem('tipoUsuario');
+
+      if( tipoUsuario != 'P'){
+        $('#modalMenu').modal('show');
+        return;
+      }
+
+      window.location.href = 'cnc.html';
+  });
+
+  $('#opcionMisServicios').click(function(){
+      event.preventDefault();
+      var tipoUsuario = window.sessionStorage.getItem('tipoUsuario');
+
+      if( tipoUsuario != 'P'){
+          $('#modalMenu').modal('show');
+          return;
+      }
+
+      window.location.href = 'misservicios.html';
+  });
+
+  $("#btnLogout").click(function(e) {
+        event.preventDefault();
+        window.sessionStorage.removeItem('tokenUntornolam');
+        window.sessionStorage.removeItem('username');
+        window.sessionStorage.removeItem('nombre');
+        window.sessionStorage.removeItem('apellido');
+        window.sessionStorage.removeItem('nivelAcceso');
+        window.sessionStorage.removeItem('email');
+        window.sessionStorage.removeItem('miCncs');
+        // Redirecciono
+        window.location.href = './login.html';
+    });
+
+
+    // Configuracion
+    //const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+    const RUTA_ACCESO = 'http://127.0.0.1:8080/';
+    const RUTA_AUTHENTICATE = 'api/authentication';
+    const RUTA_API_LEER_ALERTA = 'api/leerAlerta';
+
+    // Handle para saber si puede acceder a esta pantalla
+    var token     = window.sessionStorage.getItem('tokenUntornolam');
+
+    if(!token){
+      // Redirecciono
+      window.location.href = './login.html';
+    }
+
+    $.ajax({
+      type: 'GET',
+      enctype: 'multipart/form-data',
+      url: RUTA_ACCESO + RUTA_AUTHENTICATE,
+      headers: {
+          "Authorization": `Bearer ${token}`
+      },
+      data: JSON.stringify( {} ),
+      processData: false,
+      contentType: "application/json; charset=utf-8",
+      cache: false,
+      crossDomain: true,
+
+      success: function( data, textStatus, jQxhr ){
+
+          if(data.status != 'OK'){
+            // Redirecciono
+            window.location.href = './login.html';
+          }
+
+      },
+      error: function( jqXhr, textStatus, errorThrown ){
+        console.log( errorThrown );
+      }
+    });
+
+    var dataTotal = [];
+
+    var dataAlertasSinLeer = localStorage.getItem('alertasSinLeer');
+    var datosAlertasSinLeer = JSON.parse(dataAlertasSinLeer);
+    var cantAlertasSinLeer = datosAlertasSinLeer.length;
+
+    if( cantAlertasSinLeer >= 1 ){
+      for(let i=0; i < cantAlertasSinLeer; i++){
+        dataTotal.push(datosAlertasSinLeer[i]);
+      }
+    }
+
+    var dataAlertasLeidas =  localStorage.getItem('alertasLeidas');
+    var datosAlertasLeidas = JSON.parse(dataAlertasLeidas);
+    var cantAlertasLeidas = datosAlertasLeidas.length;
+
+    if( cantAlertasLeidas >= 1 ){
+      for(let i=0; i < cantAlertasLeidas; i++){
+        dataTotal.push(datosAlertasLeidas[i]);
+      }
+    }
+
+    var table = $('#misAlertas').DataTable({
+        language: {
+            url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        },
+        destroy: true,
+        select: true,
+        data: dataTotal,
+        columns:  [
+          { title: "Numero" },
+          { title: "Fecha" },
+          { title: "Usuario", visible: false },
+          { title: "Usuario2", visible: false },
+          { title: "Icono", visible: false },
+          { title: "Informacion" },
+          { title: "Link", visible: false },
+          { title: "Vista" },
+          { title: "Fecha vista" }
+        ]
+      });
+
+      $('#misAlertas tbody').on( 'click', 'tr', function () {
+
+        let table2 = $('#misAlertas').DataTable();
+        var alerta = table2.row($(this)).data();
+
+        if( alerta[7] == 'NO' ){
+          $('#alertaSeleccionada').html(alerta[0]);
+          $('#modalLeer').modal('show');
+          return;
+        }
+
+        return;
+
+    } );
+
+    $('#aceptarLectura').click(function () {
+      var alertaID = $("#alertaSeleccionada").html();
+      $.ajax({
+        type: 'POST',
+        enctype: 'multipart/form-data',
+        url: RUTA_ACCESO + RUTA_API_LEER_ALERTA,
+        headers: {
+            'Access-Control-Allow-Origin': "*",
+            "Authorization": `Bearer ${window.sessionStorage.getItem('tokenUntornolam')}`
+          },
+        data: JSON.stringify( {
+          'alertaId': alertaID
+        } ),
+        processData: false,
+        contentType: "application/json; charset=utf-8",
+        cache: false,
+        crossDomain: true,
+
+        success: function( datos2, textStatus, jQxhr ){
+
+            if(datos2.status === 'OK'){
+              // Guardo los nuevos datos
+              localStorage.removeItem('alertasLeidas');
+              localStorage.removeItem('countAlertasLeidas');
+
+              localStorage.removeItem('alertasSinLeer');
+              localStorage.removeItem('countAlertasSinLeer');
+
+              localStorage.setItem('alertasLeidas',  JSON.stringify(datos2.alertasLeidas) );
+              var countAlertasLeidas = 0;
+              countAlertasLeidas += parseInt( datos2.alertasLeidas.length);
+              localStorage.setItem('countAlertasLeidas', countAlertasLeidas);
+
+              localStorage.setItem('alertasSinLeer', JSON.stringify(datos2.alertasSinLeer) );
+              var countAlertasSinLeer = 0;
+              countAlertasSinLeer += parseInt( datos2.alertasSinLeer.length);
+              localStorage.setItem('countAlertasSinLeer', countAlertasSinLeer);
+
+              var dataTotal2 = [];
+
+              if( countAlertasSinLeer >= 1 ){
+                for(let i=0; i < countAlertasSinLeer; i++){
+                  dataTotal2.push(datos2.alertasSinLeer[i]);
+                }
+              }
+
+              if( countAlertasLeidas >= 1 ){
+                for(let i=0; i < countAlertasLeidas; i++){
+                  dataTotal2.push(datos2.alertasLeidas[i]);
+                }
+              }
+
+              $('#misAlertas').DataTable({
+                  language: {
+                      url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                  },
+                  destroy: true,
+                  select: true,
+                  data: dataTotal2,
+                  columns:  [
+                    { title: "Numero" },
+                    { title: "Fecha" },
+                    { title: "Usuario", visible: false },
+                    { title: "Usuario2", visible: false },
+                    { title: "Icono", visible: false },
+                    { title: "Informacion" },
+                    { title: "Link", visible: false },
+                    { title: "Vista" },
+                    { title: "Fecha vista" }
+                  ]
+                });
+            }
+
+        },
+        error: function( jqXhr, textStatus, errorThrown ){
+          console.log( errorThrown );
+        }
+      });
+      return;
+
+    });
+
+
+
+
+});
+
+
+
+</script>
+
+
+
+<script>
+$(document).ready(function(){
+
+var current_fs, next_fs, previous_fs; //fieldsets
+var opacity;
+
+$(".next").click(function(){
+
+current_fs = $(this).parent();
+next_fs = $(this).parent().next();
+
+//Add Class Active
+$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+//show the next fieldset
+next_fs.show();
+//hide the current fieldset with style
+current_fs.animate({opacity: 0}, {
+step: function(now) {
+// for making fielset appear animation
+opacity = 1 - now;
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+next_fs.css({'opacity': opacity});
+},
+duration: 600
+});
+});
+
+$(".previous").click(function(){
+
+current_fs = $(this).parent();
+previous_fs = $(this).parent().prev();
+
+//Remove class active
+$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+//show the previous fieldset
+previous_fs.show();
+
+//hide the current fieldset with style
+current_fs.animate({opacity: 0}, {
+step: function(now) {
+// for making fielset appear animation
+opacity = 1 - now;
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+previous_fs.css({'opacity': opacity});
+},
+duration: 600
+});
+});
+
+$('.radio-group .radio').click(function(){
+$(this).parent().find('.radio').removeClass('selected');
+$(this).addClass('selected');
+});
+
+$(".submit").click(function(){
+return false;
+})
+
+});
+</script>
+
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+</body>
+
+</html>

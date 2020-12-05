@@ -65,7 +65,7 @@
       </div>
 
          <li class="nav-item">
-        <a class="nav-link" href="cnc.html">
+          <a class="nav-link" href="cnc.html" id="opcionCNC">
           <i class="fas fa-fw fa-cog"></i>
           <span>Mis CNC</span></a>
       </li>
@@ -81,7 +81,7 @@
           <span>Mis Pedidos</span></a>
       </li>
          <li class="nav-item">
-        <a class="nav-link" href="misservicios.html">
+          <a class="nav-link" href="cnc.html" id="opcionMisServicios">
           <i class="fas fa-fw fa-wrench"></i>
           <span>Mis Servicios</span></a>
       </li>
@@ -148,13 +148,14 @@
             </li>
 
             <!-- Nav Item - Alerts -->
+<!--
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
+
                 <span class="badge badge-danger badge-counter">3+</span>
               </a>
-              <!-- Dropdown - Alerts -->
+
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
                   Alerts Center
@@ -195,7 +196,7 @@
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
               </div>
             </li>
-
+-->
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -310,14 +311,20 @@
 					<div class="form-group">
 						<input class="form-control" id="nombreDisenio" name="nombreDisenio" type="text" placeholder="Ingrese el nombre">
 					</div>
+          <div class="form-group">
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" id="FILEDISENIO" name="FILEDISENIO" lang="es">
 						<label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
 					</div>
+        </div>
+          <div class="form-group">
+            <textarea class="form-control" rows="5" id="descripcionDisenio" name="descripcionDisenio" type="text" placeholder="Ingrese una descripcion"></textarea>
+          </div>
 					<div class="form-group">
 						<label> &nbsp;</label>
 
 					</div>
+
 					<div class="form-group" align="right">
 						<button class="btn btn-danger dropdown-" type="button" id="agregarDisenio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
 							AGREGAR
@@ -370,6 +377,40 @@
     </div>
   </div>
 
+  <!-- Modal para el menu -->
+  <div class="modal fade" id="modalMenu" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Usuario </h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" id="textoModalMenu"> No puede acceder a esta funcionalidad si no posee un CNC </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" type="button" data-dismiss="modal" id="cerrarModalMenu">Cerrar</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--Modal para el menu -->
+
+  <!-- Modal Informativo -->
+  <div class="modal fade" id="modalInformativo" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Usuario </h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" id="mensajeInformativo"></div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" type="button" data-dismiss="modal" id="cerrarModalInformativo">Cerrar</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--Modal Informativo -->
+
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -393,6 +434,30 @@
 
 $( document ).ready(function() {
 
+  $('#opcionCNC').click(function(){
+      event.preventDefault();
+      var tipoUsuario = window.sessionStorage.getItem('tipoUsuario');
+
+      if( tipoUsuario != 'P'){
+        $('#modalMenu').modal('show');
+        return;
+      }
+
+      window.location.href = 'cnc.html';
+  });
+
+  $('#opcionMisServicios').click(function(){
+      event.preventDefault();
+      var tipoUsuario = window.sessionStorage.getItem('tipoUsuario');
+
+      if( tipoUsuario != 'P'){
+          $('#modalMenu').modal('show');
+          return;
+      }
+
+      window.location.href = 'misservicios.html';
+  });
+
 
     $("#btnLogout").click(function(e) {
         event.preventDefault();
@@ -408,8 +473,8 @@ $( document ).ready(function() {
     });
 
   // Configuracion
-  const RUTA_ACCESO = 'http://66.97.46.179:8080/';
-  //const RUTA_ACCESO = 'http://127.0.0.1:8080/';
+  //const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+  const RUTA_ACCESO = 'http://127.0.0.1:8080/';
   const RUTA_API = 'api/setDisenio';
   const RUTA_API_DELETE = 'api/deleteDisenio';
   const RUTA_API_SERVICES = 'api/getMyServices';
@@ -419,7 +484,6 @@ $( document ).ready(function() {
   var token     = window.sessionStorage.getItem('tokenUntornolam');
 
   if(!token){
-    alert('No habia token - este mensaje seguro desaparece en un futuro');
     // Redirecciono
     window.location.href = './login.html';
   }
@@ -440,7 +504,6 @@ $( document ).ready(function() {
     success: function( data, textStatus, jQxhr ){
 
         if(data.status != 'OK'){
-          alert('Debe ingresar - este mensaje seguro desaparece en un futuro');
           // Redirecciono
           window.location.href = './login.html';
         }
@@ -470,35 +533,35 @@ $( document ).ready(function() {
   }else{
     // Elimino el primerSeleccionado
     localStorage.removeItem('seleccionadoDisenio');
-
+    //console.log(datosDisenios[0][4] );
     // Seteo el primero
-    localStorage.setItem('seleccionadoDisenio', RUTA_ACCESO + 'static/usuarios/' + idFolder + '/' + datosDisenios[0][3] );
+    localStorage.setItem('seleccionadoDisenio', RUTA_ACCESO + 'static/usuarios/' + idFolder + '/' + datosDisenios[0][4] );
     //localStorage.setItem('seleccionadoDisenio', RUTA_ACCESO + 'static/' + idFolder + '/' + datosDisenios[0][3] );
-
     // Armo las rutas
     for(let i=0; i < cantDisenios; i++){
-      let urlPath = RUTA_ACCESO + 'static/usuarios/' + idFolder + '/' + datosDisenios[i][3];
+      let urlPath = RUTA_ACCESO + 'static/usuarios/' + idFolder + '/' + datosDisenios[i][4];
       //let urlPath = RUTA_ACCESO + 'static/' + idFolder + '/' + datosDisenios[i][3];
     //  let urlPath = RUTA_ACCESO + 'private/usuarios/' + idFolder + '/' + datosDisenios[i][3];
-      datosDisenios[i][3] = urlPath;
+      datosDisenios[i][4] = urlPath;
     }
   }
 
   var events = $('#events');
 
   var table = $('#misDisenios').DataTable({
+      language: {
+          url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+      },
       destroy: true,
       select: true,
   //      data:  JSON.parse( dataInicial ),
       data: datosDisenios,
       columns:  [
-        { title: "id" },
-        { title: "usuarios_id" },
-        { title: "nombre" },
-        { title: "archivo" },
-        { title: "imgPreview" },
-        { title: "tamanio" },
-        { title: "extension" }
+        { title: "Numero" },
+        { title: "Nombre" },
+        { title: "Tamaño" },
+        { title: "Descripcion" },
+        { title: "Archivo", visible: false }
                 ]
     });
 
@@ -767,22 +830,17 @@ $( document ).ready(function() {
 
     let table2 = $('#misDisenios').DataTable();
     var disenio = table2.row($(this)).data();
-    console.info($(this));
+
     if(disenio === 'undefined'){
       disenio = this;
     }
-    console.log('disenio.....');
-    console.info(disenio);
-//    console.info(this);
-//    console.info(table.row().data().column(3));
-  //  if(disenio)
 
     // Elimino el seleccionado
     localStorage.removeItem('seleccionadoDisenio');
     localStorage.removeItem('seleccionadoDisenioId');
 
     // Setep el nuevo nuevo seleccionado
-    localStorage.setItem('seleccionadoDisenio', disenio[3]);
+    localStorage.setItem('seleccionadoDisenio', disenio[4]);
     localStorage.setItem('seleccionadoDisenioId', disenio[0]);
 
     $('#preview').html('');
@@ -811,6 +869,17 @@ $( document ).ready(function() {
           // Creo un objeto para enviar los datos
           var data = new FormData(form);
 
+          // Valido el tipo de archivo
+          var filePath =$('#FILEDISENIO').val();
+
+         var allowedExtensions = /(.stl|.gcode)$/i;
+         if(!allowedExtensions.exec(filePath)){
+             $('#mensajeInformativo').text('');
+             $('#mensajeInformativo').text( 'Solo puede ingresar archivos .stl o .gcode');
+             $('#modalInformativo').modal('show');
+             return false;
+         }
+
           // Armo el ajax, para enviar los datos correspondientes
           $.ajax({
             type: 'POST',
@@ -829,17 +898,8 @@ $( document ).ready(function() {
             success: function( datos2, textStatus, jQxhr ){
 
                 $('#nombreDisenio').val('');
-                //$('#response pre').html( JSON.stringify( datos ) );
-              //  alert( JSON.stringify( datos.data ) );
-              //  console.info(datos2.data);
-              //  console.log('holis');
-                //console.info(localStorage.getItem('misDisenios'));
-              //  console.info(datos.data );
-                //  alert( 'asdasd' );
-                //localStorage.removeItem('misDisenios');
-                //localStorage.setItem('misDisenios', JSON.stringify(datos.data) );
+                $('#descripcionDisenio').val('');
 
-                //JSON.parse(dataInicial)
                 // Parseo la informacion
                 var datosDataTable = datos2.data;
 
@@ -851,23 +911,24 @@ $( document ).ready(function() {
                 // Armo las rutas
                 for(let i=0; i < cantDisenios; i++){
                   //  let urlPath = RUTA_ACCESO + 'static/' + idFolder + '/' + datosDataTable[i][3];
-                  let urlPath = RUTA_ACCESO + 'static/usuarios/' + idFolder + '/' + datosDataTable[i][3];
-                  datosDataTable[i][3] = urlPath;
+                  let urlPath = RUTA_ACCESO + 'static/usuarios/' + idFolder + '/' + datosDataTable[i][4];
+                  datosDataTable[i][4] = urlPath;
                 }
 
 
                 $('#misDisenios').DataTable({
+                  language: {
+                      url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                  },
                   destroy: true,
                   select: true,
                   data:  datosDataTable,
                   columns:  [
-                    { title: "id" },
-                    { title: "usuarios_id" },
-                    { title: "nombre" },
-                    { title: "archivo" },
-                    { title: "imgPreview" },
-                    { title: "tamanio" },
-                    { title: "extension" }
+                    { title: "Numero" },
+                    { title: "Nombre" },
+                    { title: "Tamaño" },
+                    { title: "Descripcion" },
+                    { title: "Archivo", visible: false }
                             ]
                 });
 
@@ -920,29 +981,31 @@ $( document ).ready(function() {
 
               // Armo las rutas
               for(let i=0; i < cantDisenios; i++){
-                let urlPath = RUTA_ACCESO + 'static/usuarios/' + idFolder + '/' + datosDataTable[i][3];
-                datosDataTable[i][3] = urlPath;
+                let urlPath = RUTA_ACCESO + 'static/usuarios/' + idFolder + '/' + datosDataTable[i][4];
+                datosDataTable[i][4] = urlPath;
               }
 
 
               $('#misDisenios').DataTable({
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                },
                 destroy: true,
                 select: true,
                 data:  datosDataTable,
                 columns:  [
-                  { title: "id" },
-                  { title: "usuarios_id" },
-                  { title: "nombre" },
-                  { title: "archivo" },
-                  { title: "imgPreview" },
-                  { title: "tamanio" },
-                  { title: "extension" }
+                  { title: "Numero" },
+                  { title: "Nombre" },
+                  { title: "Tamaño" },
+                  { title: "Descripcion" },
+                  { title: "Archivo", visible: false }
                           ]
               });
 
-                alert('Se borro el diseño ID: ' + idDisenio);
+                $('#mensajeInformativo').text('');
+                $('#mensajeInformativo').text( 'Se ha borrado el diseño correctamente');
+                $('#modalInformativo').modal('show');
 
-              //alert("Respuesta: " + JSON.stringify( datos ) );
           },
           error: function( jqXhr, textStatus, errorThrown ){
             console.log( errorThrown );
@@ -952,7 +1015,9 @@ $( document ).ready(function() {
 
 
       }else{
-        alert('No hay un disenio seleccionado');
+        $('#mensajeInformativo').text('');
+        $('#mensajeInformativo').text( 'No hay un diseño seleccionado');
+        $('#modalInformativo').modal('show');
       }
 
     });

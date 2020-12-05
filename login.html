@@ -92,6 +92,24 @@
 
   </div>
 
+
+  <!-- Modal Error -->
+  <div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Usuario </h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body"> El usuario y la contraseña no coinciden. Intente nuevamente</div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal" id="cerrarModalError">Cerrar</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--Modal Error -->
+
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -108,8 +126,8 @@
 
 <script type="text/javascript">
 	// Configuracion
-	const RUTA_ACCESO = 'http://66.97.46.179:8080/';
-	//const RUTA_ACCESO = 'http://127.0.0.1:8080/';
+	//const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+	const RUTA_ACCESO = 'http://127.0.0.1:8080/';
 	const RUTA_API = 'api/login';
 
 
@@ -181,7 +199,8 @@ $(document).ready(function() {
     					sessionStorage.setItem('nombre', data.info.nombre);
     					sessionStorage.setItem('apellido', data.info.apellido);
     					sessionStorage.setItem('nivelAcceso', data.info.nivelAcceso);
-    					sessionStorage.setItem('email', data.info.email);
+              sessionStorage.setItem('email', data.info.email);
+    					sessionStorage.setItem('tipoUsuario', data.info.tipo);
 
               // Primero borro la informacion previa que haya
               localStorage.removeItem('miCncs');
@@ -190,6 +209,8 @@ $(document).ready(function() {
               localStorage.removeItem('misServicios');
               localStorage.removeItem('graficoPedidos');
               localStorage.removeItem('graficoServicios');
+              localStorage.removeItem('alertasLeidas');
+              localStorage.removeItem('alertasSinLeer');
 
               // Informacion de los CNCs del usuario que ingresa
               localStorage.setItem('miCncs', JSON.stringify(data.cnc) );
@@ -229,11 +250,29 @@ $(document).ready(function() {
               // Informacion de los reportes pendientes del usuario
               localStorage.setItem('serviciosEnCurso', JSON.stringify(data.serviciosEnCurso) );
 
+              // Informacion de los reportes pendientes del usuario
+              localStorage.setItem('serviciosResueltos', JSON.stringify(data.serviciosResueltos) );
+
               // Informacion de los pedidos del sistema
               localStorage.setItem('graficoPedidos', JSON.stringify(data.graficoPedidos) );
 
               // Informacion de los pedidos del sistema
               localStorage.setItem('graficoServicios', JSON.stringify(data.graficoServicios) );
+
+              // Informacion de las alertas leidas
+              localStorage.setItem('alertasLeidas', JSON.stringify(data.alertasLeidas) );
+
+              var countAlertasLeidas = 0;
+              countAlertasLeidas += parseInt( data.alertasLeidas.length);
+              localStorage.setItem('countAlertasLeidas', countAlertasLeidas);
+
+              // Informacion de las alertas sin leer
+              localStorage.setItem('alertasSinLeer', JSON.stringify(data.alertasSinLeer) );
+
+              var countAlertasSinLeer = 0;
+              countAlertasSinLeer += parseInt( data.alertasSinLeer.length);
+
+              localStorage.setItem('countAlertasSinLeer', countAlertasSinLeer);
 
     					// Redirecciono
     					window.location.href = './index.html';
@@ -241,21 +280,7 @@ $(document).ready(function() {
 
               $('#user').val('');
               $('#password').val('');
-              alert('error, ingrese nuevamente sus credenciales');
-    					// Aca tienen que estar los handler del error tipo
-    					switch (data.status) {
-    						  case 'ERROR_USER':
-    								//	El usuario o contraseña es incorrecto
-    								// 	Agregar label informativo....
-    								break;
-    						  case 'ERROR_EXAMPLE':
-    								//	Otro error handleable
-    								//	Acciones...
-    								break;
-    						  default:
-    								//Declaraciones ejecutadas cuando ninguno de los valores coincide con el valor de la expresión
-    								break;
-    						}
+              $('#modalError').modal('show');
     				}
 
 

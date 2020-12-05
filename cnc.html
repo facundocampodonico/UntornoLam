@@ -170,13 +170,14 @@
                         </li>
 
                         <!-- Nav Item - Alerts -->
+<!--
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
+
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
-                            <!-- Dropdown - Alerts -->
+
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Alertas
@@ -217,7 +218,7 @@
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                             </div>
                         </li>
-
+-->
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -391,7 +392,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     <div class="modal fade" id="envios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                           <div class="modal-content">
@@ -563,6 +564,14 @@
             <script type="text/javascript">
                 //TRAER CNC
                 $(document).ready(function() {
+
+                  // Redirecciono en caso de que sea un Cliente
+                  var tipoUsuario = window.sessionStorage.getItem('tipoUsuario');
+
+                  if( tipoUsuario != 'P'){
+                      window.location.href = './index.html';
+                  }
+
                   $("#btnLogout").click(function(e) {
                       event.preventDefault();
                       window.sessionStorage.removeItem('tokenUntornolam');

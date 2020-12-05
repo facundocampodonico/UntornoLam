@@ -148,13 +148,14 @@
                         </li>
 
                         <!-- Nav Item - Alerts -->
+<!--
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
+
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
-                            <!-- Dropdown - Alerts -->
+
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Alerts Center
@@ -195,7 +196,7 @@
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                             </div>
                         </li>
-
+-->
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
@@ -377,6 +378,23 @@
         </div>
     </div>
 
+    <!-- Modal Informativo -->
+    <div class="modal fade" id="modalInformativo" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title"> Usuario </h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              </div>
+              <div class="modal-body" id="mensajeInformativo"></div>
+              <div class="modal-footer">
+                  <button class="btn btn-warning" type="button" data-dismiss="modal" id="cerrarModalInformativo">Cerrar</button>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!--Modal Informativo -->
+
 
 
     <!-- Bootstrap core JavaScript-->
@@ -397,6 +415,14 @@
 
     <script>
         $(document).ready(function() {
+            // Redirecciono en caso de que sea un Cliente
+            var tipoUsuario = window.sessionStorage.getItem('tipoUsuario');
+
+            if( tipoUsuario != 'P'){
+                window.location.href = './index.html';
+            }
+
+
 
           $("#btnLogout").click(function(e) {
               event.preventDefault();
@@ -412,8 +438,8 @@
           });
 
             // Configuracion
-            const RUTA_ACCESO = 'http://66.97.46.179:8080/';
-            //const RUTA_ACCESO = 'http://127.0.0.1:8080/';
+            //const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+            const RUTA_ACCESO = 'http://127.0.0.1:8080/';
             const RUTA_AUTHENTICATE = 'api/authentication';
             const RUTA_API_CREAR_SERVICIO = 'api/crearServicio';
 
@@ -421,7 +447,6 @@
             var token = window.sessionStorage.getItem('tokenUntornolam');
 
             if (!token) {
-                alert('No habia token - este mensaje seguro desaparece en un futuro');
                 // Redirecciono
                 window.location.href = './login.html';
             }
@@ -442,7 +467,6 @@
                 success: function(data, textStatus, jQxhr) {
 
                     if (data.status != 'OK') {
-                        alert('Debe ingresar - este mensaje seguro desaparece en un futuro');
                         // Redirecciono
                         window.location.href = './login.html';
                     }
@@ -469,33 +493,19 @@
             var events = $('#events');
 
             var table = $('#misServicios').DataTable({
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                },
                 destroy: true,
                 select: true,
                 data: JSON.parse(dataInicial),
-                columns: [{
-                        title: "id"
-                    },
-                    {
-                        title: "para_usuarios_id "
-                    },
-                    {
-                        title: "para_cnc_id "
-                    },
-                    {
-                        title: "tipo"
-                    },
-                    {
-                        title: "estado"
-                    },
-                    {
-                        title: "descripcion"
-                    },
-                    {
-                        title: "fechaSolicitud"
-                    },
-                    {
-                        title: "fechaResolucion"
-                    }
+                columns: [
+                  { title: "Numero" },
+                  { title: "Descripcion" },
+                  { title: "CNC" },
+                  { title: "Estado" },
+                  { title: "Fecha de Solicitud del Servicio" },
+                  { title: "Fecha de Finalizacion del Servicio" }
                 ]
             });
 
@@ -522,7 +532,9 @@
                 var descripcion = $("#descripcion").val();
 
                 if (cnc == 0 || descripcion.length <= 0) {
-                    alert('Seleccione un CNC y agregue una descripcion');
+                    $('#mensajeInformativo').text('');
+                    $('#mensajeInformativo').text( 'Seleccione un CNC y agregue una descripcion');
+                    $('#modalInformativo').modal('show');
                     return;
                 }
 
@@ -562,39 +574,30 @@
                             localStorage.setItem('misServicios', JSON.stringify(datos2.servicios));
 
                             $('#misServicios').DataTable({
+                                language: {
+                                    url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                                },
                                 destroy: true,
                                 select: true,
                                 data: serviciosActualizado,
-                                columns: [{
-                                        title: "id"
-                                    },
-                                    {
-                                        title: "para_usuarios_id "
-                                    },
-                                    {
-                                        title: "para_cnc_id "
-                                    },
-                                    {
-                                        title: "tipo"
-                                    },
-                                    {
-                                        title: "estado"
-                                    },
-                                    {
-                                        title: "descripcion"
-                                    },
-                                    {
-                                        title: "fechaSolicitud"
-                                    },
-                                    {
-                                        title: "fechaResolucion"
-                                    }
+                                columns: [
+                                  { title: "Numero" },
+                                  { title: "Descripcion" },
+                                  { title: "CNC" },
+                                  { title: "Estado" },
+                                  { title: "Fecha de Solicitud del Servicio" },
+                                  { title: "Fecha de Finalizacion del Servicio" }
                                 ]
                             });
-                            alert('Registrado!');
+                            $('#mensajeInformativo').text('');
+                            $('#mensajeInformativo').text( 'El servicio se ha registrado con exito!');
+                            $('#modalInformativo').modal('show');
+                            return;
                         } else {
                             // Dejo el formulario como esta
-                            alert('Error al registrar');
+                            $('#mensajeInformativo').text('');
+                            $('#mensajeInformativo').text( 'Ha ocurrido un error al intentar registrar el servicio. Por favor, intentelo mas tarde.');
+                            $('#modalInformativo').modal('show');
                         }
                     },
                     error: function(jqXhr, textStatus, errorThrown) {

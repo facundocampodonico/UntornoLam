@@ -65,7 +65,7 @@
       </div>
 
          <li class="nav-item">
-        <a class="nav-link" href="cnc.html">
+        <a class="nav-link" href="cnc.html" id="opcionCNC">
           <i class="fas fa-fw fa-cog"></i>
           <span>Mis CNC</span></a>
       </li>
@@ -81,7 +81,7 @@
           <span>Mis Pedidos</span></a>
       </li>
          <li class="nav-item">
-        <a class="nav-link" href="misservicios.html">
+        <a class="nav-link" href="cnc.html" id="opcionMisServicios">
           <i class="fas fa-fw fa-wrench"></i>
           <span>Mis Servicios</span></a>
       </li>
@@ -148,13 +148,14 @@
             </li>
 
             <!-- Nav Item - Alerts -->
+<!--
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
+
                 <span class="badge badge-danger badge-counter">3+</span>
               </a>
-              <!-- Dropdown - Alerts -->
+
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
                   Alerts Center
@@ -195,6 +196,7 @@
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
               </div>
             </li>
+-->
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
@@ -304,16 +306,16 @@
       				</div>
       				<div class="card-body">
                 <div class="form-group">
-      					  <p> Su pedido debe estar en estado 1 - Pendiente, de otra forma no puede anularlo, contacte con @@@@@@@@@@@@@@@ para mas informacion </p>
+      					  <p> Su pedido debe estar en estado 1 - PEDIDO, de otra forma no puede pasar a 2 - ANULADO, contacte con soporte@untornolam.com para mas informacion </p>
       					</div>
                 <div class="form-group">
-                  <p> Su pedido debe estar en estado 3 - Cotizado , de otra forma no puede aceptarlo </p>
+                  <p> Su pedido debe estar en estado 3 - COTIZADO , de otra forma no puede pasar a 4 - ACEPTADO </p>
                 </div>
                 <div class="form-group">
-                  <p> Su pedido debe estar en estado 5 - ?????? , de otra forma no puede finalizarlo </p>
+                  <p> Su pedido debe estar en estado 5 - PENDIENTE DE RETIRO , de otra forma no puede pasar a 6 - FINALIZADO</p>
                 </div>
                 <div class="form-group">
-      						<input class="form-control" id="pedidoId" type="text" placeholder="ID">
+      						<input class="form-control" id="pedidoId" type="text" placeholder="Numero de Pedido">
       					</div>
 
       					<div class="form-group" align="right">
@@ -448,6 +450,8 @@
     </div>
 
 
+
+
     </div>
     <!-- End of Content Wrapper -->
 
@@ -479,7 +483,40 @@
     </div>
   </div>
 
+  <!-- Modal para el menu -->
+  <div class="modal fade" id="modalMenu" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Usuario </h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" id="textoModalMenu"> No puede acceder a esta funcionalidad si no posee un CNC </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal" id="cerrarModalMenu">Cerrar</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--Modal para el menu -->
 
+
+  <!-- Modal Informativo -->
+  <div class="modal fade" id="modalInformativo" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Usuario </h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" id="mensajeInformativo"></div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal" id="cerrarModalInformativo">Cerrar</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--Modal Informativo -->
 
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
@@ -498,6 +535,30 @@
 <script>
 $(document).ready( function () {
 
+  $('#opcionCNC').click(function(){
+      event.preventDefault();
+      var tipoUsuario = window.sessionStorage.getItem('tipoUsuario');
+
+      if( tipoUsuario != 'P'){
+        $('#modalMenu').modal('show');
+        return;
+      }
+
+      window.location.href = 'cnc.html';
+  });
+
+  $('#opcionMisServicios').click(function(){
+      event.preventDefault();
+      var tipoUsuario = window.sessionStorage.getItem('tipoUsuario');
+
+      if( tipoUsuario != 'P'){
+          $('#modalMenu').modal('show');
+          return;
+      }
+
+      window.location.href = 'misservicios.html';
+  });
+
     $("#btnLogout").click(function(e) {
         event.preventDefault();
         window.sessionStorage.removeItem('tokenUntornolam');
@@ -513,8 +574,8 @@ $(document).ready( function () {
 
 
     // Configuracion
-    const RUTA_ACCESO = 'http://66.97.46.179:8080/';
-    //const RUTA_ACCESO = 'http://127.0.0.1:8080/';
+    //const RUTA_ACCESO = 'http://66.97.46.179:8080/';
+    const RUTA_ACCESO = 'http://127.0.0.1:8080/';
     const RUTA_AUTHENTICATE = 'api/authentication';
     const RUTA_API_CREAR_PEDIDO = 'api/crearPedido';
     const RUTA_API_ANULAR_PEDIDO = 'api/anularPedido';
@@ -525,7 +586,6 @@ $(document).ready( function () {
     var token     = window.sessionStorage.getItem('tokenUntornolam');
 
     if(!token){
-      alert('No habia token - este mensaje seguro desaparece en un futuro');
       // Redirecciono
       window.location.href = './login.html';
     }
@@ -546,7 +606,6 @@ $(document).ready( function () {
       success: function( data, textStatus, jQxhr ){
 
           if(data.status != 'OK'){
-            alert('Debe ingresar - este mensaje seguro desaparece en un futuro');
             // Redirecciono
             window.location.href = './login.html';
           }
@@ -573,21 +632,22 @@ $(document).ready( function () {
     var events = $('#events');
 
     var table = $('#misPedidos').DataTable({
+        language: {
+            url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        },
         destroy: true,
         select: true,
         data: JSON.parse(dataInicial),
         columns:  [
-          { title: "id" },
-          { title: "usuarios_id_solicita" },
-          { title: "disenios_id" },
-          { title: "usuarios_id_vaRealizar" },
-          { title: "descripcion" },
-          { title: "fechaInicio" },
-          { title: "fechaFin" },
-          { title: "estado" },
-          { title: "cotizacion" },
-          { title: "cnc_id" },
-          { title: "comentarios" }
+          { title: "Numero" },
+          { title: "Nombre" },
+          { title: "Descripcion" },
+          { title: "Fecha de Solicitud del Pedido" },
+          { title: "Fecha de Finalizacion del Pedido" },
+          { title: "Estado" },
+          { title: "Cotizacion" },
+          { title: "CNC" },
+          { title: "Comentarios" }
         ]
       });
 
@@ -613,7 +673,10 @@ $(document).ready( function () {
            var descripcion = $("#descripcion").val();
 
            if(disenio == 0 || descripcion.length <= 0){
-             alert('Seleccione un diseño creado y agregue una descripcion');
+             $('#mensajeInformativo').text('');
+             $('#mensajeInformativo').text( 'Seleccione un diseño creado y agregue una descripcion para poder agregar un Pedido');
+             $('#modalInformativo').modal('show');
+             return ;
            }
 
            // Armo el ajax, para enviar los datos correspondientes
@@ -652,27 +715,31 @@ $(document).ready( function () {
                       localStorage.setItem('misPedidos', JSON.stringify(datos2.pedidos) );
 
                       $('#misPedidos').DataTable({
+                          language: {
+                              url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                          },
                           destroy: true,
                           select: true,
                           data: pedidosActualizado,
                           columns:  [
-                            { title: "id" },
-                            { title: "usuarios_id_solicita" },
-                            { title: "disenios_id" },
-                            { title: "usuarios_id_vaRealizar" },
-                            { title: "descripcion" },
-                            { title: "fechaInicio" },
-                            { title: "fechaFin" },
-                            { title: "estado" },
-                            { title: "cotizacion" },
-                            { title: "cnc_id" },
-                            { title: "comentarios" }
+                            { title: "Numero" },
+                            { title: "Nombre" },
+                            { title: "Descripcion" },
+                            { title: "Fecha de Solicitud del Pedido" },
+                            { title: "Fecha de Finalizacion del Pedido" },
+                            { title: "Estado" },
+                            { title: "Cotizacion" },
+                            { title: "CNC" },
+                            { title: "Comentarios" }
                           ]
                         });
-                      alert('Registrado!');
+                        $('#mensajeInformativo').text('');
+                        $('#mensajeInformativo').text( 'El pedido se ha registrado con exito!');
+                        $('#modalInformativo').modal('show');
                    }else{
-                       // Dejo el formulario como esta
-                       alert('Error al registrar');
+                       $('#mensajeInformativo').text('');
+                       $('#mensajeInformativo').text( 'Ha ocurrido un error al intentar registrar el pedido. Por favor, intentelo mas tarde.');
+                       $('#modalInformativo').modal('show');
                    }
                },
                error: function( jqXhr, textStatus, errorThrown ){
@@ -725,27 +792,31 @@ $(document).ready( function () {
 
 
                    $('#misPedidos').DataTable({
+                       language: {
+                           url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                       },
                        destroy: true,
                        select: true,
                        data: pedidosActualizado,
                        columns:  [
-                         { title: "id" },
-                         { title: "usuarios_id_solicita" },
-                         { title: "disenios_id" },
-                         { title: "usuarios_id_vaRealizar" },
-                         { title: "descripcion" },
-                         { title: "fechaInicio" },
-                         { title: "fechaFin" },
-                         { title: "estado" },
-                         { title: "cotizacion" },
-                         { title: "cnc_id" },
-                         { title: "comentarios" }
+                         { title: "Numero" },
+                         { title: "Nombre" },
+                         { title: "Descripcion" },
+                         { title: "Fecha de Solicitud del Pedido" },
+                         { title: "Fecha de Finalizacion del Pedido" },
+                         { title: "Estado" },
+                         { title: "Cotizacion" },
+                         { title: "CNC" },
+                         { title: "Comentarios" }
                        ]
                      });
-                   alert('Anulado!');
+                     $('#mensajeInformativo').text('');
+                     $('#mensajeInformativo').text( 'Se ha podido anular el pedido.');
+                     $('#modalInformativo').modal('show');
                 }else{
-                    // Dejo el formulario como esta
-                    alert('Error al anular');
+                  $('#mensajeInformativo').text('');
+                  $('#mensajeInformativo').text( 'Ha ocurrido un error al intentar anular el Pedido. Por favor, intentelo mas tarde.');
+                  $('#modalInformativo').modal('show');
                 }
             },
             error: function( jqXhr, textStatus, errorThrown ){
@@ -798,27 +869,32 @@ $(document).ready( function () {
 
 
                    $('#misPedidos').DataTable({
+                       language: {
+                           url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                       },
                        destroy: true,
                        select: true,
                        data: pedidosActualizado,
                        columns:  [
-                         { title: "id" },
-                         { title: "usuarios_id_solicita" },
-                         { title: "disenios_id" },
-                         { title: "usuarios_id_vaRealizar" },
-                         { title: "descripcion" },
-                         { title: "fechaInicio" },
-                         { title: "fechaFin" },
-                         { title: "estado" },
-                         { title: "cotizacion" },
-                         { title: "cnc_id" },
-                         { title: "comentarios" }
+                         { title: "Numero" },
+                         { title: "Nombre" },
+                         { title: "Descripcion" },
+                         { title: "Fecha de Solicitud del Pedido" },
+                         { title: "Fecha de Finalizacion del Pedido" },
+                         { title: "Estado" },
+                         { title: "Cotizacion" },
+                         { title: "CNC" },
+                         { title: "Comentarios" }
                        ]
                      });
-                   alert('Aceptado!');
+
+                     $('#mensajeInformativo').text('');
+                     $('#mensajeInformativo').text( 'Se ha podido aceptar el Pedido!');
+                     $('#modalInformativo').modal('show');
                 }else{
-                    // Dejo el formulario como esta
-                    alert('Error al aceptar');
+                    $('#mensajeInformativo').text('');
+                    $('#mensajeInformativo').text( 'Ha ocurrido un error al intentar aceptar el Pedido. Por favor, intentelo mas tarde.');
+                    $('#modalInformativo').modal('show');
                 }
             },
             error: function( jqXhr, textStatus, errorThrown ){
@@ -871,27 +947,31 @@ $(document).ready( function () {
 
 
                    $('#misPedidos').DataTable({
+                       language: {
+                           url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                       },
                        destroy: true,
                        select: true,
                        data: pedidosActualizado,
                        columns:  [
-                         { title: "id" },
-                         { title: "usuarios_id_solicita" },
-                         { title: "disenios_id" },
-                         { title: "usuarios_id_vaRealizar" },
-                         { title: "descripcion" },
-                         { title: "fechaInicio" },
-                         { title: "fechaFin" },
-                         { title: "estado" },
-                         { title: "cotizacion" },
-                         { title: "cnc_id" },
-                         { title: "comentarios" }
+                         { title: "Numero" },
+                         { title: "Nombre" },
+                         { title: "Descripcion" },
+                         { title: "Fecha de Solicitud del Pedido" },
+                         { title: "Fecha de Finalizacion del Pedido" },
+                         { title: "Estado" },
+                         { title: "Cotizacion" },
+                         { title: "CNC" },
+                         { title: "Comentarios" }
                        ]
                      });
-                   alert('Finalizado!');
+                     $('#mensajeInformativo').text('');
+                     $('#mensajeInformativo').text( 'Se ha podido finalizar el Pedido!');
+                     $('#modalInformativo').modal('show');
                 }else{
-                    // Dejo el formulario como esta
-                    alert('Error al finalizar el pedido');
+                    $('#mensajeInformativo').text('');
+                    $('#mensajeInformativo').text( 'Ha ocurrido un error al intentar finalizar el Pedido. Por favor, intentelo mas tarde.');
+                    $('#modalInformativo').modal('show');
                 }
             },
             error: function( jqXhr, textStatus, errorThrown ){
