@@ -123,7 +123,8 @@ $(document).ready(function() {
         //Listen for message from the server
         socket.on('GCODE Box Chat', function(msg){
           console.log("ENTRA O NO ENTRA LPMQLRP");
-
+          if (msg[0]=='T')
+            {msg=msg.slice(1);}
           $('#consola-para-escribir').append(msg + "<br>");
           //log.html(log.html() + msg);
           //$('#com-chilipeppr-widget-spconsole-consoleform').html(msg);
