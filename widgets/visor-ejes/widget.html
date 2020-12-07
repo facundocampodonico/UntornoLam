@@ -524,7 +524,9 @@
                 if (opciones[1].checked) {variablevalormovimiento=0.1;}
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
-                codigoG="G91 G1 X"+ variablevalormovimiento +" F400";
+                codigoG="G91";
+                socket.emit('GCODE Box Chat', codigoG );
+                codigoG="G1 X"+ variablevalormovimiento +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
                 codigoG="G90";
                 socket.emit('GCODE Box Chat', codigoG );
@@ -537,9 +539,9 @@
                 if (opciones[1].checked) {variablevalormovimiento=0.1;}
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
-                codigoG="G91 G1 X-"+ variablevalormovimiento +" F400";
-                console.log("codigoG");
-                console.log(codigoG);
+                codigoG="G91";
+                socket.emit('GCODE Box Chat', codigoG );
+                codigoG="G1 X-"+ variablevalormovimiento +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
                 codigoG="G90";
                 socket.emit('GCODE Box Chat', codigoG );
@@ -553,9 +555,9 @@
                 if (opciones[1].checked) {variablevalormovimiento=0.1;}
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
-                codigoG="G91 G1 Y"+ variablevalormovimiento +" F400";
-                console.log("codigoG");
-                console.log(codigoG);
+                codigoG="G91";
+                socket.emit('GCODE Box Chat', codigoG );
+                codigoG="G1 Y"+ variablevalormovimiento +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
                 codigoG="G90";
                 socket.emit('GCODE Box Chat', codigoG );
@@ -569,9 +571,9 @@
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
 
-                codigoG="G91 G1 Y-"+ variablevalormovimiento +" F400";
-                console.log("codigoG");
-                console.log(codigoG);
+                codigoG="G91";
+                socket.emit('GCODE Box Chat', codigoG );
+                codigoG="G1 Y-"+ variablevalormovimiento +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
                 codigoG="G90";
                 socket.emit('GCODE Box Chat', codigoG );
@@ -586,9 +588,9 @@
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
 
-                codigoG="G91 G1 Z"+ variablevalormovimiento +" F400";
-                console.log("codigoG");
-                console.log(codigoG);
+                codigoG="G91";
+                socket.emit('GCODE Box Chat', codigoG );
+                codigoG="G1 Z"+ variablevalormovimiento +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
                 codigoG="G90";
                 socket.emit('GCODE Box Chat', codigoG );
@@ -603,9 +605,9 @@
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
 
-                codigoG="G91 G1 Z-"+ variablevalormovimiento +" F400";
-                console.log("codigoG");
-                console.log(codigoG);
+                codigoG="G91";
+                socket.emit('GCODE Box Chat', codigoG );
+                codigoG="G1 Z-"+ variablevalormovimiento +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
                 codigoG="G90";
                 socket.emit('GCODE Box Chat', codigoG );
