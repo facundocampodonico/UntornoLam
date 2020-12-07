@@ -186,7 +186,8 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
             }
 
             // let other widgets load
-            setTimeout(this.resize.bind(this), 3000);
+            // @TODO: Test Guichu
+            //setTimeout(this.resize.bind(this), 3000);
 
             this.setupPauseBtn();
             this.setupClearBtn();
@@ -226,12 +227,14 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                     $('.com-chilipeppr-widget-spconsole .spconsole-filter-edit').addClass("active");
                     $('.com-chilipeppr-widget-spconsole-regexp-region').removeClass("hidden");
                     $('.com-chilipeppr-widget-spconsole-regexp-input').val(this.getFilter());
-                    this.resize();
+                    // @TODO: test guichu
+                    //this.resize();
                 } else {
                     // the region is showing, hide it
                     $('.com-chilipeppr-widget-spconsole .spconsole-filter-edit').removeClass("active");
                     $('.com-chilipeppr-widget-spconsole-regexp-region').addClass("hidden");
-                    this.resize();
+                    // @TODO: test guichu
+                    //this.resize();
                 }
             });
 
@@ -603,6 +606,8 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
         resize: function() {
             // trigger a resize with a delay and a de-dupe procedure in case we get called multiple times
             // quickly, cuz we could get contention on resize
+
+            /*
             if (this.resizePtr == null) {
                 this.resizePtr = setTimeout(this.resizeCallback.bind(this), 500);
             } else {
@@ -610,6 +615,8 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                 clearTimeout(this.resizePtr);
                 this.resizePtr = setTimeout(this.resizeCallback.bind(this), 500);
             }
+*/
+
         },
     /*    resizeCallback: function() {
             // add the top of the widget + height of widget
