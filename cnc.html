@@ -736,8 +736,17 @@
     </script>
     <script>
         $(document).ready(function() {
+            $('#estadoEquipo').html("Cargando...");
+
+
             var socket = io.connect('http://66.97.46.179:3003/', {
                 rejectUnauthorized: false
+            });
+
+            socket.emit('GCODE STATUS TORNO', 'Texto');
+
+            socket.on('STATUS TORNO', function(msg){
+              $('#estadoEquipo').html(msg);
             });
 
             socket.on('control message', function(msg){
