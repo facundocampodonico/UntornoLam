@@ -135,13 +135,18 @@ $(document).ready(function() {
             socket.emit('GCODE Box Chat', texto );
             //$('#consola-para-escribir').append(texto + "<br>");
             $('#enviar').val('');
+            setInterval(updateScroll,1000);
             return true;
         });
 
-
-
-
           });
+
+
+          function updateScroll(){
+              var element = document.getElementById("consola-para-escribir");
+              element.scrollTop = element.scrollHeight;
+          }
+
     </script>
 
 </body>
