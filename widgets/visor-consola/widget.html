@@ -126,6 +126,7 @@ $(document).ready(function() {
           if (msg[0]=='T')
             {msg=msg.slice(1);}
           $('#consola-para-escribir').append(msg + "<br>");
+          updateScroll();
           //log.html(log.html() + msg);
           //$('#com-chilipeppr-widget-spconsole-consoleform').html(msg);
         });
