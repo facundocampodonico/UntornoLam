@@ -343,8 +343,7 @@
                                                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                                 </div>
                                             </div>
-                                            <a  href="http://untornolam.com.ar/misservicios.html" type="button" class="btn btn-info m-2" data-toggle="tooltip" title="Solcitar nuevo servicio tecnico">
-
+                                            <a  href="misservicios.html" type="button" class="btn btn-info m-2" data-toggle="tooltip" title="Solcitar nuevo servicio tecnico">
                                                 <i class="fas fa-hammer" style="font-size:16px;color:white;"></i>
                                             </a>
                                         </div>
@@ -736,8 +735,17 @@
     </script>
     <script>
         $(document).ready(function() {
+            $('#estadoEquipo').html("Cargando...");
+
+
             var socket = io.connect('http://66.97.46.179:3003/', {
                 rejectUnauthorized: false
+            });
+
+            socket.emit('GCODE STATUS TORNO', 'Texto');
+
+            socket.on('STATUS TORNO', function(msg){
+              $('#estadoEquipo').html(msg);
             });
 
             socket.on('control message', function(msg){
