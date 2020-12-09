@@ -2041,7 +2041,7 @@ mega*/
             var socket = io.connect('http://66.97.46.179:3003/', {
                 rejectUnauthorized: false
             });
-            socket.emit('GCODE Box Chat', linegcode );
+
 
             // Seteo la variable de sesion
             localStorage.removeItem('comando_enviado');
@@ -2054,6 +2054,7 @@ mega*/
             }
 
             //ver de esperar el ok para seguir enviando
+            socket.emit('GCODE Box Chat', linegcode );
 
             console.log('envio aviso al 3d');
             // publish to 3d viewer so it syncs to us
