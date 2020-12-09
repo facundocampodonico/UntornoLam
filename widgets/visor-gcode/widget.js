@@ -2043,6 +2043,16 @@ mega*/
             });
             socket.emit('GCODE Box Chat', linegcode );
 
+            // Seteo la variable de sesion
+            localStorage.removeItem('comando_enviado');
+            localStorage.setItem('comando_enviado', '0');
+
+            let flag = parseInt( localStorage.getItem('comando_enviado') );
+
+            while( flag <= 0){
+                flag = parseInt( localStorage.getItem('comando_enviado') );
+            }
+
             //ver de esperar el ok para seguir enviando
 
             console.log('envio aviso al 3d');
