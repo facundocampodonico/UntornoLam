@@ -50,10 +50,31 @@
         $(document).ready(function() {
                         var socket = io.connect('http://66.97.46.179:3003/', {rejectUnauthorized: false});
 
-                        $("#enviar").click(function(){
-                            var texto = $('#1').val();
-                            socket.emit('GCODE Box Chat', texto );
-                            $('#enviar').val('');
+                        $("#1").click(function(){
+                            //var texto = $('#1').val();
+                            socket.emit('COMANDOS TORNO', "prender_torno" );
+                            //$('#enviar').val('');
+                            return true;
+                        });
+
+                        $("#2").click(function(){
+                            //var texto = $('#1').val();
+                            socket.emit('COMANDOS TORNO', "apagar_torno" );
+                            //$('#enviar').val('');
+                            return true;
+                        });
+
+                        $("#3").click(function(){
+                            //var texto = $('#1').val();
+                            socket.emit('COMANDOS TORNO', "habilitar_ssh" );
+                            //$('#enviar').val('');
+                            return true;
+                        });
+
+                        $("#4").click(function(){
+                            //var texto = $('#1').val();
+                            socket.emit('COMANDOS TORNO', "actualizar_torno" );
+                            //$('#enviar').val('');
                             return true;
                         });
 
