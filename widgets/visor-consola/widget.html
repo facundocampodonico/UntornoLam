@@ -131,6 +131,7 @@ $(document).ready(function() {
             let flag = parseInt( localStorage.getItem('comando_enviado') );
 
             if( flag === 0 ){
+              console.log('///////////  CAMBIE EL FLAG PARA MANDAR EL SIGUIENTE COMANDO //////////////////');
               localStorage.setItem('comando_enviado', '1');
             }
 
