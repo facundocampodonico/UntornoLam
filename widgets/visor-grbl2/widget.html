@@ -28,240 +28,38 @@
         /* widget.js will get inlined here by runme.js. don't remove this comment or inlining will fail. */
         //]]>
     </script>
-    <script type='text/javascript' src="widgets/visor-grbl2/widget.js"></script>
+    <!-- <script type='text/javascript' src="widgets/visor-grbl2/widget.js"></script> -->
     <!-- DON'T REMOVE end widget.js -->
 
 </head>
 
 <body>
+        <div class="row">
 
-    <!--Put HTML Contents of Widget Here-->
-    <div id="com-chilipeppr-widget-tinyg" class="panel panel-default w-100 h-100">
-        <!-- <div class="panel-heading">
-            <div class="btn-toolbar pull-right" role="toolbar" style="position: relative; float: none; padding-top: 5px; padding-bottom: 10px;
-    padding-left: 10px;">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-info btn-danger tinyg-feedhold" data-delay="1000" data-animation="true" data-placement="auto" data-container="body" data-trigger="hover" data-title="Feedhold" data-content="Stop movement immediately. Maintains positional accuracy. Sends ! command to TinyG which jumps past the planner buffer so you get immediate stop. Movement can be resumed with ~ command. If you want to jog you should flush queue with %.">
-                        <!-- <span class="fa fa-pause"></span> -->
-                        <!-- <span style="font-size:10px;">Feedhold</span> !</button>
-                    <button type="button" class="btn btn-sm btn-info tinyg-cyclestart" data-delay="1000" data-animation="true" data-placement="auto" data-container="body" data-trigger="hover" data-title="Cycle Start" data-content="Resume movement from stopping point"><span class="">~</span>
-
-                    </button>
-                    <button type="button" class="btn btn-sm btn-info tinyg-queueflush" data-delay="1000" data-animation="true" data-placement="auto" data-container="body" data-trigger="hover" data-title="Queue Flush" data-content="Empty planner buffer. Used for jogging and other cycles"><span class="">%</span>
-
-                    </button>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-info tinyg-ctrlx" data-delay="1000" data-animation="true" data-placement="auto" data-container="body" data-trigger="hover" data-title="Reset TinyG" data-content="Sends a Ctrl-X to TinyG to reset it. You should see the LED's blink that TinyG is resetting."><span style="font-size:7px;">Reset</span>
-
-                    </button>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-info tinyg-motors-energize" data-delay="1000" data-animation="true" data-placement="auto" data-container="body" data-trigger="hover" data-title="Energize Motors" data-content="Fully energize motors so you can do things like a tool change without moving your axis accidentally."><span class="fa fa-flash"></span>
-
-                        <!-- <span style="margin-left:-2px;opacity:0.5;" class="fa fa-ok"></span> -->
-
-                <!-- <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-info hidebody"><span class="fa fa-chevron-up"></span>
-
-                    </button>
-                </div>
-                <div class="btn-group">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>
-
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                            <!-- <li class="divider"></li> -->
-                            <!-- <li role="presentation" class="dropdown-header fork-name"></li> -->
-                            <!-- <li><a href="https://github.com/synthetos/TinyG-Updater/releases" target="_blank" class="com-chilipeppr-synthetos-firmwareupdater">Download Firmware Updater App</a>
-
-                            </li>
-                            <li><a href="javascript:" target="_blank" class="com-chilipeppr-kevinhauser-widget-configtinyg">Configure</a>
-
-                            </li> -->
-                            <!--<li><a href="http://chilipeppr.com/tinyg?v9=true" target="" class="standalone">TinyG v9 Version of Workspace</a>
-                        </li>-->
-                            <!-- <li><a href="javascript:" target="_blank" class="com-chilipeppr-kevinhauser-widget-configtinyg">Configure</a>
-                        </li> -->
-                            <!-- <li><a href="http://chilipeppr.com/tinyg?v9=true" target="" class="standalone" data-delay="100" data-animation="true" data-placement="auto" data-container="body" data-trigger="hover" data-html="true" data-title="" data-content="Advanced Users Only. This reloads the workspace into a mode where it will not send all of the init commands to TinyG when you connect. This is useful when trying out new firmware where the large set of inits that are sent by default could cause problems.">Send No Init Cmds Mode</a>
-
-                            </li>
-                            <!-- <li>
-                            <a href="" target="_blank" class="fork">Fork Widget</a>
-                        </li> -->
-                        <!-- </ul>
-                    </div>
-                </div> -->
-            <!-- </div> <span class="panel-title" data-toggle="popover" style="font-size:12px;">TinyG</span> <span style="font-size:9px;" class="fb-build"></span> -->
-
-        <!-- </div> -->
-        <div id="com-chilipeppr-widget-tinyg-body" class="panel-body">
-            <!-- <div class="alert alert-danger hidden fb-alert" style="margin:-16px -16px 16px -16px;">
-                <button type="button" class="close" aria-hidden="true" onclick="$('#com-chilipeppr-widget-tinyg .fb-alert').addClass('hidden');">×</button><span class="" onclick="$('#com-chilipeppr-widget-xyz-firmwareWarning').modal('show');  ">TinyG firmware 440.18 recommended. Click for info.</span>
-
-            </div> -->
-            <div class="container-fluid com-chilipeppr-interface-cnccontroller-stat">
-                <div class="row">
-                    <div class="col col-xs-3">Planificador</div>
-                    <div class="col col-xs-5">
-                        <div class="progress bufferprogress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="28" style="width: 50%;"> <span class="" style="min-width:20px;">Unknown</span>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-xs-2">Min/Max</div>
-                    <div class="col col-xs-2 well"> <span class="stat-plannerminmax">--/--</span>
-
-                    </div>
-                </div>
-                <div class="row hidden">
-                  <!--
-                    <div class="col col-xs-3 pktmodelbl">Modo de Línea</div>
-                  -->
-                    <div class="col col-xs-3">Modo Texto</div>
-                    <div class="col col-xs-5">
-                        <div class="progress pktmodeprogress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="28" style="width: 50%;"> <span class="" style="min-width:20px;">Unknown</span>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-xs-2">Min/Max</div>
-                    <div class="col col-xs-2 well"> <span class="stat-pktmodeminmax">--/--</span>
-
-                    </div>
-                </div>
-                <!-- row -->
-                <!-- Planner Stats -->
-                <!-- <div class="row stat-row">
-                <div class="col col-xs-3">
-                    Planner Min
-                </div>
-                <div class="col col-xs-3 well">
-                    <span class="stat-plannermin">-</span>
-                </div>
-                <div class="col col-xs-3 lblpad">
-                    Planner Max
-                </div>
-                <div class="col col-xs-3 well">
-                    <span class="stat-feedrate">-</span>
-                </div>
-            </div> -->
-                <!-- row -->
-                <div class="row stat-row">
-                    <div class="col col-xs-3">Velocidad</div>
-                    <div class="col col-xs-3 well"> <span class="stat-velocity">0.00</span> <span class="stat-unit">mm/min</span>
-
-                    </div>
-                    <div class="col col-xs-3 lblpad">Velocidad&nbsp;de&nbsp;Alimentación</div>
-                    <div class="col col-xs-3 well"> <span class="stat-feedrate">0</span> <span class="stat-unit">mm/min</span>
-                    </div>
-                </div>
-                <!-- row -->
-                <div class="row stat-row">
-                    <div class="col col-xs-3">Línea</div>
-                    <div class="col col-xs-3 well"> <span class="stat-line">-</span>
-
-                    </div>
-                    <div class="col col-xs-3 lblpad">Estado</div>
-                    <div class="col col-xs-3 well"> <span class="stat-sm stat-state">-</span>
-
-                    </div>
-                </div>
-                <!-- row -->
-                <div class="row stat-row">
-                    <div class="col col-xs-3">Unidad</div>
-                    <div class="col col-xs-3 well"> <span class="stat-units">-</span>
-
-                    </div>
-                    <div class="col col-xs-3 lblpad">Coordenadas</div>
-                    <div class="col col-xs-3 well"> <span class="stat-coords">-</span>
-
-                    </div>
-                </div>
-                <!-- row -->
-                <div class="row stat-row">
-                    <div class="col col-xs-3">Movimiento</div>
-                    <div class="col col-xs-3 well"> <span class="stat-sm stat-motion">-</span>
-
-                    </div>
-                    <div class="col col-xs-3 lblpad">Plano</div>
-                    <div class="col col-xs-3 well"> <span class="stat-smx stat-plane">-</span>
-
-                    </div>
-                </div>
-                <!-- row -->
-                <div class="row stat-row">
-                    <div class="col col-xs-3">Camino</div>
-                    <div class="col col-xs-3 well"> <span class="stat-sm stat-path">-</span>
-
-                    </div>
-                    <div class="col col-xs-3 lblpad">Distancia</div>
-                    <div class="col col-xs-3 well"> <span class="stat-sm stat-distance">-</span>
-
-                    </div>
-                </div>
-                <!-- row -->
-                <div class="row stat-row hidden com-chilipeppr-widget-tinyg-fro-row">
-                    <table style="width:100%;margin-top:4px;">
-                        <tr>
-                            <td style="white-space:nowrap;">Anular&nbsp;Velocidad&nbsp;de&nbsp;Alimentación&nbsp;</td>
-                            <td style="white-space:nowrap;">
-                                <button type="button" class="btn btn-sm btn-info com-chilipeppr-widget-tinyg-fro-1xbtn">1x</button>&nbsp;</td>
-                            <td style="width:100%;">
-                                <input type="range" id="com-chilipeppr-widget-tinyg-fro" value="1.0" step="0.05" max="10.0" min="0.05" />
-                            </td>
-                            <td>&nbsp;</td>
-                            <td style="white-space:nowrap;">
-                                <div class="com-chilipeppr-widget-tinyg-fro-val">-</div>
-                            </td>
-                        </tr>
-                    </table>
-                    <!-- <div class="row stat-row hidden com-chilipeppr-widget-tinyg-fro-row">
-                <div class="col col-xs-5">Feed Rate Override <button type="button" class="btn btn-sm btn-info">1x</button></div>
-                <div class="col col-xs-1"></div>
-                <div class="col col-xs-5">
-                    <input type="range" id="com-chilipeppr-widget-tinyg-fro" value="1.0" step="0.05" max="10.0" min="0.05" />
-                </div>
-                <div class="col col-xs-2 well"><span class="com-chilipeppr-widget-tinyg-fro-val">-</span>&nbsp;</div>
-            </div> -->
-                </div>
+            <div class="btn-group flex-wrap" role="group" aria-label="Basic example" style="width: 100%;">
+                <button type="button" class="btn btn-success btn-xs" id="1" style="border-radius:0px;"><i class="fa fa-toggle-on" ></i>&nbsp;Encender</button>
+                <button type="button" class="btn btn-danger btn-xs" id="2"><i class="fa fa-toggle-off" ></i>&nbsp;Apagar</button>
+                <button type="button" class="btn btn-primary btn-xs" id="3"><i class="fa fa-terminal" ></i>&nbsp;Habilitar ssh</button>
+                <button type="button" class="btn btn-secondary btn-xs" id="4" style="border-radius:0px;"><i class="fa fa-upload" ></i>&nbsp;Actualizar torno</button>
+                <!-- <button type="button" class="btn btn-secondary btn-xs" id="5"><i class="fa fa-home" aria-hidden="true"></i>Setear Cero de Máquina</button>
+                <button type="button" class="btn btn-secondary btn-xs" id="6" style="border-radius:0px;"><i class="fa fa-home" aria-hidden="true"></i>  Cero de Máquina</button> -->
             </div>
-            <div id="com-chilipeppr-widget-tinyg-ftr" class="panel-footer hidden"></div>
-        </div>
-        <div id="com-chilipeppr-widget-tinyg-holderAreaForConfigWidget" class="xhidden"></div>
-        <div class="modal fade" id="com-chilipeppr-widget-xyz-firmwareWarning" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header bg-danger">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Your TinyG Contains Downlevel Firmware</h4>
 
-                    </div>
-                    <div class="modal-body">The TinyG connected to ChiliPeppr is running firmware build <span class="fb-build">x</span>. ChiliPeppr requires 440.15 or above for full and correct functionality.
-                        <br/>
-                        <br/>There are known issues in 440.14 and prior relases, including some commands and functions that do not work properly. Some examples:
-                        <ul>
-                            <li>G28.3 command (which breaks the "Set Mch Zero" button)</li>
-                            <li>G10 L2 command (which breaks the "Set <span id="com-chilipeppr-xyz-dim">G54</span> Zero" button)</li>
-                            <li>Probing in 'inch' mode</li>
-                        </ul>Any of these can lead to offset machine coordinates, broken bits, hitting the end of rails, and more... it is very strongly recommended that you upgrade your TinyG before proceeding.
-                        <hr/>The 440.18 release of TinyG firmware is avalable <a href="http://synthetos.github.io/" target="_blank">here</a>
-                        <hr>Upgrading firmware resets your configuration to factory defaults! Save it first! For example, save the output of a $$ command.
-                        <br/>
-                        <hr>If you choose NOT to upgrade, to run at 440.14 or below, please note:
-                        <ul>
-                            <li>Avoid using any work offsets, such as G55, and so forth. Just let it default to G54 and leave it that way.</li>
-                            <li>The old "Machine Zero" button is roughly equivalent to the new "Set Mch Zero" button.</li>
-                            <li>The old "Work Zero" button is roughly equivalent to the new "Set G54 Zero" button.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
         </div>
+        <script>
+        $(document).ready(function() {
+                        var socket = io.connect('http://66.97.46.179:3003/', {rejectUnauthorized: false});
 
+                        $("#enviar").click(function(){
+                            var texto = $('#1').val();
+                            socket.emit('GCODE Box Chat', texto );
+                            $('#enviar').val('');
+                            return true;
+                        });
+
+         });
+
+        </script>
 </body>
 
 </html>
