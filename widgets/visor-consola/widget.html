@@ -123,10 +123,18 @@ $(document).ready(function() {
         //Listen for message from the server
         socket.on('GCODE Box Chat', function(msg){
           console.log("ENTRA O NO ENTRA LPMQLRP");
-          if (msg[0]=='T')
-            {msg=msg.slice(1);}
-          if (msg=='OK')
-            {msg=msg.slice(1);}
+          if (msg[0]=='T'){
+            msg=msg.slice(1);
+          }
+
+          if( msg =='OK' ){
+            let flag = parseInt( localStorage.getItem('comando_enviado') );
+
+            if( flag === 0 ){
+              localStorage.setItem('comando_enviado', '1');
+            }
+
+          }
           $('#consola-para-escribir').append(msg + "<br>");
           updateScroll();
           //log.html(log.html() + msg);
