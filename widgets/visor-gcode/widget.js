@@ -263,7 +263,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
         linesComplete: [],
         linesToShow: 50, // how many lines to show in the infinite scroll area
         linesToShowMax: 200, // how many max before we start unloading
-        delayPerLine: 1000, // ms delay between the send of each line to serial port
+        delayPerLine: 6000, // ms delay between the send of each line to serial port
         lineNumbersOnByDefault: false,
         isDirtyUnits: false, //track if user had to specify a unit of measurement and whether we need to reload the gcode file to add a UOM.
         init: function (settings) {
