@@ -34,6 +34,28 @@
 </head>
 
 <body>
+
+
+            <!-- <span class="status online"></span>
+            <span class="status wait"></span>
+            <span class="status offline"></span> -->
+            <div class="container-fluid bg-dark text-white shadow border-bottom-light">
+            	<div class="row  d-flex justify-content-center">
+            		<div class="col-xs-6">
+                    <h4 class="text">Estado</h4>
+            		</div>
+            		<div class="col-xs-6">
+                        <div class="status offline" id="led"></div>
+                    </div>
+                    </div>
+            	</div>
+            </div>
+
+
+
+
+
+        </div>
         <div class="row">
 
             <div class="btn-group flex-wrap" role="group" aria-label="Basic example" style="width: 100%;">
@@ -44,7 +66,6 @@
                 <!-- <button type="button" class="btn btn-secondary btn-xs" id="5"><i class="fa fa-home" aria-hidden="true"></i>Setear Cero de Máquina</button>
                 <button type="button" class="btn btn-secondary btn-xs" id="6" style="border-radius:0px;"><i class="fa fa-home" aria-hidden="true"></i>  Cero de Máquina</button> -->
             </div>
-
         </div>
         <script>
         $(document).ready(function() {
@@ -53,14 +74,18 @@
                         $("#1").click(function(){
                             //var texto = $('#1').val();
                             socket.emit('COMANDOS TORNO', "prender_torno" );
-                            //$('#enviar').val('');
+                        //hay que usarlo con los mensaje pero en caso de que no funcine dejo las siguientes lineas
+                            // $("#led").removeClass('offline');
+                            //  $("#led").addClass('online');
                             return true;
                         });
 
                         $("#2").click(function(){
                             //var texto = $('#1').val();
                             socket.emit('COMANDOS TORNO', "apagar_torno" );
-                            //$('#enviar').val('');
+                            //hay que usarlo con los mensaje pero en caso de que no funcine dejo las siguientes lineas
+                            // $("#led").removeClass('online');
+                            // $("#led").addClass('offline');
                             return true;
                         });
 
@@ -78,9 +103,36 @@
                             return true;
                         });
 
+                        socket.on('STATUS TORNO', function(msg) {
+                            $('#estadoEquipo').html(msg);
+                        });
+                        if (msg == 'Enc_SinCal') {
+                            $("#led").removeClass('offline');
+                             $("#led").addClass('online');
+                        }
+                        if (msg == 'Calibrando') {
+                            $("#led").removeClass('offline');
+                             $("#led").addClass('online');
+                        }
+                        if (msg == 'Enc_Calibr') {
+
+                            $("#led").removeClass('offline');
+                            $("#led").addClass('online');
+                        }
+                        if (msg == 'SeDesconecto') {
+                            $("#led").removeClass('online');
+                            $("#led").addClass('offline');
+                        }
+                        if (msg == 'Desconectado') {
+                            $("#led").removeClass('online');
+                            $("#led").addClass('offline');
+                            }
+
          });
 
         </script>
+
+
 </body>
 
 </html>

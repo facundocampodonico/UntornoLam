@@ -42,3 +42,54 @@
 .com-chilipeppr-widget-tinyg-fro-val-preview {
     color:silver;
 }
+/*////////////////////////////////////////////////*/
+
+.status{
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+    margin: 12px;
+}
+
+.status:before{
+    content: '';
+    position: absolute;
+    left: -5px;;
+    top: -5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite ease-in;
+}
+
+.status.online,
+.status.online:before{
+    background: #72ff7d;
+}
+
+.status.wait,
+.status.wait:before{
+    background: #ffda72;
+}
+
+.status.offline,
+.status.offline:before{
+    background: #ff4242;
+}
+
+
+@keyframes pulse{
+    from{
+        transform: scale(0.5);
+        opacity: 1;
+    }to{
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+.text{
+    margin-top: 10px;
+}
