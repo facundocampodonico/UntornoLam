@@ -102,31 +102,30 @@
                             //$('#enviar').val('');
                             return true;
                         });
-
+                        socket.emit('GCODE STATUS TORNO', 'Texto');
                         socket.on('STATUS TORNO', function(msg) {
-                            $('#estadoEquipo').html(msg);
-                        });
-                        if (msg == 'Enc_SinCal') {
-                            $("#led").removeClass('offline');
-                             $("#led").addClass('online');
-                        }
-                        if (msg == 'Calibrando') {
-                            $("#led").removeClass('offline');
-                             $("#led").addClass('online');
-                        }
-                        if (msg == 'Enc_Calibr') {
-
-                            $("#led").removeClass('offline');
-                            $("#led").addClass('online');
-                        }
-                        if (msg == 'SeDesconecto') {
-                            $("#led").removeClass('online');
-                            $("#led").addClass('offline');
-                        }
-                        if (msg == 'Desconectado') {
-                            $("#led").removeClass('online');
-                            $("#led").addClass('offline');
+                            console.log("ATR estado:",msg);
+                            if (msg == 'Enc_SinCal') {
+                                $("#led").removeClass('offline');
+                                $("#led").addClass('online');
                             }
+                            if (msg == 'Calibrando') {
+                                $("#led").removeClass('offline');
+                                $("#led").addClass('online');
+                            }
+                            if (msg == 'Encendido y calibrado') {
+                                 $("#led").removeClass('offline');
+                                 $("#led").addClass('online');
+                            }
+                            if (msg == 'SeDesconecto') {
+                                $("#led").removeClass('online');
+                                $("#led").addClass('offline');
+                            }
+                            if (msg == 'Desconectado') {
+                                $("#led").removeClass('online');
+                                $("#led").addClass('offline');
+                            }
+                        });
 
          });
 
