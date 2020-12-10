@@ -271,6 +271,7 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-danger">Vista Previa 3D</h6>
+
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -285,6 +286,10 @@
                   </div>
                 </div>
                 <!-- Card Body -->
+                <div class="form-group" align="center">
+                    <label> Arhcivo seleccionado: </lablel>
+                    <label id="seleccionadoVista3D" >  </lablel>
+                </div>
                 <div class="card-body" id="preview">
 
 
@@ -314,9 +319,14 @@
           <div class="form-group">
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" id="FILEDISENIO" name="FILEDISENIO" lang="es">
-						<label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+						<label class="custom-file-label" for="customFileLang" id="fileName">Seleccionar Archivo</label>
 					</div>
         </div>
+        <div class="form-group">
+          <label > Archivo seleccionado: </label>
+          <label id="labelNombre"> </label>
+        </div>
+
           <div class="form-group">
             <textarea class="form-control" rows="5" id="descripcionDisenio" name="descripcionDisenio" type="text" placeholder="Ingrese una descripcion"></textarea>
           </div>
@@ -434,6 +444,26 @@
 
 $( document ).ready(function() {
 
+
+  $('input[type="file"]').change(function(e){
+        var filePath =$('#FILEDISENIO').val();
+        let partes = filePath.toString().split(/\\/);
+        let cantidad = partes.length;
+        let nombreArchivo = '';
+        if(cantidad > 0 ){
+          if( filePath.toString().length <= 0){
+            nombreArchivo = '';
+          }else{
+            nombreArchivo = filePath.toString();
+          }
+
+        }else{
+          nombreArchivo = partes[cantidad-1];
+        }
+
+        $('#labelNombre').html(nombreArchivo);
+  });
+
   $('#opcionCNC').click(function(){
       event.preventDefault();
       var tipoUsuario = window.sessionStorage.getItem('tipoUsuario');
@@ -520,8 +550,6 @@ $( document ).ready(function() {
   // Obtengo la informacion inicial de los diseños
   var dataInicial = localStorage.getItem('misDisenios');
 
-  console.info(dataInicial);
-  console.info(localStorage.getItem('misDisenios'));
   // Parseo la informacion
   var datosDisenios = JSON.parse(dataInicial);
 
@@ -536,6 +564,9 @@ $( document ).ready(function() {
     //console.log(datosDisenios[0][4] );
     // Seteo el primero
     localStorage.setItem('seleccionadoDisenio', RUTA_ACCESO + 'static/usuarios/' + idFolder + '/' + datosDisenios[0][4] );
+
+    $('#seleccionadoVista3D').html(datosDisenios[0][1]);
+
     //localStorage.setItem('seleccionadoDisenio', RUTA_ACCESO + 'static/' + idFolder + '/' + datosDisenios[0][3] );
     // Armo las rutas
     for(let i=0; i < cantDisenios; i++){
@@ -692,7 +723,13 @@ $( document ).ready(function() {
 
 								console.log(geometry.boundingBox);
 
-							} );
+							}, function(){}, function(e){
+                console.log(e);
+                $('#mensajeInformativo').text('');
+                $('#mensajeInformativo').text( 'No se puede cargar la Vista 3D de este Diseño');
+                $('#modalInformativo').modal('show');
+                return;
+              });
 
 
 							// Lights
@@ -843,6 +880,8 @@ $( document ).ready(function() {
     localStorage.setItem('seleccionadoDisenio', disenio[4]);
     localStorage.setItem('seleccionadoDisenioId', disenio[0]);
 
+    $('#seleccionadoVista3D').html(disenio[1]);
+
     $('#preview').html('');
     if ($(this).hasClass('selected')) {
         $(this).removeClass('selected');
@@ -857,6 +896,9 @@ $( document ).ready(function() {
     //console.info(table.$('tr.selected').column(0).data() );
 
 } );
+
+
+
 
     $("#agregarDisenio").click(function(){
 
@@ -880,6 +922,19 @@ $( document ).ready(function() {
              return false;
          }
 
+         let partes = filePath.toString().split(/\\/);
+         let cantidad = partes.length;
+
+
+         let nombreArchivo = '';
+         if(cantidad > 0 ){
+           nombreArchivo = filePath.toString();
+         }else{
+           nombreArchivo = partes[cantidad-1];
+         }
+
+         $('#labelNombre').html(nombreArchivo);
+
           // Armo el ajax, para enviar los datos correspondientes
           $.ajax({
             type: 'POST',
@@ -899,6 +954,7 @@ $( document ).ready(function() {
 
                 $('#nombreDisenio').val('');
                 $('#descripcionDisenio').val('');
+                $('#labelNombre').html('');
 
                 // Parseo la informacion
                 var datosDataTable = datos2.data;
@@ -932,9 +988,6 @@ $( document ).ready(function() {
                             ]
                 });
 
-
-
-                //alert("Respuesta: " + JSON.stringify( datos ) );
             },
             error: function( jqXhr, textStatus, errorThrown ){
               console.log( errorThrown );
