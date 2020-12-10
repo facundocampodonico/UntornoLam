@@ -2042,7 +2042,7 @@ mega*/
                 rejectUnauthorized: false
             });
 
-
+/*
             // Seteo la variable de sesion
             localStorage.removeItem('comando_enviado');
             localStorage.setItem('comando_enviado', '0');
@@ -2052,7 +2052,7 @@ mega*/
             while( flag <= 0){
                 flag = parseInt( localStorage.getItem('comando_enviado') );
             }
-
+*/
             //ver de esperar el ok para seguir enviando
             socket.emit('GCODE Box Chat', linegcode );
 
