@@ -38,7 +38,7 @@
     <!-- <script src="vendor/jquery-easing/jquery.easing.min.js"></script>-->
 
     <!-- Custom scripts for all pages-->
-        <!--<script src="js/sb-admin-2.min.js"></script>-->
+    <!--<script src="js/sb-admin-2.min.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
 
     <!-- Carga de Variables -->
@@ -170,7 +170,7 @@
                         </li>
 
                         <!-- Nav Item - Alerts -->
-<!--
+                        <!--
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
@@ -221,11 +221,15 @@
 -->
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><script>document.write(  window.sessionStorage.getItem('apellido') + " " + window.sessionStorage.getItem('nombre') );</script></span>
-                            <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-                            <!-- <img class="img-profile rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg"> -->
-                          </a>
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    <script>
+                                        document.write(window.sessionStorage.getItem('apellido') + " " + window.sessionStorage.getItem('nombre'));
+                                    </script>
+                                </span>
+                                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                                <!-- <img class="img-profile rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg"> -->
+                            </a>
 
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -282,17 +286,16 @@
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-auto">
                                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                          <label id="estadoEquipo">
-
-                                                          </label>
+                                                            <label id="estadoEquipo" style="width: 240px;position: absolute;">
+                                                            </label>
 
                                                         </div>
                                                     </div>
-                                                    <div class="col">
+                                                    <!-- <div class="col">
                                                         <div class="progress progress-sm mr-2">
                                                             <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <button type="button" class="btn btn-info m-2" data-toggle="modal" data-target="#exampleModal" data-toggle="tooltip" title="Configurar tu panel">
@@ -318,9 +321,12 @@
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-info m-2"  data-toggle="modal" data-target="#envios" data-toggle="tooltip" title="Diseños Enviados">
+                                            <!-- <button type="button" class="btn btn-info m-2"  data-toggle="modal" data-target="#envios" data-toggle="tooltip" title="Diseños Enviados">
       <i class="fas fa-pen-square" style="font-size:16px;color:white;"></i>
-  </button>
+  </button> -->
+                                            <a href="misdiseños.html" type="button" class="btn btn-info m-2" data-toggle="tooltip" title="Diseños Enviados">
+                                                <i class="fas fa-pen-square" style="font-size:16px;color:white;"></i>
+                                            </a>
                                             <!-- <div id="listadodegcode"> </div> -->
                                         </div>
                                     </div>
@@ -343,7 +349,7 @@
                                                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                                 </div>
                                             </div>
-                                            <a  href="misservicios.html" type="button" class="btn btn-info m-2" data-toggle="tooltip" title="Solcitar nuevo servicio tecnico">
+                                            <a href="misservicios.html" type="button" class="btn btn-info m-2" data-toggle="tooltip" title="Solcitar nuevo servicio tecnico">
                                                 <i class="fas fa-hammer" style="font-size:16px;color:white;"></i>
                                             </a>
                                         </div>
@@ -392,26 +398,26 @@
                             </div>
                         </div>
 
-                    <div class="modal fade" id="envios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <h5 class="modal-title" id="enviados">Listado de Diseños cargados</h5>
+                        <div class="modal fade" id="envios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="enviados">Listado de Diseños cargados</h5>
 
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                                      <span aria-hidden="true">&times;</span>
-                                  </button>
-                              </div>
-                              <div class="modal-body">
-                                      <div id="listadodegcode"> </div>
-                              </div>
-                              <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="listadodegcode"> </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
-                              </div>
-                          </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
 
                         <div class=row>
@@ -488,14 +494,14 @@
                         </div>
 
                         <!--  Footer -->
-                                <footer class="sticky-footer bg-white">
-                                    <div class="container my-auto">
-                                        <div class="copyright text-center my-auto">
-                                            <span>Copyright &copy; UNtornoLaM 2020</span>
-                                        </div>
-                                    </div>
-                                </footer>
-                                <!-- End of Footer -->
+                        <footer class="sticky-footer bg-white">
+                            <div class="container my-auto">
+                                <div class="copyright text-center my-auto">
+                                    <span>Copyright &copy; UNtornoLaM 2020</span>
+                                </div>
+                            </div>
+                        </footer>
+                        <!-- End of Footer -->
                     </div><!-- End of container-fluid -->
 
                 </div>
@@ -505,21 +511,21 @@
 
             <!-- Logout Modal-->
             <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">¿Esta seguro que desea salir?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">Seleccione "Salir" si quiere terminar la sesion.</div>
-                  <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" id="btnLogout">Salir</a>
-                  </div>
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">¿Esta seguro que desea salir?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Seleccione "Salir" si quiere terminar la sesion.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                            <a class="btn btn-primary" id="btnLogout">Salir</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
             <div class="container demo">
 
@@ -564,25 +570,25 @@
                 //TRAER CNC
                 $(document).ready(function() {
 
-                  // Redirecciono en caso de que sea un Cliente
-                  var tipoUsuario = window.sessionStorage.getItem('tipoUsuario');
+                    // Redirecciono en caso de que sea un Cliente
+                    var tipoUsuario = window.sessionStorage.getItem('tipoUsuario');
 
-                  if( tipoUsuario != 'P'){
-                      window.location.href = './index.html';
-                  }
+                    if (tipoUsuario != 'P') {
+                        window.location.href = './index.html';
+                    }
 
-                  $("#btnLogout").click(function(e) {
-                      event.preventDefault();
-                      window.sessionStorage.removeItem('tokenUntornolam');
-                      window.sessionStorage.removeItem('username');
-                      window.sessionStorage.removeItem('nombre');
-                      window.sessionStorage.removeItem('apellido');
-                      window.sessionStorage.removeItem('nivelAcceso');
-                      window.sessionStorage.removeItem('email');
-                      window.sessionStorage.removeItem('miCncs');
-                      // Redirecciono
-                      window.location.href = './login.html';
-                  });
+                    $("#btnLogout").click(function(e) {
+                        event.preventDefault();
+                        window.sessionStorage.removeItem('tokenUntornolam');
+                        window.sessionStorage.removeItem('username');
+                        window.sessionStorage.removeItem('nombre');
+                        window.sessionStorage.removeItem('apellido');
+                        window.sessionStorage.removeItem('nivelAcceso');
+                        window.sessionStorage.removeItem('email');
+                        window.sessionStorage.removeItem('miCncs');
+                        // Redirecciono
+                        window.location.href = './login.html';
+                    });
 
                     // Obtengo la data de los CNC
                     var dataCNC = "";
@@ -744,31 +750,31 @@
 
             socket.emit('GCODE STATUS TORNO', 'Texto');
 
-            socket.on('STATUS TORNO', function(msg){
-              $('#estadoEquipo').html(msg);
+            socket.on('STATUS TORNO', function(msg) {
+                $('#estadoEquipo').html(msg);
             });
 
-            socket.on('control message', function(msg){
-                if(msg =='camara_prendida'){
-                  //window.location.reload();
-                  $("#camara").load("widgets/visor-camara/widget.html");
+            socket.on('control message', function(msg) {
+                if (msg == 'camara_prendida') {
+                    //window.location.reload();
+                    $("#camara").load("widgets/visor-camara/widget.html");
                 }
-                if(msg =='camara_apagada'){
-                  //    window.location.reload();
-                  $("#camara").load("widgets/visor-camara/widget.html");
+                if (msg == 'camara_apagada') {
+                    //    window.location.reload();
+                    $("#camara").load("widgets/visor-camara/widget.html");
                 }
 
-                if(msg =='Enc_SinCal'){
-                  $('#estadoEquipo').html("Encendido sin calibracion");
+                if (msg == 'Enc_SinCal') {
+                    $('#estadoEquipo').html("Encendido sin calibracion");
                 }
-                if(msg =='Calibrando'){
-                  $('#estadoEquipo').html("Calibrando");
+                if (msg == 'Calibrando') {
+                    $('#estadoEquipo').html("Calibrando");
                 }
-                if(msg =='Enc_Calibr'){
-                  $('#estadoEquipo').html("Encendido y calibrado");
+                if (msg == 'Enc_Calibr') {
+                    $('#estadoEquipo').html("Encendido y calibrado");
                 }
-                if(msg =='SeDesconecto'){
-                  $('#estadoEquipo').html("Desconectado");
+                if (msg == 'SeDesconecto') {
+                    $('#estadoEquipo').html("Desconectado");
                 }
             });
 
@@ -780,15 +786,15 @@
 
 
 
-      <!-- Bootstrap core JavaScript-->
-      <script src="vendor/jquery/jquery.min.js"></script>
-      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-      <!-- Core plugin JavaScript-->
-      <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-      <!-- Custom scripts for all pages-->
-      <script src="js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
 
 </body>
