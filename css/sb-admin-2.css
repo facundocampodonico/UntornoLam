@@ -11631,12 +11631,12 @@ height: 200px; }
    }
 
 .odd:hover {
-    background: #ff4141;
+    background: #c4c4c4;
     color: white;
 }
 
 .even:hover {
-    background: #ff4141;
+    background: #c4c4c4;
     color: white;
 }
 .odd.selected {
