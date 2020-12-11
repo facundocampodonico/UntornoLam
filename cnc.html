@@ -455,7 +455,7 @@
 
                             <div class="col-lg-6 " data-toggle="tooltip" title="Descripción de la funcionalidad">
                                 <div class="card shadow mb-4">
-                                    <button type="button" class="contraer"></span> &nbsp; Vista Previa 3D</button>
+                                    <button type="button" class="contraer" id="visor"></span> &nbsp; Vista Previa 3D</button>
                                     <div class="contentcnc">
                                         <div id="3d"></div>
                                     </div>
@@ -784,6 +784,15 @@
 
 
         });
+
+
+        /**/
+        $("#visor").click(function(){
+        $("#3d").load("widgets/visor-3d/widget.html");
+        });
+
+
+
     </script>
 
 
