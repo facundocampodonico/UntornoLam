@@ -11629,3 +11629,22 @@ height: 200px; }
        width: 100%;
        object-fit: cover
    }
+
+.odd:hover {
+    background: #ff4141;
+    color: white;
+}
+
+.even:hover {
+    background: #ff4141;
+    color: white;
+}
+.odd.selected {
+    background: grey;
+    color: white;
+}
+
+.even.selected {
+    background: grey;
+    color: white;
+}
