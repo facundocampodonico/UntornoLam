@@ -687,8 +687,8 @@ $(document).ready(function() {
     let datosAlertasSinLeer = JSON.parse(localStorage.getItem('alertasSinLeer') );
 
     for(let i=0; i < cantAlertas; i++){
-      console.log(datosAlertasSinLeer[0][1]);
-      console.log(datosAlertasSinLeer[0][5]);
+    //  console.log(datosAlertasSinLeer[0][1]);
+    //  console.log(datosAlertasSinLeer[0][5]);
       var elemento = `<a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
                     <div class="icon-circle bg-primary">
@@ -696,8 +696,8 @@ $(document).ready(function() {
                     </div>
                   </div>
                   <div>
-                    <div class="small text-gray-500">` + datosAlertasSinLeer[0][1] + `</div>
-                    <span class="font-weight-bold">` + datosAlertasSinLeer[0][5] + `</span>
+                    <div class="small text-gray-500">` + datosAlertasSinLeer[i][1] + `</div>
+                    <span class="font-weight-bold">` + datosAlertasSinLeer[i][5] + `</span>
                 </div>
                 </a>`;
 
