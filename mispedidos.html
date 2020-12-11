@@ -664,6 +664,30 @@ $(document).ready( function () {
      });
 
 
+     $('#misPedidos tbody').on( 'click', 'tr', function () {
+
+       let table2 = $('#misPedidos').DataTable();
+       var pedido = table2.row($(this)).data();
+
+       if(pedido === 'undefined'){
+         pedido = this;
+       }
+
+
+       $('#pedidoId').val(pedido[0]);
+
+
+       if ($(this).hasClass('selected')) {
+           $(this).removeClass('selected');
+
+       } else {
+
+           table2.$('tr.selected').removeClass('selected');
+           $(this).addClass('selected');
+       }
+
+   } );
+
      $("#agregarPedido").click(function(){
 
            // stop submit the form, we will post it manually.
@@ -747,7 +771,6 @@ $(document).ready( function () {
                }
            });
      });
-
 
 
       $("#anularPedido").click(function(){
