@@ -587,7 +587,7 @@
 
             $("#Xmas").click(function(){
 
-                let valor = parseFloat( $('#valorXvisor').html() );
+                let valor = parseFloat( $('#valorXvisor').html() ).toFixed(3);
 
                 var opciones = document.getElementsByName('options');
                 if (opciones[0].checked) {variablevalormovimiento=1;}
@@ -595,7 +595,7 @@
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
 
-                valor += parseFloat(variablevalormovimiento);
+                valor = (  parseFloat(valor) + parseFloat(variablevalormovimiento) ).toFixed(3);
 
                 codigoG="G1 X"+ valor +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
@@ -604,7 +604,7 @@
             });
 
             $("#Xmenos").click(function(){
-                let valor = parseFloat( $('#valorXvisor').html() );
+                let valor = parseFloat( $('#valorXvisor').html() ).toFixed(3);
 
                 var opciones = document.getElementsByName('options');
                 if (opciones[0].checked) {variablevalormovimiento=1;}
@@ -612,8 +612,7 @@
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
 
-
-                valor -= parseFloat(variablevalormovimiento);
+                valor =  (  parseFloat(valor) - parseFloat(variablevalormovimiento) ).toFixed(3);
 
                 codigoG="G1 X"+ valor +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
@@ -622,7 +621,7 @@
             });
 
             $("#Ymas").click(function(){
-                let valor = parseFloat( $('#valorYvisor').html() );
+                let valor = parseFloat( $('#valorYvisor').html() ).toFixed(3);
 
                 var opciones = document.getElementsByName('options');
                 if (opciones[0].checked) {variablevalormovimiento=1;}
@@ -630,7 +629,7 @@
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
 
-                valor += parseFloat(variablevalormovimiento);
+                valor =  (  parseFloat(valor) + parseFloat(variablevalormovimiento) ).toFixed(3);
 
                 codigoG="G1 Y"+ valor +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
@@ -639,7 +638,7 @@
             });
 
             $("#Ymenos").click(function(){
-                let valor = parseFloat( $('#valorYvisor').html() );
+                let valor = parseFloat( $('#valorYvisor').html() ).toFixed(3);
 
                 var opciones = document.getElementsByName('options');
                 if (opciones[0].checked) {variablevalormovimiento=1;}
@@ -647,7 +646,7 @@
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
 
-                valor -= parseFloat(variablevalormovimiento);
+                valor =  (  parseFloat(valor)- parseFloat(variablevalormovimiento) ).toFixed(3);
 
                 codigoG="G1 Y"+ valor +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
@@ -656,7 +655,7 @@
             });
 
             $("#Zmas").click(function(){
-                let valor = parseFloat( $('#valorZvisor').html() );
+                let valor = parseFloat( $('#valorZvisor').html() ).toFixed(3);
                 //variablevalormovimiento=1
                 var opciones = document.getElementsByName('options');
                 if (opciones[0].checked) {variablevalormovimiento=1;}
@@ -664,7 +663,7 @@
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
 
-                valor += parseFloat(variablevalormovimiento);
+                valor =  (  parseFloat(valor) + parseFloat(variablevalormovimiento) ).toFixed(3);
 
                 codigoG="G1 Z"+ valor +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
@@ -673,7 +672,7 @@
             });
 
             $("#Zmenos").click(function(){
-                let valor = parseFloat( $('#valorZvisor').html() );
+                let valor = parseFloat( $('#valorZvisor').html() ).toFixed(3);
                 //variablevalormovimiento=1
                 var opciones = document.getElementsByName('options');
                 if (opciones[0].checked) {variablevalormovimiento=1;}
@@ -681,7 +680,7 @@
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
 
-                valor -= parseFloat(variablevalormovimiento);
+                valor =  (  parseFloat(valor) - parseFloat(variablevalormovimiento) ).toFixed(3);
 
                 codigoG="G1 Z"+ valor +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
