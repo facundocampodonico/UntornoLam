@@ -505,6 +505,17 @@
                 rejectUnauthorized: false
             });
 
+            socket.on('GCODE Box Chat', function(msg){
+              console.log("ENTRA O NO ENTRA LPMQLRP ----" + msg);
+              if (msg[0]=='T'){
+                msg=msg.slice(1);
+              }
+
+              $('#consola-para-escribir').append(msg + "<br>");
+              updateScroll();
+
+            });
+
 
             $("#SetZero").click(function(){
                 codigoG="G92 X0 Y0 Z0";
