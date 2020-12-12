@@ -161,7 +161,7 @@
                                             <!-- <td><span class="xyz-negpos xyz-dimmed" >-</span><span class="xyz-intgray xyz-dimmed">00</span> -->
                                             <!-- <span class="xyz-intblack">0</span></td> -->
                                             <!-- <td>.<span class="xyz-decimal">000</span></td> -->
-                                            <td><span>00000</span></td>
+                                            <td><span id='valorXvisor'>0.000</span></td>
                                             <td><span class="com-chilipeppr-xyz-dim">mm</span></td>
                                         </tr>
                                     </table>
@@ -193,7 +193,7 @@
                                 <!-- <td style="width:70px;text-align:right;"> -->
                                 <!-- <span class="xyz-negpos xyz-dimmed" >-</span><span class="xyz-intgray xyz-dimmed">00</span> -->
                                 <!-- <span class="xyz-intblack">0</span></td><td>.<span class="xyz-decimal">000</span></td> -->
-                                    <td><span>00000</span></td>
+                                    <td><span id='valorYvisor'>0.000</span></td>
                                  <td><span class="com-chilipeppr-xyz-dim">mm</span></td></tr></table></h2>
 
                     <!--    <div class="com-chilipeppr-xyz-dim">mm</div>-->
@@ -215,7 +215,7 @@
                             <h2 class="com-chilipeppr-xyz-pos"><table>
                                 <!-- <tr><td style="width:70px;text-align:right;"> -->
                                 <!-- <span class="xyz-negpos xyz-dimmed" >-</span><span class="xyz-intgray xyz-dimmed">00</span><span class="xyz-intblack">0</span></td><td>.<span class="xyz-decimal">000</span></td>       -->
-                                    <td><span>00000</span></td>
+                                    <td><span id='valorZvisor'>0.000</span></td>
                                  <td><span class="com-chilipeppr-xyz-dim">mm</span></td></tr></table></h2>
 
                         <!--    <div class="com-chilipeppr-xyz-dim">mm</div>-->
@@ -506,13 +506,57 @@
             });
 
             socket.on('GCODE Box Chat', function(msg){
-              console.log("ENTRA O NO ENTRA LPMQLRP ----" + msg);
+              console.log("111111 ENTRA O NO ENTRA LPMQLRP ----" + msg);
               if (msg[0]=='T'){
                 msg=msg.slice(1);
               }
 
-              $('#consola-para-escribir').append(msg + "<br>");
-              updateScroll();
+              // G1 x100.000 y1000 z43 F300
+
+              var partes = msg.split(' ');
+
+              // partes[0] = G1
+              // partes[1] = x100.000
+              // partes[2] = y100.555
+              // partes[3] = z100.999
+              // partes[4] = F3000
+              var valorX;
+              var valorY;
+              var valorZ;
+
+              if( partes[0].toUpperCase() == 'G1' ){
+                var cantidadPartes = 0;
+                cantidadPartes += parseInt(partes.length);
+
+                for(let i=1; i < cantidadPartes; i++){
+                  if( partes[i] && partes[i][0].toUpperCase() == 'X' ){
+                    valorX = partes[i].slice(1);
+                    $('#valorXvisor').html( parseFloat(valorX).toFixed(3) );
+                    //console.log('el valor de X es ' + valorX);
+                  }
+
+                  if( partes[i] && partes[i][0].toUpperCase() == 'Y' ){
+                    valorY = partes[i].slice(1);
+                    $('#valorYvisor').html( parseFloat(valorY).toFixed(3) );
+                    //console.log('el valor de Y es ' + valorY);
+                  }
+
+                  if( partes[i] && partes[i][0].toUpperCase() == 'Z' ){
+                    valorZ = partes[i].slice(1);
+                    $('#valorZvisor').html( parseFloat(valorZ).toFixed(3) );
+                    //console.log('el valor de z es ' + valorZ);
+                  }
+                }
+              }
+
+              if( partes[0].toUpperCase() == 'G28' ){
+                valorX = 0;
+                valorY = 0;
+                valorZ = 0;
+                $('#valorXvisor').html( parseFloat(valorX).toFixed(3) );
+                $('#valorYvisor').html( parseFloat(valorY).toFixed(3) );
+                $('#valorZvisor').html( parseFloat(valorZ).toFixed(3) );
+              }
 
             });
 
@@ -542,68 +586,77 @@
             });
 
             $("#Xmas").click(function(){
+
+                let valor = parseFloat( $('#valorXvisor').html() );
+
                 var opciones = document.getElementsByName('options');
                 if (opciones[0].checked) {variablevalormovimiento=1;}
                 if (opciones[1].checked) {variablevalormovimiento=0.1;}
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
-                codigoG="G91";
+
+                valor += parseFloat(variablevalormovimiento);
+
+                codigoG="G1 X"+ valor +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
-                codigoG="G1 X"+ variablevalormovimiento +" F400";
-                socket.emit('GCODE Box Chat', codigoG );
-                codigoG="G90";
-                socket.emit('GCODE Box Chat', codigoG );
+
                 return true;
             });
 
             $("#Xmenos").click(function(){
+                let valor = parseFloat( $('#valorXvisor').html() );
+
                 var opciones = document.getElementsByName('options');
                 if (opciones[0].checked) {variablevalormovimiento=1;}
                 if (opciones[1].checked) {variablevalormovimiento=0.1;}
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
-                codigoG="G91";
-                socket.emit('GCODE Box Chat', codigoG );
-                codigoG="G1 X-"+ variablevalormovimiento +" F400";
-                socket.emit('GCODE Box Chat', codigoG );
-                codigoG="G90";
+
+
+                valor -= parseFloat(variablevalormovimiento);
+
+                codigoG="G1 X"+ valor +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
 
                 return true;
             });
 
             $("#Ymas").click(function(){
+                let valor = parseFloat( $('#valorYvisor').html() );
+
                 var opciones = document.getElementsByName('options');
                 if (opciones[0].checked) {variablevalormovimiento=1;}
                 if (opciones[1].checked) {variablevalormovimiento=0.1;}
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
-                codigoG="G91";
+
+                valor += parseFloat(variablevalormovimiento);
+
+                codigoG="G1 Y"+ valor +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
-                codigoG="G1 Y"+ variablevalormovimiento +" F400";
-                socket.emit('GCODE Box Chat', codigoG );
-                codigoG="G90";
-                socket.emit('GCODE Box Chat', codigoG );
+
                 return true;
             });
 
             $("#Ymenos").click(function(){
+                let valor = parseFloat( $('#valorYvisor').html() );
+
                 var opciones = document.getElementsByName('options');
                 if (opciones[0].checked) {variablevalormovimiento=1;}
                 if (opciones[1].checked) {variablevalormovimiento=0.1;}
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
 
-                codigoG="G91";
+                valor -= parseFloat(variablevalormovimiento);
+
+                codigoG="G1 Y"+ valor +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
-                codigoG="G1 Y-"+ variablevalormovimiento +" F400";
-                socket.emit('GCODE Box Chat', codigoG );
-                codigoG="G90";
-                socket.emit('GCODE Box Chat', codigoG );
+
                 return true;
             });
 
             $("#Zmas").click(function(){
+                let valor = parseFloat( $('#valorZvisor').html() );
                 //variablevalormovimiento=1
                 var opciones = document.getElementsByName('options');
                 if (opciones[0].checked) {variablevalormovimiento=1;}
@@ -611,16 +664,16 @@
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
 
-                codigoG="G91";
+                valor += parseFloat(variablevalormovimiento);
+
+                codigoG="G1 Z"+ valor +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
-                codigoG="G1 Z"+ variablevalormovimiento +" F400";
-                socket.emit('GCODE Box Chat', codigoG );
-                codigoG="G90";
-                socket.emit('GCODE Box Chat', codigoG );
+
                 return true;
             });
 
             $("#Zmenos").click(function(){
+                let valor = parseFloat( $('#valorZvisor').html() );
                 //variablevalormovimiento=1
                 var opciones = document.getElementsByName('options');
                 if (opciones[0].checked) {variablevalormovimiento=1;}
@@ -628,12 +681,11 @@
                 if (opciones[2].checked) {variablevalormovimiento=0.01;}
                 if (opciones[3].checked) {variablevalormovimiento=0.001;}
 
-                codigoG="G91";
+                valor -= parseFloat(variablevalormovimiento);
+
+                codigoG="G1 Z"+ valor +" F400";
                 socket.emit('GCODE Box Chat', codigoG );
-                codigoG="G1 Z-"+ variablevalormovimiento +" F400";
-                socket.emit('GCODE Box Chat', codigoG );
-                codigoG="G90";
-                socket.emit('GCODE Box Chat', codigoG );
+
                 return true;
             });
 
